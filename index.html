@@ -4,36 +4,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PEPLink JA</title>
 <style>
-body{font-family:Arial,sans-serif;margin:0;background:#f4f6f8;color:#17233b;text-align:center}
-header{background:#10264a;color:white;padding:35px 15px}
-h1{font-size:36px;margin:0}
-header p{font-size:17px}
-main{padding:20px;max-width:650px;margin:auto}
-.card{background:white;padding:20px;margin:15px 0;border-radius:12px;box-shadow:0 2px 8px #ddd}
-h2{color:#174b85}
-footer{padding:20px;background:#10264a;color:white}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f2f5fa;
+  color: #10264a;
+  text-align: center;
+}
+header {
+  background: #10264a;
+  color: white;
+  padding: 35px 15px;
+}
+header h1 { font-size: 34px; margin: 0 0 10px; }
+header p { margin: 8px 0; }
+main { max-width: 500px; margin: auto; padding: 25px 20px; }
+h2 { margin-bottom: 25px; }
+.grade {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  margin: 15px 0;
+  border: none;
+  border-radius: 12px;
+  background: #174b85;
+  color: white;
+  font-size: 21px;
+  font-weight: bold;
+  text-decoration: none;
+}
+footer { padding: 20px; font-size: 13px; color: #555; }
 </style>
 </head>
 <body>
 <header>
 <h1>PEPLink JA</h1>
+<p>Welcome to PEPLink JA</p>
 <p>PEP Learning Under One Roof</p>
-<p>One Tablet. Three Essentials. One Organized Educational Ecosystem.</p>
 </header>
 <main>
-<div class="card">
-<h2>📘 PEP Practice Centre</h2>
-<p>Practice questions, quizzes and mock tests for Grades 4–6.</p>
-</div>
-<div class="card">
-<h2>🎓 Learning Centre</h2>
-<p>Organized educational resources and selected learning videos.</p>
-</div>
-<div class="card">
-<h2>📊 Parent Dashboard</h2>
-<p>A future space for tracking practice scores and learning progress.</p>
-</div>
+<h2>Select Your Grade</h2>
+<a class="grade" href="grade4.html">GRADE 4</a>
+<a class="grade" href="grade5.html">GRADE 5</a>
+<a class="grade" href="grade6.html">GRADE 6</a>
 </main>
-<footer>PEPLink JA · Educational Technology for Jamaica</footer>
+<footer>Educational Technology for Jamaica</footer>
 </body>
 </html>
