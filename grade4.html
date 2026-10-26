@@ -2,53 +2,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PEPLink JA - Grade 4</title>
+<title>PEPLink JA - Grade 4 Practice Centre</title>
 <style>
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f0f4f8;
   text-align: center;
+  color: #102a56;
 }
 header {
   background: #102a56;
   color: white;
-  padding: 25px 10px;
+  padding: 24px 10px;
 }
-h1 { margin: 0; }
-main { padding: 25px 15px; }
+main { padding: 20px 12px; }
 button {
   display: block;
-  width: 90%;
-  max-width: 350px;
-  margin: 15px auto;
-  padding: 18px;
-  font-size: 18px;
+  width: 92%;
+  max-width: 400px;
+  margin: 12px auto;
+  padding: 17px 10px;
+  font-size: 17px;
   font-weight: bold;
-  color: white;
-  background: #1769d2;
   border: none;
   border-radius: 10px;
+  background: #1769d2;
+  color: white;
+  cursor: pointer;
 }
-.home {
-  background: #333;
+.options {
+  display: none;
+  background: white;
+  max-width: 420px;
+  margin: 15px auto;
+  padding: 12px 0;
+  border-radius: 12px;
 }
+.options button {
+  background: #e0ebfa;
+  color: #102a56;
+  font-size: 16px;
+}
+.home { background: #333; }
+.note { font-size: 14px; color: #555; }
 </style>
 </head>
 <body>
 <header>
 <h1>PEPLink JA</h1>
-<p>Grade 4 Learning Centre</p>
-</header>
-<main>
-<h2>Welcome, Grade 4 Student!</h2>
-<p>Your learning journey starts here.</p>
-<button>PEP Practice Centre</button>
-<button>Learning Centre</button>
-<button>Quizzes & Mock Tests</button>
-<button>Parent Dashboard</button>
+<p>Grade 4 — PEP Practice Centre</p>
+</header><main>
+<h2>Choose a Subject</h2>
+<p>Select a subject to begin learning.</p><button onclick="showOptions('math')">MATHEMATICS</button>
+
+<div class="options" id="math">
+<button onclick="comingSoon()">Practice Questions</button>
+<button onclick="comingSoon()">Quizzes</button>
+<button onclick="comingSoon()">Mock Tests</button>
+</div><button onclick="showOptions('language')">LANGUAGE ARTS</button>
+
+<div class="options" id="language">
+<button onclick="comingSoon()">Practice Questions</button>
+<button onclick="comingSoon()">Quizzes</button>
+<button onclick="comingSoon()">Mock Tests</button>
+</div><button onclick="showOptions('science')">SCIENCE</button>
+
+<div class="options" id="science">
+<button onclick="comingSoon()">Practice Questions</button>
+<button onclick="comingSoon()">Quizzes</button>
+<button onclick="comingSoon()">Mock Tests</button>
+</div><button onclick="showOptions('social')">SOCIAL STUDIES</button>
+
+<div class="options" id="social">
+<button onclick="comingSoon()">Practice Questions</button>
+<button onclick="comingSoon()">Quizzes</button>
+<button onclick="comingSoon()">Mock Tests</button>
+</div><p class="note">Learning activities are being developed.</p>
 <button class="home" onclick="location.href='index.html'">BACK TO HOME</button>
-</main>
-<footer>Educational Technology for Jamaica</footer>
-</body>
+</main><script>
+function showOptions(subject) {
+  document.querySelectorAll('.options').forEach(function(item) {
+    item.style.display = 'none';
+  });
+  document.getElementById(subject).style.display = 'block';
+}
+function comingSoon() {
+  alert('This learning activity is coming soon!');
+}
+</script></body>
 </html>
