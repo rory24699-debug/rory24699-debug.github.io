@@ -38,30 +38,59 @@ button {
 .back {
     background: #555;
 }
+.hidden {
+    display: none;
+}
 </style>
 </head>
 <body><header>
     <h1>PEPLink JA</h1>
     <p>Grade 5 — Intermediate Learning Centre</p>
-</header><div class="container">
+</header><div class="container" id="mainMenu">
     <h2>Welcome to Grade 5</h2>
-    <p>Choose a service to continue.</p><button onclick="comingSoon('PEP Practice Centre')">
-    PEP Practice Centre
-</button>
+    <p>Choose a service to continue.</p><button onclick="showPractice()">PEP Practice Centre</button>
+<button onclick="comingSoon('Learning Centre')">Learning Centre</button>
+<button onclick="comingSoon('Parent Dashboard')">Parent Dashboard</button>
+<button class="back" onclick="location.href='index.html'">Back to Home</button>
 
-<button onclick="comingSoon('Learning Centre')">
-    Learning Centre
-</button>
+</div><div class="container hidden" id="subjectMenu">
+    <h2>PEP Practice Centre</h2>
+    <p>Choose a subject.</p><button onclick="showActivities('Mathematics')">Mathematics</button>
+<button onclick="showActivities('Language Arts')">Language Arts</button>
+<button onclick="showActivities('Science')">Science</button>
+<button onclick="showActivities('Social Studies')">Social Studies</button>
+<button class="back" onclick="showMain()">Back to Services</button>
 
-<button onclick="comingSoon('Parent Dashboard')">
-    Parent Dashboard
-</button>
-
-<button class="back" onclick="location.href='index.html'">
-    Back to Home
-</button>
+</div><div class="container hidden" id="activityMenu">
+    <h2 id="subjectTitle">Subject</h2>
+    <p>Choose a learning activity.</p><button onclick="comingSoon('Practice Questions')">Practice Questions</button>
+<button onclick="comingSoon('Quizzes')">Quizzes</button>
+<button onclick="comingSoon('Mock Tests')">Mock Tests</button>
+<button class="back" onclick="showPractice()">Back to Subjects</button>
 
 </div><script>
+function hideAll() {
+    document.getElementById('mainMenu').classList.add('hidden');
+    document.getElementById('subjectMenu').classList.add('hidden');
+    document.getElementById('activityMenu').classList.add('hidden');
+}
+
+function showMain() {
+    hideAll();
+    document.getElementById('mainMenu').classList.remove('hidden');
+}
+
+function showPractice() {
+    hideAll();
+    document.getElementById('subjectMenu').classList.remove('hidden');
+}
+
+function showActivities(subject) {
+    hideAll();
+    document.getElementById('activityMenu').classList.remove('hidden');
+    document.getElementById('subjectTitle').textContent = subject;
+}
+
 function comingSoon(service) {
     alert(service + ' is coming soon!');
 }
