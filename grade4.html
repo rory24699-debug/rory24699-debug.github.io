@@ -2,93 +2,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PEPLink JA - Grade 4 Practice Centre</title>
+<title>PEPLink JA - Grade 4</title>
 <style>
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f0f4f8;
-  text-align: center;
-  color: #102a56;
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    color: #17365d;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
 }
 header {
-  background: #102a56;
-  color: white;
-  padding: 24px 10px;
+    background: #102b50;
+    color: white;
+    padding: 25px 10px;
+    border-radius: 12px;
 }
-main { padding: 20px 12px; }
+.container {
+    max-width: 600px;
+    margin: 25px auto;
+}
 button {
-  display: block;
-  width: 92%;
-  max-width: 400px;
-  margin: 12px auto;
-  padding: 17px 10px;
-  font-size: 17px;
-  font-weight: bold;
-  border: none;
-  border-radius: 10px;
-  background: #1769d2;
-  color: white;
-  cursor: pointer;
+    display: block;
+    width: 100%;
+    padding: 16px;
+    margin: 12px 0;
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background: #174a7e;
+    color: white;
+    cursor: pointer;
 }
-.options {
-  display: none;
-  background: white;
-  max-width: 420px;
-  margin: 15px auto;
-  padding: 12px 0;
-  border-radius: 12px;
+.back {
+    background: #555;
 }
-.options button {
-  background: #e0ebfa;
-  color: #102a56;
-  font-size: 16px;
-}
-.home { background: #333; }
-.note { font-size: 14px; color: #555; }
 </style>
 </head>
-<body>
-<header>
-<h1>PEPLink JA</h1>
-<p>Grade 4 — PEP Practice Centre</p>
-</header><main>
-<h2>Choose a Subject</h2>
-<p>Select a subject to begin learning.</p><button onclick="showOptions('math')">MATHEMATICS</button>
+<body><header>
+    <h1>PEPLink JA</h1>
+    <p>Grade 4 — Foundation Learning Centre</p>
+</header><div class="container">
+    <h2>Welcome to Grade 4</h2>
+    <p>Choose a service to continue.</p><button onclick="comingSoon('PEP Practice Centre')">
+    PEP Practice Centre
+</button>
 
-<div class="options" id="math">
-<button onclick="comingSoon()">Practice Questions</button>
-<button onclick="comingSoon()">Quizzes</button>
-<button onclick="comingSoon()">Mock Tests</button>
-</div><button onclick="showOptions('language')">LANGUAGE ARTS</button>
+<button onclick="comingSoon('Learning Centre')">
+    Learning Centre
+</button>
 
-<div class="options" id="language">
-<button onclick="comingSoon()">Practice Questions</button>
-<button onclick="comingSoon()">Quizzes</button>
-<button onclick="comingSoon()">Mock Tests</button>
-</div><button onclick="showOptions('science')">SCIENCE</button>
+<button onclick="comingSoon('Parent Dashboard')">
+    Parent Dashboard
+</button>
 
-<div class="options" id="science">
-<button onclick="comingSoon()">Practice Questions</button>
-<button onclick="comingSoon()">Quizzes</button>
-<button onclick="comingSoon()">Mock Tests</button>
-</div><button onclick="showOptions('social')">SOCIAL STUDIES</button>
+<button class="back" onclick="location.href='index.html'">
+    Back to Home
+</button>
 
-<div class="options" id="social">
-<button onclick="comingSoon()">Practice Questions</button>
-<button onclick="comingSoon()">Quizzes</button>
-<button onclick="comingSoon()">Mock Tests</button>
-</div><p class="note">Learning activities are being developed.</p>
-<button class="home" onclick="location.href='index.html'">BACK TO HOME</button>
-</main><script>
-function showOptions(subject) {
-  document.querySelectorAll('.options').forEach(function(item) {
-    item.style.display = 'none';
-  });
-  document.getElementById(subject).style.display = 'block';
-}
-function comingSoon() {
-  alert('This learning activity is coming soon!');
+</div><script>
+function comingSoon(service) {
+    alert(service + ' is coming soon!');
 }
 </script></body>
 </html>
