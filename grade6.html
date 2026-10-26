@@ -5,48 +5,65 @@
 <title>PEPLink JA - Grade 6</title>
 <style>
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f0f4f8;
-  text-align: center;
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    color: #17365d;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
 }
 header {
-  background: #102a56;
-  color: white;
-  padding: 25px 10px;
+    background: #102b50;
+    color: white;
+    padding: 25px 10px;
+    border-radius: 12px;
 }
-h1 { margin: 0; }
-main { padding: 25px 15px; }
+.container {
+    max-width: 600px;
+    margin: 25px auto;
+}
 button {
-  display: block;
-  width: 90%;
-  max-width: 350px;
-  margin: 15px auto;
-  padding: 18px;
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  background: #1769d2;
-  border: none;
-  border-radius: 10px;
+    display: block;
+    width: 100%;
+    padding: 16px;
+    margin: 12px 0;
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background: #174a7e;
+    color: white;
+    cursor: pointer;
 }
-.home { background: #333; }
+.back {
+    background: #555;
+}
 </style>
 </head>
-<body>
-<header>
-<h1>PEPLink JA</h1>
-<p>Grade 6 Learning Centre</p>
-</header>
-<main>
-<h2>Welcome, Grade 6 Student!</h2>
-<p>Your learning journey starts here.</p>
-<button>PEP Practice Centre</button>
-<button>Learning Centre</button>
-<button>Quizzes & Mock Tests</button>
-<button>Parent Dashboard</button>
-<button class="home" onclick="location.href='index.html'">BACK TO HOME</button>
-</main>
-<footer>Educational Technology for Jamaica</footer>
-</body>
+<body><header>
+    <h1>PEPLink JA</h1>
+    <p>Grade 6 — Exam Preparation Centre</p>
+</header><div class="container">
+    <h2>Welcome to Grade 6</h2>
+    <p>Choose a service to continue.</p><button onclick="comingSoon('PEP Practice Centre')">
+    PEP Practice Centre
+</button>
+
+<button onclick="comingSoon('Learning Centre')">
+    Learning Centre
+</button>
+
+<button onclick="comingSoon('Parent Dashboard')">
+    Parent Dashboard
+</button>
+
+<button class="back" onclick="location.href='index.html'">
+    Back to Home
+</button>
+
+</div><script>
+function comingSoon(service) {
+    alert(service + ' is coming soon!');
+}
+</script></body>
 </html>
