@@ -1,8 +1,10 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PEPLink JA - Grade 6</title>
+
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -22,9 +24,10 @@ header {
     max-width: 600px;
     margin: 25px auto;
 }
-button {
+button, .resource {
     display: block;
     width: 100%;
+    box-sizing: border-box;
     padding: 16px;
     margin: 12px 0;
     font-size: 17px;
@@ -33,7 +36,13 @@ button {
     border-radius: 8px;
     background: #174a7e;
     color: white;
-    cursor: pointer;
+    text-decoration: none;
+}
+.resource {
+    background: #087f5b;
+}
+.special {
+    background: #9a5b08;
 }
 .back {
     background: #555;
@@ -41,38 +50,140 @@ button {
 .hidden {
     display: none;
 }
+.note {
+    font-size: 14px;
+    line-height: 1.6;
+}
 </style>
 </head>
-<body><header>
+
+<body>
+
+<header>
     <h1>PEPLink JA</h1>
-    <p>Grade 6 — Exam Preparation Centre</p>
-</header><div class="container" id="mainMenu">
+    <p>Grade 6 — Final Preparation Learning Centre</p>
+</header>
+
+<div class="container" id="mainMenu">
     <h2>Welcome to Grade 6</h2>
-    <p>Choose a service to continue.</p><button onclick="showPractice()">PEP Practice Centre</button>
-<button onclick="comingSoon('Learning Centre')">Learning Centre</button>
-<button onclick="comingSoon('Parent Dashboard')">Parent Dashboard</button>
-<button class="back" onclick="location.href='index.html'">Back to Home</button>
+    <p>Prepare for PEP and the transition to high school.</p>
 
-</div><div class="container hidden" id="subjectMenu">
+    <button onclick="showPractice()">PEP Practice Centre</button>
+    <button onclick="showLearning()">Final Preparation Learning Centre</button>
+    <button onclick="comingSoon('Parent Dashboard')">Parent Dashboard</button>
+    <button class="back" onclick="location.href='index.html'">Back to Home</button>
+</div>
+
+<div class="container hidden" id="subjectMenu">
     <h2>PEP Practice Centre</h2>
-    <p>Choose a subject.</p><button onclick="showActivities('Mathematics')">Mathematics</button>
-<button onclick="showActivities('Language Arts')">Language Arts</button>
-<button onclick="showActivities('Science')">Science</button>
-<button onclick="showActivities('Social Studies')">Social Studies</button>
-<button class="back" onclick="showMain()">Back to Services</button>
+    <p>Choose a subject.</p>
 
-</div><div class="container hidden" id="activityMenu">
+    <button onclick="showActivities('Mathematics')">Mathematics</button>
+    <button onclick="showActivities('Language Arts')">Language Arts</button>
+    <button onclick="showActivities('Science')">Science</button>
+    <button onclick="showActivities('Social Studies')">Social Studies</button>
+
+    <button class="back" onclick="showMain()">Back to Services</button>
+</div>
+
+<div class="container hidden" id="activityMenu">
     <h2 id="subjectTitle">Subject</h2>
-    <p>Choose a learning activity.</p><button onclick="comingSoon('Practice Questions')">Practice Questions</button>
-<button onclick="comingSoon('Quizzes')">Quizzes</button>
-<button onclick="comingSoon('Mock Tests')">Mock Tests</button>
-<button class="back" onclick="showPractice()">Back to Subjects</button>
+    <p>Choose a learning activity.</p>
 
-</div><script>
+    <button onclick="comingSoon('Practice Questions')">Practice Questions</button>
+    <button onclick="comingSoon('Quizzes')">Quizzes</button>
+    <button onclick="comingSoon('Mock Tests')">Mock Tests</button>
+
+    <button class="back" onclick="showPractice()">Back to Subjects</button>
+</div>
+
+<div class="container hidden" id="learningMenu">
+    <h2>Learning Centre - Grade 6</h2>
+
+    <p>Organized Ministry resources and selected Jamaican teacher video tutorials.</p>
+    <p><strong>One place, no searching.</strong></p>
+
+    <button onclick="showResources('Mathematics')">Mathematics Videos</button>
+    <button onclick="showResources('Language Arts')">Language Arts Videos</button>
+    <button onclick="showResources('Science')">Science Videos</button>
+    <button onclick="showResources('Social Studies')">Social Studies Videos</button>
+
+    <button class="special" onclick="showExamResources()">
+        PEP Exam Strategy &amp; Past Papers
+    </button>
+
+    <p class="note">
+        Links open when internet is available.<br>
+        Ministry of Education resources and subject-related YouTube tutorials.
+    </p>
+
+    <button class="back" onclick="showMain()">Back to Home</button>
+</div>
+
+<div class="container hidden" id="resourceMenu">
+    <h2 id="resourceTitle">Learning Resources</h2>
+    <p>Choose a resource.</p>
+
+    <a class="resource" href="https://pep.moey.gov.jm/" target="_blank" rel="noopener">
+        Official PEP Ministry Portal
+    </a>
+
+    <a class="resource" id="youtubeLink" href="#" target="_blank" rel="noopener">
+        YouTube Teacher Tutorials
+    </a>
+
+    <a class="resource" href="https://www.bookfusion.com/libraries/MOEYI"
+       target="_blank" rel="noopener">
+        Ministry BookFusion Library
+    </a>
+
+    <p class="note">
+        Check that the resources match the Grade 6 curriculum.
+    </p>
+
+    <button class="back" onclick="showLearning()">Back to Learning Centre</button>
+</div>
+
+<div class="container hidden" id="examMenu">
+    <h2>PEP Exam Strategy &amp; Past Papers</h2>
+
+    <p>Prepare for examinations with official resources and revision guidance.</p>
+
+    <a class="resource" href="https://pep.moey.gov.jm/"
+       target="_blank" rel="noopener">
+        Official PEP Ministry Portal
+    </a>
+
+    <a class="resource" href="https://www.youtube.com/results?search_query=Jamaica+Grade+6+PEP+exam+strategies"
+       target="_blank" rel="noopener">
+        PEP Exam Strategies
+    </a>
+
+    <a class="resource" href="https://www.youtube.com/results?search_query=Jamaica+Grade+6+PEP+past+papers+explained"
+       target="_blank" rel="noopener">
+        PEP Past Papers &amp; Explanations
+    </a>
+
+    <p class="note">
+        YouTube links show search results, not individually verified videos.
+        Check official sources for available past papers.
+    </p>
+
+    <button class="back" onclick="showLearning()">Back to Learning Centre</button>
+</div>
+
+<script>
 function hideAll() {
-    document.getElementById('mainMenu').classList.add('hidden');
-    document.getElementById('subjectMenu').classList.add('hidden');
-    document.getElementById('activityMenu').classList.add('hidden');
+    [
+        'mainMenu',
+        'subjectMenu',
+        'activityMenu',
+        'learningMenu',
+        'resourceMenu',
+        'examMenu'
+    ].forEach(function(id) {
+        document.getElementById(id).classList.add('hidden');
+    });
 }
 
 function showMain() {
@@ -91,8 +202,31 @@ function showActivities(subject) {
     document.getElementById('subjectTitle').textContent = subject;
 }
 
+function showLearning() {
+    hideAll();
+    document.getElementById('learningMenu').classList.remove('hidden');
+}
+
+function showResources(subject) {
+    hideAll();
+    document.getElementById('resourceMenu').classList.remove('hidden');
+
+    document.getElementById('resourceTitle').textContent = subject + ' Videos';
+
+    document.getElementById('youtubeLink').href =
+        'https://www.youtube.com/results?search_query=' +
+        encodeURIComponent('Jamaican Grade 6 PEP ' + subject + ' teacher tutorial');
+}
+
+function showExamResources() {
+    hideAll();
+    document.getElementById('examMenu').classList.remove('hidden');
+}
+
 function comingSoon(service) {
     alert(service + ' is coming soon!');
 }
-</script></body>
+</script>
+
+</body>
 </html>
