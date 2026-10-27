@@ -148,7 +148,7 @@ function showActivities(subject) {
     document.getElementById('subjectTitle').textContent = subject;
 }
 
-function showLearning() {
+function showLearning() {9
     hideAll();
     document.getElementById('learningMenu').classList.remove('hidden');
 }
@@ -166,6 +166,41 @@ function comingSoon(service) {
     alert(service + ' is coming soon!');
 }
 </script>
+<div id="session-timer" style="background:#e8f5e9;padding:12px;text-align:center;border-radius:8px;margin:15px;">
+  <strong>Session Duration:</strong>
+  <span id="session-time">00:00:00</span>
+</div>
 
+<script>
+(function () {
+  const start = Date.now();
+  const display = document.getElementById("session-time");
+
+  setInterval(function () {
+    const seconds = Math.floor((Date.now() - start) / 1000);
+    const hours = String(Math.floor(seconds / 3600)).padStart(2, "0");
+    const minutes = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
+    const secs = String(seconds % 60).padStart(2, "0");
+    display.textContent = hours + ":" + minutes + ":" + secs;
+  }, 1000);
+<div id="session-timer" style="background:#e8f5e9;padding:12px;text-align:center;border-radius:8px;margin:15px;">
+  <strong>Session Duration:</strong>
+  <span id="session-time">00:00:00</span>
+</div>
+
+<script>
+(function () {
+  const start = Date.now();
+  const display = document.getElementById("session-time");
+
+  setInterval(function () {
+    const seconds = Math.floor((Date.now() - start) / 1000);
+    const hours = String(Math.floor(seconds / 3600)).padStart(2, "0");
+    const minutes = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
+    const secs = String(seconds % 60).padStart(2, "0");
+    display.textContent = hours + ":" + minutes + ":" + secs;
+  }, 1000);
+})();
+</script>
 </body>
 </html>
