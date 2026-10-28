@@ -101,13 +101,38 @@ main {
 
   <section class="feature">
     <h2>4. Session Duration</h2>
-    <p>Session duration helps parents monitor study time.</p>
-    <button class="open-button" type="button"
-      onclick="alert('Session Duration tracking will be checked next.')">
-      Open
-    </button>
-  </section>
+    <p>Monitor your child's study time.</p><p id="timer" style="font-size:28px;font-weight:bold;">00:00:00</p>
 
+<button class="open-button" type="button" onclick="startTimer()">Start</button>
+<button class="open-button" type="button" onclick="stopTimer()">Stop</button>
+
+<script>
+  let timerInterval;
+  let elapsedSeconds = 0;
+
+  function updateTimer() {
+    const hours = String(Math.floor(elapsedSeconds / 3600)).padStart(2, '0');
+    const minutes = String(Math.floor((elapsedSeconds % 3600) / 60)).padStart(2, '0');
+    const seconds = String(elapsedSeconds % 60).padStart(2, '0');
+    document.getElementById('timer').textContent =
+      hours + ':' + minutes + ':' + seconds;
+  }
+
+  function startTimer() {
+    if (timerInterval) return;
+    timerInterval = setInterval(() => {
+      elapsedSeconds++;
+      updateTimer();
+    }, 1000);
+  }
+
+  function stopTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+</script>
+
+  </section>
   <a class="back" href="index.html">← Back to Home</a>
 
 </main>
