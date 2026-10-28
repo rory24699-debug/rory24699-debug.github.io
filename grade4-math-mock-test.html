@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEPLink JA - Grade 4 Mathematics Mock Test</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; background: #f4f7fb; color: #222; }
+.container { max-width: 700px; margin: auto; background: white; padding: 20px; border-radius: 12px; }
+h1 { color: #124b83; }
+.question { margin: 20px 0; padding: 15px; background: #eef4fa; border-radius: 8px; }
+label { display: block; margin: 8px 0; }
+button { padding: 12px 18px; margin: 8px 4px 8px 0; border: none; border-radius: 6px; background: #124b83; color: white; font-size: 16px; }
+#result { font-weight: bold; margin-top: 18px; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>PEPLink JA</h1>
+<h2>Grade 4 Mathematics Mock Test</h2>
+<p>Choose one answer for each question, then select Check Answers.</p>
+<form id="testForm">
+<div class="question">
+<p>1. What is 248 + 137?</p>
+<label><input type="radio" name="q1" value="a"> 375</label>
+<label><input type="radio" name="q1" value="b"> 385</label>
+<label><input type="radio" name="q1" value="c"> 395</label>
+<label><input type="radio" name="q1" value="d"> 405</label>
+</div>
+<div class="question">
+<p>2. What is 9 × 6?</p>
+<label><input type="radio" name="q2" value="a"> 45</label>
+<label><input type="radio" name="q2" value="b"> 48</label>
+<label><input type="radio" name="q2" value="c"> 54</label>
+<label><input type="radio" name="q2" value="d"> 56</label>
+</div>
+<div class="question">
+<p>3. Which fraction is equal to one half?</p>
+<label><input type="radio" name="q3" value="a"> 2/3</label>
+<label><input type="radio" name="q3" value="b"> 3/6</label>
+<label><input type="radio" name="q3" value="c"> 4/6</label>
+<label><input type="radio" name="q3" value="d"> 5/6</label>
+</div>
+<div class="question">
+<p>4. A rectangle is 8 cm long and 4 cm wide. What is its perimeter?</p>
+<label><input type="radio" name="q4" value="a"> 12 cm</label>
+<label><input type="radio" name="q4" value="b"> 20 cm</label>
+<label><input type="radio" name="q4" value="c"> 24 cm</label>
+<label><input type="radio" name="q4" value="d"> 32 cm</label>
+</div>
+<div class="question">
+<p>5. There are 36 mangoes shared equally among 4 children. How many mangoes does each child get?</p>
+<label><input type="radio" name="q5" value="a"> 8</label>
+<label><input type="radio" name="q5" value="b"> 9</label>
+<label><input type="radio" name="q5" value="c"> 10</label>
+<label><input type="radio" name="q5" value="d"> 12</label>
+</div>
+<button type="button" onclick="checkAnswers()">Check Answers</button>
+<button type="reset" onclick="document.getElementById('result').textContent=''">Try Again</button>
+</form>
+<p id="result"></p>
+</div>
+<script>
+function checkAnswers() {
+  const answers = {q1:"b", q2:"c", q3:"b", q4:"b", q5:"b"};
+  let score = 0;
+  for (const question in answers) {
+    const selected = document.querySelector('input[name="' + question + '"]:checked');
+    if (selected && selected.value === answers[question]) score++;
+  }
+  document.getElementById("result").textContent =
+    "You scored " + score + " out of 5.";
+}
+</script>
+</body>
+  </html>
