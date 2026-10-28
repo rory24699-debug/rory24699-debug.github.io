@@ -3,9 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PEPLink JA - Parent Dashboard</title>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   background: #f1f3f6;
@@ -13,6 +18,7 @@ body {
   padding: 20px;
   color: #102b50;
 }
+
 header {
   background: #102b50;
   color: white;
@@ -20,31 +26,40 @@ header {
   padding: 24px 12px;
   border-radius: 12px;
 }
-h1 { margin: 0 0 10px; }
+
 main {
   max-width: 600px;
   margin: 25px auto;
 }
+
 .feature {
+  display: block;
   background: white;
   padding: 20px;
-  margin: 15px 0;
+  margin: 18px 0;
   border-radius: 10px;
   border-left: 5px solid #d5a62e;
+  overflow: hidden;
 }
+
 .feature h2 {
   font-size: 19px;
   margin-top: 0;
 }
-button {
-  background: #102b50;
+
+.open-button {
+  display: inline-block;
+  background: #10264d;
   color: white;
-  border: 0;
+  text-decoration: none;
   padding: 12px 18px;
-  border-radius: 7px;
+  border-radius: 5px;
+  margin: 5px 6px 5px 0;
   font-size: 16px;
+  border: none;
   cursor: pointer;
 }
+
 .back {
   display: block;
   text-align: center;
@@ -63,43 +78,39 @@ button {
 </header>
 
 <main>
-  <div class="feature">
+
+  <section class="feature">
     <h2>1. PEP Preparation Guidance</h2>
     <p>Guidance to help parents prepare children for PEP.</p>
-    <a href="pep-guidance.html"><button type="button">Open</button><
-  </div>
+    <a class="open-button" href="pep-guidance.html">Open</a>
+  </section>
 
-  <div class="feature">
+  <section class="feature">
     <h2>2. Study Tips for Parents</h2>
     <p>Practical ways to support learning at home.</p>
-<a href="study-tips.html" style="display:inline-block;background:#10264d;color:white;text-decoration:none;padding:12px 18px;border-radius:5px;">Open</a>
-  <div class="feature"
-    <h2>3. Learning Resources</h2>
-    <p>Find educational resources for Grades 4, 5 and 6.</p>
-    <button onclick="window.location.href='pe
-      
-      
-      
-      
-      
-      on>
-      
-  </div>
+    <a class="open-button" href="study-tips.html">Open</a>
+  </section>
 
-  <div class="feature">
+  <section class="feature">
+    <h2>3. Learning Resources</h2>
+    <p>Choose your child's grade to access learning resources.</p>
+    <a class="open-button" href="grade4.html">Grade 4</a>
+    <a class="open-button" href="grade5.html">Grade 5</a>
+    <a class="open-button" href="grade6.html">Grade 6</a>
+  </section>
+
+  <section class="feature">
     <h2>4. Session Duration</h2>
-    <p>Check the time spent on the current grade page.</p>
-    <button onclick="showMessage('Session Duration')">Open</button>
-  </div>
+    <p>Session duration helps parents monitor study time.</p>
+    <button class="open-button" type="button"
+      onclick="alert('Session Duration tracking will be checked next.')">
+      Open
+    </button>
+  </section>
 
   <a class="back" href="index.html">← Back to Home</a>
-</main>
 
-<script>
-function showMessage(feature) {
-  alert(feature + " will be developed next.");
-}
-</script>
+</main>
 
 </body>
 </html>
