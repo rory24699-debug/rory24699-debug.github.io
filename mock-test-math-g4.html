@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Math Mock Test G4</title>
+<style>
+body{font-family:Arial;background:#f4f7fb;margin:0;padding:15px}
+.header{background:#102a52;color:white;padding:20px;border-radius:12px;text-align:center}
+.card{background:white;padding:20px;border-radius:12px;margin-top:15px}
+.btn{width:100%;padding:14px;margin:8px 0;background:#1a4177;color:white;border:none;border-radius:10px;font-size:16px}
+.opt{background:#e9eef6;color:#102a52}
+.correct{background:#c6f6d5!important} .wrong{background:#fed7d7!important}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>Math Mock Test</h1>
+<p>Active: <span id="timer">00:00:00</span></p>
+</div>
+<div class="card" id="box">
+<h3 id="q"></h3><div id="opts"></div>
+</div>
+<script>
+let active=parseInt(localStorage.getItem('peplink_session')||'0');
+let qs=[
+ {q:"What is 3/4 of 20?",a:["10","15","5","20"],c:1},
+ {q:"Perimeter of 5m by 4m?",a:["9m","18m","20m","12m"],c:1},
+ {q:"0.5 + 0.25 = ?",a:["0.75","0.65","0.25","1"],c:0}
+];
+let i=0,score=0;
+setInterval(()=>{
+ if(document.visibilityState==='visible'){
+  active++;
+  localStorage.setItem('peplink_session',active);
+  let h=String(Math.floor(active/3600)).padStart(2,'0');
+  let m=String(Math.floor(active%3600/60)).padStart(2,'0');
+  let s=String(active%60).padStart(2,'0');
+  document.getElementById('timer').textContent=`${h}:${m}:${s}`;
+ }
+},1000);
+function load(){
+ let cur=qs[i];
+ document.getElementById('q').textContent=`Q${i+1}. ${cur.q}`;
+ document.getElementById('opts').innerHTML=cur.a.map((o,idx)=>`<button class='btn opt' onclick='check(${idx})'>${o}</button>`).join('');
+}
+function check(idx){
+ let cur=qs[i];
+ let btns=document.querySelectorAll('.opt');
+ if(idx===cur.c){score++; btns[idx].classList.add('correct');}
+ else{btns[idx].classList.add('wrong'); btns[cur.c].classList.add('correct');}
+ setTimeout(()=>{i++; if(i<qs.length) load(); else {
+  document.getElementById('box').innerHTML=`<h2>Done! ${score}/${qs.length}</h2><button class='btn' onclick="location.href='grade4.html'">Back</button>`;
+ }},800);
+}
+load();
+</script>
+</body>
+</html>
