@@ -185,19 +185,4 @@ function comingSoon(service) {
     }, 1000);
 })();
 </script>
-<script>
-(function () {
-  const start = Date.now();
-  const display = document.getElementById("session-time");
-
-  setInterval(function () {
-    const seconds = Math.floor((Date.now() - start) / 1000);
-    const hours = String(Math.floor(seconds / 3600)).padStart(2, "0");
-    const minutes = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
-    const secs = String(seconds % 60).padStart(2, "0");
-    display.textContent = hours + ":" + minutes + ":" + secs;
-  }, 1000);
-})();
-</script>
-</body>
 </html>
