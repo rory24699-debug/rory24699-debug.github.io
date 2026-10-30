@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grade 5 Language Arts Quizzes</title>
+<style>
+body{font-family:Arial;background:#f0f4f8;margin:0;padding:15px}
+.header{background:#1a3a5f;color:white;padding:20px;text-align:center;border-radius:12px}
+.question{background:white;padding:15px;margin:15px 0;border-radius:10px}
+button{background:#234b7a;color:white;border:0;padding:13px;border-radius:8px;font-size:16px;margin:5px}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>PEPLink JA</h1>
+<h2>Grade 5 Language Arts</h2>
+<p>Practice Quiz 1</p>
+</div>
+
+<form id="quiz">
+
+<div class="question">
+<p>1. Choose the correct plural of "child".</p>
+<label><input type="radio" name="q1" value="a"> Childs</label><br>
+<label><input type="radio" name="q1" value="b"> Children</label><br>
+<label><input type="radio" name="q1" value="c"> Childes</label>
+</div>
+
+<div class="question">
+<p>2. Which word is an adjective?</p>
+<label><input type="radio" name="q2" value="a"> Beautiful</label><br>
+<label><input type="radio" name="q2" value="b"> Quickly</label><br>
+<label><input type="radio" name="q2" value="c"> Running</label>
+</div>
+
+<div class="question">
+<p>3. Choose the correct word: She _____ to school every day.</p>
+<label><input type="radio" name="q3" value="a"> go</label><br>
+<label><input type="radio" name="q3" value="b"> going</label><br>
+<label><input type="radio" name="q3" value="c"> goes</label>
+</div>
+
+<div class="question">
+<p>4. What is the opposite of "ancient"?</p>
+<label><input type="radio" name="q4" value="a"> Old</label><br>
+<label><input type="radio" name="q4" value="b"> Modern</label><br>
+<label><input type="radio" name="q4" value="c"> Historic</label>
+</div>
+
+<div class="question">
+<p>5. Which punctuation mark ends a question?</p>
+<label><input type="radio" name="q5" value="a"> Full stop</label><br>
+<label><input type="radio" name="q5" value="b"> Comma</label><br>
+<label><input type="radio" name="q5" value="c"> Question mark</label>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Answers</button>
+</form>
+
+<h2 id="result"></h2>
+
+<button onclick="location.href='grade5.html'">Back to Grade 5</button>
+
+<script>
+function checkQuiz(){
+let answers={q1:"b",q2:"a",q3:"c",q4:"b",q5:"c"};
+let score=0;
+for(let q in answers){
+let selected=document.querySelector('input[name="'+q+'"]:checked');
+if(selected && selected.value===answers[q]) score++;
+}
+document.getElementById("result").innerText="Your Score: "+score+" / 5";
+}
+</script>
+
+</body>
+</html>
