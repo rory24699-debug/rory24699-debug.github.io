@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grade 5 Language Arts - Mock Test 2</title>
+<style>
+body{font-family:Arial;background:#f2f5fa;margin:0;padding:20px}
+.container{max-width:700px;margin:auto;background:white;padding:22px;border-radius:12px}
+h1,h2{color:#173b70}
+.question{background:#f5f7fb;padding:15px;margin:20px 0;border-radius:8px}
+label{display:block;margin:12px 0}
+button{background:#173b70;color:white;border:0;padding:13px 20px;border-radius:7px;font-size:16px;margin:8px 0}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>PEPLink JA</h1>
+<h2>Grade 5 Language Arts</h2>
+<h3>Mock Test 2</h3>
+<p>Choose the correct answer for each question.</p>
+
+<form id="quiz">
+
+<div class="question">
+<p><strong>1. Which word is the opposite of generous?</strong></p>
+<label><input type="radio" name="q1" value="A"> A. Kind</label>
+<label><input type="radio" name="q1" value="B"> B. Helpful</label>
+<label><input type="radio" name="q1" value="C"> C. Selfish</label>
+<label><input type="radio" name="q1" value="D"> D. Friendly</label>
+</div>
+
+<div class="question">
+<p><strong>2. Choose the correct word to complete the sentence: Neither of the boys _____ late.</strong></p>
+<label><input type="radio" name="q2" value="A"> A. are</label>
+<label><input type="radio" name="q2" value="B"> B. were</label>
+<label><input type="radio" name="q2" value="C"> C. is</label>
+<label><input type="radio" name="q2" value="D"> D. have</label>
+</div>
+
+<div class="question">
+<p><strong>3. Which punctuation mark should end this sentence: What a beautiful day</strong></p>
+<label><input type="radio" name="q3" value="A"> A. Full stop</label>
+<label><input type="radio" name="q3" value="B"> B. Question mark</label>
+<label><input type="radio" name="q3" value="C"> C. Comma</label>
+<label><input type="radio" name="q3" value="D"> D. Exclamation mark</label>
+</div>
+
+<button type="button" onclick="markTest()">Submit Answers</button>
+</form>
+
+<div id="result"></div>
+
+<button onclick="location.href='grade5-language-mock.html'">
+Back to Mock Tests
+</button>
+
+</div>
+
+<script>
+function markTest(){
+const answers={q1:"C",q2:"C",q3:"D"};
+let score=0;
+for(let q in answers){
+const selected=document.querySelector('input[name="'+q+'"]:checked');
+if(selected && selected.value===answers[q])score++;
+}
+document.getElementById("result").innerHTML=
+"Your score: "+score+" out of 3";
+}
+</script>
+
+</body>
+  </html>
