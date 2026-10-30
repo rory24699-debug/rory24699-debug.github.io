@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 5 Language Arts Mock Test 3 - PEPLink JA</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+  padding: 20px;
+}
+.container {
+  max-width: 650px;
+  margin: auto;
+  background: white;
+  padding: 22px;
+  border-radius: 12px;
+}
+h1 { color: #12345a; }
+.question {
+  margin: 25px 0;
+  padding: 15px;
+  background: #f0f4f8;
+  border-radius: 8px;
+}
+label {
+  display: block;
+  margin: 12px 0;
+}
+button {
+  background: #12345a;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+#result {
+  font-weight: bold;
+  margin-top: 20px;
+  font-size: 18px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>PEPLink JA</h1>
+<h2>Grade 5 Language Arts</h2>
+<h3>Mock Test 3</h3>
+<p>Choose the correct answer for each question.</p>
+
+<form id="quiz">
+
+<div class="question">
+<p><strong>1. Which word is a synonym for "rapid"?</strong></p>
+<label><input type="radio" name="q1" value="A"> A. Slow</label>
+<label><input type="radio" name="q1" value="B"> B. Quick</label>
+<label><input type="radio" name="q1" value="C"> C. Weak</label>
+<label><input type="radio" name="q1" value="D"> D. Quiet</label>
+</div>
+
+<div class="question">
+<p><strong>2. Choose the correctly spelled word.</strong></p>
+<label><input type="radio" name="q2" value="A"> A. Beautifull</label>
+<label><input type="radio" name="q2" value="B"> B. Beutiful</label>
+<label><input type="radio" name="q2" value="C"> C. Beautiful</label>
+<label><input type="radio" name="q2" value="D"> D. Beautifal</label>
+</div>
+
+<div class="question">
+<p><strong>3. Which sentence is written in the past tense?</strong></p>
+<label><input type="radio" name="q3" value="A"> A. She walks to school.</label>
+<label><input type="radio" name="q3" value="B"> B. She is walking to school.</label>
+<label><input type="radio" name="q3" value="C"> C. She will walk to school.</label>
+<label><input type="radio" name="q3" value="D"> D. She walked to school.</label>
+</div>
+
+<button type="button" onclick="markTest()">Submit Answers</button>
+
+</form>
+
+<div id="result"></div>
+
+<p>
+<a href="grade5-language-mock.html">Back to Mock Tests</a>
+</p>
+
+</div>
+
+<script>
+function markTest() {
+  const answers = {
+    q1: "B",
+    q2: "C",
+    q3: "D"
+  };
+
+  let score = 0;
+
+  for (let question in answers) {
+    const selected = document.querySelector(
+      'input[name="' + question + '"]:checked'
+    );
+
+    if (selected && selected.value === answers[question]) {
+      score++;
+    }
+  }
+
+  document.getElementById("result").innerHTML =
+    "Your Score: " + score + " out of 3";
+}
+</script>
+
+</body>
+  </html>
