@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 5 Language Arts - Mock Test 1</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f5fa;
+  margin: 0;
+  padding: 20px;
+}
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  padding: 22px;
+  border-radius: 12px;
+}
+h1 { color: #173b70; }
+.question {
+  margin: 22px 0;
+  padding: 15px;
+  background: #f5f7fb;
+  border-radius: 8px;
+}
+label {
+  display: block;
+  margin: 12px 0;
+}
+button {
+  background: #173b70;
+  color: white;
+  border: 0;
+  padding: 13px 20px;
+  border-radius: 7px;
+  font-size: 16px;
+  margin: 8px 0;
+}
+#result {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>PEPLink JA</h1>
+<h2>Grade 5 Language Arts</h2>
+<h3>Mock Test 1</h3>
+<p>Choose the correct answer for each question.</p>
+
+<form id="quiz">
+
+<div class="question">
+<p><strong>1. Which word is closest in meaning to enormous?</strong></p>
+<label><input type="radio" name="q1" value="A"> A. Tiny</label>
+<label><input type="radio" name="q1" value="B"> B. Huge</label>
+<label><input type="radio" name="q1" value="C"> C. Weak</label>
+<label><input type="radio" name="q1" value="D"> D. Narrow</label>
+</div>
+
+<div class="question">
+<p><strong>2. Choose the correct sentence.</strong></p>
+<label><input type="radio" name="q2" value="A"> A. The children is playing outside.</label>
+<label><input type="radio" name="q2" value="B"> B. The children are playing outside.</label>
+<label><input type="radio" name="q2" value="C"> C. The children was playing outside.</label>
+<label><input type="radio" name="q2" value="D"> D. The children plays outside.</label>
+</div>
+
+<div class="question">
+<p><strong>3. What is the main purpose of a paragraph's topic sentence?</strong></p>
+<label><input type="radio" name="q3" value="A"> A. To introduce the main idea</label>
+<label><input type="radio" name="q3" value="B"> B. To list every character</label>
+<label><input type="radio" name="q3" value="C"> C. To end the entire story</label>
+<label><input type="radio" name="q3" value="D"> D. To give the page number</label>
+</div>
+
+<button type="button" onclick="markTest()">Submit Answers</button>
+</form>
+
+<div id="result"></div>
+
+<button onclick="location.href='grade5-language-mock.html'">
+Back to Mock Tests
+</button>
+
+</div>
+
+<script>
+function markTest() {
+  const answers = {q1:"B", q2:"B", q3:"A"};
+  let score = 0;
+
+  for (let question in answers) {
+    const selected = document.querySelector(
+      'input[name="' + question + '"]:checked'
+    );
+
+    if (selected && selected.value === answers[question]) {
+      score++;
+    }
+  }
+
+  document.getElementById("result").innerHTML =
+    "Your score: " + score + " out of 3";
+}
+</script>
+
+</body>
+</html>
