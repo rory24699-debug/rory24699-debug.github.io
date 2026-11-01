@@ -91,47 +91,36 @@ button, .resource {
     <p>Choose a learning activity.</p>
      <button onclick="window.location.href='grade4-math-practice.html'">Practice Questions</button>
     <button onclick="window.location.href='grade4-math-quiz.html'">Quizzes</button>
-    <button onclick=bwindow.location.href='mock-test-math-g4.html'">Mock Tests</button>
+    <button onclick="window.location.href='math-g4.html'">Practice Questions</button>
+<button onclick="window.location.href='math-quiz-g4.html'">Quizzes</button>
+<button onclick="window.location.href='math-mock-g4.html'">Mock Tests</button>
     <button class="ba.   ck" onclick="showPractice()">Back to Subjects</button>
 </div>
 
 <div class="container hidden" id="learningMenu">
-    <h2>Learning Centre - Grade 4</h2>
-    <p>Organized Ministry resources and selected Jamaican teacher video tutorials.</p>
-    <p><strong>One place, no searching.</strong></p>
-
-    <button onclick="showResources('Mathematics')">Mathematics</button>
-<p>▪ Ministry resources<br>▪ Jamaican teacher videos</p>
-
-<button onclick="showResources('Language Arts')">Language Arts</button>
-<p>▪ Ministry resources<br>▪ Jamaican teacher videos</p>
-
-<button onclick="showResources('Science')">Science</button>
-<p>▪ Ministry resources<br>▪ Jamaican teacher videos</p>
-
-<button onclick="showResources('Social Studies')">Social Studies</button>
-<p>▪ Ministry resources<br>▪ Jamaican teacher videos</p>
-    <p class="note">
-        Links open only when internet is available.<br>
-        Curated YouTube tutorials and Ministry of Education resources.
-    </p>
-    <button class="back" onclick="showMain()">Back to Services</button>
+  <div class="card">
+    <h2>Curriculum & Learning Centre</h2>
+    
+    <button class="btn" onclick="showResources('Mathematics')" style="width:100%;background:#1e73be;color:#000;font-weight:bold;padding:18px;font-size:20px;border-radius:14px;border:none;margin-top:20px;">Mathematics</button>
+    <ul style="margin:10px 0 15px 25px;text-align:left;color:#444;font-size:17px;line-height:1.6;"><li>Ministry resources</li><li>Jamaican teacher videos</li></ul>
+    <hr style="border:none;border-top:1px solid #eee;">
+    
+    <button class="btn" onclick="showResources('Language Arts')" style="width:100%;background:#1e73be;color:#000;font-weight:bold;padding:18px;font-size:20px;border-radius:14px;border:none;margin-top:20px;">Language Arts</button>
+    <ul style="margin:10px 0 15px 25px;text-align:left;color:#444;font-size:17px;line-height:1.6;"><li>Ministry resources</li><li>Jamaican teacher videos</li></ul>
+    <hr style="border:none;border-top:1px solid #eee;">
+    
+    <button class="btn" onclick="showResources('Science')" style="width:100%;background:#1e73be;color:#000;font-weight:bold;padding:18px;font-size:20px;border-radius:14px;border:none;margin-top:20px;">Science</button>
+    <ul style="margin:10px 0 15px 25px;text-align:left;color:#444;font-size:17px;line-height:1.6;"><li>Ministry resources</li><li>Jamaican teacher videos</li></ul>
+    <hr style="border:none;border-top:1px solid #eee;">
+    
+    <button class="btn" onclick="showResources('Social Studies')" style="width:100%;background:#1e73be;color:#000;font-weight:bold;padding:18px;font-size:20px;border-radius:14px;border:none;margin-top:20px;">Social Studies</button>
+    <ul style="margin:10px 0 15px 25px;text-align:left;color:#444;font-size:17px;line-height:1.6;"><li>Ministry resources</li><li>Jamaican teacher videos</li></ul>
+    
+    <button class="back" onclick="showMain()" style="margin-top:30px;">Back to Services</button>
+  </div>
 </div>
-
-<div class="container hidden" id="resourceMenu">
-    <h2 id="resourceTitle">Learning Resources</h2>
-    <p>Choose a resource.</p>
-
-    <a class="resource" href="https://pep.moey.gov.jm/" target="_blank" rel="noopener">
-        Official PEP Ministry Portal
-    </a>
-
-    <a class="resource" id="youtubeLink" href="#" target="_blank" rel="noopener">
-        YouTube Teacher Tutorials
-    </a>
-
-    <a class="resource" href="https://www.bookfusion.com/libraries/MOEYI" target="_blank" rel="noopener">
-        Ministry BookFusion Library
+    class="container hidden" id="learningMenu">
+    <Ministry BookFusion Library
     </a>
 
     <p class="note">
