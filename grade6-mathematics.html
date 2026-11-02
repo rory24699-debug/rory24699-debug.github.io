@@ -15,47 +15,46 @@ body{font-family:Arial;padding:12px;background:#f0f4f8}
 </head>
 <body>
 <div style="max-width:700px;margin:0 auto">
-
 <div class="card" style="background:#174a7e;color:#fff;text-align:center">
 <h2 style="margin:0">Grade 6 - Mathematics</h2>
 <div class="progress" style="margin-top:10px"><div id="bar" class="bar"></div></div>
 <p id="txt" style="font-size:13px">Progress: 0%</p>
 </div>
-
 <div class="card">
 <h3>🧠 Quiz: Fractions</h3>
 <p><b>Q1. What is 3/4 + 1/2?</b></p>
-<div class="opt" onclick="pick(this,1)">A) 4/6</div>
-<div class="opt" onclick="pick(this,2)">B) 1 1/4</div>
-<div class="opt" onclick="pick(this,3)">C) 1/2</div>
-
+<div class="opt" onclick="a1=1;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">A) 4/6</div>
+<div class="opt" onclick="a1=2;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">B) 1 1/4</div>
+<div class="opt" onclick="a1=1;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">C) 1/2</div>
 <p><b>Q2. 3/4 = ?%</b></p>
-<div class="opt" onclick="pick2(this,1)">A) 25%</div>
-<div class="opt" onclick="pick2(this,2)">B) 75%</div>
-
+<div class="opt" onclick="a2=1;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">A) 25%</div>
+<div class="opt" onclick="a2=2;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">B) 75%</div>
 <button class="btn" style="background:#16a34a" onclick="check()">Submit Quiz</button>
 <div id="res" style="margin-top:10px;font-weight:bold"></div>
 </div>
-
+<button class="btn" style="background:#25D366" onclick="shareWA()">📱 Send Report to WhatsApp</button>
 <a class="btn" style="background:#64748b" href="grade6.html">← Back</a>
 </div>
-
 <script>
 let a1=0,a2=0;
-function pick(el,val){document.querySelectorAll(".opt").forEach(o=>{if(o.textContent.includes("A)")||o.textContent.includes("B)")||o.textContent.includes("C)")){}});a1=val;el.parentElement.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel"));el.classList.add("sel");}
-function pick2(el,val){a2=val;el.parentElement.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel"));el.classList.add("sel");}
 function check(){
  let score=0;
  if(a1==2)score++;
  if(a2==2)score++;
- document.getElementById("res").innerHTML="Score: "+score+"/2 - "+(score==2?"✅ Strong!":"⚠️ Weak Area: Fractions - watch video again");
+ document.getElementById("res").innerHTML="Score: "+score+"/2 - "+(score==2?"✅ Strong!":"⚠️ Weak Area: Fractions");
  localStorage.setItem("math_quiz","yes");
  localStorage.setItem("math_score",score);
  update();
 }
+function shareWA(){
+ let score=localStorage.getItem("math_score")||0;
+ let msg="PeplinkJA Report - Grade 6 Math%0AMy child scored "+score+"/2%0AProgress: "+document.getElementById("txt").innerText+"%0A%0ASite: https://rory24699-debug.github.io/grade6-mathematics.html";
+ window.open("https://wa.me/?text="+msg,"_blank");
+}
 function update(){
  let tot=(localStorage.getItem("math_video")?50:0)+(localStorage.getItem("math_quiz")?50:0);
- if(!localStorage.getItem("math_video")){localStorage.setItem("math_video","yes");tot=100;} // auto for now
+ if(!localStorage.getItem("math_video")){localStorage.setItem("math_video","yes");tot=50;}
+ if(localStorage.getItem("math_quiz")) tot=100;
  document.getElementById("bar").style.width=tot+"%";
  document.getElementById("txt").innerText="Progress: "+tot+"%";
 }
