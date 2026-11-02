@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PEP Exam Strategy & Past Papers</title>
+<style>
+body{font-family:Arial;padding:12px;background:#f0f4f8}
+.card{background:#fff;border-radius:16px;padding:16px;margin:12px 0;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+.btn{padding:14px;color:#fff;border-radius:12px;text-decoration:none;display:block;text-align:center;margin:8px 0;font-weight:bold;border:0;width:100%}
+.brown{background:#8B5E00}
+.blue{background:#174a7e}
+.green{background:#16a34a}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pill{background:#fef3c7;padding:10px;border-radius:10px;text-align:center;font-size:13px;font-weight:bold}
+</style>
+</head>
+<body>
+<div style="max-width:700px;margin:0 auto">
+
+<div class="card" style="background:#8B5E00;color:#fff;text-align:center">
+<h2 style="margin:0">PEP Exam Strategy & Past Papers</h2>
+<p style="font-size:13px">Grade 6 Final Prep</p>
+</div>
+
+<div class="card">
+<h3>🧠 Exam Strategy - 5 Key Tips</h3>
+<p><b>1. Time Management:</b> 30 sec per question, skip hard ones</p>
+<p><b>2. Eliminate:</b> Cross out 2 wrong answers first</p>
+<p><b>3. Read Twice:</b> Read question, read again before answer</p>
+<p><b>4. Check Work:</b> Use last 10 mins to review</p>
+<p><b>5. Calm Mind:</b> Deep breaths - you studied!</p>
+<button class="btn green" onclick="localStorage.setItem('pep_tips','yes');alert('✅ Tips marked as read!')">✅ I Read The Tips</button>
+</div>
+
+<div class="card">
+<h3>📝 Past PEP Papers - Download</h3>
+<div class="grid">
+<a class="pill" href="#" style="text-decoration:none;color:#000">📊 Math 2019</a>
+<a class="pill" href="#" style="text-decoration:none;color:#000">📚 Language 2019</a>
+<a class="pill" href="#" style="text-decoration:none;color:#000">🧪 Science 2019</a>
+<a class="pill" href="#" style="text-decoration:none;color:#000">🌍 Social 2019</a>
+<a class="pill" href="#" style="text-decoration:none;color:#000">📊 Math 2020</a>
+<a class="pill" href="#" style="text-decoration:none;color:#000">📚 Language 2020</a>
+</div>
+<p style="font-size:12px;color:#64748b;margin-top:10px">Note: Replace # with real Ministry PDF links later. I can add them for you.</p>
+</div>
+
+<div class="card">
+<h3>🎯 Mock Test - Quick Check</h3>
+<p><b>How ready are you?</b></p>
+<p>1. Did you finish all 4 subjects? <span id="checkSub"></span></p>
+<p>2. Did you practice past papers? <input type="checkbox" id="c2" onchange="saveCheck()"></p>
+<p>3. Do you have exam tools ready? <input type="checkbox" id="c3" onchange="saveCheck()"></p>
+<button class="btn blue" onclick="startMock()">Start 10-Min Mock Quiz</button>
+<div id="mock" style="display:none;margin-top:12px">
+<p><b>Q: 1/2 + 1/4 = ?</b></p>
+<button class="btn blue" style="background:#e2e8f0;color:#000" onclick="alert('Correct is 3/4! Keep studying')">A) 1/2</button>
+<button class="btn blue" style="background:#e2e8f0;color:#000" onclick="alert('✅ Correct! 3/4')">B) 3/4</button>
+</div>
+</div>
+
+<button class="btn" style="background:#25D366" onclick="shareWA()">📱 Share PEP Plan to WhatsApp</button>
+<a class="btn" style="background:#64748b" href="grade6.html">← Back to Grade 6</a>
+
+</div>
+
+<script>
+function saveCheck(){
+ localStorage.setItem('pep_c2',document.getElementById('c2').checked);
+ localStorage.setItem('pep_c3',document.getElementById('c3').checked);
+}
+function loadCheck(){
+ document.getElementById('c2').checked=localStorage.getItem('pep_c2')=='true';
+ document.getElementById('c3').checked=localStorage.getItem('pep_c3')=='true';
+ let done=0;
+ if(localStorage.getItem('math_quiz'))done++;
+ if(localStorage.getItem('sci_quiz'))done++;
+ if(localStorage.getItem('la_quiz'))done++;
+ if(localStorage.getItem('ss_quiz'))done++;
+ document.getElementById('checkSub').innerText=done+"/4 subjects done";
+}
+function startMock(){document.getElementById('mock').style.display='block';}
+function shareWA(){
+ let msg="PeplinkJA PEP Report%0AGrade 6 PEP Prep%0A%0A";
+ msg+="Tips Read: "+(localStorage.getItem('pep_tips')?"Yes":"No")+"%0A";
+ msg+="Subjects Done: "+document.getElementById('checkSub').innerText+"%0A%0A";
+ msg+="Need help? "+window.location.href;
+ window.open("https://wa.me/?text="+msg,"_blank");
+}
+loadCheck();
+</script>
+</body>
+</html>
