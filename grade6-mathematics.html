@@ -3,16 +3,45 @@
 <head>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Grade 6 Math</title>
-<style>body{font-family:Arial;padding:20px} .btn{padding:12px;background:#174a7e;color:#fff;border-radius:10px;text-decoration:none;display:inline-block}</style>
+<style>body{font-family:Arial;padding:12px;background:#f0f4f8} .card{background:#fff;border-radius:16px;padding:16px;margin:12px 0} .btn{padding:12px;background:#174a7e;color:#fff;border-radius:12px;text-decoration:none;display:block;text-align:center;margin:8px 0} .progress{height:12px;background:#e2e8f0;border-radius:10px;overflow:hidden} .bar{height:100%;background:#16a34a;width:0%}</style>
 </head>
 <body>
-<h2>Grade 6 - Mathematics</h2>
-<p>✅ Page is working!</p>
-<div style="background:#f0f0f0;padding:15px;border-radius:10px">
-<p>Video 1: Fractions (coming soon)</p>
-<p>Question 1: What is 3/4 + 1/2?</p>
+<div style="max-width:700px;margin:0 auto">
+
+<div class="card" style="background:#174a7e;color:#fff;text-align:center">
+<h2 style="margin:0">Grade 6 - Mathematics</h2>
+<div class="progress" style="margin-top:10px"><div id="bar" class="bar"></div></div>
+<p id="txt" style="margin:5px 0 0;font-size:13px">Progress: 0%</p>
 </div>
-<br>
-<a class="btn" href="grade6.html">← Back to Grade 6</a>
+
+<div class="card">
+<h3>📹 Video Bank</h3>
+<p>Video 1: Fractions</p>
+<button class="btn" onclick="done('video')">✅ Mark Video Watched</button>
+</div>
+
+<div class="card">
+<h3>📝 Question 1</h3>
+<p>What is 3/4 + 1/2?</p>
+<button class="btn" onclick="done('quiz')">✅ Mark Question Done</button>
+</div>
+
+<a class="btn" style="background:#64748b" href="grade6.html">← Back to Grade 6</a>
+
+</div>
+<script>
+function done(type){
+ localStorage.setItem("math_"+type,"yes");
+ update();
+}
+function update(){
+ let v=localStorage.getItem("math_video")?50:0;
+ let q=localStorage.getItem("math_quiz")?50:0;
+ let tot=v+q;
+ document.getElementById("bar").style.width=tot+"%";
+ document.getElementById("txt").innerText="Progress: "+tot+"%";
+}
+update();
+</script>
 </body>
 </html>
