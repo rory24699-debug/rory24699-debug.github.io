@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 5 Science</title>
+<style>
+body{font-family:Arial;padding:12px;background:#f0f4f8}
+.card{background:#fff;border-radius:16px;padding:16px;margin:12px 0;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+.btn{padding:12px;background:#174a7e;color:#fff;border-radius:12px;text-decoration:none;display:block;text-align:center;margin:8px 0;border:0;width:100%}
+.opt{padding:10px;border:2px solid #e2e8f0;border-radius:10px;margin:6px 0}
+.opt.sel{background:#dbeafe;border-color:#174a7e}
+.progress{height:12px;background:#e2e8f0;border-radius:10px;overflow:hidden}
+.bar{height:100%;background:#16a34a;width:0%}
+</style>
+</head>
+<body>
+<div style="max-width:700px;margin:0 auto">
+<div class="card" style="background:#0e7c3e;color:#fff;text-align:center">
+<h2 style="margin:0">Grade 5 - Science</h2>
+<div class="progress" style="margin-top:10px"><div id="bar" class="bar"></div></div>
+<p id="txt" style="font-size:13px">Progress: 0%</p>
+</div>
+
+<div class="card">
+<h3>🧪 Topic: Parts of a Plant</h3>
+<p>This video explains Roots, Stem, Leaves.</p>
+<div style="background:#e0f2fe;padding:40px;border-radius:12px;text-align:center">📹 Video Space - Add YouTube later</div>
+<button class="btn" onclick="document.getElementById('quiz').style.display='block';localStorage.setItem('g5sci_video','yes');update()">✅ I Watched - Unlock Quiz</button>
+</div>
+
+<div id="quiz" class="card" style="display:none">
+<h3>🧠 Quiz</h3>
+<p><b>Q1. What part makes food?</b></p>
+<div class="opt" onclick="a1=2;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">B) Leaves</div>
+<div class="opt" onclick="a1=1;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">A) Roots</div>
+
+<p><b>Q2. Roots do what?</b></p>
+<div class="opt" onclick="a2=2;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">B) Absorb water</div>
+<div class="opt" onclick="a2=1;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">A) Make flowers</div>
+
+<button class="btn" style="background:#16a34a" onclick="check()">Submit Quiz</button>
+<div id="res" style="margin-top:10px;font-weight:bold"></div>
+</div>
+
+<button class="btn" style="background:#25D366" onclick="shareWA()">📱 Send Report to WhatsApp</button>
+<a class="btn" style="background:#64748b" href="grade5.html">← Back to Grade 5</a>
+</div>
+
+<script>
+let a1=0,a2=0;
+function check(){
+ let s=0;
+ if(a1==2)s++;
+ if(a2==2)s++;
+ document.getElementById("res").innerHTML="Score: "+s+"/2 - "+(s==2?"✅ Strong!":"⚠️ Weak Area: Plants");
+ localStorage.setItem("g5sci_quiz","yes");
+ localStorage.setItem("g5sci_score",s);
+ update();
+}
+function shareWA(){
+ let score=localStorage.getItem("g5sci_score")||0;
+ let msg="PeplinkJA Report - Grade 5 Science%0ATopic: Parts of a Plant%0AScore "+score+"/2%0A"+document.getElementById("txt").innerText;
+ window.open("https://wa.me/?text="+msg,"_blank");
+}
+function update(){
+ let tot=0;
+ if(localStorage.getItem("g5sci_video")) tot+=50;
+ if(localStorage.getItem("g5sci_quiz")) tot+=50;
+ document.getElementById("bar").style.width=tot+"%";
+ document.getElementById("txt").innerText="Progress: "+tot+"%";
+}
+update();
+</script>
+</body>
+</html>
