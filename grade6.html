@@ -1,63 +1,47 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Grade 6 - PEPLink JA</title>
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 6 Curriculum</title>
 <style>
-body{font-family:Arial,sans-serif;background:#f0f4f8;margin:0;padding:15px}
-.container{max-width:800px;margin:0 auto}
-.header{background:#0f345c;color:#fff;padding:30px 20px;border-radius:16px;text-align:center;margin-bottom:20px}
-.card{background:#fff;border-radius:16px;padding:20px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
-.btn{display:block;width:100%;padding:16px;background:#174a7e;color:#fff;border:0;border-radius:12px;font-size:16px;font-weight:700;margin:10px 0;cursor:pointer;text-align:center;text-decoration:none}
-.btn-blue{background:#1976d2;color:#000}
-.btn-brown{background:#8B5E00;color:#fff}
-.white-card{background:#fff;border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.bullet{margin:8px 0 0 20px;color:#475569;font-size:14px;line-height:1.6}
-.hidden{display:none}
-</style></head><body><div class="container">
+body{font-family:Arial;padding:12px;background:#f0f4f8}
+.card{background:#fff;border-radius:16px;padding:16px;margin:14px 0;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+.btn-blue{display:block;background:#1a73e8;color:#000;text-align:center;padding:14px;border-radius:12px;font-weight:bold;text-decoration:none;font-size:18px}
+.btn-brown{display:block;background:#8B5E00;color:#fff;text-align:center;padding:14px;border-radius:12px;font-weight:bold;text-decoration:none;font-size:16px}
+ul{margin:8px 0 0 10px;padding:0;list-style:none;color:#334155;font-size:14px}
+.back{display:block;background:#64748b;color:#fff;text-align:center;padding:14px;border-radius:12px;text-decoration:none;margin-top:16px;font-weight:bold}
+</style>
+</head>
+<body>
+<div style="max-width:700px;margin:0 auto">
 
-<div id="home">
-<div class="header"><h1>PEPLink JA</h1><p>Grade 6 — Final Preparation Learning Centre</p></div>
 <div class="card">
-<h2 style="text-align:center;color:#0f345c">Welcome to Grade 6</h2>
-<button class="btn" onclick="showLearning()">Final Preparation Learning Centre</button>
-<a href="index.html" class="btn" style="background:#64748b">← Back to Home</a>
-</div>
+<a class="btn-blue" href="grade6-language-arts.html">Language Arts</a>
+<ul><li>• Ministry resources</li><li>• Jamaican teacher videos</li></ul>
 </div>
 
-<div id="learning" class="hidden">
-<div class="header"><h1>PEPLink JA</h1><p>Grade 6 — Final Preparation Learning Centre</p></div>
-
-<h2 style="text-align:center;color:#0f345c">Curriculum & Learning Centre</h2>
-
-<div class="white-card">
-   <a class="btn btn-blue" href="grade6-mathematics.html">Mathematics</a>
-<div class="bullet">• Ministry resources<br>• Jamaican teacher videos</div>
+<div class="card">
+<a class="btn-blue" href="grade6-science.html">Science</a>
+<ul><li>• Ministry resources</li><li>• Jamaican teacher videos</li></ul>
 </div>
 
-<div class="white-card">
-<a class="btn btn-blue" href="#">Language Arts</a>
-<div class="bullet">• Ministry resources<br>• Jamaican teacher videos</div>
+<div class="card">
+<a class="btn-blue" href="grade6-social-studies.html">Social Studies</a>
+<ul><li>• Ministry resources</li><li>• Jamaican teacher videos</li></ul>
 </div>
 
-<div class="white-card">
-<a class="btn btn-blue" href="#">Science</a>
-<div class="bullet">• Ministry resources<br>• Jamaican teacher videos</div>
+<div class="card">
+<a class="btn-blue" href="grade6-mathematics.html">Mathematics</a>
+<ul><li>• Ministry resources</li><li>• Jamaican teacher videos</li></ul>
 </div>
 
-<div class="white-card">
-<a class="btn btn-blue" href="#">Social Studies</a>
-<div class="bullet">• Ministry resources<br>• Jamaican teacher videos</div>
+<div class="card">
+<a class="btn-brown" href="grade6-pep-strategy.html">PEP Exam Strategy & Past Papers</a>
+<ul><li>• Exam tips & mock tests</li><li>• Past PEP papers</li></ul>
 </div>
 
-<div class="white-card">
+<a class="back" href="index.html">← Back to Grade 6 Home</a>
 
-
-<div class="white-card">
-<a class="btn btn-brown" href="#">PEP Exam Strategy & Past Papers</a>
-<div class="bullet">• Exam tips & mock tests<br>• Past PEP papers</div>
 </div>
-<button class="btn" style="background:#64748b" onclick="showHome()">← Back to Grade 6 Home</button>
-</div>
-
-</div><script>
-function showHome(){document.getElementById('home').classList.remove('hidden');document.getElementById('learning').classList.add('hidden');window.scrollTo(0,0)}
-function showLearning(){document.getElementById('home').classList.add('hidden');document.getElementById('learning').classList.remove('hidden');window.scrollTo(0,0)}
-</script></body></html>
+</body>
+</html>
