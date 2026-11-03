@@ -3,39 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Grade 6 - PEP 2026</title>
+<title>Grade 6 - PEPLink JA</title>
 <style>
-body{font-family:Arial;background:#f0f4f8;margin:0;padding:15px}
-.header{background:#0b6e4f;color:white;padding:20px;text-align:center;border-radius:15px}
-.notice{background:#fff3cd;padding:12px;border-radius:10px;margin-top:15px;text-align:center;font-size:14px;border:1px solid #ffe69c}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}
-.card{background:white;padding:18px;text-align:center;border-radius:12px;text-decoration:none;color:#0b6e4f;font-weight:bold;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
-.card.disabled{background:#e9ecef;color:#888;cursor:not-allowed}
-.card small{display:block;font-size:11px;margin-top:4px;color:#0b6e4f}
-.card.disabled small{color:#888}
-.back{display:block;margin-top:20px;color:#0b6e4f;text-align:center}
+body{margin:0;font-family:Arial;background:#f5f7fb;text-align:center}
+.top{background:#132f4c;color:white;padding:45px 20px 35px 20px;border-radius:0 0 20px 20px}
+.top h1{margin:0;font-size:34px;font-weight:800}
+.top p{margin:14px 0 0 0;font-size:17px;opacity:0.95}
+.wrap{padding:28px 16px 0 16px}
+.wrap h2{color:#1e3a5f;font-size:28px;margin:0 0 8px 0}
+.wrap p{color:#334e6f;margin:0 0 22px 0;font-size:16px}
+.btn{display:block;background:#1e4a7a;color:white;padding:19px;border-radius:10px;margin:14px 16px;text-decoration:none;font-weight:700;font-size:18px}
+.btn-grey{background:#4a4a4a}
+.timer{background:#e8f5e9;color:#1e3a5f;padding:14px;border-radius:10px;margin:22px 16px 0 16px;font-weight:700;font-size:17px}
 </style>
 </head>
 <body>
-<div class="header">
-<h1>Grade 6 PEP - FINAL</h1>
-<p>April 29-30, 2026 | MOE Final Exams</p>
+<div class="top">
+<h1>PEPLink JA</h1>
+<p>Grade 6 — Final Mastery Centre</p>
 </div>
 
-<div class="notice">
-📢 <b>2026:</b> MOE offers only 3 papers.<br>
-We cover <b>Science & Social Studies again in 2027</b>.
+<div class="wrap">
+<h2>Welcome to Grade 6</h2>
+<p>Choose a service to continue.</p>
 </div>
 
-<div class="grid">
-<a class="card" href="grade6-mathematics.html">🔢<br>Math<small>CBT April 29</small></a>
-<a class="card" href="grade6-language-arts.html">📖<br>Language Arts<small>CBT April 30</small></a>
-<a class="card" href="grade6-ability-test.html">🧠<br>Ability Test<small>Reasoning</small></a>
-<a class="card" href="grade6-pep-strategy.html">🎯<br>Strategy<small>Tips</small></a>
-<div class="card disabled">🔬<br>Science<small>Coming 2027</small></div>
-<div class="card disabled">🌍<br>Social Studies<small>Coming 2027</small></div>
-</div>
+<a class="btn" href="grade6-pep-practice.html">PEP Practice Centre</a>
+<a class="btn" href="grade6-curriculum.html">Curriculum & Learning Centre</a>
+<a class="btn" href="parent-dashboard.html">Parent Dashboard</a>
+<a class="btn btn-grey" href="index.html">Back to Home</a>
 
-<a class="back" href="index.html">← Back to Home</a>
+<div class="timer">Session Duration: 00:00:04</div>
+
+<script>
+let s=4;
+setInterval(()=>{
+s++;
+let h=String(Math.floor(s/3600)).padStart(2,'0');
+let m=String(Math.floor(s/60)%60).padStart(2,'0');
+let sec=String(s%60).padStart(2,'0');
+document.querySelector('.timer').textContent=`Session Duration: ${h}:${m}:${sec}`;
+},1000);
+</script>
 </body>
 </html>
