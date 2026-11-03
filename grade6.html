@@ -6,23 +6,34 @@
 <title>Grade 6 - PEP 2026</title>
 <style>
 body{font-family:Arial;background:#f0f4f8;margin:0;padding:15px}
-.header{background:#0b6e4f;color:white;padding:25px;text-align:center;border-radius:15px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}
-.card{background:white;padding:20px;text-align:center;border-radius:12px;text-decoration:none;color:#0b6e4f;font-weight:bold;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+.header{background:#0b6e4f;color:white;padding:20px;text-align:center;border-radius:15px}
+.notice{background:#fff3cd;padding:12px;border-radius:10px;margin-top:15px;text-align:center;font-size:14px;border:1px solid #ffe69c}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}
+.card{background:white;padding:18px;text-align:center;border-radius:12px;text-decoration:none;color:#0b6e4f;font-weight:bold;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+.card.disabled{background:#e9ecef;color:#888;cursor:not-allowed}
+.card small{display:block;font-size:11px;margin-top:4px;color:#0b6e4f}
+.card.disabled small{color:#888}
 .back{display:block;margin-top:20px;color:#0b6e4f;text-align:center}
 </style>
 </head>
 <body>
 <div class="header">
-<h1>Grade 6 PEP - 2026</h1>
-<p>April 29-30, 2026 | 3 Papers Only</p>
+<h1>Grade 6 PEP - FINAL</h1>
+<p>April 29-30, 2026 | MOE Final Exams</p>
+</div>
+
+<div class="notice">
+📢 <b>2026:</b> MOE offers only 3 papers.<br>
+We cover <b>Science & Social Studies again in 2027</b>.
 </div>
 
 <div class="grid">
-<a class="card" href="grade6-mathematics.html">🔢 Math<br><span style="font-size:12px">CBT Paper</span></a>
-<a class="card" href="grade6-language-arts.html">📖 Language Arts<br><span style="font-size:12px">CBT Paper</span></a>
-<a class="card" href="grade6-ability-test.html">🧠 Ability Test<br><span style="font-size:12px">Reasoning</span></a>
-<a class="card" href="grade6-pep-strategy.html">🎯 PEP Strategy</a>
+<a class="card" href="grade6-mathematics.html">🔢<br>Math<small>CBT April 29</small></a>
+<a class="card" href="grade6-language-arts.html">📖<br>Language Arts<small>CBT April 30</small></a>
+<a class="card" href="grade6-ability-test.html">🧠<br>Ability Test<small>Reasoning</small></a>
+<a class="card" href="grade6-pep-strategy.html">🎯<br>Strategy<small>Tips</small></a>
+<div class="card disabled">🔬<br>Science<small>Coming 2027</small></div>
+<div class="card disabled">🌍<br>Social Studies<small>Coming 2027</small></div>
 </div>
 
 <a class="back" href="index.html">← Back to Home</a>
