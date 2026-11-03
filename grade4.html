@@ -1,122 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PEPLink JA - Grade 4</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 4 - PEP</title>
 <style>
-body{font-family:Arial,sans-serif;background:#f0f4f8;margin:0;padding:20px;color:#17365d;text-align:center}
-header{background:#102b50;color:white;padding:25px 10px;border-radius:12px}
-.container{max-width:600px;margin:25px auto}
-button{display:block;width:100%;box-sizing:border-box;padding:16px;margin:12px 0;font-size:17px;font-weight:bold;border:none;border-radius:10px;background:#174a7e;color:white}
-.back{background:#555}
-.hidden{display:none}
-.subject-box{background:white;border-radius:12px;padding:15px;margin:15px 0;text-align:left;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
-.subject-box button{background:#1e73be;color:#000;font-size:20px}
-.subject-box ul{margin:10px 0 0 20px;color:#555}
-.timer{background:#e6f4ea;padding:12px;border-radius:10px;max-width:450px;margin:20px auto;font-weight:bold}
-.link-btn{display:block;padding:16px;background:#087f5b;color:white;border-radius:8px;text-decoration:none;font-weight:bold;margin:10px 0}
+body{font-family:Arial;background:#f0f4f8;margin:0;padding:15px}
+.header{background:#0b6e4f;color:white;padding:25px;text-align:center;border-radius:15px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}
+.card{background:white;padding:20px;text-align:center;border-radius:12px;text-decoration:none;color:#0b6e4f;font-weight:bold;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+.card.coming{background:#e2e8f0;color:#64748b;pointer-events:none}
+.badge{display:block;font-size:11px;margin-top:5px;color:#ef4444}
+.back{display:block;margin-top:20px;color:#0b6e4f;text-align:center}
 </style>
 </head>
 <body>
-
-<header>
-<h1>PEPLink JA</h1>
-<p>Grade 4 — Foundation Learning Centre</p>
-</header>
-
-<!-- MAIN MENU -->
-<div class="container" id="mainMenu">
-<h2>Welcome to Grade 4</h2>
-<p>Choose a service to continue.</p>
-<button onclick="showPractice()">PEP Practice Centre</button>
-<button onclick="showLearning()">Curriculum & Learning Centre</button>
-<button onclick="location.href='parent-dashboard.html'">Parent Dashboard</button>
-<button class="back" onclick="location.href='index.html'">Back to Home</button>
+<div class="header">
+<h1>Grade 4 PEP - 2026</h1>
+<p>June 24, 2026 | Literacy + Numeracy Only</p>
 </div>
 
-<!-- PRACTICE MENU -->
-<div class="container hidden" id="subjectMenu">
-<h2>PEP Practice Centre</h2>
-<button onclick="showActivities('Mathematics')">Mathematics</button>
-<button onclick="showActivities('Language Arts')">Language Arts</button>
-<button onclick="showActivities('Science')">Science</button>
-<button onclick="showActivities('Social Studies')">Social Studies</button>
-<button class="back" onclick="showMain()">Back to Services</button>
+<div class="grid">
+<a class="card" href="grade4-literacy.html">📖 Literacy<br><span style="font-size:12px">30 Questions</span></a>
+<a class="card" href="grade4-numeracy.html">🔢 Numeracy<br><span style="font-size:12px">30 Questions</span></a>
+
+<div class="card coming">🔬 Science<span class="badge">Not in 2026 PEP - Coming 2027</span></div>
+<div class="card coming">🌍 Social Studies<span class="badge">Not in 2026 PEP - Coming 2027</span></div>
 </div>
 
-<!-- ACTIVITY MENU -->
-<div class="container hidden" id="activityMenu">
-<h2 id="subjectTitle">Subject</h2>
-<button onclick="location.href='grade4-math-practice.html'">Practice Questions</button>
-<button onclick="location.href='grade4-math-quiz.html'">Quizzes</button>
-<button onclick="location.href='math-mock-g4.html'">Mock Tests</button>
-<button class="back" onclick="showPractice()">Back to Subjects</button>
-</div>
-
-<!-- LEARNING CENTRE - THIS IS WHAT YOU WANT TO SEE -->
-<div class="container hidden" id="learningMenu">
-<h2>Curriculum & Learning Centre</h2>
-
-<div class="subject-box">
-<button onclick="showResources('Mathematics')">Mathematics</button>
-<ul><li>Ministry resources</li><li>Jamaican teacher videos</li></ul>
-</div>
-
-<div class="subject-box">
-<button onclick="showResources('Language Arts')">Language Arts</button>
-<ul><li>Ministry resources</li><li>Jamaican teacher videos</li></ul>
-</div>
-
-<div class="subject-box">
-<button onclick="showResources('Science')">Science</button>
-<ul><li>Ministry resources</li><li>Jamaican teacher videos</li></ul>
-</div>
-
-<div class="subject-box">
-<button onclick="showResources('Social Studies')">Social Studies</button>
-<ul><li>Ministry resources</li><li>Jamaican teacher videos</li></ul>
-</div>
-
-<button class="back" onclick="showMain()">Back to Services</button>
-</div>
-
-<!-- RESOURCES -->
-<div class="container hidden" id="resourceMenu">
-<h2 id="resourceTitle">Videos</h2>
-<a id="youtubeLink" class="link-btn" href="#" target="_blank">Open Grade 4 Jamaican Teacher Videos</a>
-<a class="link-btn" style="background:#0b6e99" href="https://pep.moey.gov.jm/" target="_blank">Official PEP Ministry Portal</a>
-<a class="link-btn" style="background:#0b6e99" href="https://www.bookfusion.com/libraries/MOEYI" target="_blank">Ministry BookFusion Library</a>
-
-<button class="back" onclick="showLearning()">Back to Learning Centre</button>
-</div>
-
-<div class="timer">Session Duration: <span id="sessionClock">00:00:00</span></div>
-
-<script>
-function hideAll(){
-['mainMenu','subjectMenu','activityMenu','learningMenu','resourceMenu'].forEach(id=>{
-document.getElementById(id).classList.add('hidden')
-});
-}
-function showMain(){hideAll();document.getElementById('mainMenu').classList.remove('hidden')}
-function showPractice(){hideAll();document.getElementById('subjectMenu').classList.remove('hidden')}
-function showActivities(s){hideAll();document.getElementById('activityMenu').classList.remove('hidden');document.getElementById('subjectTitle').textContent=s}
-function showLearning(){hideAll();document.getElementById('learningMenu').classList.remove('hidden')}
-function showResources(s){
-hideAll();
-document.getElementById('resourceMenu').classList.remove('hidden');
-document.getElementById('resourceTitle').textContent=s+'-Grade 4 Videos';
-document.getElementById('youtubeLink').href='https://www.youtube.com/results?search_query='+encodeURIComponent('Jamaican Grade 4 PEP '+s+' teacher tutorial');
-}
-let sec=0;
-setInterval(()=>{
-sec++;
-let h=String(Math.floor(sec/3600)).padStart(2,'0');
-let m=String(Math.floor((sec%3600)/60)).padStart(2,'0');
-let s2=String(sec%60).padStart(2,'0');
-document.getElementById('sessionClock').textContent=h+':'+m+':'+s2;
-},1000);
-</script>
+<a class="back" href="index.html">← Back to Home</a>
 </body>
 </html>
