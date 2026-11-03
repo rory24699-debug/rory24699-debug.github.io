@@ -1,28 +1,33 @@
 <!doctype html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Grade 5 - PEPLink JA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 5 - PEP</title>
 <style>
-body{font-family:Arial;background:#f0f4f8;margin:0;padding:20px}
-.header{background:#1a3a5f;color:white;padding:20px;text-align:center;border-radius:10px}
+body{font-family:Arial;background:#f0f4f8;margin:0;padding:15px}
+.header{background:#0b6e4f;color:white;padding:25px;text-align:center;border-radius:15px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}
-.card{background:white;padding:25px;text-align:center;border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.1);text-decoration:none;color:#1a3a5f;font-weight:bold;font-size:18px}
-.card:hover{background:#e3f2fd}
-.back{display:inline-block;margin-top:20px;color:#1a3a5f;text-decoration:none}
+.card{background:white;padding:20px;text-align:center;border-radius:12px;text-decoration:none;color:#0b6e4f;font-weight:bold;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+.card.coming{background:#e2e8f0;color:#64748b;pointer-events:none}
+.badge{display:block;font-size:11px;margin-top:5px;color:#ef4444}
+.back{display:block;margin-top:20px;color:#0b6e4f;text-align:center}
 </style>
 </head>
 <body>
 <div class="header">
-<h1>PEPLink JA</h1>
-<h2>Grade 5 - Choose Subject</h2>
+<h1>Grade 5 PEP - 2026</h1>
+<p>June 10, 2026 | Math + Language Arts Only</p>
 </div>
+
 <div class="grid">
-<a class="card" href="grade5-math.html">📊<br>Mathematics</a>
-<a class="card" href="grade5-language-arts-quizzes.html">📚<br>Language Arts</a>
-<a class="card" href="grade5-science.html">🔬<br>Science</a>
-<a class="card" href="grade5-social-studies.html">🌍<br>Social Studies</a>
+<a class="card" href="grade5-math-practice.html">🔢 Mathematics<br><span style="font-size:12px">Performance Task</span></a>
+<a class="card" href="grade5-language-arts-q1.html">📖 Language Arts<br><span style="font-size:12px">Performance Task</span></a>
+
+<div class="card coming">🔬 Science<span class="badge">Not in 2026 PEP - Coming 2027</span></div>
+<div class="card coming">🌍 Social Studies<span class="badge">Not in 2026 PEP - Coming 2027</span></div>
 </div>
+
 <a class="back" href="index.html">← Back to Home</a>
 </body>
 </html>
