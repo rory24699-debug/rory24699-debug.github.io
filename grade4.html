@@ -3,31 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Grade 4 - PEP</title>
+<title>Grade 4 - PEPLink JA</title>
 <style>
-body{font-family:Arial;background:#f0f4f8;margin:0;padding:15px}
-.header{background:#0b6e4f;color:white;padding:25px;text-align:center;border-radius:15px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}
-.card{background:white;padding:20px;text-align:center;border-radius:12px;text-decoration:none;color:#0b6e4f;font-weight:bold;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
-.card.coming{background:#e2e8f0;color:#64748b;pointer-events:none}
-.badge{display:block;font-size:11px;margin-top:5px;color:#ef4444}
-.back{display:block;margin-top:20px;color:#0b6e4f;text-align:center}
+body{margin:0;font-family:Arial;background:#f5f7fb;text-align:center}
+.top{background:#132f4c;color:white;padding:45px 20px 35px 20px;border-radius:0 0 20px 20px}
+.top h1{margin:0;font-size:34px;font-weight:800;letter-spacing:0.5px}
+.top p{margin:14px 0 0 0;font-size:17px;opacity:0.95}
+.wrap{padding:28px 16px 0 16px}
+.wrap h2{color:#1e3a5f;font-size:28px;margin:0 0 8px 0}
+.wrap p{color:#334e6f;margin:0 0 22px 0;font-size:16px}
+.btn{display:block;background:#1e4a7a;color:white;padding:19px;border-radius:10px;margin:14px 16px;text-decoration:none;font-weight:700;font-size:18px}
+.btn-grey{background:#4a4a4a}
+.timer{background:#e8f5e9;color:#1e3a5f;padding:14px;border-radius:10px;margin:22px 16px 0 16px;font-weight:700;font-size:17px}
 </style>
 </head>
 <body>
-<div class="header">
-<h1>Grade 4 PEP - 2026</h1>
-<p>June 24, 2026 | Literacy + Numeracy Only</p>
+<div class="top">
+<h1>PEPLink JA</h1>
+<p>Grade 4 — Foundation Learning Centre</p>
 </div>
 
-<div class="grid">
-<a class="card" href="grade4-literacy.html">📖 Literacy<br><span style="font-size:12px">30 Questions</span></a>
-<a class="card" href="grade4-numeracy.html">🔢 Numeracy<br><span style="font-size:12px">30 Questions</span></a>
-
-<div class="card coming">🔬 Science<span class="badge">Not in 2026 PEP - Coming 2027</span></div>
-<div class="card coming">🌍 Social Studies<span class="badge">Not in 2026 PEP - Coming 2027</span></div>
+<div class="wrap">
+<h2>Welcome to Grade 4</h2>
+<p>Choose a service to continue.</p>
 </div>
 
-<a class="back" href="index.html">← Back to Home</a>
+<a class="btn" href="grade4-pep-practice.html">PEP Practice Centre</a>
+<a class="btn" href="grade4-curriculum.html">Curriculum & Learning Centre</a>
+<a class="btn" href="parent-dashboard.html">Parent Dashboard</a>
+<a class="btn btn-grey" href="index.html">Back to Home</a>
+
+<div class="timer">Session Duration: 00:00:04</div>
+
+<script>
+let s=4;
+setInterval(()=>{
+s++;
+let h=String(Math.floor(s/3600)).padStart(2,'0');
+let m=String(Math.floor(s/60)%60).padStart(2,'0');
+let sec=String(s%60).padStart(2,'0');
+document.querySelector('.timer').textContent=`Session Duration: ${h}:${m}:${sec}`;
+},1000);
+</script>
 </body>
 </html>
