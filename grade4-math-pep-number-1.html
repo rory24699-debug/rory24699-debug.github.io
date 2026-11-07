@@ -1,72 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Number File 1 - 20 Questions</title>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 4 PEP - Number - All 100 Questions</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-body{background:#f0f4f8;padding:14px}
-.wrap{max-width:650px;margin:0 auto}
-.top{background:#1e3a8a;color:#fff;padding:18px;border-radius:14px;text-align:center}
-.top h1{font-size:22px}
-.top p{font-size:14px;margin-top:4px}
-.card{background:#fff;padding:18px;border-radius:14px;margin-top:14px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.q{font-size:19px;font-weight:bold}
-.opt{display:block;width:100%;text-align:left;background:#eef2ff;border:2px solid #c7d2fe;padding:12px;border-radius:10px;margin-top:10px;font-size:17px;cursor:pointer}
-.opt.correct{background:#dcfce7;border-color:#16a34a}
-.opt.wrong{background:#fee2e2;border-color:#dc2626}
-.feedback{margin-top:12px;font-weight:bold;font-size:16px}
-.btn{background:#1d4ed8;color:#fff;border:0;padding:13px 20px;border-radius:10px;font-size:17px;margin-top:14px;cursor:pointer;width:100%}
-.back{display:block;text-align:center;margin-top:14px;color:#1d4ed8;font-weight:bold;text-decoration:none}
-.progress{margin-top:10px;font-size:14px;color:#e0e7ff}
-</style>
-</head>
-<body>
-<div class="wrap">
-<div class="top"><h1>🔢 Number File 1</h1><p>Grade 4 PEP - 20 Multiple Choice Questions</p><div class="progress" id="progress"></div></div>
-<div class="card" id="quiz"></div>
-<a class="back" href="grade4-pep.html">← Back to PEP Centre</a>
+body{font-family:Arial,sans-serif;max-width:750px;margin:0 auto;padding:16px;background:#f0f4ff}
+.card{background:#fff;padding:18px;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+h1{font-size:22px;text-align:center}h2{font-size:19px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:12px 0}
+.tabs button{padding:10px 14px;border:none;border-radius:20px;background:#ddd;font-weight:bold;cursor:pointer}
+.tabs button.active{background:#2563eb;color:#fff}
+.q{font-size:18px;font-weight:bold;margin:14px 0}
+.opt{display:block;width:100%;text-align:left;padding:12px;margin:8px 0;border:2px solid #ddd;border-radius:10px;background:#fff;font-size:16px;cursor:pointer}
+.opt.correct{background:#dcfce7;border-color:green}.opt.wrong{background:#fee2e2;border-color:red}
+.exp{background:#fff7cc;padding:10px;border-radius:8px;margin-top:10px}
+.big{font-size:22px;text-align:center}
+input{width:100%;padding:12px;font-size:16px;border:2px solid #ddd;border-radius:10px;margin:10px 0;box-sizing:border-box}
+.wa{background:#25D366;color:#fff;border:none;padding:13px;width:100%;border-radius:10px;font-size:17px;font-weight:bold;cursor:pointer}
+.next{background:#2563eb;color:#fff;border:none;padding:13px;width:100%;border-radius:10px;font-size:17px;font-weight:bold;cursor:pointer;margin-top:10px}
+.small{color:#555;text-align:center;font-size:14px}
+</style></head><body>
+<div class="card">
+<h1>🇯🇲 Grade 4 PEP - Number<br>100 Questions - 5 Tests</h1>
+<p class="small">Test 1-5 • 20 questions each • Score is locked - no cheating</p>
+<div class="tabs" id="tabs"></div>
+<div id="box"></div>
 </div>
 <script>
-const qs=[
-{q:"What is the value of the 7 in 7,482?",o:["7,000","700","70","7"],a:0,e:"7 is in the thousands place."},
-{q:"What is 4,356 + 2,419?",o:["6,775","6,765","6,675","6,785"],a:0,e:"4,356 + 2,419 = 6,775."},
-{q:"What is 8,000 - 3,275?",o:["4,725","4,625","5,725","4,735"],a:0,e:"8,000 - 3,275 = 4,725."},
-{q:"Which number is 1,000 more than 5,640?",o:["6,640","5,740","6,540","4,640"],a:0,e:"5,640 + 1,000 = 6,640."},
-{q:"Round 4,678 to the nearest hundred.",o:["4,700","4,600","4,680","5,000"],a:0,e:"78 rounds up, so 4,678 → 4,700."},
-{q:"What is 6 × 8?",o:["48","42","56","54"],a:0,e:"6 × 8 = 48."},
-{q:"What is 72 ÷ 9?",o:["8","9","7","6"],a:0,e:"9 × 8 = 72."},
-{q:"Which is the largest? ",o:["9,102","9,012","9,210","9,120"],a:2,e:"9,210 is largest."},
-{q:"What is 1/2 of 20?",o:["10","5","20","15"],a:0,e:"20 ÷ 2 = 10."},
-{q:"Which fraction is equal to 1/2?",o:["2/4","1/4","3/4","2/3"],a:0,e:"2/4 = 1/2."},
-{q:"What is 3 × 245?",o:["735","635","745","725"],a:0,e:"3 × 245 = 735."},
-{q:"What is 540 ÷ 6?",o:["90","80","60","95"],a:0,e:"6 × 90 = 540."},
-{q:"What is the missing number? 12, 24, 36, __, 60",o:["48","44","40","52"],a:0,e:"Counting in 12s."},
-{q:"Which is an even number?",o:["3,784","3,785","3,787","3,789"],a:0,e:"Ends in 4, so even."},
-{q:"What is 0.5 as a fraction?",o:["1/2","1/4","1/5","2/5"],a:0,e:"0.5 = 1/2."},
-{q:"Maria has 4 bags with 125 marbles each. How many marbles?",o:["500","475","525","450"],a:0,e:"4 × 125 = 500."},
-{q:"What is 9,999 + 1?",o:["10,000","9,1000","10,100","9,990"],a:0,e:"9,999 + 1 = 10,000."},
-{q:"Which number is less than 6,305?",o:["6,295","6,310","6,405","6,350"],a:0,e:"6,295 < 6,305."},
-{q:"What is 15 × 10?",o:["150","15","1,500","105"],a:0,e:"15 × 10 = 150."},
-{q:"A shop sells 318 books on Monday and 276 on Tuesday. How many in total?",o:["594","584","604","592"],a:0,e:"318 + 276 = 594."}
+const tests=[
+{ name:"Test 1", qs:[
+{q:"What is the value of the digit 5 in 3,542?",o:["5","50","500","5,000"],a:"500",e:"The 5 is in the hundreds place, so its value is 500."},
+{q:"Calculate: 567 + 238",o:["795","805","815","825"],a:"805",e:"567 + 238 = 805. Add the ones, tens, then hundreds."},
+{q:"Calculate: 843 - 276",o:["557","567","577","667"],a:"567",e:"843 - 276 = 567."},
+{q:"Calculate: 36 × 5",o:["160","170","180","190"],a:"180",e:"36 × 5 = 180."},
+{q:"Calculate: 132 ÷ 6",o:["21","22","23","24"],a:"22",e:"132 ÷ 6 = 22."},
+{q:"Which fraction is equivalent to 3/6?",o:["1/3","1/2","2/3","3/4"],a:"1/2",e:"3/6 simplifies to 1/2."},
+{q:"Maria has 3 packs of pencils. Each pack has 24 pencils. How many pencils does Maria have altogether?",o:["27","48","72","96"],a:"72",e:"3 × 24 = 72."},
+{q:"How many centimetres are in 5 metres?",o:["50","500","5,000","55"],a:"500",e:"1 metre = 100 cm, so 5 metres = 500 cm."},
+{q:"School starts at 8:30 a.m. and ends at 2:15 p.m. How long is the school day?",o:["5 hours","5 hours 45 minutes","6 hours","6 hours 15 minutes"],a:"5 hours 45 minutes",e:"From 8:30 to 2:15 is 5 hours 45 minutes."},
+{q:"A square has sides measuring 6 cm each. What is its perimeter?",o:["12 cm","18 cm","24 cm","36 cm"],a:"24 cm",e:"Perimeter = 4 × 6 = 24 cm."},
+{q:"Round 3,486 to the nearest hundred.",o:["3,400","3,500","3,480","3,490"],a:"3,500",e:"86 is more than 50, so round up to 3,500."},
+{q:"Calculate: 764 + 189",o:["943","953","963","973"],a:"953",e:"764 + 189 = 953."},
+{q:"Calculate: 912 - 458",o:["444","454","464","474"],a:"454",e:"912 - 458 = 454."},
+{q:"Calculate: 48 × 4",o:["182","192","202","212"],a:"192",e:"48 × 4 = 192."},
+{q:"Calculate: 156 ÷ 4",o:["36","38","39","42"],a:"39",e:"156 ÷ 4 = 39."},
+{q:"Which decimal is equal to 1/4?",o:["0.14","0.25","0.4","0.5"],a:"0.25",e:"1/4 = 0.25."},
+{q:"A class has 34 students. Each student has 6 pencils. How many pencils are there altogether?",o:["184","194","204","214"],a:"204",e:"34 × 6 = 204."},
+{q:"How many hours are there in 3 days?",o:["48","60","72","96"],a:"72",e:"1 day = 24 hours, 3 × 24 = 72."},
+{q:"What is the value of the digit 8 in 6,874?",o:["8","80","800","8,000"],a:"800",e:"The 8 is in the hundreds place = 800."},
+{q:"A rectangle has a length of 10 cm and a width of 7 cm. What is its area?",o:["17 cm²","34 cm²","70 cm²","77 cm²"],a:"70 cm²",e:"Area = 10 × 7 = 70 cm²."}
+]},
+{ name:"Test 2", qs:[
+{q:"What is the value of the digit 7 in 4,735?",o:["7","70","700","7,000"],a:"700",e:"Correct answer is 700."},
+{q:"Calculate: 348 + 276",o:["614","624","634","644"],a:"624",e:"348 + 276 = 624."},
+{q:"What is 805 - 367?",o:["428","438","448","458"],a:"438",e:"805 - 367 = 438."},
+{q:"Calculate: 24 × 6",o:["124","134","144","154"],a:"144",e:"24 × 6 = 144."},
+{q:"What is 168 ÷ 7?",o:["22","23","24","26"],a:"24",e:"168 ÷ 7 = 24."},
+{q:"Which fraction is equivalent to 1/2?",o:["2/3","2/4","3/4","1/3"],a:"2/4",e:"2/4 = 1/2."},
+{q:"A shopkeeper has 5 boxes containing 12 pencils each. How many pencils are there altogether?",o:["50","55","60","65"],a:"60",e:"5 × 12 = 60."},
+{q:"How many centimetres are in 3 metres?",o:["30","100","200","300"],a:"300",e:"3 × 100 = 300 cm."},
+{q:"What time is 45 minutes after 2:30 p.m.?",o:["3:05 p.m.","3:15 p.m.","3:25 p.m.","3:30 p.m."],a:"3:15 p.m.",e:"2:30 + 45 mins = 3:15."},
+{q:"A rectangle has a length of 8 cm and a width of 5 cm. What is its perimeter?",o:["13 cm","26 cm","40 cm","45 cm"],a:"26 cm",e:"Perimeter = 2×(8+5) = 26 cm."},
+{q:"What is the value of 6 in the number 8,642?",o:["6","60","600","6,000"],a:"600",e:"6 is in hundreds place = 600."},
+{q:"Calculate: 456 + 389",o:["835","845","855","865"],a:"845",e:"456 + 389 = 845."},
+{q:"Calculate: 900 - 458",o:["432","442","452","462"],a:"442",e:"900 - 458 = 442."},
+{q:"What is 35 × 4?",o:["120","130","140","150"],a:"140",e:"35 × 4 = 140."},
+{q:"What is 225 ÷ 5?",o:["35","40","45","50"],a:"45",e:"225 ÷ 5 = 45."},
+{q:"Which fraction is the largest?",o:["1/4","1/2","1/8","1/6"],a:"1/2",e:"1/2 is the largest."},
+{q:"A farmer collects 125 mangoes each day for 4 days. How many mangoes does he collect?",o:["400","450","500","550"],a:"500",e:"125 × 4 = 500."},
+{q:"How many grams are in 2 kilograms?",o:["200","1,000","1,500","2,000"],a:"2,000",e:"1 kg = 1000 g."},
+{q:"A movie starts at 4:15 p.m. and lasts 1 hour 30 minutes. When does it finish?",o:["5:15 p.m.","5:30 p.m.","5:45 p.m.","6:00 p.m."],a:"5:45 p.m.",e:"4:15 + 1h30 = 5:45."},
+{q:"A square has sides measuring 7 cm each. What is its perimeter?",o:["14 cm","21 cm","28 cm","49 cm"],a:"28 cm",e:"4 × 7 = 28 cm."}
+]},
+{ name:"Test 3", qs:[
+{q:"What number comes next? 125, 150, 175, 200, ___",o:["205","215","225","250"],a:"225",e:"Adding 25 each time."},
+{q:"Write 3,508 in words.",o:["Three thousand and fifty-eight","Three thousand five hundred and eight","Three hundred and fifty-eight","Thirty-five hundred and eighty"],a:"Three thousand five hundred and eight",e:"Correct answer is Three thousand five hundred and eight."},
+{q:"Calculate: 675 + 248",o:["913","923","933","943"],a:"923",e:"675 + 248 = 923."},
+{q:"Calculate: 1,000 - 625",o:["365","375","385","395"],a:"375",e:"1000 - 625 = 375."},
+{q:"What is 18 × 7?",o:["116","126","136","146"],a:"126",e:"18 × 7 = 126."},
+{q:"What is 144 ÷ 12?",o:["10","11","12","14"],a:"12",e:"144 ÷ 12 = 12."},
+{q:"A cake is divided into 8 equal pieces. If 3 pieces are eaten, what fraction remains?",o:["3/8","4/8","5/8","6/8"],a:"5/8",e:"8-3 = 5 left, so 5/8."},
+{q:"How many millilitres are in 2 litres?",o:["200","500","1,000","2,000"],a:"2,000",e:"1 litre = 1000 ml."},
+{q:"A bus leaves at 8:35 a.m. and arrives at 9:20 a.m. How long is the journey?",o:["35 minutes","40 minutes","45 minutes","55 minutes"],a:"45 minutes",e:"8:35 to 9:20 = 45 mins."},
+{q:"A rectangular garden is 9 metres long and 4 metres wide. What is its area?",o:["13 square metres","26 square metres","36 square metres","40 square metres"],a:"36 square metres",e:"9 × 4 = 36."},
+{q:"What is the smallest 4-digit number?",o:["999","1,000","1,001","1,010"],a:"1,000",e:"Smallest 4-digit is 1,000."},
+{q:"Calculate: 567 + 189",o:["746","756","766","776"],a:"756",e:"567 + 189 = 756."},
+{q:"Calculate: 824 - 356",o:["458","468","478","488"],a:"468",e:"824 - 356 = 468."},
+{q:"What is 26 × 5?",o:["120","125","130","135"],a:"130",e:"26 × 5 = 130."},
+{q:"What is 216 ÷ 8?",o:["25","26","27","28"],a:"27",e:"216 ÷ 8 = 27."},
+{q:"Which decimal is equal to 3/10?",o:["0.03","0.3","3.0","0.13"],a:"0.3",e:"3/10 = 0.3."},
+{q:"A school has 6 classes with 28 students in each class. How many students are there altogether?",o:["158","168","178","188"],a:"168",e:"6 × 28 = 168."},
+{q:"How many days are there in 5 weeks?",o:["30","32","35","40"],a:"35",e:"5 × 7 = 35."},
+{q:"What is the value of the digit 9 in 5,294?",o:["9","90","900","9,000"],a:"90",e:"9 is in tens place = 90."},
+{q:"A rectangle has a length of 12 cm and a width of 6 cm. What is its area?",o:["18 cm²","36 cm²","72 cm²","84 cm²"],a:"72 cm²",e:"12 × 6 = 72."}
+]},
+{ name:"Test 4", qs:[
+{q:"Round 4,768 to the nearest hundred.",o:["4,700","4,760","4,800","5,000"],a:"4,800",e:"68 rounds up, so 4,800."},
+{q:"Calculate: 345 + 478 + 126",o:["939","949","959","969"],a:"949",e:"345+478+126 = 949."},
+{q:"Calculate: 1,250 - 675",o:["565","575","585","595"],a:"575",e:"1250 - 675 = 575."},
+{q:"What is 32 × 8?",o:["246","256","266","276"],a:"256",e:"32 × 8 = 256."},
+{q:"What is 315 ÷ 9?",o:["30","35","40","45"],a:"35",e:"315 ÷ 9 = 35."},
+{q:"Which fraction is equivalent to 3/4?",o:["4/6","6/8","5/8","3/8"],a:"6/8",e:"6/8 = 3/4."},
+{q:"A shop sells 15 bags of rice each day for 6 days. How many bags are sold altogether?",o:["80","85","90","95"],a:"90",e:"15 × 6 = 90."},
+{q:"How many minutes are there in 3 hours?",o:["120","150","180","210"],a:"180",e:"3 × 60 = 180."},
+{q:"A bottle contains 750 millilitres of juice. How much juice is in 2 identical bottles?",o:["1,250 ml","1,400 ml","1,500 ml","1,750 ml"],a:"1,500 ml",e:"750 × 2 = 1500."},
+{q:"A rectangle has a perimeter of 30 cm. Its length is 9 cm. What is its width?",o:["5 cm","6 cm","7 cm","8 cm"],a:"6 cm",e:"Perimeter 30, so 9+width=15, width=6."},
+{q:"What is the place value of 8 in 6,834?",o:["8","80","800","8,000"],a:"800",e:"8 is in hundreds = 800."},
+{q:"Calculate: 725 + 386",o:["1,101","1,111","1,121","1,131"],a:"1,111",e:"725 + 386 = 1111."},
+{q:"Calculate: 1,500 - 785",o:["705","715","725","735"],a:"715",e:"1500 - 785 = 715."},
+{q:"What is 45 × 6?",o:["250","260","270","280"],a:"270",e:"45 × 6 = 270."},
+{q:"What is 288 ÷ 9?",o:["30","31","32","33"],a:"32",e:"288 ÷ 9 = 32."},
+{q:"Which decimal represents 7/10?",o:["0.07","0.7","7.0","0.17"],a:"0.7",e:"7/10 = 0.7."},
+{q:"A farmer packs 24 oranges into each box. How many oranges are in 8 boxes?",o:["182","192","202","212"],a:"192",e:"24 × 8 = 192."},
+{q:"How many months are there in 3 years?",o:["24","30","36","48"],a:"36",e:"3 × 12 = 36."},
+{q:"A class has 32 students. One-quarter of the students are absent. How many students are absent?",o:["6","8","10","12"],a:"8",e:"32 ÷ 4 = 8."},
+{q:"A rectangular floor is 11 metres long and 7 metres wide. What is its area?",o:["18 square metres","36 square metres","77 square metres","88 square metres"],a:"77 square metres",e:"11 × 7 = 77."}
+]},
+{ name:"Test 5", qs:[
+{q:"What is the value of the digit 5 in 7,563?",o:["5","50","500","5,000"],a:"500",e:"5 is in hundreds = 500."},
+{q:"Calculate: 648 + 579",o:["1,217","1,227","1,237","1,247"],a:"1,227",e:"648 + 579 = 1227."},
+{q:"Calculate: 2,000 - 846",o:["1,144","1,154","1,164","1,174"],a:"1,154",e:"2000 - 846 = 1154."},
+{q:"What is 36 × 7?",o:["242","252","262","272"],a:"252",e:"36 × 7 = 252."},
+{q:"What is 324 ÷ 6?",o:["52","53","54","55"],a:"54",e:"324 ÷ 6 = 54."},
+{q:"Which fraction is equivalent to 2/3?",o:["3/6","4/6","5/6","2/6"],a:"4/6",e:"4/6 = 2/3."},
+{q:"A school purchases 9 packs of pencils. Each pack contains 36 pencils. How many pencils are purchased?",o:["314","324","334","344"],a:"324",e:"9 × 36 = 324."},
+{q:"How many seconds are there in 4 minutes?",o:["120","180","240","300"],a:"240",e:"4 × 60 = 240."},
+{q:"A shopkeeper has $1,000. She spends $375 on groceries and $248 on supplies. How much money remains?",o:["$367","$377","$387","$397"],a:"$377",e:"1000 - 375 - 248 = 377."},
+{q:"A rectangular field is 15 metres long and 8 metres wide. What is its perimeter?",o:["23 metres","38 metres","46 metres","120 metres"],a:"46 metres",e:"2×(15+8)=46."},
+{q:"What is the next number in this pattern? 240, 260, 280, 300, ___",o:["310","320","330","340"],a:"320",e:"Adding 20 each time."},
+{q:"Calculate: 1,245 + 678",o:["1,913","1,923","1,933","1,943"],a:"1,923",e:"1245 + 678 = 1923."},
+{q:"A farmer has 864 eggs. He packs them equally into 12 trays. How many eggs are in each tray?",o:["62","68","72","78"],a:"72",e:"864 ÷ 12 = 72."},
+{q:"What is 125 × 8?",o:["800","900","1,000","1,100"],a:"1,000",e:"125 × 8 = 1000."},
+{q:"Which fraction is equal to 0.5?",o:["1/4","1/3","1/2","3/4"],a:"1/2",e:"1/2 = 0.5."},
+{q:"A school bus carries 48 students. How many students can 7 buses carry?",o:["326","336","346","356"],a:"336",e:"48 × 7 = 336."},
+{q:"How many centimetres are in 4.5 metres?",o:["45 cm","400 cm","450 cm","4,500 cm"],a:"450 cm",e:"4.5 × 100 = 450."},
+{q:"A lesson begins at 10:25 a.m. and lasts 1 hour 40 minutes. When does it end?",o:["11:55 a.m.","12:05 p.m.","12:15 p.m.","12:25 p.m."],a:"12:05 p.m.",e:"10:25 + 1h40 = 12:05."},
+{q:"A rectangle has a length of 14 cm and a width of 9 cm. What is its area?",o:["23 cm²","46 cm²","116 cm²","126 cm²"],a:"126 cm²",e:"14 × 9 = 126."},
+{q:"Jamaica's national football team has 11 players on the field. How many players are on the field altogether in 6 teams?",o:["56","60","66","72"],a:"66",e:"11 × 6 = 66."}
+]}
 ];
-let i=0,score=0;
-const box=document.getElementById('quiz'),prog=document.getElementById('progress');
-function show(){
-if(i>=qs.length){box.innerHTML=`<h2 style="font-size:22px">Done! 🎉</h2><p style="margin-top:10px;font-size:19px">Score: ${score} / 20</p><p style="margin-top:8px">${score>=16?"Excellent! PEP ready!":score>=10?"Good work, keep practising!":"Keep practising, you will get there!"}</p><button class="btn" onclick="i=0;score=0;show()">Try Again</button>`;prog.textContent="Complete";return;}
-prog.textContent=`Question ${i+1} of 20  •  Score: ${score}`;
-const q=qs[i];
-box.innerHTML=`<div class="q">${i+1}. ${q.q}</div>`+q.o.map((o,idx)=>`<button class="opt" onclick="check(this,${idx})">${String.fromCharCode(65+idx)}. ${o}</button>`).join('')+`<div class="feedback" id="fb"></div>`;
+let curTest=0, curQ=0, score=0, lastScore=0;
+const tabs=document.getElementById('tabs'), box=document.getElementById('box');
+tests.forEach((t,i)=>{let b=document.createElement('button');b.textContent=t.name;b.onclick=()=>startTest(i);tabs.appendChild(b);});
+function updateTabs(){[...tabs.children].forEach((b,i)=>b.classList.toggle('active',i===curTest));}
+function startTest(i){curTest=i;curQ=0;score=0;updateTabs();showQ();}
+function showQ(){
+ let t=tests[curTest], q=t.qs[curQ];
+ box.innerHTML=`<p>📘 ${t.name} - Question ${curQ+1} of 20</p><div class="q">${q.q}</div>`+q.o.map(o=>`<button class="opt" onclick="check(this,'${o.replace(/'/g,"")}')">${o}</button>`).join('')+`<div id="fb"></div>`;
 }
-function check(btn,idx){
-const q=qs[i];const btns=document.querySelectorAll('.opt');
-btns.forEach(b=>b.disabled=true);
-if(idx===q.a){btn.classList.add('correct');score++;document.getElementById('fb').textContent="✅ Correct! "+q.e;}
-else{btn.classList.add('wrong');btns[q.a].classList.add('correct');document.getElementById('fb').textContent="❌ Not quite. "+q.e;}
-const n=document.createElement('button');n.className='btn';n.textContent=i===qs.length-1?"See Score":"Next →";n.onclick=()=>{i++;show()};box.appendChild(n);
+function check(btn, picked){
+ let t=tests[curTest], q=t.qs[curQ];
+ let correct = picked===q.a;
+ document.querySelectorAll('.opt').forEach(b=>{b.disabled=true; if(b.textContent===q.a) b.classList.add('correct');});
+ if(correct){score++; btn.classList.add('correct');} else btn.classList.add('wrong');
+ document.getElementById('fb').innerHTML=`<div class="exp"><b>${correct?'✅ Correct!':'❌ Not quite.'}</b> ${q.e}<br><button class="next" onclick="nextQ()">${curQ===19?'See My Score →':'Next Question →'}</button></div>`;
 }
-show();
-</script>
-</body>
-</html>
+function nextQ(){ if(curQ<19){curQ++; showQ();} else showResult(); }
+function showResult(){
+ lastScore=score;
+ let saved = localStorage.getItem('momNum')||'';
+ let nextBtn = curTest<4 ? `<button class="next" onclick="startTest(${curTest+1})">Next Test → ${tests[curTest+1].name}</button>` : `<p class="small">🎉 You finished all 5 tests! Great job!</p>`;
+ box.innerHTML=`<div class="big">🎉 Done! ${tests[curTest].name}<br><br>Score: <b>${score} / 20</b><br><span style="font-size:14px;color:#555">This score is LOCKED - it is filled in automatically</span></div>
+ <p style="margin-top:16px">Send score to Mom / anyone:</p>
+ <input id="phone" placeholder="Type WhatsApp number e.g. 18761234567" value="${saved}">
+ <p class="small">Type number with country code - Jamaica is 1 + 876 / 658. No spaces or -</p>
+ <button class="wa" onclick="sendWA()">Send Score on WhatsApp 📲</button>
+ ${nextBtn}`;
+}
+function sendWA(){
+ let num=document.getElementById('phone').value.replace(/[^0-9]/g,'');
+ if(num.length<10){alert('Please type a full WhatsApp number, e.g. 18761234567'); return;}
+ localStorage.setItem('momNum', num);
+ let msg=`Hi Mom, I finished ${tests[curTest].name} - Grade 4 PEP Number. My score is ${lastScore} / 20. 🎉`;
+ window.open('https://wa.me/'+num+'?text='+encodeURIComponent(msg),'_blank');
+}
+startTest(0);
+</script></body></html>
