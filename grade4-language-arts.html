@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8">
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Grade 4 Language Arts</title>
 <style>
 body{font-family:Arial;background:#eef2ff;margin:0;padding:16px}
 .card{background:#fff;border-radius:16px;padding:20px;max-width:600px;margin:0 auto;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.08)}
 .back{display:block;background:#1a365d;color:white;text-align:center;padding:14px;border-radius:12px;text-decoration:none;font-weight:bold;max-width:600px;margin:0 auto 16px}
 #menu{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}
-#menu button{width:auto;padding:10px 18px;border-radius:20px;background:#e2e8f0;border:none;font-weight:bold;cursor:pointer}
+#menu button{padding:10px 16px;border-radius:20px;background:#e2e8f0;border:none;font-weight:bold;cursor:pointer}
 #quiz button{width:100%;padding:14px;margin:6px 0;border-radius:10px;border:1px solid #ddd;background:white;text-align:left;cursor:pointer;font-size:16px}
 #quiz button.correct{background:#dcfce7;border-color:green}
 #quiz button.wrong{background:#fee2e2;border-color:red}
 .wa{display:inline-block;background:#25D366;color:white;padding:14px 20px;border-radius:12px;text-decoration:none;font-weight:bold;margin-top:12px}
-.next{background:#1a365d;color:white;font-weight:bold}
+.next{background:#1a365d!important;color:white!important;font-weight:bold;text-align:center!important}
 .progress{background:#e2e8f0;border-radius:10px;height:10px;margin:10px 0}
 .progress div{background:#2563eb;height:10px;border-radius:10px}
 </style></head>
@@ -27,10 +27,128 @@ body{font-family:Arial;background:#eef2ff;margin:0;padding:16px}
 </div>
 <a class="back" href="index.html">← Back to PEP Practice Centre</a>
 <script>
+function Q(q,o,a){return{q:q,o:o,a:a}}
 const tests=[
-{name:"Batch 1 - Test", qs:[
-{q:"Sample question?", o:["A","B","C","D"], a:0}
+{name:"Batch 1 - Nouns",qs:[
+Q("Which word is a noun?",["run","happy","dog","quickly"],2),
+Q("Which is a proper noun?",["city","jamaica","boy","school"],1),
+Q("Which is a common noun?",["Kingston","Mary","teacher","Bob"],2),
+Q("The ___ is barking.",["dog","run","happy","quick"],0),
+Q("Which word names a place?",["Kingston","run","blue","eat"],0),
+Q("Which is a plural noun?",["box","boxes","boxs","boxe"],1),
+Q("Which word names a thing?",["book","sing","loud","fast"],0),
+Q("Which is a collective noun?",["team","run","red","jump"],0),
+Q("Choose the noun: The girl sings.",["sings","girl","The",""],1),
+Q("Which is a person?",["doctor","table","river","happy"],0)
 ]},
+{name:"Batch 2 - Verbs",qs:[
+Q("Which word is a verb?",["jump","red","dog","table"],0),
+Q("She ___ to school.",["goes","red","book","happy"],0),
+Q("They ___ football.",["play","ball","red","big"],0),
+Q("Which is past tense?",["run","ran","running","runs"],1),
+Q("He ___ now.",["is sleeping","sleepy","book","red"],0),
+Q("Choose the verb: Birds fly.",["Birds","fly","The",""],1),
+Q("We ___ our homework.",["do","book","happy","table"],0),
+Q("Which is future? I ___ go.",["will","went","gone","goes"],0),
+Q("She ___ a song.",["sings","song","pretty","red"],0),
+Q("They ___ happy.",["are","table","run","quick"],0)
+]},
+{name:"Batch 3 - Adjectives",qs:[
+Q("Which word describes?",["big","run","dog","eat"],0),
+Q("The ___ ball.",["red","run","jump","eat"],0),
+Q("Which is an adjective?",["happy","sing","dog","quickly"],0),
+Q("A ___ day.",["sunny","run","eat","dog"],0),
+Q("The tall ___", ["boy","run","eat","quickly"],0),
+Q("Which describes size?",["huge","run","sing","eat"],0),
+Q("She has a ___ dress.",["pretty","run","jump","eat"],0),
+Q("The ___ lion roared.",["loud","run","eat","dog"],0),
+Q("Choose adjective: cold water.",["cold","water","drink",""],0),
+Q("A ___ story.",["funny","run","eat","jump"],0)
+]},
+{name:"Batch 4 - Punctuation",qs:[
+Q("Which ends a question?",["?",".","!"," , "],0),
+Q("Which ends a statement?",[".","?","!"," , "],0),
+Q("Which shows excitement?",["!",".","?"," , "],0),
+Q("What is this ? called?",["Question mark","Full stop","Comma","Exclamation"],0),
+Q("We need a ___ after a sentence.",["full stop","comma","question","run"],0),
+Q("Which is correct?",["Hello.","hello","Hello","Hello,"],0),
+Q("Capital letter starts a ___", ["sentence","comma","verb","adjective"],0),
+Q("Which needs a capital? ___ is in Jamaica.",["kingston","Kingston","run","eat"],1),
+Q("I am ___ Use capital I.",["i","I","me","my"],1),
+Q("Which is correct?",["My name is Sam.","my name is sam","My name is sam","my Name is Sam"],0)
+]},
+{name:"Batch 5 - Pronouns",qs:[
+Q("___ is my friend.",["She","Run","Book","Happy"],0),
+Q("This is ___ book.",["my","run","eat","dog"],0),
+Q("___ are playing.",["They","Run","Book","Red"],0),
+Q("Give it to ___.",["him","run","book","red"],0),
+Q("___ am happy.",["I","Run","Eat","Dog"],0),
+Q("This is for ___.",["you","run","eat","dog"],0),
+Q("___ is a teacher.",["He","Run","Book","Red"],0),
+Q("The dog wagged ___ tail.",["its","run","eat","dog"],0),
+Q("___ will help you.",["We","Run","Book","Red"],0),
+Q("Is this ___?",["yours","run","eat","dog"],0)
+]},
+{name:"Batch 6 - Tenses",qs:[
+Q("Yesterday I ___ to school.",["went","go","going","goes"],0),
+Q("Tomorrow I ___ go.",["will","went","gone","goes"],0),
+Q("She is ___ now.",["reading","read","reads","red"],0),
+Q("He ___ yesterday.",["played","play","plays","playing"],0),
+Q("We ___ every day.",["play","played","will play","playing"],0),
+Q("They ___ now.",["are eating","eat","ate","eaten"],0),
+Q("I ___ a book yesterday.",["read","reads","reading","will read"],0),
+Q("She ___ to sing.",["likes","like","liking","liked"],0),
+Q("He ___ finished.",["has","have","had","having"],0),
+Q("We ___ going tomorrow.",["are","is","was","were"],0)
+]},
+{name:"Batch 7 - Comprehension 1",qs:[
+Q("Sam has a red ball. What colour is the ball?",["red","blue","green","yellow"],0),
+Q("Sam has a red ball. Who has the ball?",["Sam","Tom","Mary","Bob"],0),
+Q("Mary likes mangoes. What does Mary like?",["mangoes","apples","bananas","oranges"],0),
+Q("The cat is on the mat. Where is the cat?",["on the mat","under table","in box","on roof"],0),
+Q("It is raining. What should you take?",["umbrella","ball","book","hat"],0),
+Q("John runs fast. How does John run?",["fast","slow","sad","late"],0),
+Q("The sun is hot. The sun is ___", ["hot","cold","wet","dark"],0),
+Q("Birds can ___.",["fly","swim","run fast","talk"],0),
+Q("We eat with a ___.",["spoon","ball","book","hat"],0),
+Q("School starts at 8. What time?",["8","9","10","7"],0)
+]},
+{name:"Batch 8 - Synonyms / Antonyms",qs:[
+Q("Happy means ___", ["glad","sad","angry","tired"],0),
+Q("Big is opposite of ___", ["small","huge","large","tall"],0),
+Q("Fast means ___", ["quick","slow","late","sad"],0),
+Q("Hot is opposite of ___", ["cold","warm","sunny","bright"],0),
+Q("Brave means ___", ["fearless","scared","sad","tired"],0),
+Q("Begin is opposite of ___", ["end","start","go","run"],0),
+Q("Rich is opposite of ___", ["poor","happy","big","tall"],0),
+Q("Quiet means ___", ["silent","loud","noisy","fast"],0),
+Q("Good is opposite of ___", ["bad","nice","kind","happy"],0),
+Q("Easy means ___", ["simple","hard","long","tall"],0)
+]},
+{name:"Batch 9 - Plurals / Spelling",qs:[
+Q("Plural of child?",["children","childs","childes","childen"],0),
+Q("Plural of box?",["boxes","boxs","box","boxe"],0),
+Q("Plural of baby?",["babies","babys","baby","babyes"],0),
+Q("Spell: c _ t", ["cat","cet","cut","cot"],0),
+Q("Spell: d _ g", ["dog","dag","dig","dug"],0),
+Q("Which is spelled right?",["school","skool","schol","scool"],0),
+Q("Plural of man?",["men","mans","manes","mens"],0),
+Q("Plural of woman?",["women","womans","womanes","womens"],0),
+Q("Which is correct?",["I am happy.","I are happy","I is happy","I am happi"],0),
+Q("Plural of tooth?",["teeth","tooths","toothes","teath"],0)
+]},
+{name:"Batch 10 - Mixed PEP",qs:[
+Q("Which is a sentence?",["The dog runs.","dog runs","runs dog","the dog"],0),
+Q("Choose the correct word: She ___ a book.",["reads","read","reading","red"],0),
+Q("Which word is a noun and verb? run", ["run","happy","red","quickly"],0),
+Q("The opposite of early is ___", ["late","fast","soon","quick"],0),
+Q("Which uses 'an' correctly?",["an apple","an dog","an cat","an book"],0),
+Q("Which uses 'a' correctly?",["a ball","a apple","a orange","a egg"],0),
+Q("Where ___ you going?",["are","is","am","was"],0),
+Q("They ___ to school daily.",["go","goes","going","gone"],0),
+Q("My favourite colour ___ blue.",["is","are","am","were"],0),
+Q("Which is a question?",["Where are you?","I am here.","She is nice.","It is hot."],0)
+]}
 ];
 let menu=document.getElementById("menu");
 tests.forEach((t,i)=>{let b=document.createElement("button");b.textContent=t.name;b.onclick=()=>startQuiz(i);menu.appendChild(b);});
@@ -56,15 +174,8 @@ quiz.innerHTML="<h3>"+q.q+"</h3>"+q.o.map((opt,j)=>"<button onclick='check(this,
 window.check=(btn,j)=>{
 let btns=quiz.querySelectorAll("button");
 btns.forEach(b=>b.disabled=true);
-if(j===q.a){
-score++;
-btn.classList.add("correct");
-document.getElementById("feedback").innerHTML="<p style='color:green'><b>Correct! ✅</b></p>";
-}else{
-btn.classList.add("wrong");
-btns[q.a].classList.add("correct");
-document.getElementById("feedback").innerHTML="<p style='color:red'><b>Wrong. Correct answer was: "+q.o[q.a]+"</b></p>";
-}
+if(j===q.a){score++;btn.classList.add("correct");document.getElementById("feedback").innerHTML="<p style='color:green'><b>Correct! ✅</b></p>";}
+else{btn.classList.add("wrong");btns[q.a].classList.add("correct");document.getElementById("feedback").innerHTML="<p style='color:red'><b>Wrong. Correct answer was: "+q.o[q.a]+"</b></p>";}
 updateTop();
 document.getElementById("feedback").innerHTML+="<button class='next' onclick='nextQ()'>Next Question →</button>";
 window.nextQ=()=>{qi++;showQ();};
