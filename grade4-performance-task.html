@@ -4,117 +4,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grade 4 - Performance Task Preparation | PEPLink JA</title>
-
+<title>Grade 4 Performance Task | PEPLink JA</title>
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f2f5fa;
-  color: #26364a;
-}
-
-header {
-  background: #102b55;
-  color: white;
-  text-align: center;
-  padding: 25px 15px;
-}
-
-header h1 {
-  margin: 0 0 9px;
-  font-size: 25px;
-}
-
-header p {
-  margin: 0;
-  font-size: 14px;
-  color: #dce8fa;
-}
-
-.container {
-  max-width: 850px;
-  margin: 22px auto;
-  padding: 0 15px;
-}
-
-.section {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 17px;
-  border-left: 7px solid;
-  box-shadow: 0 2px 7px rgba(0,0,0,0.07);
-}
-
-.math { border-color: #2463bd; }
-.practice { border-color: #269653; }
-.samples { border-color: #e49a25; }
-
-.section h2 {
-  margin: 0 0 8px;
-  font-size: 19px;
-}
-
-.section p {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.section .number {
-  font-size: 12px;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #68788c;
-}
-
-footer {
-  text-align: center;
-  padding: 22px;
-  font-size: 12px;
-  color: #63748a;
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f5fa;color:#26364a}
+header{background:#102b55;color:white;text-align:center;padding:25px 15px}
+header h1{margin:0 0 8px;font-size:25px}
+header h2{margin:0 0 8px;font-size:20px}
+header p{margin:0;color:#dce8fa;font-size:14px}
+.container{max-width:850px;margin:22px auto;padding:0 15px}
+.section{background:white;border-radius:12px;padding:20px;margin-bottom:18px;border-left:7px solid;box-shadow:0 2px 7px #00000012}
+.math{border-color:#2463bd}
+.practice{border-color:#269653}
+.samples{border-color:#e49a25}
+.section h2{font-size:19px;margin:0 0 8px}
+.section p{font-size:14px;line-height:1.5}
+.number{font-size:12px;font-weight:bold;color:#68788c;margin-bottom:8px}
+.task{background:#f5f8fd;border-radius:10px;padding:15px;margin-top:15px}
+.task h3{color:#174a91;font-size:17px}
+.question{background:white;padding:12px;border-radius:8px;margin:12px 0}
+button{background:#2463bd;color:white;border:0;border-radius:7px;padding:11px 16px;font-weight:bold;cursor:pointer}
+.answer{display:none;background:#e6f5eb;padding:12px;border-radius:8px;margin-top:10px}
+footer{text-align:center;padding:22px;font-size:12px;color:#63748a}
 </style>
 </head>
-
 <body>
 
 <header>
-  <h1>GRADE 4</h1>
-  <h2>PERFORMANCE TASK PREPARATION</h2>
-  <p>Building Practical Skills, Reasoning & Problem-Solving</p>
+<h1>GRADE 4</h1>
+<h2>PERFORMANCE TASK PREPARATION</h2>
+<p>Building Practical Skills, Reasoning & Problem-Solving</p>
 </header>
 
 <main class="container">
 
-  <section class="section math" id="mathematics">
-    <div class="number">SECTION 01</div>
-    <h2>MATHEMATICS PERFORMANCE TASK</h2>
-    <p>Real-Life Problems, Mathematical Reasoning & Applications</p>
-  </section>
+<section class="section math">
+<div class="number">SECTION 01</div>
+<h2>MATHEMATICS PERFORMANCE TASK</h2>
+<p>Real-Life Problems, Mathematical Reasoning & Applications</p>
 
-  <section class="section practice" id="practice">
-    <div class="number">SECTION 02</div>
-    <h2>PRACTICE ACTIVITIES</h2>
-    <p>Guided Activities & Independent Practice</p>
-  </section>
+<div class="task">
+<h3>ACTIVITY 1: PLANNING A SHOPPING BUDGET</h3>
+<p><strong>Scenario:</strong> You are given $1,000 to purchase items for your home.</p>
+<p>Study the shopping list below:</p>
 
-  <section class="section samples" id="samples">
-    <div class="number">SECTION 03</div>
-    <h2>SAMPLE TASKS & ANSWERS</h2>
-    <p>Model Responses, Explanations & Learning Support</p>
-  </section>
+<div class="question">
+<p>Rice – $250</p>
+<p>Bread – $180</p>
+<p>Milk – $220</p>
+<p>Juice – $150</p>
+</div>
+
+<p><strong>Task 1:</strong> Calculate the total cost of all four items.</p>
+<p><strong>Task 2:</strong> How much money will remain from $1,000?</p>
+<p><strong>Task 3:</strong> If you add an item costing $120, will you stay within your budget?</p>
+
+<button onclick="showAnswer('answer1')">Show Answers</button>
+<div class="answer" id="answer1">
+<strong>Suggested answers:</strong>
+<p>1. $250 + $180 + $220 + $150 = $800</p>
+<p>2. $1,000 − $800 = $200</p>
+<p>3. Yes. $800 + $120 = $920. You will have $80 remaining.</p>
+</div>
+</div>
+</section>
+
+<section class="section practice">
+<div class="number">SECTION 02</div>
+<h2>PRACTICE ACTIVITIES</h2>
+<p>Guided Activities & Independent Practice</p>
+<p>Practice activities will help students apply mathematical skills to everyday situations.</p>
+<p><strong>Activities coming next.</strong></p>
+</section>
+
+<section class="section samples">
+<div class="number">SECTION 03</div>
+<h2>SAMPLE TASKS & ANSWERS</h2>
+<p>Model Responses, Explanations & Learning Support</p>
+<p>Sample tasks and model responses will support independent learning.</p>
+<p><strong>Additional samples coming next.</strong></p>
+</section>
 
 </main>
 
 <footer>
-  PEPLink JA | One Tablet. One Organised Learning Experience.
+PEPLink JA | One Tablet. One Organised Learning Experience.
 </footer>
+
+<script>
+function showAnswer(id){
+const box=document.getElementById(id);
+box.style.display=box.style.display==="block"?"none":"block";
+}
+</script>
 
 </body>
 </html>
