@@ -169,6 +169,7 @@ function showResult(){
 }
 function sendWA(){
  let num=document.getElementById('phone').value.replace(/[^0-9]/g,'');
+ if(num.length===10 && (num.startsWith('876')||num.startsWith('658'))) num='1'+num;
  if(num.length<10){alert('Please type a full WhatsApp number, e.g. 18761234567'); return;}
  localStorage.setItem('momNum', num);
  let msg=`Hi Mom, I finished ${tests[curTest].name} - Grade 4 PEP Number. My score is ${lastScore} / 20. 🎉`;
