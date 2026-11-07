@@ -3,42 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grade 4 - PEP Practice Centre</title>
+<title>Number File 1 - 20 Questions</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-body{background:#f0f4f8;padding:16px}
-.wrap{max-width:700px;margin:0 auto}
-.top{background:#1e3a8a;color:#fff;padding:24px 18px;border-radius:16px;text-align:center}
-.top h1{font-size:26px}
-.top p{margin-top:6px;opacity:.9}
-a.card{display:block;text-decoration:none;color:#fff;background:#1d4ed8;padding:18px;border-radius:16px;margin-top:14px}
-a.card h2{font-size:22px}
-a.card p{font-size:15px;margin-top:4px;opacity:.9}
-a.green{background:#16a34a}
-a.grey{background:#9ca3af;color:#fff}
-a.black{background:#111827}
+body{background:#f0f4f8;padding:14px}
+.wrap{max-width:650px;margin:0 auto}
+.top{background:#1e3a8a;color:#fff;padding:18px;border-radius:14px;text-align:center}
+.top h1{font-size:22px}
+.top p{font-size:14px;margin-top:4px}
+.card{background:#fff;padding:18px;border-radius:14px;margin-top:14px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.q{font-size:19px;font-weight:bold}
+.opt{display:block;width:100%;text-align:left;background:#eef2ff;border:2px solid #c7d2fe;padding:12px;border-radius:10px;margin-top:10px;font-size:17px;cursor:pointer}
+.opt.correct{background:#dcfce7;border-color:#16a34a}
+.opt.wrong{background:#fee2e2;border-color:#dc2626}
+.feedback{margin-top:12px;font-weight:bold;font-size:16px}
+.btn{background:#1d4ed8;color:#fff;border:0;padding:13px 20px;border-radius:10px;font-size:17px;margin-top:14px;cursor:pointer;width:100%}
+.back{display:block;text-align:center;margin-top:14px;color:#1d4ed8;font-weight:bold;text-decoration:none}
+.progress{margin-top:10px;font-size:14px;color:#e0e7ff}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="top"><h1>Grade 4 - PEP Practice Centre</h1><p>Building Strong Foundations</p></div>
-
-<a class="card" href="grade4-math-pep-number-1.html">
-<h2>🔢 Mathematics (Numeracy)</h2><p>PEP-style practice questions</p>
-</a>
-
-<a class="card" href="grade4-language-arts.html">
-<h2>📚 Language Arts (Literacy)</h2><p>Reading, Grammar & Writing</p>
-</a>
-
-<a class="card green" href="grade4-performance-task.html">
-<h2>📝 Performance Task Preparation</h2><p>Practice thinking & communication tasks</p>
-</a>
-
-<a class="card grey" href="#"><h2>🔬 Science - Available 2027</h2></a>
-<a class="card grey" href="#"><h2>🌍 Social Studies - Available 2027</h2></a>
-<a class="card black" href="grade4-hub.html"><h2>Back to Grade hub</h2></a>
-
+<div class="top"><h1>🔢 Number File 1</h1><p>Grade 4 PEP - 20 Multiple Choice Questions</p><div class="progress" id="progress"></div></div>
+<div class="card" id="quiz"></div>
+<a class="back" href="grade4-pep.html">← Back to PEP Centre</a>
 </div>
+<script>
+const qs=[
+{q:"What is the value of the 7 in 7,482?",o:["7,000","700","70","7"],a:0,e:"7 is in the thousands place."},
+{q:"What is 4,356 + 2,419?",o:["6,775","6,765","6,675","6,785"],a:0,e:"4,356 + 2,419 = 6,775."},
+{q:"What is 8,000 - 3,275?",o:["4,725","4,625","5,725","4,735"],a:0,e:"8,000 - 3,275 = 4,725."},
+{q:"Which number is 1,000 more than 5,640?",o:["6,640","5,740","6,540","4,640"],a:0,e:"5,640 + 1,000 = 6,640."},
+{q:"Round 4,678 to the nearest hundred.",o:["4,700","4,600","4,680","5,000"],a:0,e:"78 rounds up, so 4,678 → 4,700."},
+{q:"What is 6 × 8?",o:["48","42","56","54"],a:0,e:"6 × 8 = 48."},
+{q:"What is 72 ÷ 9?",o:["8","9","7","6"],a:0,e:"9 × 8 = 72."},
+{q:"Which is the largest? ",o:["9,102","9,012","9,210","9,120"],a:2,e:"9,210 is largest."},
+{q:"What is 1/2 of 20?",o:["10","5","20","15"],a:0,e:"20 ÷ 2 = 10."},
+{q:"Which fraction is equal to 1/2?",o:["2/4","1/4","3/4","2/3"],a:0,e:"2/4 = 1/2."},
+{q:"What is 3 × 245?",o:["735","635","745","725"],a:0,e:"3 × 245 = 735."},
+{q:"What is 540 ÷ 6?",o:["90","80","60","95"],a:0,e:"6 × 90 = 540."},
+{q:"What is the missing number? 12, 24, 36, __, 60",o:["48","44","40","52"],a:0,e:"Counting in 12s."},
+{q:"Which is an even number?",o:["3,784","3,785","3,787","3,789"],a:0,e:"Ends in 4, so even."},
+{q:"What is 0.5 as a fraction?",o:["1/2","1/4","1/5","2/5"],a:0,e:"0.5 = 1/2."},
+{q:"Maria has 4 bags with 125 marbles each. How many marbles?",o:["500","475","525","450"],a:0,e:"4 × 125 = 500."},
+{q:"What is 9,999 + 1?",o:["10,000","9,1000","10,100","9,990"],a:0,e:"9,999 + 1 = 10,000."},
+{q:"Which number is less than 6,305?",o:["6,295","6,310","6,405","6,350"],a:0,e:"6,295 < 6,305."},
+{q:"What is 15 × 10?",o:["150","15","1,500","105"],a:0,e:"15 × 10 = 150."},
+{q:"A shop sells 318 books on Monday and 276 on Tuesday. How many in total?",o:["594","584","604","592"],a:0,e:"318 + 276 = 594."}
+];
+let i=0,score=0;
+const box=document.getElementById('quiz'),prog=document.getElementById('progress');
+function show(){
+if(i>=qs.length){box.innerHTML=`<h2 style="font-size:22px">Done! 🎉</h2><p style="margin-top:10px;font-size:19px">Score: ${score} / 20</p><p style="margin-top:8px">${score>=16?"Excellent! PEP ready!":score>=10?"Good work, keep practising!":"Keep practising, you will get there!"}</p><button class="btn" onclick="i=0;score=0;show()">Try Again</button>`;prog.textContent="Complete";return;}
+prog.textContent=`Question ${i+1} of 20  •  Score: ${score}`;
+const q=qs[i];
+box.innerHTML=`<div class="q">${i+1}. ${q.q}</div>`+q.o.map((o,idx)=>`<button class="opt" onclick="check(this,${idx})">${String.fromCharCode(65+idx)}. ${o}</button>`).join('')+`<div class="feedback" id="fb"></div>`;
+}
+function check(btn,idx){
+const q=qs[i];const btns=document.querySelectorAll('.opt');
+btns.forEach(b=>b.disabled=true);
+if(idx===q.a){btn.classList.add('correct');score++;document.getElementById('fb').textContent="✅ Correct! "+q.e;}
+else{btn.classList.add('wrong');btns[q.a].classList.add('correct');document.getElementById('fb').textContent="❌ Not quite. "+q.e;}
+const n=document.createElement('button');n.className='btn';n.textContent=i===qs.length-1?"See Score":"Next →";n.onclick=()=>{i++;show()};box.appendChild(n);
+}
+show();
+</script>
 </body>
 </html>
