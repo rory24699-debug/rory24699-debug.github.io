@@ -23,10 +23,10 @@ header p{margin:0;color:#dce8fa;font-size:14px}
 .practice{border-color:#269653}
 .samples{border-color:#e49a25}
 .section h2{font-size:19px}
-.task{background:#f5f8fd;padding:15px;border-radius:10px;margin-top:15px}
-.task h3{color:#174a91}
-.question{background:white;padding:12px;border-radius:8px}
-button{background:#2463bd;color:white;border:0;border-radius:7px;padding:11px 16px;font-weight:bold}
+.task{background:#f5f8fd;padding:15px;border-radius:10px;margin-top:18px}
+.task h3{color:#174a91;font-size:17px}
+.question{background:white;padding:12px;border-radius:8px;margin:12px 0}
+button{background:#2463bd;color:white;border:0;border-radius:7px;padding:11px 16px;font-weight:bold;cursor:pointer}
 .answer{display:none;background:#e6f5eb;padding:12px;border-radius:8px;margin-top:10px}
 .back{display:inline-block;margin-top:15px;color:#2463bd;font-weight:bold}
 footer{text-align:center;padding:22px;font-size:12px;color:#63748a}
@@ -61,33 +61,69 @@ footer{text-align:center;padding:22px;font-size:12px;color:#63748a}
 <h2>MATHEMATICS PERFORMANCE TASK</h2>
 <p>Real-Life Problems, Mathematical Reasoning & Applications</p>
 
+<!-- ACTIVITY 1 -->
 <div class="task">
 <h3>ACTIVITY 1: PLANNING A SHOPPING BUDGET</h3>
-<p>You are given $1,000 to purchase items for your home.</p>
+<p><strong>Scenario:</strong> You are given $1,000 to purchase items for your home.</p>
+
 <div class="question">
 <p>Rice – $250</p>
 <p>Bread – $180</p>
 <p>Milk – $220</p>
 <p>Juice – $150</p>
 </div>
+
 <p><strong>Task 1:</strong> Calculate the total cost.</p>
 <p><strong>Task 2:</strong> How much money will remain?</p>
 <p><strong>Task 3:</strong> If you add an item costing $120, will you stay within budget?</p>
-<button onclick="showAnswer()">Show Answers</button>
-<div class="answer" id="answer">
+
+<button onclick="showAnswer('answer1')">Show Answers</button>
+<div class="answer" id="answer1">
 <strong>Suggested answers:</strong>
 <p>1. $250 + $180 + $220 + $150 = $800</p>
 <p>2. $1,000 − $800 = $200</p>
 <p>3. Yes. $920 total, leaving $80.</p>
 </div>
 </div>
+
+<!-- ACTIVITY 2 -->
+<div class="task">
+<h3>ACTIVITY 2: PLANNING A SCHOOL GARDEN</h3>
+
+<p><strong>Scenario:</strong> Your class is helping to create a vegetable garden at school. The garden will be rectangular.</p>
+
+<div class="question">
+<p>Length of garden: 8 metres</p>
+<p>Width of garden: 5 metres</p>
+<p>Number of rows for planting: 4</p>
+<p>Seedlings in each row: 6</p>
+</div>
+
+<p><strong>Task 1:</strong> What is the length of the garden?</p>
+<p><strong>Task 2:</strong> What is the width of the garden?</p>
+<p><strong>Task 3:</strong> Calculate the perimeter of the garden.</p>
+<p><strong>Task 4:</strong> How many seedlings will be planted altogether?</p>
+<p><strong>Task 5:</strong> If the class buys 30 seedlings, how many will be left over?</p>
+
+<button onclick="showAnswer('answer2')">Show Answers</button>
+
+<div class="answer" id="answer2">
+<strong>Suggested answers:</strong>
+<p>1. Length = 8 metres.</p>
+<p>2. Width = 5 metres.</p>
+<p>3. Perimeter = 8 + 5 + 8 + 5 = 26 metres.</p>
+<p>4. 4 × 6 = 24 seedlings.</p>
+<p>5. 30 − 24 = 6 seedlings left over.</p>
+</div>
+</div>
+
 <a class="back" href="#">↑ Back to top</a>
 </section>
 
 <section class="section practice" id="practice">
 <h2>PRACTICE ACTIVITIES</h2>
 <p>Guided Activities & Independent Practice</p>
-<p>Students will practise applying mathematics to everyday situations.</p>
+<p>Additional activities will help students apply mathematics to everyday situations.</p>
 <p><strong>More activities coming soon.</strong></p>
 <a class="back" href="#">↑ Back to top</a>
 </section>
@@ -95,17 +131,20 @@ footer{text-align:center;padding:22px;font-size:12px;color:#63748a}
 <section class="section samples" id="samples">
 <h2>SAMPLE TASKS & ANSWERS</h2>
 <p>Model Responses, Explanations & Learning Support</p>
-<p><strong>Additional sample tasks coming soon.</strong></p>
+<p>Additional sample tasks and model responses will support independent learning.</p>
+<p><strong>More samples coming soon.</strong></p>
 <a class="back" href="#">↑ Back to top</a>
 </section>
 
 </main>
 
-<footer>PEPLink JA | One Tablet. One Organised Learning Experience.</footer>
+<footer>
+PEPLink JA | One Tablet. One Organised Learning Experience.
+</footer>
 
 <script>
-function showAnswer(){
-const answer=document.getElementById("answer");
+function showAnswer(id){
+const answer=document.getElementById(id);
 answer.style.display=answer.style.display==="block"?"none":"block";
 }
 </script>
