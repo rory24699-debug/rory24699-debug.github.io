@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 4 Language Arts - PEPLink JA</title>
+<style>
+body{font-family:Arial;background:#eef4ff;margin:0;padding:12px}
+.card{background:#fff;border-radius:14px;padding:16px;max-width:700px;margin:auto}
+.back{display:block;background:#1e3a8a;color:#fff;text-align:center;padding:12px;border-radius:10px;text-decoration:none;font-weight:bold;margin:12px auto;max-width:700px}
+button{width:100%;padding:14px;margin:6px 0;border-radius:10px;border:1px solid #ccc;background:#fff;text-align:left;font-size:16px}
+button.correct{background:#dcfce7} button.wrong{background:#fee2e2}
+</style></head>
+<body>
+<a class="back" href="index.html">← Back to PEP Practice Centre</a>
+<div class="card">
+<h2>Grade 4 Language Arts (Literacy)</h2>
+<p>Choose a Batch (10 questions each)</p>
+<div id="menu"></div>
+<div id="quiz" style="display:none"></div>
+<div id="result" style="display:none"></div>
+</div>
+<a class="back" href="index.html">← Back to PEP Practice Centre</a>
+<script>
+const tests=[
+{name:"Batch 1 - Reading Comprehension", qs:[
+{q:"Paste Q1 here", o:["A","B","C","D"], a:0},
+{q:"Paste Q2 here", o:["A","B","C","D"], a:0}
+]},
+{name:"Batch 2 - Vocabulary", qs:[]},
+{name:"Batch 3", qs:[]},
+{name:"Batch 4", qs:[]},
+{name:"Batch 5", qs:[]},
+{name:"Batch 6", qs:[]},
+{name:"Batch 7", qs:[]},
+{name:"Batch 8", qs:[]},
+{name:"Batch 9", qs:[]},
+{name:"Batch 10", qs:[]}
+];
+let curTest=0, curQ=0, score=0;
+const menu=document.getElementById('menu');
+tests.forEach((t,i)=>{let b=document.createElement('button');b.textContent=t.name+" ("+t.qs.length+" questions)";b.onclick=()=>startTest(i);menu.appendChild(b);});
+function startTest(i){curTest=i;curQ=0;score=0;menu.style.display='none';document.getElementById('quiz').style.display='block';showQ();}
+function showQ(){let t=tests[curTest];if(curQ>=t.qs.length){showResult();return;}let q=t.qs[curQ];let d=document.getElementById('quiz');d.innerHTML="<h3>"+t.name+" - Q"+(curQ+1)+" of "+t.qs.length+"</h3><p>"+q.q+"</p>";q.o.forEach((opt,j)=>{let b=document.createElement('button');b.textContent=["A) ","B) ","C) ","D) "][j]+opt;b.onclick=()=>{if(j===q.a){score++;b.classList.add('correct');}else{b.classList.add('wrong');}setTimeout(()=>{curQ++;showQ();},400);};d.appendChild(b);});}
+function showResult(){document.getElementById('quiz').style.display='none';let r=document.getElementById('result');r.style.display='block';let t=tests[curTest];r.innerHTML="<h3>Finished "+t.name+"</h3><p>Score: "+score+" / "+t.qs.length+"</p><p>Type WhatsApp number e.g. 18761234567</p><input id='phone' placeholder='Type WhatsApp number' style='width:100%;padding:12px'><button onclick='sendWA()'>Send Score to Mom / Dad</button><button onclick='location.reload()'>Back to Batches</button>";}
+function sendWA(){let num=document.getElementById('phone').value.replace(/[^0-9]/g,'');if(num.length===10 && (num.startsWith('876')||num.startsWith('658'))) num='1'+num;if(num.length!==11){alert('Please type a full WhatsApp number, e.g. 18761234567');return;}let t=tests[curTest];let msg="PEPLink JA - Grade 4 Language Arts - Finished "+t.name+" - Score: "+score+" / "+t.qs.length;window.open("https://wa.me/"+num+"?text="+encodeURIComponent(msg));}
+</script></body></html>
