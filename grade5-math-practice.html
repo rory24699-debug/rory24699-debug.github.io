@@ -5,63 +5,188 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Grade 5 Practice - PEPLink JA</title>
 <style>
-body{font-family:Arial,sans-serif;background:#f1f5f9;margin:0}
-.header{background:#14532d;color:white;padding:25px;text-align:center;border-radius:0 0 18px 18px}
-.header h1{margin:0;font-size:32px}
-.header h2{margin:10px 0 5px}
-.container{max-width:600px;margin:auto;padding:15px}
-.card{background:white;padding:18px;border-radius:10px;margin-bottom:15px;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
-button{background:#14532d;color:white;border:none;padding:12px 18px;border-radius:8px;margin:5px;font-weight:bold;font-size:16px}
-a{color:#14532d}
-label{display:block;padding:8px 0}
+body{font-family:Arial,sans-serif;background:#eef2ff;margin:0;padding:15px}
+.container{max-width:600px;margin:auto}
+.card{background:white;padding:20px;border-radius:18px;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-align:center}
+h1{font-size:28px;margin:5px 0}
+.sub{color:#555;margin-bottom:15px}
+.tests{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:15px}
+.tests button{background:#ddd;border:none;padding:10px 16px;border-radius:20px;font-weight:bold;font-size:16px;cursor:pointer}
+.tests button.active{background:#2563eb;color:white}
+.q{font-size:22px;font-weight:bold;text-align:left;margin:15px 0}
+.opt{display:block;width:100%;text-align:left;background:white;border:2px solid #ddd;padding:14px;border-radius:12px;margin:8px 0;font-size:19px;cursor:pointer}
+.opt.correct{background:#dcfce7;border-color:#16a34a}
+.opt.wrong{background:#fee2e2;border-color:#dc2626}
+.opt:disabled{opacity:.6}
+.feedback{background:#fef9c3;padding:14px;border-radius:12px;text-align:left;margin-top:12px;font-size:18px;display:none}
+.feedback button{background:#2563eb;color:white;border:none;padding:14px;width:100%;border-radius:10px;font-weight:bold;font-size:19px;margin-top:10px;cursor:pointer}
+input[type=tel]{width:100%;padding:14px;border:2px solid #ddd;border-radius:12px;font-size:19px;box-sizing:border-box}
+.wa{background:#22c55e;color:white;border:none;padding:15px;width:100%;border-radius:12px;font-weight:bold;font-size:19px;margin-top:12px;cursor:pointer}
+.nextTest{background:#2563eb;color:white;border:none;padding:15px;width:100%;border-radius:12px;font-weight:bold;font-size:19px;margin-top:12px;cursor:pointer}
+.back{display:block;background:#1e3a5f;color:white;text-align:center;padding:16px;border-radius:12px;text-decoration:none;font-weight:bold;font-size:19px;margin-top:15px}
 </style>
 </head>
 <body>
-<div class="header"><h1>PEPLink JA</h1><h2>Grade 5 Mathematics</h2><p>Practice Questions</p></div>
 <div class="container">
-<p>Choose the correct answer for each question.</p>
-
-<div class="card"><h3>1. What is 25% of 200?</h3>
-<label><input type="radio" name="q1" value="50"> 50</label>
-<label><input type="radio" name="q1" value="25"> 25</label>
-<label><input type="radio" name="q1" value="100"> 100</label></div>
-
-<div class="card"><h3>2. Area of 12m x 8m?</h3>
-<label><input type="radio" name="q2" value="96"> 96 sqm</label>
-<label><input type="radio" name="q2" value="20"> 20</label>
-<label><input type="radio" name="q2" value="96m"> 96m</label></div>
-
-<div class="card"><h3>3. What is 7.5 + 2.35?</h3>
-<label><input type="radio" name="q3" value="9.85"> 9.85</label>
-<label><input type="radio" name="q3" value="9.75"> 9.75</label>
-<label><input type="radio" name="q3" value="10.85"> 10.85</label></div>
-
-<div class="card"><h3>4. Which fraction equals 75%?</h3>
-<label><input type="radio" name="q4" value="3/4"> 3/4</label>
-<label><input type="radio" name="q4" value="1/2"> 1/2</label>
-<label><input type="radio" name="q4" value="2/3"> 2/3</label></div>
-
-<div class="card"><h3>5. Tank 240L, 1/3 used. How much left?</h3>
-<label><input type="radio" name="q5" value="160"> 160 litres</label>
-<label><input type="radio" name="q5" value="80"> 80 litres</label>
-<label><input type="radio" name="q5" value="120"> 120 litres</label></div>
-
-<button onclick="check()">Check Answers</button>
-<button onclick="location.reload()">Try Again</button>
-<div id="score" style="font-weight:bold;margin-top:15px;font-size:18px"></div>
-<a href="grade5-pep-practice.html" style="display:block;background:#1e3a5f;color:white;text-align:center;padding:16px;border-radius:12px;text-decoration:none;font-weight:bold;font-size:19px;margin-top:20px">← Back to PEP Practice Centre</a>
+<div class="card">
+<h1>🇯🇲 Grade 5 PEP - Mathematics<br>100 Questions - 5 Tests</h1>
+<p class="sub">Test 1-5 • 20 questions each • Score is locked - no cheating</p>
+<div class="tests" id="testBtns"></div>
+<div id="area"></div>
+</div>
+<a class="back" href="grade5-pep-practice.html">← Back to PEP Practice Centre</a>
 </div>
 <script>
-function check(){
-let s=0;
-if(document.querySelector('input[name="q1"]:checked')?.value=="50")s++;
-if(document.querySelector('input[name="q2"]:checked')?.value=="96")s++;
-if(document.querySelector('input[name="q3"]:checked')?.value=="9.85")s++;
-if(document.querySelector('input[name="q4"]:checked')?.value=="3/4")s++;
-if(document.querySelector('input[name="q5"]:checked')?.value=="160")s++;
-document.getElementById('score').innerText="Score: "+s+" / 5";
-  <a href="grade5-pep-practice.html" style="display:block;background:#1e3a5f;color:white;text-align:center;padding:16px;border-radius:12px;text-decoration:none;font-weight:bold;font-size:19px;margin-top:20px">← Back to PEP Practice Centre</a>
+const DATA={
+1:[
+["What is 25% of 200?",["50","25","100","75"],0,"25% is 1/4. 200 ÷ 4 = 50."],
+["What is 50% of 84?",["42","34","48","21"],0,"50% is half. 84 ÷ 2 = 42."],
+["What is 10% of 350?",["35","30","45","25"],0,"10% is ÷ 10. 350 ÷ 10 = 35."],
+["Which fraction equals 50%?",["1/2","1/4","3/4","1/3"],0,"50% = 50/100 = 1/2."],
+["Which fraction equals 75%?",["3/4","1/2","2/3","1/4"],0,"75% = 75/100 = 3/4."],
+["What is 1/2 + 1/4?",["3/4","2/6","1/4","2/4"],0,"1/2 = 2/4. 2/4 + 1/4 = 3/4."],
+["What is 3/4 - 1/4?",["1/2","2/4","1/4","3/4"],0,"3/4 - 1/4 = 2/4 = 1/2."],
+["What is 2/3 of 30?",["20","10","15","25"],0,"30 ÷ 3 = 10. 10 × 2 = 20."],
+["What is 1/5 of 100?",["20","10","25","50"],0,"100 ÷ 5 = 20."],
+["Convert 0.5 to a fraction.",["1/2","1/5","5/10 is 1/2","1/2 only"],0,"0.5 = 5/10 = 1/2."],
+["What is 20% of 150?",["30","20","15","25"],0,"20% = 1/5. 150 ÷ 5 = 30."],
+["A shirt was $800, 25% off. Discount?",["$200","$100","$150","$250"],0,"25% of 800 = 800 ÷ 4 = 200."],
+["What is 3/5 as a percentage?",["60%","30%","50%","35%"],0,"3 ÷ 5 = 0.6 = 60%."],
+["Which is largest? 1/2, 3/4, 1/4",["3/4","1/2","1/4","Equal"],0,"3/4 is biggest."],
+["What is 1 1/2 as improper fraction?",["3/2","2/2","1/2","4/2"],0,"1 = 2/2, +1/2 = 3/2."],
+["Tank 240L, 1/3 used. How much left?",["160 litres","80 litres","120 litres","200 litres"],0,"1/3 used = 80L. 240-80=160L."],
+["What is 75% of 80?",["60","50","70","40"],0,"75% = 3/4. 80 ÷ 4 =20, ×3=60."],
+["What is 5% of 200?",["10","5","20","15"],0,"5% = 5/100 × 200 = 10."],
+["Simplify 12/18.",["2/3","3/4","1/2","6/9"],0,"Divide by 6: 12/18 = 2/3."],
+["What is 2/4 + 1/4?",["3/4","2/4","1/2","1/4"],0,"2/4 + 1/4 = 3/4."]
+],
+2:[
+["What is 7.5 + 2.35?",["9.85","9.75","10.85","9.65"],0,"7.50 + 2.35 = 9.85. Line up decimal."],
+["What is 10 - 3.45?",["6.55","6.45","7.55","6.65"],0,"10.00 - 3.45 = 6.55."],
+["What is 3.6 × 4?",["14.4","12.4","13.4","14.6"],0,"36 × 4 =144. Put decimal: 14.4."],
+["What is 12.5 ÷ 5?",["2.5","2.2","3.5","1.5"],0,"125 ÷ 5 =25. So 12.5 ÷5 =2.5."],
+["Round 7.68 to nearest whole number.",["8","7","7.6","9"],0,".68 is more than .5, round up to 8."],
+["What is 0.7 + 0.08?",["0.78","0.15","0.708","0.8"],0,"0.70 + 0.08 = 0.78."],
+["What is 5.2 - 1.7?",["3.5","3.7","4.5","3.3"],0,"5.2 - 1.7 = 3.5."],
+["Which decimal is 3/10?",["0.3","0.03","3.0","0.33"],0,"3/10 = 0.3."],
+["What is 4.25 × 10?",["42.5","4.250","425","42.05"],0,"×10 moves decimal 1 place right."],
+["What is 6.4 ÷ 10?",["0.64","64","6.04","0.064"],0,"÷10 moves decimal 1 place left."],
+["What is 2.5 × 3?",["7.5","6.5","7.0","5.5"],0,"25 ×3=75. So 7.5."],
+["What is 9.6 - 4.2?",["5.4","5.2","4.4","6.4"],0,"9.6-4.2=5.4."],
+["Order: 0.45, 0.5, 0.4 - smallest?",["0.4","0.45","0.5","Equal"],0,"0.4 =0.40 is smallest."],
+["What is 0.25 as fraction?",["1/4","1/2","2/5","1/5"],0,"0.25 =25/100 =1/4."],
+["What is 15.75 + 4.25?",["20.00","19.00","20.25","19.75"],0,"15.75+4.25=20.00."],
+["A pencil costs $12.50. Cost of 4?",["$50.00","$40.00","$48.00","$52.00"],0,"12.50 ×4 =50.00."],
+["What is 8.1 ÷ 3?",["2.7","2.1","2.9","3.7"],0,"81÷3=27. So 2.7."],
+["What is 3.09 + 1.1?",["4.19","4.09","3.19","4.29"],0,"3.09+1.10=4.19."],
+["Round 12.47 to 1 decimal place.",["12.5","12.4","12.0","13.0"],0,".47 → .5, so 12.5."],
+["What is 100 - 23.5?",["76.5","77.5","76.0","75.5"],0,"100.0-23.5=76.5."]
+],
+3:[
+["Area of 12m × 8m?",["96 sq m","20 sq m","96 m","40 sq m"],0,"Area = length × width =12×8=96."],
+["Perimeter of square side 9cm?",["36 cm","18 cm","81 cm","27 cm"],0,"Perimeter =4×9=36cm."],
+["Area of square side 7cm?",["49 sq cm","28 sq cm","14 sq cm","21 sq cm"],0,"Area =7×7=49."],
+["Perimeter of rectangle 10m by 4m?",["28 m","40 m","14 m","24 m"],0,"Perimeter =2×(10+4)=28m."],
+["Volume of cube side 3cm?",["27 cubic cm","9 cubic cm","18 cubic cm","12 cubic cm"],0,"Volume =3×3×3=27."],
+["How many faces does a cube have?",["6","4","8","12"],0,"Cube has 6 faces."],
+["How many edges does a cuboid have?",["12","6","8","10"],0,"Cuboid has 12 edges."],
+["What is the area of triangle base 10cm height 6cm?",["30 sq cm","60 sq cm","16 sq cm","20 sq cm"],0,"Area =1/2×base×height =1/2×10×6=30."],
+["A rectangle area 48 sq cm, length 8cm. Width?",["6 cm","8 cm","4 cm","12 cm"],0,"48÷8=6cm."],
+["Perimeter of triangle sides 5cm, 7cm, 9cm?",["21 cm","20 cm","19 cm","35 cm"],0,"5+7+9=21cm."],
+["Volume of cuboid 4×3×2 cm?",["24 cubic cm","9 cubic cm","14 cubic cm","20 cubic cm"],0,"4×3×2=24."],
+["Which is a 3D shape?",["Cuboid","Square","Triangle","Circle"],0,"Cuboid is 3D. Others are 2D."],
+["How many vertices does a cube have?",["8","6","12","4"],0,"Cube has 8 vertices (corners)."],
+["Area of rectangle 15m × 5m?",["75 sq m","20 sq m","30 sq m","65 sq m"],0,"15×5=75."],
+["A square perimeter 20cm. Side?",["5 cm","4 cm","10 cm","20 cm"],0,"20÷4=5cm."],
+["What is the name of a 5-sided shape?",["Pentagon","Hexagon","Octagon","Square"],0,"5 sides = pentagon."],
+["How many sides does a hexagon have?",["6","5","8","7"],0,"Hexagon = 6 sides."],
+["Angle of a right angle?",["90°","180°","45°","60°"],0,"Right angle = 90°."],
+["A straight line angle is?",["180°","90°","360°","45°"],0,"Straight angle = 180°."],
+["Area of 20m × 3m garden?",["60 sq m","23 sq m","40 sq m","63 sq m"],0,"20×3=60."]
+],
+4:[
+["1 km = how many metres?",["1000 m","100 m","10 m","10000 m"],0,"1 km = 1000 m."],
+["2.5 kg = how many grams?",["2500 g","250 g","25 g","2050 g"],0,"1 kg=1000g. 2.5×1000=2500g."],
+["1 litre = how many ml?",["1000 ml","100 ml","10 ml","500 ml"],0,"1 L = 1000 ml."],
+["What is 3 hours in minutes?",["180 minutes","120 minutes","300 minutes","90 minutes"],0,"1 hr=60 min. 3×60=180."],
+["A movie starts 2:15 pm ends 3:45 pm. Length?",["1 hr 30 min","1 hr 15 min","2 hr","1 hr 45 min"],0,"3:45 - 2:15 = 1:30."],
+["$500 note, buy $275 item. Change?",["$225","$275","$125","$325"],0,"500-275=225."],
+["If 1 USD = $155 JMD, $310 JMD = how many USD?",["2 USD","3 USD","1 USD","4 USD"],0,"310 ÷155 =2."],
+["What is 1/2 hour in minutes?",["30 minutes","15 minutes","45 minutes","60 minutes"],0,"60 ÷2 =30."],
+["A bag weighs 3kg 500g. In grams?",["3500 g","3050 g","3005 g","350 g"],0,"3×1000+500=3500g."],
+["How many days in 3 weeks?",["21 days","14 days","15 days","30 days"],0,"7×3=21."],
+["What time is 45 minutes after 10:20?",["11:05","10:65","11:15","10:55"],0,"10:20+45=11:05."],
+["A rope 2m 50cm. In cm?",["250 cm","205 cm","2500 cm","25 cm"],0,"2×100+50=250cm."],
+["Cost of 3 notebooks at $180 each?",["$540","$360","$600","$480"],0,"180×3=540."],
+["How many months in 2 years?",["24 months","12 months","18 months","36 months"],0,"12×2=24."],
+["1 week = how many hours?",["168 hours","24 hours","72 hours","120 hours"],0,"7×24=168."],
+["A jug holds 2 litres. How many 250ml cups fill it?",["8 cups","4 cups","6 cups","10 cups"],0,"2000 ÷250 =8."],
+["What is 4:30 pm in 24-hour time?",["16:30","14:30","04:30","18:30"],0,"4+12=16. So 16:30."],
+["Mum gives $1000, you spend $650. Left?",["$350","$450","$250","$300"],0,"1000-650=350."],
+["A car travels 60km in 1 hour. In 3 hours?",["180 km","60 km","120 km","200 km"],0,"60×3=180km."],
+["How many cm in 4m?",["400 cm","40 cm","4000 cm","44 cm"],0,"1m=100cm. 4×100=400."]
+],
+5:[
+["What is 15 × 6?",["90","80","95","85"],0,"15×6=90."],
+["What is 144 ÷ 12?",["12","14","11","13"],0,"12×12=144."],
+["What is 7² ?",["49","14","21","42"],0,"7×7=49."],
+["What is √100?",["10","20","50","5"],0,"10×10=100."],
+["What is 1000 - 456?",["544","554","546","644"],0,"1000-456=544."],
+["What is 23 × 4?",["92","82","102","72"],0,"20×4=80, 3×4=12, total 92."],
+["What is 5 × 5 × 5?",["125","25","75","100"],0,"5×5=25, ×5=125."],
+["If x + 12 = 30, x = ?",["18","12","42","20"],0,"30-12=18."],
+["What is the average of 10, 20, 30?",["20","15","25","30"],0,"(10+20+30)÷3=20."],
+["What is the next number: 3, 6, 12, 24, ?",["48","36","30","42"],0,"Double each time. 24×2=48."],
+["What is 1/4 of 1 hour?",["15 minutes","20 minutes","25 minutes","30 minutes"],0,"60÷4=15."],
+["A pack of 6 pens $300. Cost of 1 pen?",["$50","$60","$40","$30"],0,"300÷6=50."],
+["What is 0.9 + 0.9?",["1.8","1.0","0.18","1.9"],0,"0.9+0.9=1.8."],
+["What is 25 × 4?",["100","90","110","80"],0,"25×4=100."],
+["Which number is prime? 7, 9, 12, 15",["7","9","12","15"],0,"7 has only factors 1 and 7."],
+["What is 3/4 of 100?",["75","25","50","60"],0,"100÷4=25, ×3=75."],
+["What is 2.5 litres in ml?",["2500 ml","250 ml","25 ml","2050 ml"],0,"2.5×1000=2500ml."],
+["A triangle has angles 90°, 45°. Third angle?",["45°","90°","60°","30°"],0,"180-90-45=45°."],
+["What is 18 ÷ 0.5?",["36","9","18","12"],0,"Dividing by 0.5 doubles: 18×2=36."],
+["A book costs $450, you pay $500. Change?",["$50","$100","$150","$45"],0,"500-450=50."]
+]
+};
+let curTest=1, curQ=0, score=0, answered=false;
+function renderBtns(){
+  let h="";
+  for(let i=1;i<=5;i++) h+=`<button class="${i==curTest?'active':''}" onclick="goTest(${i})">Test ${i}</button>`;
+  document.getElementById('testBtns').innerHTML=h;
 }
+function goTest(n){curTest=n;curQ=0;score=0;renderBtns();showQ();}
+function showQ(){
+  answered=false;
+  let list=DATA[curTest];
+  let q=list[curQ];
+  document.getElementById('area').innerHTML=`<p style="text-align:left">📘 Test ${curTest} - Question ${curQ+1} of 20</p><div class="q">${q[0]}</div>`+q[1].map((o,i)=>`<button class="opt" onclick="check(${i},this)">${o}</button>`).join('')+`<div class="feedback" id="fb"></div>`;
+}
+function check(i,btn){
+  if(answered) return; answered=true;
+  let q=DATA[curTest][curQ];
+  let btns=document.querySelectorAll('.opt');
+  btns.forEach(b=>b.disabled=true);
+  if(i==q[2]){score++; btn.classList.add('correct'); document.getElementById('fb').innerHTML=`✅ <b>Correct!</b> ${q[3]}<br><button onclick="nextQ()">Next Question →</button>`;}
+  else{btn.classList.add('wrong'); btns[q[2]].classList.add('correct'); document.getElementById('fb').innerHTML=`❌ Correct answer is <b>${q[1][q[2]]}</b>. ${q[3]}<br><button onclick="nextQ()">Next Question →</button>`;}
+  document.getElementById('fb').style.display='block';
+}
+function nextQ(){
+  curQ++;
+  if(curQ>=20) showResult(); else showQ();
+}
+function showResult(){
+  let next = curTest<5 ? curTest+1 : 1;
+  let nextLabel = curTest<5 ? `Next Test → Test ${next}` : `Back to Test 1`;
+  document.getElementById('area').innerHTML=`<h2>🎉 Done! Test ${curTest}</h2><h2>Score: <b>${score} / 20</b></h2><p>This score is LOCKED - it is filled in automatically</p><p style="text-align:left">Send score to Mom / anyone:</p><input type="tel" id="phone" placeholder="1876XXXXXXX" value="1876"><p style="color:#555">Type number with country code - Jamaica is 1 + 876 / 658. No spaces or -</p><button class="wa" onclick="sendWA()">Send Score on WhatsApp 📲</button><button class="nextTest" onclick="goTest(${next})">${nextLabel}</button>`;
+}
+function sendWA(){
+  let ph=document.getElementById('phone').value.replace(/[^0-9]/g,'');
+  if(ph.length<10){alert('Type full number with country code, e.g. 1876XXXXXXX');return;}
+  let msg=`Hi! 🇯🇲 PEPLink JA - Grade 5 Mathematics Test ${curTest} Score: ${score} / 20`;
+  window.open('https://wa.me/'+ph+'?text='+encodeURIComponent(msg),'_blank');
+}
+renderBtns(); showQ();
 </script>
 </body>
 </html>
