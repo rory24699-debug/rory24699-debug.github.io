@@ -31,13 +31,15 @@ input[type=tel]{width:100%;padding:14px;border:2px solid #ddd;border-radius:12px
 <div class="container">
 <div class="card">
 <h1>🇯🇲 Grade 5 PEP - Language Arts<br>100 Questions - 5 Tests</h1>
-<p class="sub">Test 1-5 • 20 questions each • Score is locked - no cheating</p>
+<p class="sub">Test 1-4 Grammar + Test 5 Comprehension • 20 questions each</p>
 <div class="tests" id="testBtns"></div>
 <div id="area"></div>
 </div>
 <a class="back" href="grade5-pep-practice.html">← Back to PEP Practice Centre</a>
 </div>
 <script>
+const PASS1 = `<b>Story 1: Maya and the Mango Tree</b><br><br>Maya lived in a small village in St. Elizabeth with her grandmother. Behind their house stood a big mango tree. Every morning, Maya would water the tree and talk to it.<br><br>One hot Saturday, Maya saw that the tree looked dry and sad. Its leaves were drooping. She ran inside, filled two buckets with water, and poured them slowly around the tree. She also picked up the dry leaves and put them in a pile.<br><br>Two weeks later, the tree was full of green leaves and small yellow flowers. By July, the tree was covered with ripe, sweet mangoes. Maya picked a basket full and shared them with all her neighbours. Her grandmother smiled and said, "Kindness always grows, just like this tree."`;
+const PASS2 = `<b>Story 2: The Brave Little Fisherman</b><br><br>Jordan was ten years old and lived in Portland near the sea. His father was a fisherman. Every evening, Jordan would help his father mend the fishing nets.<br><br>One morning, Jordan found a small injured bird on the beach. Its wing was hurt and it could not fly. Jordan gently picked it up, wrapped it in a soft cloth, and took it home. He fed it bread crumbs and water every day.<br><br>After five days, the bird could fly again. Jordan took it back to the beach and watched it fly high into the blue sky. He felt proud and happy. His father said, "You did a brave and kind thing, my son."`;
 const DATA={
 1:[
 ["Choose the noun: The dog barked loudly.",["dog","barked","loudly","The"],0,"Dog is a person, place or thing - a noun."],
@@ -128,32 +130,32 @@ const DATA={
 ["Which sentence is correct?",["She does her homework.","She do her homework.","She dos her homework.","She doing her homework."],0,"She does - singular."]
 ],
 5:[
-["Read: 'Ann ran to school because she was late.' Why did Ann run?",["She was late","She was happy","She liked running","She was early"],0,"Text says because she was late."],
-["Read: 'The sun was hot. Tim drank water.' Why did Tim drink water?",["Because it was hot","Because he was sad","Because he was late","Because it was cold"],0,"Hot -> drink water."],
-["Which sentence tells a fact?",["Jamaica is in the Caribbean.","Jamaica is the best place.","Mangoes are yummy.","I love Jamaica."],0,"Fact can be proven."],
-["Which sentence tells an opinion?",["Mangoes are the best fruit.","Mangoes grow on trees.","Mangoes are yellow.","Mangoes have seeds."],0,"Best is opinion."],
-["What is the setting of a story?",["Where and when it happens","Who is in it","What happens last","The title"],0,"Setting = where and when."],
-["Who is the main character?",["The most important person","The place","The problem","The ending"],0,"Main character is most important."],
-["Choose the best title for a story about a dog that helps people:",["The Helpful Dog","A Blue Car","My School","The Rain"],0,"Title must match story."],
-["What does 'The End' mean?",["The story is finished","The story is starting","The story is sad","The story is funny"],0,"The End = finished."],
-["Which word best completes: Please ___ your hand if you know.",["raise","raze","rise","race"],0,"Raise your hand."],
-["Choose the correct word: I ___ my mother yesterday.",["saw","see","seen","seeing"],0,"Saw is past of see."],
-["Which sentence is in past tense?",["She walked home.","She walks home.","She is walking home.","She will walk home."],0,"Walked = past."],
-["Which sentence is in future tense?",["She will walk home.","She walked home.","She walks home.","She is walking home."],0,"Will walk = future."],
-["What is a paragraph?",["A group of sentences about one idea","One word","A title","A question"],0,"Paragraph = group of sentences."],
-["Choose the correct word: The book is ___ the table.",["on","in to","under to","on to"],0,"On the table."],
-["What is the moral of a story?",["The lesson it teaches","The first word","The funny part","The picture"],0,"Moral = lesson."],
-["Choose the correct word: He ___ very kind.",["is","are","am","be"],0,"He is."],
-["Which is a complete sentence?",["The girl is happy.","Girl happy.","Is happy.","The girl."],0,"Needs subject + verb."],
-["What punctuation shows someone is speaking?",["Quotation marks \" \"","Comma ,","Full stop .","Question mark ?"],0,"Quotes show speech."],
-["Choose the correct word: ___ are my friends.",["They","Them","He","She"],0,"They are - subject."],
-["What is the best way to end a letter?",["Yours sincerely,","Hello","Dear Sir,","The End"],0,"Yours sincerely is closing."]
+["READ STORY 1: Where did Maya live?",["In a small village in St. Elizabeth","In Kingston","In Montego Bay","In Portland"],0,"Story says: Maya lived in a small village in St. Elizabeth."],
+["READ STORY 1: What was behind Maya's house?",["A big mango tree","A river","A school","A shop"],0,"Behind their house stood a big mango tree."],
+["READ STORY 1: What did Maya do every morning?",["Water the tree and talk to it","Pick mangoes","Go to school","Feed birds"],0,"Every morning, Maya would water the tree and talk to it."],
+["READ STORY 1: Why did the tree look sad one Saturday?",["It was dry / needed water","It was too cold","Birds ate it","It was cut down"],0,"The tree looked dry and sad. Its leaves were drooping."],
+["READ STORY 1: How many buckets of water did Maya use?",["Two","One","Three","Five"],0,"She filled two buckets with water."],
+["READ STORY 1: What did Maya do with the dry leaves?",["Picked them up and put them in a pile","Burned them","Threw them in the river","Left them"],0,"She picked up the dry leaves and put them in a pile."],
+["READ STORY 1: What happened two weeks later?",["Tree had green leaves and small yellow flowers","Tree died","Tree was cut down","Tree had no leaves"],0,"Two weeks later, tree was full of green leaves and small yellow flowers."],
+["READ STORY 1: What did Maya do with the mangoes?",["Shared them with neighbours","Sold them all","Ate them alone","Threw them away"],0,"She shared them with all her neighbours."],
+["READ STORY 1: What did grandmother say?",["Kindness always grows, just like this tree","Mangoes are sweet","Go to school","Water the tree"],0,"Grandmother said: Kindness always grows, just like this tree."],
+["READ STORY 1: What is the MAIN IDEA / lesson?",["Being kind and caring brings good things","Trees don't need water","Mangoes are yellow","Villages are small"],0,"The story teaches kindness and caring."],
+["READ STORY 2: Where did Jordan live?",["In Portland near the sea","In Kingston","In St. Elizabeth","In the mountains"],0,"Jordan lived in Portland near the sea."],
+["READ STORY 2: What was Jordan's father's job?",["Fisherman","Teacher","Farmer","Driver"],0,"His father was a fisherman."],
+["READ STORY 2: What did Jordan help his father do?",["Mend the fishing nets","Catch fish","Sell fish","Build boats"],0,"Jordan would help his father mend the fishing nets."],
+["READ STORY 2: What did Jordan find on the beach?",["A small injured bird","A fish","A mango","A boat"],0,"Jordan found a small injured bird on the beach."],
+["READ STORY 2: What was wrong with the bird?",["Its wing was hurt and it could not fly","It was hungry only","It was lost","It was wet"],0,"Its wing was hurt and it could not fly."],
+["READ STORY 2: What did Jordan feed the bird?",["Bread crumbs and water","Mangoes","Fish","Rice"],0,"He fed it bread crumbs and water every day."],
+["READ STORY 2: How long before the bird could fly again?",["After five days","After one day","After one month","After one year"],0,"After five days, the bird could fly again."],
+["READ STORY 2: Where did Jordan take the bird when it was better?",["Back to the beach","To school","To the market","To his grandmother"],0,"Jordan took it back to the beach."],
+["READ STORY 2: How did Jordan feel?",["Proud and happy","Sad and angry","Tired and hungry","Scared"],0,"He felt proud and happy."],
+["READ STORY 2: What did his father say?",["You did a brave and kind thing, my son","Go to school","Catch more fish","Don't touch birds"],0,"Father said: You did a brave and kind thing, my son."]
 ]
 };
 let curTest=1, curQ=0, score=0, answered=false;
 function renderBtns(){
   let h="";
-  for(let i=1;i<=5;i++) h+=`<button class="${i==curTest?'active':''}" onclick="goTest(${i})">Test ${i}</button>`;
+  for(let i=1;i<=5;i++) h+=`<button class="${i==curTest?'active':''}" onclick="goTest(${i})">${i==5?'Test 5 - Comprehension 📖':'Test '+i}</button>`;
   document.getElementById('testBtns').innerHTML=h;
 }
 function goTest(n){curTest=n;curQ=0;score=0;renderBtns();showQ();}
@@ -161,7 +163,11 @@ function showQ(){
   answered=false;
   let list=DATA[curTest];
   let q=list[curQ];
-  document.getElementById('area').innerHTML=`<p style="text-align:left">📘 Test ${curTest} - Question ${curQ+1} of 20</p><div class="q">${q[0]}</div>`+q[1].map((o,i)=>`<button class="opt" onclick="check(${i},this)">${o}</button>`).join('')+`<div class="feedback" id="fb"></div>`;
+  let passageHTML = "";
+  if(curTest==5){
+    passageHTML = `<div class="passage">${curQ<10 ? PASS1 : PASS2}</div><p style="text-align:left;color:#2563eb"><b>👆 Read the story above, then answer:</b></p>`;
+  }
+  document.getElementById('area').innerHTML=`<p style="text-align:left">📘 Test ${curTest} - Question ${curQ+1} of 20</p>${passageHTML}<div class="q">${q[0]}</div>`+q[1].map((o,i)=>`<button class="opt" onclick="check(${i},this)">${o}</button>`).join('')+`<div class="feedback" id="fb"></div>`;
 }
 function check(i,btn){
   if(answered) return; answered=true;
