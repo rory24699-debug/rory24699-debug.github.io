@@ -1,78 +1,193 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Grade 5 Language Arts Quizzes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 5 Practice - PEPLink JA</title>
 <style>
-body{font-family:Arial;background:#f0f4f8;margin:0;padding:15px}
-.header{background:#1a3a5f;color:white;padding:20px;text-align:center;border-radius:12px}
-.question{background:white;padding:15px;margin:15px 0;border-radius:10px}
-button{background:#234b7a;color:white;border:0;padding:13px;border-radius:8px;font-size:16px;margin:5px}
+body{font-family:Arial,sans-serif;background:#eef2ff;margin:0;padding:15px}
+.container{max-width:600px;margin:auto}
+.card{background:white;padding:20px;border-radius:18px;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-align:center}
+h1{font-size:28px;margin:5px 0}
+.sub{color:#555;margin-bottom:15px}
+.tests{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:15px}
+.tests button{background:#ddd;border:none;padding:10px 16px;border-radius:20px;font-weight:bold;font-size:16px;cursor:pointer}
+.tests button.active{background:#2563eb;color:white}
+.q{font-size:22px;font-weight:bold;text-align:left;margin:15px 0}
+.passage{background:#f1f5f9;padding:14px;border-radius:12px;text-align:left;font-size:18px;line-height:1.5;margin:10px 0}
+.opt{display:block;width:100%;text-align:left;background:white;border:2px solid #ddd;padding:14px;border-radius:12px;margin:8px 0;font-size:19px;cursor:pointer}
+.opt.correct{background:#dcfce7;border-color:#16a34a}
+.opt.wrong{background:#fee2e2;border-color:#dc2626}
+.opt:disabled{opacity:.6}
+.feedback{background:#fef9c3;padding:14px;border-radius:12px;text-align:left;margin-top:12px;font-size:18px;display:none}
+.feedback button{background:#2563eb;color:white;border:none;padding:14px;width:100%;border-radius:10px;font-weight:bold;font-size:19px;margin-top:10px;cursor:pointer}
+input[type=tel]{width:100%;padding:14px;border:2px solid #ddd;border-radius:12px;font-size:19px;box-sizing:border-box}
+.wa{background:#22c55e;color:white;border:none;padding:15px;width:100%;border-radius:12px;font-weight:bold;font-size:19px;margin-top:12px;cursor:pointer}
+.nextTest{background:#2563eb;color:white;border:none;padding:15px;width:100%;border-radius:12px;font-weight:bold;font-size:19px;margin-top:12px;cursor:pointer}
+.back{display:block;background:#1e3a5f;color:white;text-align:center;padding:16px;border-radius:12px;text-decoration:none;font-weight:bold;font-size:19px;margin-top:15px}
 </style>
 </head>
 <body>
-
-<div class="header">
-<h1>PEPLink JA</h1>
-<h2>Grade 5 Language Arts</h2>
-<p>Practice Quiz 1</p>
+<div class="container">
+<div class="card">
+<h1>🇯🇲 Grade 5 PEP - Language Arts<br>100 Questions - 5 Tests</h1>
+<p class="sub">Test 1-5 • 20 questions each • Score is locked - no cheating</p>
+<div class="tests" id="testBtns"></div>
+<div id="area"></div>
 </div>
-
-<form id="quiz">
-
-<div class="question">
-<p>1. Choose the correct plural of "child".</p>
-<label><input type="radio" name="q1" value="a"> Childs</label><br>
-<label><input type="radio" name="q1" value="b"> Children</label><br>
-<label><input type="radio" name="q1" value="c"> Childes</label>
+<a class="back" href="grade5-pep-practice.html">← Back to PEP Practice Centre</a>
 </div>
-
-<div class="question">
-<p>2. Which word is an adjective?</p>
-<label><input type="radio" name="q2" value="a"> Beautiful</label><br>
-<label><input type="radio" name="q2" value="b"> Quickly</label><br>
-<label><input type="radio" name="q2" value="c"> Running</label>
-</div>
-
-<div class="question">
-<p>3. Choose the correct word: She _____ to school every day.</p>
-<label><input type="radio" name="q3" value="a"> go</label><br>
-<label><input type="radio" name="q3" value="b"> going</label><br>
-<label><input type="radio" name="q3" value="c"> goes</label>
-</div>
-
-<div class="question">
-<p>4. What is the opposite of "ancient"?</p>
-<label><input type="radio" name="q4" value="a"> Old</label><br>
-<label><input type="radio" name="q4" value="b"> Modern</label><br>
-<label><input type="radio" name="q4" value="c"> Historic</label>
-</div>
-
-<div class="question">
-<p>5. Which punctuation mark ends a question?</p>
-<label><input type="radio" name="q5" value="a"> Full stop</label><br>
-<label><input type="radio" name="q5" value="b"> Comma</label><br>
-<label><input type="radio" name="q5" value="c"> Question mark</label>
-</div>
-
-<button type="button" onclick="checkQuiz()">Submit Answers</button>
-</form>
-
-<h2 id="result"></h2>
-
-<button onclick="location.href='grade5.html'">Back to Grade 5</button>
-
 <script>
-function checkQuiz(){
-let answers={q1:"b",q2:"a",q3:"c",q4:"b",q5:"c"};
-let score=0;
-for(let q in answers){
-let selected=document.querySelector('input[name="'+q+'"]:checked');
-if(selected && selected.value===answers[q]) score++;
+const DATA={
+1:[
+["Choose the noun: The dog barked loudly.",["dog","barked","loudly","The"],0,"Dog is a person, place or thing - a noun."],
+["Choose the verb: She runs every morning.",["runs","She","every","morning"],0,"Runs is the action - the verb."],
+["Choose the adjective: The tall boy won.",["tall","boy","won","The"],0,"Tall describes the boy - adjective."],
+["Which sentence is correct?",["They are going home.","They is going home.","They am going home.","They be going home."],0,"They goes with are."],
+["Which is a pronoun?",["She","Table","Run","Quick"],0,"She replaces a name - pronoun."],
+["Plural of 'child'?",["children","childs","childes","childrens"],0,"Child -> children is irregular."],
+["Plural of 'box'?",["boxes","boxs","boxies","boxen"],0,"Add -es to words ending in x."],
+["Past tense of 'go'?",["went","goed","going","goes"],0,"Go -> went is irregular."],
+["Past tense of 'play'?",["played","playd","playing","plays"],0,"Add -ed for regular past tense."],
+["Which word is a verb?",["jump","happy","blue","table"],0,"Jump is an action."],
+["Choose the correct sentence:",["She has a book.","She have a book.","She haves a book.","She has a books."],0,"She has - singular."],
+["Which is an adverb?",["quickly","quick","happy","sad"],0,"Quickly ends in -ly and tells how."],
+["Which sentence ends with a question mark?",["Where are you going?","I am going home.","She is happy.","Stop."],0,"A question needs ?."],
+["What is the subject? The cat sat on the mat.",["The cat","sat","on the mat","mat"],0,"The cat is who did it - subject."],
+["Choose the correct spelling:",["beautiful","beautifull","beautifel","beutiful"],0,"Beautiful is the correct spelling."],
+["Which word means the opposite of 'hot'?",["cold","warm","big","fast"],0,"Hot opposite is cold."],
+["Which word means the same as 'happy'?",["joyful","sad","angry","tired"],0,"Joyful = happy."],
+["Choose the correct word: ___ is my friend.",["She","Her","Him","They is"],0,"She is subject pronoun."],
+["Which is a proper noun?",["Jamaica","country","city","boy"],0,"Jamaica is a specific place - capital letter."],
+["What is the verb? Birds fly south.",["fly","Birds","south","the"],0,"Fly is what birds do."]
+],
+2:[
+["What does 'brave' mean?",["not afraid","always sad","very slow","very tall"],0,"Brave = not afraid."],
+["What does 'ancient' mean?",["very old","very new","very small","very hot"],0,"Ancient = very old."],
+["What is a synonym for 'big'?",["large","small","tiny","short"],0,"Large means big."],
+["What is an antonym for 'begin'?",["end","start","open","go"],0,"Begin opposite is end."],
+["The word 'library' means a place where you...",["borrow books","buy food","play football","sleep"],0,"Library is for borrowing books."],
+["Which word is a noun?",["kindness","kindly","kind","kindest"],0,"Kindness is a thing - noun."],
+["Choose the correct homophone: I ___ a book.",["read","red","reed","ride"],0,"Read is past/present for books. Red is colour."],
+["Their / There / They're: ___ going to school.",["They're","Their","There","Thier"],0,"They're = they are."],
+["Choose the correct word: I saw ___ dog.",["a","an","the dog is","a dog is"],0,"A dog - use a before consonant."],
+["Which word rhymes with 'light'?",["night","late","long","lip"],0,"Night rhymes with light."],
+["What is the prefix in 'unhappy'?",["un-","happy","-y","hap"],0,"Un- means not."],
+["What is the suffix in 'helpful'?",["-ful","help","-help","-full"],0,"-ful means full of."],
+["Which word is a compound word?",["sunshine","sun","shine","sunny"],0,"Sun + shine = sunshine."],
+["What does 'generous' mean?",["gives freely","never shares","always angry","very shy"],0,"Generous = gives freely."],
+["Which sentence uses 'their' correctly?",["That is their house.","That is their going.","Their is happy.","Their are here."],0,"Their shows possession."],
+["Choose the correct spelling:",["friend","frend","freind","frind"],0,"Friend is correct."],
+["What is the main idea of a story?",["What it is mostly about","The first word","The last sentence","The title only"],0,"Main idea = what it is mostly about."],
+["Which word is an adjective?",["red","run","quickly","she"],0,"Red describes colour."],
+["The baby cried ___ she was hungry.",["because","but","and","so is"],0,"Because shows reason."],
+["Choose the best word: The story was very ___.",["interesting","interest","interests","interestingly"],0,"Interesting describes story."]
+],
+3:[
+["Which sentence has correct punctuation?",["Hello, how are you?","Hello how are you","Hello, how are you.","hello how are you?"],0,"Question needs ? and capital H."],
+["Where does the comma go? I like mangoes bananas and oranges.",["I like mangoes, bananas and oranges.","I like, mangoes bananas and oranges.","I like mangoes bananas, and oranges.","I, like mangoes bananas and oranges."],0,"Comma separates items in a list."],
+["Which sentence uses capital letters correctly?",["My friend lives in Kingston.","my friend lives in kingston.","My friend lives in kingston.","My Friend Lives In Kingston."],0,"Kingston is a proper noun - capital K."],
+["Which is correct?",["Don't run!","Dont run!","Do'nt run!","Don't run."],0,"Don't has apostrophe."],
+["Choose the correct apostrophe: ___ book is lost.",["Maria's","Marias","Maria'ss","Marias'"],0,"Maria's shows possession."],
+["Which sentence is a command?",["Close the door.","Where is the door?","The door is blue.","I like the door."],0,"Close the door tells you to do something."],
+["Which sentence is an exclamation?",["What a beautiful day!","What a beautiful day.","What a beautiful day?","What a beautiful day,"],0,"Exclamation uses !"],
+["Add the missing full stop: The dog ran fast", ["The dog ran fast.","The dog ran fast?","The dog ran fast!","The dog, ran fast"],0,"Statement needs full stop."],
+["Which word needs a capital letter? i went to school.",["I","went","to","school"],0,"I is always capital."],
+["Choose the correct sentence:",["She said, \"I am happy.\"","She said I am happy.","She said, i am happy.","She said \"I am happy.\""],0,"Speech needs capital and quotes."],
+["Which is correct?",["It's a sunny day.","Its a sunny day.","Its' a sunny day.","It is a sunny day is"],0,"It's = it is."],
+["Where is the question mark? Where is my bag", ["Where is my bag?","Where is my bag.","Where is my bag!","Where, is my bag"],0,"Question needs ?."],
+["Choose the correct plural: I have two ___.",["pencils","pencil","pencilses","penciles"],0,"Pencils is plural."],
+["Which sentence uses commas correctly?",["I bought apples, bread, and milk.","I bought apples bread and milk.","I bought, apples bread and milk.","I bought apples, bread and milk,"],0,"Commas separate list."],
+["Which sentence is correct?",["Jamaica is an island.","jamaica is an island.","Jamaica is an Island.","Jamaica is an island,"],0,"Jamaica capital, sentence ends with ."],
+["What punctuation ends a statement?",["Full stop .","Question mark ?","Comma ,","Exclamation !"],0,"Statement ends with full stop."],
+["Choose the correct sentence:",["The boys are playing.","The boys is playing.","The boys are play.","The boys playing."],0,"Boys (plural) + are playing."],
+["Which is correct?",["They're happy.","Their happy.","There happy.","Thier happy."],0,"They're = they are."],
+["Which sentence is a question?",["Do you like mangoes?","I like mangoes.","Mangoes are sweet.","Eat mangoes."],0,"Question asks and uses ?."],
+["Choose the correct word: ___ you coming?",["Are","Is","Am","Be"],0,"Are you coming? - plural you."]
+],
+4:[
+["Which word is spelled correctly?",["school","skool","scholl","scool"],0,"School is correct."],
+["Choose the correct spelling:",["because","becuse","becaus","becausee"],0,"Because is correct."],
+["Choose the correct word: She ___ to school every day.",["goes","go","going","gone to"],0,"She goes - singular."],
+["Choose the correct word: They ___ playing.",["are","is","am","be's"],0,"They are."],
+["Which word means the same as 'quick'?",["fast","slow","late","big"],0,"Quick = fast."],
+["Which word is the opposite of 'early'?",["late","soon","fast","first"],0,"Early opposite is late."],
+["Complete: The dog is ___ than the cat.",["bigger","big","biggest","bigly"],0,"Comparative: bigger than."],
+["Complete: She is the ___ girl in the class.",["tallest","taller","tall","tallly"],0,"Superlative: tallest."],
+["Choose the correct sentence:",["I have eaten lunch.","I have eat lunch.","I has eaten lunch.","I have ate lunch."],0,"Have eaten is correct present perfect."],
+["What is the root word in 'running'?",["run","running","-ing","runn"],0,"Root is run."],
+["Choose the correct word: ___ apple is red.",["An","A","The apple is","An apple is"],0,"An before vowel sound."],
+["Which sentence is correct?",["He can swim well.","He can swim good.","He can swimming.","He can swim bad."],0,"Well is adverb for swim."],
+["Which word is a verb?",["dance","happy","beautiful","table"],0,"Dance is action."],
+["Which word is a noun?",["teacher","teach","teaches","teachingly"],0,"Teacher is a person."],
+["Choose the correct word: This is ___ book.",["my","me","I","mine is"],0,"My book - possession."],
+["Which is correct?",["We went to the beach.","We goed to the beach.","We go to the beach yesterday.","We went to beach."],0,"Went is past of go."],
+["Choose the correct word: The children ___ happy.",["were","was","is","am"],0,"Children plural - were."],
+["What does 'honest' mean?",["tells the truth","tells lies","is rude","is lazy"],0,"Honest = tells truth."],
+["Choose the correct spelling:",["together","togther","togeather","togetherer"],0,"Together is correct."],
+["Which sentence is correct?",["She does her homework.","She do her homework.","She dos her homework.","She doing her homework."],0,"She does - singular."]
+],
+5:[
+["Read: 'Ann ran to school because she was late.' Why did Ann run?",["She was late","She was happy","She liked running","She was early"],0,"Text says because she was late."],
+["Read: 'The sun was hot. Tim drank water.' Why did Tim drink water?",["Because it was hot","Because he was sad","Because he was late","Because it was cold"],0,"Hot -> drink water."],
+["Which sentence tells a fact?",["Jamaica is in the Caribbean.","Jamaica is the best place.","Mangoes are yummy.","I love Jamaica."],0,"Fact can be proven."],
+["Which sentence tells an opinion?",["Mangoes are the best fruit.","Mangoes grow on trees.","Mangoes are yellow.","Mangoes have seeds."],0,"Best is opinion."],
+["What is the setting of a story?",["Where and when it happens","Who is in it","What happens last","The title"],0,"Setting = where and when."],
+["Who is the main character?",["The most important person","The place","The problem","The ending"],0,"Main character is most important."],
+["Choose the best title for a story about a dog that helps people:",["The Helpful Dog","A Blue Car","My School","The Rain"],0,"Title must match story."],
+["What does 'The End' mean?",["The story is finished","The story is starting","The story is sad","The story is funny"],0,"The End = finished."],
+["Which word best completes: Please ___ your hand if you know.",["raise","raze","rise","race"],0,"Raise your hand."],
+["Choose the correct word: I ___ my mother yesterday.",["saw","see","seen","seeing"],0,"Saw is past of see."],
+["Which sentence is in past tense?",["She walked home.","She walks home.","She is walking home.","She will walk home."],0,"Walked = past."],
+["Which sentence is in future tense?",["She will walk home.","She walked home.","She walks home.","She is walking home."],0,"Will walk = future."],
+["What is a paragraph?",["A group of sentences about one idea","One word","A title","A question"],0,"Paragraph = group of sentences."],
+["Choose the correct word: The book is ___ the table.",["on","in to","under to","on to"],0,"On the table."],
+["What is the moral of a story?",["The lesson it teaches","The first word","The funny part","The picture"],0,"Moral = lesson."],
+["Choose the correct word: He ___ very kind.",["is","are","am","be"],0,"He is."],
+["Which is a complete sentence?",["The girl is happy.","Girl happy.","Is happy.","The girl."],0,"Needs subject + verb."],
+["What punctuation shows someone is speaking?",["Quotation marks \" \"","Comma ,","Full stop .","Question mark ?"],0,"Quotes show speech."],
+["Choose the correct word: ___ are my friends.",["They","Them","He","She"],0,"They are - subject."],
+["What is the best way to end a letter?",["Yours sincerely,","Hello","Dear Sir,","The End"],0,"Yours sincerely is closing."]
+]
+};
+let curTest=1, curQ=0, score=0, answered=false;
+function renderBtns(){
+  let h="";
+  for(let i=1;i<=5;i++) h+=`<button class="${i==curTest?'active':''}" onclick="goTest(${i})">Test ${i}</button>`;
+  document.getElementById('testBtns').innerHTML=h;
 }
-document.getElementById("result").innerText="Your Score: "+score+" / 5";
+function goTest(n){curTest=n;curQ=0;score=0;renderBtns();showQ();}
+function showQ(){
+  answered=false;
+  let list=DATA[curTest];
+  let q=list[curQ];
+  document.getElementById('area').innerHTML=`<p style="text-align:left">📘 Test ${curTest} - Question ${curQ+1} of 20</p><div class="q">${q[0]}</div>`+q[1].map((o,i)=>`<button class="opt" onclick="check(${i},this)">${o}</button>`).join('')+`<div class="feedback" id="fb"></div>`;
 }
+function check(i,btn){
+  if(answered) return; answered=true;
+  let q=DATA[curTest][curQ];
+  let btns=document.querySelectorAll('.opt');
+  btns.forEach(b=>b.disabled=true);
+  if(i==q[2]){score++; btn.classList.add('correct'); document.getElementById('fb').innerHTML=`✅ <b>Correct!</b> ${q[3]}<br><button onclick="nextQ()">Next Question →</button>`;}
+  else{btn.classList.add('wrong'); btns[q[2]].classList.add('correct'); document.getElementById('fb').innerHTML=`❌ Correct answer is <b>${q[1][q[2]]}</b>. ${q[3]}<br><button onclick="nextQ()">Next Question →</button>`;}
+  document.getElementById('fb').style.display='block';
+}
+function nextQ(){
+  curQ++;
+  if(curQ>=20) showResult(); else showQ();
+}
+function showResult(){
+  let next = curTest<5 ? curTest+1 : 1;
+  let nextLabel = curTest<5 ? `Next Test → Test ${next}` : `Back to Test 1`;
+  document.getElementById('area').innerHTML=`<h2>🎉 Done! Test ${curTest}</h2><h2>Score: <b>${score} / 20</b></h2><p>This score is LOCKED - it is filled in automatically</p><p style="text-align:left">Send score to Mom / anyone:</p><input type="tel" id="phone" placeholder="1876XXXXXXX" value="1876"><p style="color:#555">Type number with country code - Jamaica is 1 + 876 / 658. No spaces or -</p><button class="wa" onclick="sendWA()">Send Score on WhatsApp 📲</button><button class="nextTest" onclick="goTest(${next})">${nextLabel}</button>`;
+}
+function sendWA(){
+  let ph=document.getElementById('phone').value.replace(/[^0-9]/g,'');
+  if(ph.length<10){alert('Type full number with country code, e.g. 1876XXXXXXX');return;}
+  let msg=`Hi! 🇯🇲 PEPLink JA - Grade 5 Language Arts Test ${curTest} Score: ${score} / 20`;
+  window.open('https://wa.me/'+ph+'?text='+encodeURIComponent(msg),'_blank');
+}
+renderBtns(); showQ();
 </script>
-
 </body>
 </html>
