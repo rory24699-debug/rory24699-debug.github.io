@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 5 Performance Task - PEPLink JA</title>
+<style>
+*{box-sizing:border-box}body{font-family:Arial,sans-serif;background:#eef2ff;margin:0;padding:10px}
+.container{max-width:850px;margin:auto}
+#grade5-performance{font-family:Arial,sans-serif;color:#17243a;padding:15px;max-width:850px;margin:auto;background:white;border-radius:16px}
+#grade5-performance h2{background:#102b55;color:white;padding:20px;border-radius:12px;text-align:center}
+#grade5-performance .pt-intro{background:#eaf2ff;padding:16px;border-radius:12px;margin:15px 0}
+#grade5-performance .pt-heading{background:#1769aa;color:white;padding:13px;border-radius:9px;margin-top:25px}
+#grade5-performance .pt-card{background:#fff;border:1px solid #d8e0eb;border-radius:12px;padding:17px;margin:15px 0;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+#grade5-performance .pt-card h3{color:#15569b}
+#grade5-performance table{width:100%;border-collapse:collapse;margin:12px 0}
+#grade5-performance th,#grade5-performance td{border:1px solid #cbd5e1;padding:10px;text-align:left}
+#grade5-performance th{background:#eaf2ff}
+#grade5-performance textarea{width:100%;min-height:120px;padding:12px;margin-top:12px;border:2px solid #aebed0;border-radius:8px;box-sizing:border-box;font-family:Arial,sans-serif;font-size:16px}
+#grade5-performance li{margin-bottom:10px;line-height:1.5}
+#grade5-performance .pt-footer{background:#102b55;color:white;text-align:center;padding:15px;border-radius:9px;margin-top:25px}
+.btn{background:#2563eb;color:white;border:none;padding:14px;width:100%;border-radius:10px;font-weight:bold;font-size:18px;margin-top:10px;cursor:pointer}
+.btn-green{background:#22c55e}.btn-gold{background:#f59e0b;color:#000}
+.ans{display:none;background:#fef9c3;padding:14px;border-radius:10px;margin-top:12px;line-height:1.6;font-size:16px;text-align:left}
+.ans.show{display:block}
+.back{display:block;background:#1e3a5f;color:white;text-align:center;padding:16px;border-radius:12px;text-decoration:none;font-weight:bold;font-size:18px;margin-top:15px}
+.score-box{background:#dcfce7;padding:14px;border-radius:12px;text-align:center;font-weight:bold;margin:12px 0;display:none}
+label{display:block;margin:8px 0;font-size:16px}
+</style>
+</head>
+<body>
+<div class="container">
+<div id="grade5-performance" class="pt-container">
+<h2>Grade 5 – Performance Task Preparation</h2>
+<p style="text-align:center">Building Problem-Solving, Critical Thinking and Communication Skills</p>
+<div class="pt-intro"><h3>Welcome to Performance Task Practice</h3><p>Complete practical activities, study information, solve problems and explain your answers. Tap <b>Check Answers</b> after you finish each task to see working + answers.</p></div>
+<div class="score-box" id="scoreBox">✅ Tasks Checked: <span id="scoreCount">0</span> / 5</div>
 
+<h3 class="pt-heading">Mathematics Performance Tasks</h3>
+<div class="pt-card"><h3>Task 1: Planning a School Garden</h3><p>A school plans to build a rectangular vegetable garden measuring 8 metres long and 5 metres wide. The school has a budget of $12,000.</p><ol><li>Calculate the perimeter of the garden.</li><li>Calculate the area of the garden.</li><li>Fencing costs $450 per metre. Calculate the total fencing cost.</li><li>The school spends $3,500 on seeds and $2,800 on soil. How much money remains?</li><li>Suggest one way to reduce the project's cost.</li></ol><textarea id="t1" placeholder="Write your answers and show your working..."></textarea><button class="btn" onclick="checkTask(1)">Check Answers - Task 1 ✅</button><div class="ans" id="ans1"><b>ANSWERS - Task 1:</b><br>1. Perimeter = 2 x (8+5) = 2 x 13 = <b>26m</b><br>2. Area = 8 x 5 = <b>40 sq m</b><br>3. Fencing = 26 x $450 = <b>$11,700</b><br>4. Spent = $3,500 + $2,800 = $6,300. Remains = $12,000 - $6,300 = <b>$5,700</b><br>5. Example: Use recycled wood for fencing / grow seeds from old plants / ask parents to volunteer.</div></div>
+
+<div class="pt-card"><h3>Task 2: Organising a School Fair</h3><p>A Grade 5 class plans to sell refreshments at a school fair.</p><table><tr><th>Item</th><th>Quantity</th><th>Price</th></tr><tr><td>Juice</td><td>40</td><td>$150</td></tr><tr><td>Sandwiches</td><td>30</td><td>$250</td></tr><tr><td>Cakes</td><td>25</td><td>$120</td></tr></table><ol><li>Calculate the money collected from selling all the juice.</li><li>Calculate the expected income from all three items.</li><li>If 20 sandwiches are sold, how many remain?</li><li>The class spends $4,000 on supplies. Calculate the expected profit.</li><li>Suggest two ways to keep accurate sales records.</li></ol><textarea id="t2" placeholder="Write your answers here..."></textarea><button class="btn" onclick="checkTask(2)">Check Answers - Task 2 ✅</button><div class="ans" id="ans2"><b>ANSWERS - Task 2:</b><br>1. Juice = 40 x $150 = <b>$6,000</b><br>2. Juice $6,000 + Sandwiches 30 x $250 = $7,500 + Cakes 25 x $120 = $3,000. Total = <b>$16,500</b><br>3. Sandwiches remain = 30 - 20 = <b>10</b><br>4. Profit = $16,500 - $4,000 = <b>$12,500</b><br>5. Example: Use a table / notebook, one person collects money, one person writes it down, count money at end of day.</div></div>
+
+<div class="pt-card"><h3>Task 3: Planning a Class Trip</h3><p>A Grade 5 class is planning a trip to a nature park.</p><ul><li>36 students and 4 teachers are attending.</li><li>Bus transportation costs $18,000.</li><li>Admission costs $300 per student.</li><li>Teachers enter free.</li><li>The class has collected $30,000.</li></ul><ol><li>How many people will attend?</li><li>Calculate the total student admission cost.</li><li>Calculate the total cost of the trip.</li><li>Is the money collected enough?</li><li>Calculate how much additional money is needed, if any.</li></ol><textarea id="t3" placeholder="Show your calculations and answers..."></textarea><button class="btn" onclick="checkTask(3)">Check Answers - Task 3 ✅</button><div class="ans" id="ans3"><b>ANSWERS - Task 3:</b><br>1. People = 36 + 4 = <b>40 people</b><br>2. Admission = 36 x $300 = <b>$10,800</b><br>3. Total cost = $18,000 + $10,800 = <b>$28,800</b><br>4. Yes, <b>enough</b> - $30,000 is more than $28,800<br>5. Additional needed = <b>$0</b>. Money left = $30,000 - $28,800 = $1,200 left.</div></div>
+
+<h3 class="pt-heading">Language Arts Performance Tasks</h3>
+<div class="pt-card"><h3>Task 4: Healthy Eating at School</h3><h4>Source A: School Notice</h4><p>Green Valley Primary School is encouraging students to make healthier food choices. The school plans to introduce Healthy Eating Week. Students are encouraged to eat fruits, vegetables and balanced meals and reduce sugary drinks.</p><h4>Source B: Student Survey</h4><table><tr><th>Snack</th><th>Students</th></tr><tr><td>Fruits</td><td>12</td></tr><tr><td>Biscuits</td><td>8</td></tr><tr><td>Sweets</td><td>6</td></tr><tr><td>Chips</td><td>4</td></tr></table><ol><li>What is the main purpose of the school notice?</li><li>Which snack was most popular?</li><li>How many students chose biscuits or sweets?</li><li>Give two benefits of eating fruits.</li><li>Write a paragraph explaining why healthy eating is important.</li></ol><textarea id="t4" placeholder="Write your answers here..."></textarea><button class="btn" onclick="checkTask(4)">Check Answers - Task 4 ✅</button><div class="ans" id="ans4"><b>ANSWERS - Task 4:</b><br>1. To encourage healthier food choices / Healthy Eating Week.<br>2. <b>Fruits - 12 students</b> - most popular.<br>3. Biscuits 8 + Sweets 6 = <b>14 students</b><br>4. Example: Fruits give vitamins, give energy, help you not get sick, help you concentrate.<br>5. Example paragraph: Healthy eating is important because it gives our bodies energy to learn and play. Fruits and vegetables keep us strong and help us not get sick. If we eat less sugar, our teeth stay healthy.</div></div>
+
+<div class="pt-card"><h3>Task 5: Keeping Jamaica Clean</h3><p>The residents of a Jamaican community have organised a clean-up campaign. They encourage residents to dispose of garbage properly, protect drains and avoid throwing plastic waste into rivers.</p><h4>Community Survey</h4><table><tr><th>Waste Problem</th><th>Reports</th></tr><tr><td>Plastic bottles</td><td>15</td></tr><tr><td>Food containers</td><td>10</td></tr><tr><td>Plastic bags</td><td>12</td></tr><tr><td>Other garbage</td><td>8</td></tr></table><ol><li>What is the main objective of the campaign?</li><li>Which waste problem received the most reports?</li><li>Calculate the total number of reports.</li><li>Suggest two ways residents can reduce garbage.</li><li>Write a short essay explaining why keeping Jamaica clean is important.</li></ol><textarea id="t5" placeholder="Write your answers here..."></textarea><button class="btn" onclick="checkTask(5)">Check Answers - Task 5 ✅</button><div class="ans" id="ans5"><b>ANSWERS - Task 5:</b><br>1. To encourage proper disposal, protect drains, stop plastic in rivers.<br>2. <b>Plastic bottles - 15 reports</b><br>3. Total = 15+10+12+8 = <b>45 reports</b><br>4. Example: Recycle bottles, use reusable bags, compost food waste, don't litter.<br>5. Example: Keeping Jamaica clean is important because clean communities are healthy. When we throw garbage in drains, it causes flooding. When we keep beaches clean, tourists visit and Jamaica looks beautiful. We must all do our part.</div></div>
+
+<div class="pt-card"><h3>Student Self-Assessment</h3><p>Before submitting your work, check that you have:</p><label><input type="checkbox" onchange="updateCheck()"> Read all instructions carefully</label><label><input type="checkbox" onchange="updateCheck()"> Answered every question</label><label><input type="checkbox" onchange="updateCheck()"> Shown mathematical working</label><label><input type="checkbox" onchange="updateCheck()"> Checked spelling and grammar</label><label><input type="checkbox" onchange="updateCheck()"> Explained my answers clearly</label><p id="checkMsg" style="font-weight:bold;color:#15569b"></p><button class="btn btn-green" onclick="window.print()">Print / Save My Work 🖨️</button><button class="btn btn-gold" onclick="finishAll()">I Finished All 5 Tasks 🎉</button></div>
+<p class="pt-footer">PEPLink JA – All PEP Preparation on One Platform</p>
+</div>
+</div>
+<a class="back" href="grade5-pep-practice.html">← Back to PEP Practice Centre</a>
+<script>
+let checked=new Set();
+function checkTask(n){
+  let txt=document.getElementById('t'+n).value.trim();
+  if(txt.length<5){alert('Write your answers first, then tap Check Answers!');return;}
+  document.getElementById('ans'+n).classList.add('show');
+  checked.add(n);
+  document.getElementById('scoreBox').style.display='block';
+  document.getElementById('scoreCount').innerText=checked.size;
+  document.getElementById('ans'+n).scrollIntoView({behavior:'smooth'});
+}
+function updateCheck(){
+  let boxes=document.querySelectorAll('#grade5-performance input[type=checkbox]:checked').length;
+  document.getElementById('checkMsg').innerText = boxes==5 ? '✅ All checked - Ready to submit!' : boxes + ' / 5 checked - keep going!';
+}
+function finishAll(){
+  if(checked.size<5){alert('Finish all 5 tasks first - tap Check Answers on each one! You have done '+checked.size+' / 5');return;}
+  alert('🎉 Well done! You completed all 5 Performance Tasks!');
+}
+</script>
+</body>
+</html>
