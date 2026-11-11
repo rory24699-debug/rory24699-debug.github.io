@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 4 Maths - Batch 3 Banana</title>
+<style>
+body{font-family:Arial,sans-serif;background:#eef2f7;margin:0;padding:0}
+.top{background:#1e3a5f;color:white;text-align:center;padding:20px 15px}
+.top h1{margin:0;font-size:22px}
+.container{padding:15px;max-width:600px;margin:auto}
+.pt-card{background:white;padding:18px;border-radius:15px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.question{margin-bottom:18px;border-bottom:1px solid #eee;padding-bottom:12px}
+.question p{font-size:17px}
+label{display:block;background:#eef2f7;padding:10px;border-radius:10px;margin:6px 0;font-size:16px}
+button{width:100%;background:#28a745;color:white;border:none;padding:16px;border-radius:12px;font-size:18px;font-weight:bold;cursor:pointer}
+#result1{font-size:20px;font-weight:bold;text-align:center;margin-top:15px}
+.back{display:block;background:#1e3a5f;color:white;text-align:center;padding:16px;border-radius:12px;font-size:18px;font-weight:bold;text-decoration:none;margin-top:15px}
+</style>
+</head>
+<body>
+<div class="top">
+<h1>🇯🇲 Grade 4 Maths</h1>
+<p>Batch 3 - Banana • 6 Questions</p>
+<p>Score is locked - no cheating</p>
+</div>
+<div class="container">
+<div class="pt-card">
+<h3>Grade 4 Mathematics – Mock Test 3</h3>
+<p>Topic: Banana</p>
+<p>Choose the correct answer for each question.</p>
+<form id="mockTest1">
+<div class="question">
+<p><b>1. A farmer cuts 5 bunches of bananas with 12 bananas in each bunch. How many bananas altogether?</b></p>
+<label><input type="radio" name="q1" value="A"> A. 50</label>
+<label><input type="radio" name="q1" value="B"> B. 55</label>
+<label><input type="radio" name="q1" value="C"> C. 60</label>
+<label><input type="radio" name="q1" value="D"> D. 65</label>
+</div>
+<div class="question">
+<p><b>2. A farmer has 84 bananas and shares them equally among 7 children. How many bananas does each child get?</b></p>
+<label><input type="radio" name="q2" value="A"> A. 10</label>
+<label><input type="radio" name="q2" value="B"> B. 11</label>
+<label><input type="radio" name="q2" value="C"> C. 12</label>
+<label><input type="radio" name="q2" value="D"> D. 14</label>
+</div>
+<div class="question">
+<p><b>3. One bunch of bananas weighs 4 kilograms. What is the total weight of 6 bunches?</b></p>
+<label><input type="radio" name="q3" value="A"> A. 20 kg</label>
+<label><input type="radio" name="q3" value="B"> B. 22 kg</label>
+<label><input type="radio" name="q3" value="C"> C. 24 kg</label>
+<label><input type="radio" name="q3" value="D"> D. 28 kg</label>
+</div>
+<div class="question">
+<p><b>4. A shop sells 58 bananas on Monday and 37 on Tuesday. How many bananas are sold altogether?</b></p>
+<label><input type="radio" name="q4" value="A"> A. 85</label>
+<label><input type="radio" name="q4" value="B"> B. 90</label>
+<label><input type="radio" name="q4" value="C"> C. 95</label>
+<label><input type="radio" name="q4" value="D"> D. 105</label>
+</div>
+<div class="question">
+<p><b>5. A farmer has 72 bananas. He sells 39. How many bananas are left?</b></p>
+<label><input type="radio" name="q5" value="A"> A. 23</label>
+<label><input type="radio" name="q5" value="B"> B. 33</label>
+<label><input type="radio" name="q5" value="C"> C. 43</label>
+<label><input type="radio" name="q5" value="D"> D. 31</label>
+</div>
+<div class="question">
+<p><b>6. Each banana costs $80. How much will 5 bananas cost?</b></p>
+<label><input type="radio" name="q6" value="A"> A. $300</label>
+<label><input type="radio" name="q6" value="B"> B. $350</label>
+<label><input type="radio" name="q6" value="C"> C. $400</label>
+<label><input type="radio" name="q6" value="D"> D. $450</label>
+</div>
+<button type="button" onclick="checkMockTest1()">Submit Test</button>
+<p id="result1"></p>
+</form>
+</div>
+<a class="back" href="grade-4-mock-tests.html">← Back to Mock Tests</a>
+</div>
+<script>
+function checkMockTest1() {
+const answers = { q1: "C", q2: "C", q3: "C", q4: "C", q5: "B", q6: "C" };
+let score = 0;
+for (let q in answers) {
+  const selected = document.querySelector('input[name="' + q + '"]:checked');
+  if (selected && selected.value === answers[q]) { score++; }
+}
+document.querySelectorAll('#mockTest1 input').forEach(i => i.disabled = true);
+let msg = score === 6 ? "Excellent! 🌟" : score >= 4 ? "Good job! Keep practising!" : "Keep trying! Practise again.";
+document.getElementById("result1").innerHTML = "Your Score: " + score + " out of 6<br>" + msg;
+}
+</script>
+</body>
+</html>
