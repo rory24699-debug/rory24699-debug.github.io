@@ -1,1 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 4 Maths - Batch 1 Cabbage</title>
+<style>
+body{font-family:Arial,sans-serif;background:#eef2f7;margin:0;padding:0}
+.top{background:#1e3a5f;color:white;text-align:center;padding:20px 15px}
+.top h1{margin:0;font-size:22px}
+.container{padding:15px;max-width:600px;margin:auto}
+.pt-card{background:white;padding:18px;border-radius:15px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.question{margin-bottom:18px;border-bottom:1px solid #eee;padding-bottom:12px}
+.question p{font-size:17px}
+label{display:block;background:#eef2f7;padding:10px;border-radius:10px;margin:6px 0;font-size:16px}
+button{width:100%;background:#28a745;color:white;border:none;padding:16px;border-radius:12px;font-size:18px;font-weight:bold;cursor:pointer}
+#result1{font-size:20px;font-weight:bold;text-align:center;margin-top:15px}
+.back{display:block;background:#1e3a5f;color:white;text-align:center;padding:16px;border-radius:12px;font-size:18px;font-weight:bold;text-decoration:none;margin-top:15px}
+</style>
+</head>
+<body>
+<div class="top">
+<h1>🇯🇲 Grade 4 Maths</h1>
+<p>Batch 1 - Cabbage • 6 Questions</p>
+<p>Score is locked - no cheating</p>
+</div>
 
+<div class="container">
+<div class="pt-card">
+<h3>Grade 4 Mathematics – Mock Test 1</h3>
+<p>Topic: Cabbage</p>
+<p>Choose the correct answer for each question.</p>
+
+<form id="mockTest1">
+
+<div class="question">
+<p><b>1. A farmer plants 6 rows of cabbage with 8 plants in each row. How many cabbage plants are there altogether?</b></p>
+<label><input type="radio" name="q1" value="A"> A. 42</label>
+<label><input type="radio" name="q1" value="B"> B. 48</label>
+<label><input type="radio" name="q1" value="C"> C. 54</label>
+<label><input type="radio" name="q1" value="D"> D. 56</label>
+</div>
+
+<div class="question">
+<p><b>2. A farmer harvests 120 cabbages and packs them equally into 10 boxes. How many cabbages are in each box?</b></p>
+<label><input type="radio" name="q2" value="A"> A. 10</label>
+<label><input type="radio" name="q2" value="B"> B. 11</label>
+<label><input type="radio" name="q2" value="C"> C. 12</label>
+<label><input type="radio" name="q2" value="D"> D. 20</label>
+</div>
+
+<div class="question">
+<p><b>3. A cabbage weighs 2 kilograms. What is the total weight of 5 cabbages?</b></p>
+<label><input type="radio" name="q3" value="A"> A. 7 kg</label>
+<label><input type="radio" name="q3" value="B"> B. 8 kg</label>
+<label><input type="radio" name="q3" value="C"> C. 10 kg</label>
+<label><input type="radio" name="q3" value="D"> D. 12 kg</label>
+</div>
+
+<div class="question">
+<p><b>4. A farmer sells 35 cabbages in the morning and 28 in the afternoon. How many cabbages does he sell altogether?</b></p>
+<label><input type="radio" name="q4" value="A"> A. 53</label>
+<label><input type="radio" name="q4" value="B"> B. 63</label>
+<label><input type="radio" name="q4" value="C"> C. 65</label>
+<label><input type="radio" name="q4" value="D"> D. 73</label>
+</div>
+
+<div class="question">
+<p><b>5. A farmer has 90 cabbages. He sells 36. How many cabbages are left?</b></p>
+<label><input type="radio" name="q5" value="A"> A. 44</label>
+<label><input type="radio" name="q5" value="B"> B. 54</label>
+<label><input type="radio" name="q5" value="C"> C. 56</label>
+<label><input type="radio" name="q5" value="D"> D. 64</label>
+</div>
+
+<div class="question">
+<p><b>6. Each cabbage costs $150. How much will 4 cabbages cost?</b></p>
+<label><input type="radio" name="q6" value="A"> A. $450</label>
+<label><input type="radio" name="q6" value="B"> B. $500</label>
+<label><input type="radio" name="q6" value="C"> C. $550</label>
+<label><input type="radio" name="q6" value="D"> D. $600</label>
+</div>
+
+<button type="button" onclick="checkMockTest1()">Submit Test</button>
+<p id="result1"></p>
+</form>
+</div>
+
+<a class="back" href="grade-4-mock-tests.html">← Back to Mock Tests</a>
+</div>
+
+<script>
+function checkMockTest1() {
+const answers = { q1: "B", q2: "C", q3: "C", q4: "B", q5: "B", q6: "D" };
+let score = 0;
+for (let q in answers) {
+  const selected = document.querySelector('input[name="' + q + '"]:checked');
+  if (selected && selected.value === answers[q]) { score++; }
+}
+document.querySelectorAll('#mockTest1 input').forEach(i => i.disabled = true);
+let msg = score === 6 ? "Excellent! 🌟" : score >= 4 ? "Good job! Keep practising!" : "Keep trying! Practise again.";
+document.getElementById("result1").innerHTML = "Your Score: " + score + " out of 6<br>" + msg;
+}
+</script>
+</body>
+  </html>
