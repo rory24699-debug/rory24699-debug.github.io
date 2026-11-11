@@ -13,13 +13,16 @@ body{background:#d9d9d9;font-family:Arial;display:flex;justify-content:center;pa
 .top p{color:#fff;font-size:13px;margin-top:6px}
 .hero{width:100%;background:#000}
 .hero img{width:100%;height:auto;display:block}
-.mid{background:#0a0a0a;color:#fff;padding:20px 18px}
-.mid ul{list-style:disc;padding-left:18px}
-.mid li{font-size:14px;margin-bottom:12px;line-height:1.35}
-.choose{background:#fff;padding:24px 14px 28px;text-align:center}
-.choose h2{color:#12315f;font-size:22px;font-weight:800;margin-bottom:18px}
-.btns{display:flex;gap:10px;justify-content:center}
-.btns a{background:#1862d6;color:#fff;text-decoration:none;padding:15px 0;width:110px;border-radius:14px;font-weight:800;font-size:16px;display:block;text-align:center}
+.mid{background:#F2F6FF;padding:20px 16px}
+.feature{background:white;border-radius:16px;padding:16px;margin-bottom:12px;display:flex;align-items:flex-start;gap:12px}
+.feature:last-child{margin-bottom:4px}
+.check{background:#1E6FDB;color:white;min-width:36px;height:36px;border-radius:50%;text-align:center;line-height:36px;font-size:18px;font-weight:bold}
+.feature b{color:#0A2A5E;font-size:16px}
+.feature span{color:#555;font-size:13px}
+.mid h2{text-align:center;color:#0A2A5E;font-size:22px;margin:0 0 4px 0}
+.mid .sub{text-align:center;color:#666;font-size:14px;margin:0 0 16px 0}
+.choose{background:#fff;padding:16px;text-align:center}
+.start-btn{display:block;background:#F2B705;color:#0A2A5E;text-decoration:none;text-align:center;font-size:20px;font-weight:800;padding:18px;border-radius:16px}
 .foot{background:#c7c7c7;text-align:center;padding:13px;font-size:12px}
 </style>
 </head>
@@ -34,20 +37,27 @@ body{background:#d9d9d9;font-family:Arial;display:flex;justify-content:center;pa
 </div>
 
 <div class="mid">
-<ul>
-<li>Aligned with Jamaica's National PEP Curriculum</li>
-<li>Organized Learning for Grades 4-6</li>
-<li>Comprehensive PEP Preparation - All in One Platform</li>
-</ul>
+<h2>Key Features</h2>
+<p class="sub">Everything your child needs to succeed in PEP</p>
+
+<div class="feature">
+<div class="check">✓</div>
+<div><b>Aligned with Jamaica's National PEP Curriculum</b><br><span>Content mapped directly to the official PEP curriculum for Jamaican primary schools</span></div>
+</div>
+
+<div class="feature">
+<div class="check">✓</div>
+<div><b>Organized Learning for Grades 4-6</b><br><span>Structured lessons and activities tailored for Grade 4, 5, and 6 students</span></div>
+</div>
+
+<div class="feature">
+<div class="check">✓</div>
+<div><b>Comprehensive PEP Preparation - All in One Platform</b><br><span>Practice tests, quizzes, and resources to prepare confidently for PEP exams</span></div>
+</div>
 </div>
 
 <div class="choose">
-<h2>Choose your Grade</h2>
-<div class="btns">
-<a href="grade4.html">GRADE 4</a>
-<a href="grade5.html">GRADE 5</a>
-<a href="grade6.html">GRADE 6</a>
-</div>
+<a href="menu.html" class="start-btn">START LEARNING TODAY →</a>
 </div>
 
 <div class="foot">Educational Technology for Jamaica</div>
