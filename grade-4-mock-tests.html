@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Grade 4 Mock Tests</title>
 <style>
-body{margin:0;font-family:Arial;background:#eef2f7}
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#eef2f7}
 .header{background:#1a365d;color:white;text-align:center;padding:28px 15px}
 .header h1{margin:0;font-size:28px}.header p{margin:8px 0 0;font-size:18px}
 .wrap{padding:15px}
@@ -164,7 +164,7 @@ language:{title:"📖 Language Arts",batches:[
 ]}
 };
 let main=document.getElementById('main');
-function showHome(){main.innerHTML=`<button class="btn" onclick="showBatches('maths')">📐 Mathematics • 10 Batches</button><button class="btn blue" onclick="showBatches('language')">📖 Language Arts • 10 Batches</button><a class="btn back" href="grade-4.html">← Back to Grade 4</a>`;}
+function showHome(){main.innerHTML=`<button class="btn" onclick="showBatches('maths')">📐 Mathematics • 10 Batches</button><button class="btn blue" onclick="showBatches('language')">📖 Language Arts • 10 Batches</button><a class="btn back" href="grade4.html">← Back to Grade 4</a>
 function showBatches(sub){let s=subjects[sub];main.innerHTML=`<h2 style="text-align:center">${s.title}</h2>`+s.batches.map((b,i)=>`<button class="btn" onclick="openBatch('${sub}',${i})">${b.name}</button>`).join('')+`<button class="btn back" onclick="showHome()">← Back to Subjects</button>`;}
 function openBatch(sub,i){let b=subjects[sub].batches[i];let html=`<h2 style="text-align:center">${b.name}</h2>`;b.qs.forEach((q,qi)=>{html+=`<div class="card"><b>Q${qi+1}. ${q.q}</b>`+q.o.map((o,oi)=>`<button class="opt" onclick="check(this,${oi===q.a},'exp${qi}')">${o}</button>`).join('')+`<div class="exp" id="exp${qi}">${q.e}</div></div>`});html+=`<button class="btn back" onclick="showBatches('${sub}')">← Back to Batches</button>`;main.innerHTML=html;window.scrollTo(0,0);}
 function check(el,correct,id){let card=el.parentElement;card.querySelectorAll('.opt').forEach(o=>o.disabled=true);el.classList.add(correct?'correct':'wrong');document.getElementById(id).style.display='block';}
