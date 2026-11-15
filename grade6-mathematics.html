@@ -3,88 +3,190 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grade 6 PEP Mathematics - Test 1</title>
+<title>Grade 6 PEP - Mathematics</title>
 <style>
-body{font-family:Arial,sans-serif;background:#f4f6fb;margin:0;padding:15px}
-.card{max-width:650px;margin:auto;background:#fff;padding:20px;border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
-h1{font-size:20px;text-align:center}
-.sub{text-align:center;color:#555;margin-bottom:15px}
-.q{margin-bottom:18px;padding:12px;border:1px solid #eee;border-radius:10px}
-.q b{display:block;margin-bottom:8px}
-label{display:block;margin:5px 0;cursor:pointer}
-button{width:100%;padding:14px;border:0;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer}
-#submitBtn{background:#2563eb;color:#fff}
-#waBtn{background:#25D366;color:#fff;margin-top:10px;display:none}
-#result{text-align:center;font-size:18px;font-weight:bold;margin-top:15px}
-input[type=text]{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-top:10px;box-sizing:border-box}
-.small{text-align:center;color:#666;font-size:13px;margin-top:8px}
+body{font-family:Arial,sans-serif;background:#eef2ff;margin:0;padding:12px}
+.card{max-width:650px;margin:auto;background:#fff;padding:20px;border-radius:18px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+h1{text-align:center;font-size:22px;margin:0}
+.sub{text-align:center;color:#555;margin:10px 0 15px}
+.tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:15px}
+.tab{padding:10px 18px;border:0;border-radius:25px;background:#e5e7eb;font-weight:bold;cursor:pointer;font-size:15px}
+.tab.active{background:#2563eb;color:#fff}
+.qhead{font-size:15px;color:#333;margin-bottom:8px}
+.qtext{font-size:20px;font-weight:bold;margin-bottom:15px}
+.opt{display:block;width:100%;text-align:left;padding:14px;margin:8px 0;border:1.5px solid #ddd;border-radius:12px;background:#fff;font-size:17px;cursor:pointer;box-sizing:border-box}
+.opt.selected{border-color:#2563eb;background:#dbeafe}
+.btn{width:100%;padding:14px;border:0;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:10px}
+#nextBtn{background:#1e3a5f;color:#fff}
+#submitBtn{background:#2563eb;color:#fff;display:none}
+#waBtn{background:#25D366;color:#fff;display:none}
+#result{text-align:center;font-size:18px;font-weight:bold;margin-top:12px}
+input{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-top:10px;box-sizing:border-box}
+.small{text-align:center;color:#666;font-size:13px;margin-top:6px}
 </style>
 </head>
 <body>
 <div class="card">
-<h1>Grade 6 PEP - Mathematics</h1>
-<div class="sub">Test 1: Number & Fractions • 20 Questions • MOE Aligned</div>
-<div id="quiz"></div>
-<button id="submitBtn" onclick="submitQuiz()">Submit Test</button>
+<h1>🇯🇲 Grade 6 PEP - Mathematics<br>100 Questions - 5 Tests</h1>
+<div class="sub">Test 1-5 • 20 questions each • Score is locked - no cheating</div>
+<div class="tabs" id="tabs"></div>
+<div class="qhead" id="qhead"></div>
+<div class="qtext" id="qtext"></div>
+<div id="opts"></div>
+<button class="btn" id="nextBtn" onclick="nextQ()">Next ➡️</button>
+<button class="btn" id="submitBtn" onclick="submitTest()">Submit Test</button>
 <div id="result"></div>
 <input type="text" id="parentNum" placeholder="Optional: Type parent WhatsApp number e.g. 18765432100">
-<button id="waBtn" onclick="sendWhatsApp()">📱 Send Report to WhatsApp</button>
-<div class="small">Leave number blank to pick a parent/contact in WhatsApp</div>
+<button class="btn" id="waBtn" onclick="sendWA()">📱 Send Report to WhatsApp</button>
+<div class="small">Leave number blank to pick any parent/contact in WhatsApp</div>
 </div>
-
 <script>
-const questions=[
-{q:"What is the value of 7 in 47,532?",o:["7,000","700","70","7"],a:1},
-{q:"What is 45,678 rounded to the nearest thousand?",o:["45,000","46,000","45,600","46,700"],a:1},
-{q:"What is the next number in the pattern: 3, 9, 27, 81, ...?",o:["108","162","243","324"],a:2},
-{q:"Which is a prime number?",o:["21","27","29","33"],a:2},
-{q:"What is 1/2 + 1/4?",o:["2/6","3/4","1/6","2/4"],a:1},
-{q:"What is 3/4 - 1/2?",o:["1/4","2/4","1/2","2/2"],a:0},
-{q:"What is 2/3 of 18?",o:["6","9","12","15"],a:2},
-{q:"Which fraction is equivalent to 3/5?",o:["6/10","5/3","3/10","9/10"],a:0},
-{q:"What is 5/6 written as a mixed number for 11/6?",o:["1 5/6","2 1/6","1 1/6","5 1/6"],a:0},
-{q:"What is 1/4 as a decimal?",o:["0.14","0.25","0.4","0.75"],a:1},
-{q:"What is 0.75 as a fraction in simplest form?",o:["7/5","3/4","75/10","1/2"],a:1},
-{q:"Which is largest? 0.6, 3/4, 1/2, 0.8",o:["0.6","3/4","1/2","0.8"],a:3},
-{q:"What is 12 x 8?",o:["86","96","106","88"],a:1},
-{q:"What is 144 ÷ 12?",o:["11","12","14","16"],a:1},
-{q:"What is the LCM of 4 and 6?",o:["10","12","18","24"],a:1},
-{q:"What is the HCF of 12 and 18?",o:["3","6","9","12"],a:1},
-{q:"A cake is cut into 8 equal parts. John eats 3 parts. What fraction is left?",o:["3/8","5/8","8/3","1/8"],a:1},
-{q:"Mary has 2 1/2 litres of juice. She drinks 1 1/4 litres. How much left?",o:["1 1/4 litres","1 1/2 litres","1 litre","3 3/4 litres"],a:0},
-{q:"What is 3/5 + 1/10?",o:["4/15","7/10","4/5","3/15"],a:1},
-{q:"Roman numeral for 49 is?",o:["XLIX","XIX","IL","XXXXIX"],a:0}
+// TEST 1: Number & Fractions
+const T1=[
+["What is the value of 7 in 47,532?",["7,000","700","70","7"],0],
+["What is 45,678 rounded to nearest thousand?",["45,000","46,000","45,600","46,700"],1],
+["Next in pattern: 3, 9, 27, 81, ...?",["108","162","243","324"],2],
+["Which is a prime number?",["21","27","29","33"],2],
+["What is 1/2 + 1/4?",["2/6","3/4","1/6","2/4"],1],
+["What is 3/4 - 1/2?",["1/4","2/4","1/2","2/2"],0],
+["What is 2/3 of 18?",["6","9","12","15"],2],
+["Which is equivalent to 3/5?",["6/10","5/3","3/10","9/10"],0],
+["11/6 as mixed number?",["1 5/6","2 1/6","1 1/6","5 1/6"],0],
+["1/4 as decimal?",["0.14","0.25","0.4","0.75"],1],
+["0.75 as simplest fraction?",["7/5","3/4","75/10","1/2"],1],
+["Which is largest? 0.6, 3/4, 1/2, 0.8",["0.6","3/4","1/2","0.8"],3],
+["What is 12 x 8?",["86","96","106","88"],1],
+["What is 144 ÷ 12?",["11","12","14","16"],1],
+["LCM of 4 and 6?",["10","12","18","24"],1],
+["HCF of 12 and 18?",["3","6","9","12"],1],
+["Cake cut in 8, John eats 3. Fraction left?",["3/8","5/8","8/3","1/8"],1],
+["2 1/2 L - 1 1/4 L = ?",["1 1/4 L","1 1/2 L","1 L","3 3/4 L"],0],
+["3/5 + 1/10 = ?",["4/15","7/10","4/5","3/15"],1],
+["Roman numeral for 49?",["XLIX","XIX","IL","XXXXIX"],0]
 ];
-let score=0;
-let quizDiv=document.getElementById('quiz');
-questions.forEach((item,i)=>{
-let html=`<div class="q"><b>${i+1}. ${item.q}</b>`;
-item.o.forEach((opt,j)=>{
-html+=`<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`;
-});
-html+=`</div>`;
-quizDiv.innerHTML+=html;
-});
-function submitQuiz(){
-score=0;
-questions.forEach((item,i)=>{
-let sel=document.querySelector(`input[name="q${i}"]:checked`);
-if(sel && parseInt(sel.value)===item.a) score++;
-});
-document.getElementById('result').innerText=`Score: ${score}/20`;
-document.getElementById('waBtn').style.display='block';
-document.getElementById('submitBtn').disabled=true;
-document.getElementById('submitBtn').innerText='Test Submitted - Score Locked';
-document.querySelectorAll('input[type=radio]').forEach(r=>r.disabled=true);
+// TEST 2: Decimals, Percentages & Measurement
+const T2=[
+["What is 25% of 200?",["50","25","100","75"],0],
+["What is 50% of 80?",["20","40","30","60"],1],
+["What is 0.5 + 0.75?",["1.0","1.25","0.125","1.5"],1],
+["What is 3.5 x 10?",["0.35","35","3.05","350"],1],
+["What is 10% of 500?",["5","50","100","500"],1],
+["Convert 3/4 to %?",["34%","75%","50%","25%"],1],
+["100 cm = ?",["1 m","10 m","100 m","0.1 m"],0],
+["1 kg = ?",["100 g","1000 g","10 g","10000 g"],1],
+["Perimeter of square side 6 cm?",["12 cm","18 cm","24 cm","36 cm"],2],
+["Area of rectangle 8 cm x 5 cm?",["13 cm²","40 cm²","26 cm²","80 cm²"],1],
+["What is 2.5 L in mL?",["25 mL","250 mL","2500 mL","25000 mL"],2],
+["What is 1 hour 30 mins in mins?",["60","90","130","150"],1],
+["What is 0.9 as %?",["9%","90%","0.9%","900%"],1],
+["What is 4.2 - 1.8?",["2.4","2.6","3.4","2.0"],0],
+["Which is 0.05?",["5%","50%","0.5%","500%"],0],
+["Volume of cube side 3 cm?",["9 cm³","18 cm³","27 cm³","12 cm³"],2],
+["What is 3/10 as decimal?",["0.3","3.0","0.03","0.33"],0],
+["What is 20% of 150?",["20","30","40","50"],1],
+["How many mm in 5 cm?",["5","50","500","5000"],1],
+["What is 7.5 ÷ 5?",["1.5","15","0.15","75"],0]
+];
+// TEST 3: Geometry & Algebra
+const T3=[
+["How many sides does a hexagon have?",["5","6","7","8"],1],
+["Sum of angles in a triangle?",["90°","180°","270°","360°"],1],
+["What is a right angle?",["45°","90°","180°","360°"],1],
+["How many lines of symmetry in a square?",["1","2","3","4"],3],
+["What is 3 x n if n=7?",["10","21","24","17"],1],
+["If x + 5 = 12, x = ?",["5","7","12","17"],1],
+["What is next: 5, 10, 15, 20, ...?",["22","25","30","24"],1],
+["Which is a quadrilateral?",["Triangle","Pentagon","Rectangle","Circle"],2],
+["How many vertices in a cube?",["6","8","12","4"],1],
+["What is 2³ ?",["6","8","9","12"],1],
+["If 4a = 20, a = ?",["4","5","6","80"],1],
+["What is the order: 3 + 2 x 4 = ?",["20","11","14","10"],1],
+["An angle >90° and <180° is?",["Acute","Right","Obtuse","Reflex"],2],
+["How many faces on a triangular prism?",["3","4","5","6"],2],
+["What is 5 + 5 x 2?",["20","15","12","10"],1],
+["Perimeter of triangle 5,6,7 cm?",["18 cm","16 cm","17 cm","12 cm"],0],
+["Which shape has all sides equal and 4 right angles?",["Rectangle","Square","Rhombus","Trapezium"],1],
+["What is the value of 10 - 2 x 3?",["24","4","16","14"],1],
+["How many degrees in a full turn?",["90°","180°","270°","360°"],3],
+["If y = 3, 2y + 4 = ?",["10","9","8","7"],0]
+];
+// TEST 4: Measurement & Data
+const T4=[
+["What is mean of 4, 6, 8, 10?",["6","7","8","9"],1],
+["What is the mode of 2,3,3,5,3,7?",["2","3","5","7"],1],
+["What is range of 5, 10, 15, 20?",["5","10","15","20"],2],
+["How many minutes in 2.5 hours?",["120","150","180","250"],1],
+["1 m 50 cm in cm?",["150 cm","105 cm","15 cm","1500 cm"],0],
+["What is area of square side 9 cm?",["18 cm²","36 cm²","81 cm²","90 cm²"],2],
+["What is 1 km in m?",["100","1000","10000","10"],1],
+["A bar graph shows?",["Time","Data with bars","Shapes","Angles"],1],
+["What is probability of heads on a coin?",["1/4","1/2","1","0"],1],
+["What is 500 g as kg?",["5 kg","0.5 kg","50 kg","500 kg"],1],
+["If temp is 28°C, is it hot or cold?",["Hot","Cold","Freezing","0°"],0],
+["What is perimeter of rectangle 10 x 4?",["14 cm","28 cm","40 cm","44 cm"],1],
+["How many seconds in 3 mins?",["60","120","180","300"],2],
+["What is 1/2 hour in mins?",["15","30","45","60"],1],
+["Mean of 10, 20, 30?",["15","20","25","30"],1],
+["Which is heaviest? 1 kg, 500 g, 2 kg, 750 g",["1 kg","500 g","2 kg","750 g"],2],
+["Volume of box 4x3x2 cm?",["9 cm³","24 cm³","12 cm³","20 cm³"],1],
+["What is 3:30 pm in 24h time?",["15:30","13:30","3:30","03:30"],0],
+["How many days in Feb in leap year?",["28","29","30","31"],1],
+["A pictograph uses?",["Pictures","Numbers only","Lines","Angles"],0]
+];
+// TEST 5: Mixed PEP Review
+const T5=[
+["What is 1/2 + 1/3?",["2/5","5/6","1/5","2/3"],1],
+["What is 20% of 300?",["20","60","40","80"],1],
+["What is 15 x 6?",["80","90","100","75"],1],
+["What is 0.4 + 0.6?",["1.0","0.10","1.2","0.4"],0],
+["What is perimeter of square side 10 cm?",["20 cm","30 cm","40 cm","100 cm"],2],
+["What is 3/4 of 20?",["10","15","5","20"],1],
+["What is 1000 - 456?",["544","554","644","444"],0],
+["What is angle in a square corner?",["45°","90°","180°","60°"],1],
+["What is mean of 5, 10, 15?",["10","15","5","20"],0],
+["What is 2.5 x 4?",["10","8","6","12"],0],
+["What is 7² ?",["14","49","21","77"],1],
+["What is 1/5 as %?",["5%","15%","20%","50%"],2],
+["How many edges in a cube?",["6","8","12","10"],2],
+["What is 48 ÷ 6?",["6","7","8","9"],2],
+["What is 3.25 rounded to nearest whole?",["3","4","3.2","3.3"],0],
+["What is area of rectangle 6 x 4?",["10","20","24","18"],2],
+["What is 1 kg - 250 g?",["750 g","250 g","500 g","1000 g"],0],
+["What is next: 2, 4, 8, 16, ...?",["20","24","32","18"],2],
+["What is 5/10 in simplest form?",["1/2","5/2","2/5","1/5"],0],
+["A shop sells 12 mangoes for $240. Cost of 1?",["$12","$20","$24","$200"],1]
+];
+const tests=[{name:"Test 1",qs:T1},{name:"Test 2",qs:T2},{name:"Test 3",qs:T3},{name:"Test 4",qs:T4},{name:"Test 5",qs:T5}];
+let curTest=0, curQ=0, answers=[], locked=false, finalScore=0;
+function renderTabs(){
+document.getElementById('tabs').innerHTML=tests.map((t,i)=>`<button class="tab ${i===curTest?'active':''}" onclick="switchTest(${i})">${t.name}</button>`).join('');
 }
-function sendWhatsApp(){
-let msg=`Grade 6 PEP Mathematics - Test 1 (Number & Fractions) - Score: ${score}/20 - MOE Aligned`;
+function renderQ(){
+renderTabs();
+let q=tests[curTest].qs[curQ];
+document.getElementById('qhead').innerText=`📘 ${tests[curTest].name} - Question ${curQ+1} of 20`;
+document.getElementById('qtext').innerText=q[0];
+document.getElementById('opts').innerHTML=q[1].map((o,i)=>`<button class="opt ${answers[curQ]===i?'selected':''}" onclick="pick(${i})">${o}</button>`).join('');
+document.getElementById('nextBtn').style.display=curQ===19?'none':'block';
+document.getElementById('submitBtn').style.display=curQ===19?'block':'none';
+document.getElementById('result').innerText=locked?`Score: ${finalScore}/20 - Locked`:'';
+document.getElementById('waBtn').style.display=locked?'block':'none';
+}
+function pick(i){ if(locked) return; answers[curQ]=i; renderQ(); }
+function nextQ(){ if(curQ<19){curQ++; renderQ();} }
+function switchTest(i){ curTest=i; curQ=0; answers=[]; locked=false; finalScore=0; document.getElementById('result').innerText=''; document.getElementById('waBtn').style.display='none'; renderQ(); }
+function submitTest(){
+if(answers.length<20 || answers.includes(undefined)){ alert('Please answer all 20 questions'); return; }
+finalScore=0; tests[curTest].qs.forEach((q,i)=>{ if(answers[i]===q[2]) finalScore++; });
+locked=true; renderQ();
+}
+function sendWA(){
+let msg=`Grade 6 PEP Mathematics - ${tests[curTest].name} - Score: ${finalScore}/20 - MOE Aligned`;
 let num=document.getElementById('parentNum').value.replace(/[^0-9]/g,'');
-let url='';
-if(num){ url=`https://wa.me/${num}?text=${encodeURIComponent(msg)}`; }
-else { url=`https://wa.me/?text=${encodeURIComponent(msg)}`; }
+let url=num?`https://wa.me/${num}?text=${encodeURIComponent(msg)}`:`https://wa.me/?text=${encodeURIComponent(msg)}`;
 window.open(url,'_blank');
 }
+switchTest(0);
 </script>
 </body>
 </html>
