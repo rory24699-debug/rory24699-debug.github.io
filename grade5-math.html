@@ -3,47 +3,166 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GRADE 5 - MATHEMATICS</title>
+<title>Grade 5 PEP - Mathematics</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial;background:#f3f4f6}
-.header{background:#1e3a5f;color:#fff;text-align:center;padding:28px 16px 20px;border-radius:0 0 20px 20px}
-.header h1{margin:0;font-size:22px;font-weight:800}
-.header p{margin:8px 0 0;font-size:15px;opacity:.9}
-.container{max-width:520px;margin:0 auto;padding:16px}
-.card-btn{display:block;width:100%;border-radius:20px;padding:18px 16px;font-size:19px;font-weight:bold;text-align:center;text-decoration:none;color:#fff;margin-bottom:14px;line-height:1.3}
-.card-btn small{display:block;font-size:14px;font-weight:400;opacity:.9;margin-top:4px}
-.blue{background:#1e3a5f}
-.green{background:#15803d}
-.dark{background:#3a3a3a;margin-top:18px}
-.batch-title{text-align:center;font-size:22px;font-weight:800;margin:18px 0 14px}
-.section{background:#fff;border-radius:16px;padding:16px;margin-bottom:14px}
-.section h2{margin:0 0 8px;font-size:17px;color:#1e3a5f}
-.section p,.section li{font-size:14px;line-height:1.5;color:#374151}
+body{font-family:Arial,sans-serif;background:#eef2ff;margin:0;padding:12px}
+.card{max-width:650px;margin:auto;background:#fff;padding:20px;border-radius:18px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+h1{text-align:center;font-size:22px;margin:0}
+.sub{text-align:center;color:#555;margin:10px 0 15px}
+.tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:15px}
+.tab{padding:10px 18px;border:0;border-radius:25px;background:#e5e7eb;font-weight:bold;cursor:pointer;font-size:15px}
+.tab.active{background:#2563eb;color:#fff}
+.qhead{font-size:15px;color:#333;margin-bottom:8px}
+.qtext{font-size:20px;font-weight:bold;margin-bottom:15px}
+.opt{display:block;width:100%;text-align:left;padding:14px;margin:8px 0;border:1.5px solid #ddd;border-radius:12px;background:#fff;font-size:17px;cursor:pointer;box-sizing:border-box}
+.opt.selected{border-color:#2563eb;background:#dbeafe}
+.btn{width:100%;padding:14px;border:0;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:10px}
+#nextBtn{background:#1e3a5f;color:#fff}
+#submitBtn{background:#2563eb;color:#fff;display:none}
+#waBtn{background:#25D366;color:#fff;display:none}
+#result{text-align:center;font-size:18px;font-weight:bold;margin-top:12px}
+input{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-top:10px;box-sizing:border-box}
+.small{text-align:center;color:#666;font-size:13px;margin-top:6px}
+.homeBtn{display:block;text-align:center;text-decoration:none;background:#1e3a5f;color:#fff;padding:14px;border-radius:10px;font-weight:bold;font-size:17px;margin-top:12px}
 </style>
 </head>
 <body>
-<div class="header">
-<h1>GRADE 5 - MATHEMATICS</h1>
-<p>Ministry Curriculum Learning & PEP Preparation</p>
+<div class="card">
+<h1>🇯🇲 Grade 5 PEP - Mathematics<br>100 Questions - 5 Batches</h1>
+<div class="sub">Batch 1-5 • 20 questions each • Score is locked - no cheating</div>
+<div class="tabs" id="tabs"></div>
+<div class="qhead" id="qhead"></div>
+<div class="qtext" id="qtext"></div>
+<div id="opts"></div>
+<button class="btn" id="nextBtn" onclick="nextQ()">Next ➡️</button>
+<button class="btn" id="submitBtn" onclick="submitTest()">Submit Batch</button>
+<div id="result"></div>
+<input type="text" id="parentNum" placeholder="Optional: Type parent WhatsApp number e.g. 18765432100">
+<button class="btn" id="waBtn" onclick="sendWA()">📱 Send Report to WhatsApp</button>
+<div class="small">Leave number blank to pick any parent/contact in WhatsApp</div>
+<a href="javascript:history.back()" class="homeBtn">⬅️ Go back to PEP Centre</a>
 </div>
-<div class="container">
-<a href="https://pep.moey.gov.jm/" class="card-btn blue">📄 Ministry Curriculum Notes<small>Official Grade 5 Mathematics Notes</small></a>
-<a href="https://www.youtube.com/results?search_query=grade+5+mathematics+Jamaica+PEP+MOE" class="card-btn blue">▶️ Ministry Video Lessons<small>Grade 5 Mathematics Video Tutorials</small></a>
-<div class="batch-title">✏️ Practice Batches</div>
-<a href="#batch1" class="card-btn green">Batch 1 - Numbers to 100,000</a>
-<a href="#batch2" class="card-btn green">Batch 2 - Fractions, Decimals & Percentages</a>
-<a href="#batch3" class="card-btn green">Batch 3 - Multiplication & Division</a>
-<a href="#batch4" class="card-btn green">Batch 4 - Measurement</a>
-<a href="#batch5" class="card-btn green">Batch 5 - Geometry & Statistics</a>
-<a href="grade5-performance-task-prep.html" class="card-btn green">Batch 6 - PEP Performance Task Practice</a>
-<div id="batch1" class="section"><h2>Batch 1 - Numbers to 100,000</h2><p><b>MOE Grade 5:</b> Place value, rounding, multiples, factors, prime numbers.</p><ul><li>What is the value of 7 in 47,325?</li><li>Round 68,472 to the nearest 1,000</li><li>List the factors of 24</li></ul></div>
-<div id="batch2" class="section"><h2>Batch 2 - Fractions, Decimals & Percentages</h2><p><b>MOE Grade 5:</b> Equivalent fractions, add/subtract fractions, decimals to 2 places, % of a quantity.</p><ul><li>1/2 + 1/4 = ?</li><li>Write 0.75 as a fraction in simplest form</li><li>Find 50% of 120</li></ul></div>
-<div id="batch3" class="section"><h2>Batch 3 - Multiplication & Division</h2><p><b>MOE Grade 5:</b> 2-digit x 2-digit, division with remainders, multi-step word problems.</p><ul><li>24 x 13 = ?</li><li>145 ÷ 5 = ?</li><li>5 boxes with 36 mangoes each. How many in all?</li></ul></div>
-<div id="batch4" class="section"><h2>Batch 4 - Measurement</h2><p><b>MOE Grade 5:</b> Length, mass, capacity, time, money, perimeter, area, volume.</p><ul><li>Perimeter of rectangle 8cm by 5cm = ?</li><li>Area of rectangle 8cm by 5cm = ?</li><li>Convert 2.5 m to cm</li></ul></div>
-<div id="batch5" class="section"><h2>Batch 5 - Geometry & Statistics</h2><p><b>MOE Grade 5:</b> Angles, shapes, symmetry, coordinates, bar graphs, mode/median.</p><ul><li>Name an angle that is 90°</li><li>How many sides does a hexagon have?</li><li>Find the mode: 3, 5, 5, 7, 5</li></ul></div>
-<a href="grade5-curriculum-learning-centre.html" class="card-btn dark">Back to Curriculum Centre</a>
-<a href="grade5.html" class="card-btn dark">Back to Grade 5 Hub</a>
-</div>
+<script>
+const B1=[
+["What is the value of 5 in 5,432?",["5,000","500","50","5"],0],
+["What is 3,456 rounded to nearest hundred?",["3,400","3,500","3,000","3,460"],1],
+["Next: 4, 8, 12, 16, ...?",["18","20","24","22"],1],
+["Which is a multiple of 6?",["13","18","25","31"],1],
+["What is 1/2 + 1/2?",["1","2/2 is 1","1/4","2/4"],0],
+["What is 3/4 - 1/4?",["2/4","1/2 is same","2/4 is 1/2","All correct"],3],
+["What is 1/3 of 12?",["3","4","6","12"],1],
+["Which is equivalent to 1/2?",["2/4","1/4","3/2","2/2"],0],
+["What is 7 x 8?",["54","56","64","48"],1],
+["What is 96 ÷ 8?",["11","12","14","16"],1],
+["What is 0.5 as fraction?",["1/2","1/5","5/1","1/10"],0],
+["Which is largest? 0.3, 0.7, 0.5",["0.3","0.7","0.5","Equal"],1],
+["What is 25% of 40?",["5","10","20","25"],1],
+["Perimeter of square side 5 cm?",["10 cm","15 cm","20 cm","25 cm"],2],
+["Area of rectangle 6 cm x 4 cm?",["10 cm²","24 cm²","20 cm²","18 cm²"],1],
+["How many cm in 2 m?",["20","200","2000","2"],1],
+["What is 1 kg in g?",["100 g","1000 g","10 g","10000 g"],1],
+["What is 3.2 + 1.5?",["4.7","4.5","3.7","5.7"],0],
+["What is 10 - 2 x 3?",["24","4","16","14"],1],
+["How many sides does a pentagon have?",["4","5","6","7"],1]
+];
+const B2=[
+["What is 456 + 234?",["690","680","700","590"],0],
+["What is 800 - 365?",["435","445","465","535"],0],
+["What is 12 x 6?",["62","72","82","66"],1],
+["What is 144 ÷ 12?",["11","12","14","16"],1],
+["What is 2/5 + 1/5?",["3/5","2/10","3/10","1/5"],0],
+["What is 5/6 - 1/6?",["4/6","5/6","1/6","6/6"],0],
+["What is 3/4 of 16?",["4","8","12","16"],2],
+["What is 0.75 as fraction?",["3/4","1/4","7/5","75/10"],0],
+["What is 50% of 90?",["25","45","50","90"],1],
+["What is 10% of 200?",["10","20","30","200"],1],
+["How many minutes in 2 hours?",["60","120","180","200"],1],
+["What is 1 hour 15 mins in mins?",["60","75","115","150"],1],
+["Perimeter of rectangle 8 cm x 3 cm?",["11 cm","22 cm","24 cm","16 cm"],1],
+["Area of square side 7 cm?",["14 cm²","28 cm²","49 cm²","70 cm²"],2],
+["What is 2.5 L in mL?",["25","250","2500","25000"],2],
+["What is 4.5 - 2.3?",["2.2","2.5","6.8","2.0"],0],
+["Which is 0.25?",["25%","2.5%","250%","0.25%"],0],
+["What is 3³?",["9","27","18","12"],1],
+["If x + 7 = 15, x = ?",["7","8","15","22"],1],
+["What is next: 2, 6, 18, 54, ...?",["72","108","162","216"],2]
+];
+const B3=[
+["Sum of angles in triangle?",["90°","180°","270°","360°"],1],
+["What is a right angle?",["45°","90°","180°","360°"],1],
+["How many lines of symmetry in a rectangle?",["1","2","3","4"],1],
+["What is 5 x n if n=9?",["14","45","54","95"],1],
+["Which is a quadrilateral?",["Triangle","Square","Pentagon","Circle"],1],
+["How many vertices in a cube?",["6","8","12","4"],1],
+["What is 10 - 2 x 3?",["24","4","16","14"],1],
+["An angle >90° and <180° is?",["Acute","Right","Obtuse","Reflex"],2],
+["How many faces on a cube?",["4","5","6","8"],2],
+["What is 2 + 3 x 4?",["20","14","18","10"],1],
+["Perimeter of triangle 4,5,6 cm?",["15 cm","14 cm","16 cm","12 cm"],0],
+["Which shape has 4 equal sides and 4 right angles?",["Rectangle","Square","Triangle","Trapezium"],1],
+["How many degrees in a full turn?",["90°","180°","270°","360°"],3],
+["If y = 4, 3y + 2 = ?",["14","12","10","9"],0],
+["What is mean of 5,10,15?",["10","15","5","20"],0],
+["What is mode of 3,3,5,7,3?",["3","5","7","1"],0],
+["What is range of 4,9,12?",["4","8","9","12"],1],
+["How many seconds in 3 mins?",["60","120","180","300"],2],
+["What is 1/2 hour in mins?",["15","30","45","60"],1],
+["How many days in Feb leap year?",["28","29","30","31"],1]
+];
+const B4=[
+["What is 1/2 + 1/4?",["2/6","3/4","1/6","2/4"],1],
+["What is 20% of 150?",["20","30","40","50"],1],
+["What is 15 x 5?",["65","75","85","55"],1],
+["What is 0.4 + 0.6?",["1.0","0.10","1.2","0.4"],0],
+["Perimeter of square side 9 cm?",["18 cm","36 cm","81 cm","90 cm"],1],
+["What is 2/3 of 15?",["5","10","15","20"],1],
+["What is 1000 - 456?",["544","554","644","444"],0],
+["What is angle in square corner?",["45°","90°","180°","60°"],1],
+["What is mean of 6,8,10?",["6","8","10","24"],1],
+["What is 2.5 x 4?",["10","8","6","12"],0],
+["What is 6²?",["12","36","18","66"],1],
+["What is 1/4 as %?",["4%","14%","25%","40%"],2],
+["How many edges in a cube?",["6","8","12","10"],2],
+["What is 48 ÷ 6?",["6","7","8","9"],2],
+["What is 3.6 rounded to nearest whole?",["3","4","3.6","3.0"],1],
+["Area of rectangle 7 x 3?",["10","21","24","18"],1],
+["What is 1 kg - 250 g?",["750 g","250 g","500 g","1000 g"],0],
+["Next: 3,6,12,24,...?",["30","36","48","72"],2],
+["What is 4/10 in simplest form?",["2/5","4/2","1/4","4/5"],0],
+["A shop sells 10 mangoes for $200. Cost of 1?",["$10","$20","$30","$200"],1]
+];
+const B5=[
+["What is 7,890 rounded to nearest thousand?",["7,000","8,000","7,900","7,800"],1],
+["What is 1/5 + 2/5?",["3/5","3/10","1/5","2/5"],0],
+["What is 7/8 - 3/8?",["4/8","10/8","4/16","1/8"],0],
+["What is 1/2 of 50?",["20","25","30","50"],1],
+["What is 75% of 80?",["60","50","75","80"],0],
+["What is 8 x 9?",["64","72","81","56"],1],
+["What is 121 ÷ 11?",["10","11","12","13"],1],
+["What is 0.9 + 0.4?",["1.3","0.13","1.0","0.9"],0],
+["What is 5.5 x 10?",["0.55","55","5.05","550"],1],
+["What is 1 m 25 cm in cm?",["125 cm","1025 cm","25 cm","150 cm"],0],
+["Volume of cube side 4 cm?",["16 cm³","32 cm³","64 cm³","12 cm³"],2],
+["What is 3:45 pm in 24h?",["15:45","13:45","3:45","03:45"],0],
+["How many mm in 4 cm?",["4","40","400","4000"],1],
+["What is 9.6 ÷ 3?",["3.2","32","0.32","96"],0],
+["Which is heaviest? 1 kg, 800 g, 2 kg",["1 kg","800 g","2 kg","Equal"],2],
+["What is 12.5% of 200?",["12.5","25","50","100"],1],
+["What is LCM of 3 and 5?",["8","15","30","3"],1],
+["What is HCF of 10 and 15?",["3","5","10","15"],1],
+["What is 4.75 - 1.25?",["3.5","3.0","3.75","6.0"],0],
+["A box has 24 pencils. 3 boxes have?",["27","48","72","96"],2]
+];
+const tests=[{name:"Batch 1",qs:B1},{name:"Batch 2",qs:B2},{name:"Batch 3",qs:B3},{name:"Batch 4",qs:B4},{name:"Batch 5",qs:B5}];
+let curTest=0, curQ=0, answers=[], locked=false, finalScore=0;
+function renderTabs(){document.getElementById('tabs').innerHTML=tests.map((t,i)=>`<button class="tab ${i===curTest?'active':''}" onclick="switchTest(${i})">${t.name}</button>`).join('');}
+function renderQ(){renderTabs();let q=tests[curTest].qs[curQ];document.getElementById('qhead').innerText=`📘 ${tests[curTest].name} - Question ${curQ+1} of 20`;document.getElementById('qtext').innerText=q[0];document.getElementById('opts').innerHTML=q[1].map((o,i)=>`<button class="opt ${answers[curQ]===i?'selected':''}" onclick="pick(${i})">${o}</button>`).join('');document.getElementById('nextBtn').style.display=curQ===19?'none':'block';document.getElementById('submitBtn').style.display=curQ===19?'block':'none';document.getElementById('result').innerText=locked?`Score: ${finalScore}/20 - Locked`:'';document.getElementById('waBtn').style.display=locked?'block':'none';}
+function pick(i){ if(locked) return; answers[curQ]=i; renderQ(); }
+function nextQ(){ if(curQ<19){curQ++; renderQ();} }
+function switchTest(i){ curTest=i; curQ=0; answers=[]; locked=false; finalScore=0; document.getElementById('result').innerText=''; document.getElementById('waBtn').style.display='none'; renderQ(); }
+function submitTest(){if(answers.length<20 || answers.includes(undefined)){ alert('Please answer all 20 questions'); return; }finalScore=0; tests[curTest].qs.forEach((q,i)=>{ if(answers[i]===q[2]) finalScore++; });locked=true; renderQ();}
+function sendWA(){let msg=`Grade 5 PEP Mathematics - ${tests[curTest].name} - Score: ${finalScore}/20 - MOE Aligned`;let num=document.getElementById('parentNum').value.replace(/[^0-9]/g,'');let url=num?`https://wa.me/${num}?text=${encodeURIComponent(msg)}`:`https://wa.me/?text=${encodeURIComponent(msg)}`;window.open(url,'_blank');}
+switchTest(0);
+</script>
 </body>
 </html>
