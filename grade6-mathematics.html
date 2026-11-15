@@ -1,64 +1,90 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Grade 6 Math</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 6 PEP Mathematics - Test 1</title>
 <style>
-body{font-family:Arial;padding:12px;background:#f0f4f8}
-.card{background:#fff;border-radius:16px;padding:16px;margin:12px 0;box-shadow:0 2px 6px rgba(0,0,0,.1)}
-.btn{padding:12px;background:#174a7e;color:#fff;border-radius:12px;text-decoration:none;display:block;text-align:center;margin:8px 0;border:0;width:100%}
-.opt{padding:10px;border:2px solid #e2e8f0;border-radius:10px;margin:6px 0}
-.opt.sel{background:#dbeafe;border-color:#174a7e}
-.progress{height:12px;background:#e2e8f0;border-radius:10px;overflow:hidden}
-.bar{height:100%;background:#16a34a;width:0%}
+body{font-family:Arial,sans-serif;background:#f4f6fb;margin:0;padding:15px}
+.card{max-width:650px;margin:auto;background:#fff;padding:20px;border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+h1{font-size:20px;text-align:center}
+.sub{text-align:center;color:#555;margin-bottom:15px}
+.q{margin-bottom:18px;padding:12px;border:1px solid #eee;border-radius:10px}
+.q b{display:block;margin-bottom:8px}
+label{display:block;margin:5px 0;cursor:pointer}
+button{width:100%;padding:14px;border:0;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer}
+#submitBtn{background:#2563eb;color:#fff}
+#waBtn{background:#25D366;color:#fff;margin-top:10px;display:none}
+#result{text-align:center;font-size:18px;font-weight:bold;margin-top:15px}
+input[type=text]{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-top:10px;box-sizing:border-box}
+.small{text-align:center;color:#666;font-size:13px;margin-top:8px}
 </style>
 </head>
 <body>
-<div style="max-width:700px;margin:0 auto">
-<div class="card" style="background:#174a7e;color:#fff;text-align:center">
-<h2 style="margin:0">Grade 6 - Mathematics</h2>
-<div class="progress" style="margin-top:10px"><div id="bar" class="bar"></div></div>
-<p id="txt" style="font-size:13px">Progress: 0%</p>
-</div>
 <div class="card">
-<h3>🧠 Quiz: Fractions</h3>
-<p><b>Q1. What is 3/4 + 1/2?</b></p>
-<div class="opt" onclick="a1=1;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">A) 4/6</div>
-<div class="opt" onclick="a1=2;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">B) 1 1/4</div>
-<div class="opt" onclick="a1=1;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">C) 1/2</div>
-<p><b>Q2. 3/4 = ?%</b></p>
-<div class="opt" onclick="a2=1;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">A) 25%</div>
-<div class="opt" onclick="a2=2;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">B) 75%</div>
-<button class="btn" style="background:#16a34a" onclick="check()">Submit Quiz</button>
-<div id="res" style="margin-top:10px;font-weight:bold"></div>
+<h1>Grade 6 PEP - Mathematics</h1>
+<div class="sub">Test 1: Number & Fractions • 20 Questions • MOE Aligned</div>
+<div id="quiz"></div>
+<button id="submitBtn" onclick="submitQuiz()">Submit Test</button>
+<div id="result"></div>
+<input type="text" id="parentNum" placeholder="Optional: Type parent WhatsApp number e.g. 18765432100">
+<button id="waBtn" onclick="sendWhatsApp()">📱 Send Report to WhatsApp</button>
+<div class="small">Leave number blank to pick a parent/contact in WhatsApp</div>
 </div>
-<button class="btn" style="background:#25D366" onclick="shareWA()">📱 Send Report to WhatsApp</button>
-<a class="btn" style="background:#64748b" href="grade6.html">← Back</a>
-</div>
+
 <script>
-let a1=0,a2=0;
-function check(){
- let score=0;
- if(a1==2)score++;
- if(a2==2)score++;
- document.getElementById("res").innerHTML="Score: "+score+"/2 - "+(score==2?"✅ Strong!":"⚠️ Weak Area: Fractions");
- localStorage.setItem("math_quiz","yes");
- localStorage.setItem("math_score",score);
- update();
+const questions=[
+{q:"What is the value of 7 in 47,532?",o:["7,000","700","70","7"],a:1},
+{q:"What is 45,678 rounded to the nearest thousand?",o:["45,000","46,000","45,600","46,700"],a:1},
+{q:"What is the next number in the pattern: 3, 9, 27, 81, ...?",o:["108","162","243","324"],a:2},
+{q:"Which is a prime number?",o:["21","27","29","33"],a:2},
+{q:"What is 1/2 + 1/4?",o:["2/6","3/4","1/6","2/4"],a:1},
+{q:"What is 3/4 - 1/2?",o:["1/4","2/4","1/2","2/2"],a:0},
+{q:"What is 2/3 of 18?",o:["6","9","12","15"],a:2},
+{q:"Which fraction is equivalent to 3/5?",o:["6/10","5/3","3/10","9/10"],a:0},
+{q:"What is 5/6 written as a mixed number for 11/6?",o:["1 5/6","2 1/6","1 1/6","5 1/6"],a:0},
+{q:"What is 1/4 as a decimal?",o:["0.14","0.25","0.4","0.75"],a:1},
+{q:"What is 0.75 as a fraction in simplest form?",o:["7/5","3/4","75/10","1/2"],a:1},
+{q:"Which is largest? 0.6, 3/4, 1/2, 0.8",o:["0.6","3/4","1/2","0.8"],a:3},
+{q:"What is 12 x 8?",o:["86","96","106","88"],a:1},
+{q:"What is 144 ÷ 12?",o:["11","12","14","16"],a:1},
+{q:"What is the LCM of 4 and 6?",o:["10","12","18","24"],a:1},
+{q:"What is the HCF of 12 and 18?",o:["3","6","9","12"],a:1},
+{q:"A cake is cut into 8 equal parts. John eats 3 parts. What fraction is left?",o:["3/8","5/8","8/3","1/8"],a:1},
+{q:"Mary has 2 1/2 litres of juice. She drinks 1 1/4 litres. How much left?",o:["1 1/4 litres","1 1/2 litres","1 litre","3 3/4 litres"],a:0},
+{q:"What is 3/5 + 1/10?",o:["4/15","7/10","4/5","3/15"],a:1},
+{q:"Roman numeral for 49 is?",o:["XLIX","XIX","IL","XXXXIX"],a:0}
+];
+let score=0;
+let quizDiv=document.getElementById('quiz');
+questions.forEach((item,i)=>{
+let html=`<div class="q"><b>${i+1}. ${item.q}</b>`;
+item.o.forEach((opt,j)=>{
+html+=`<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`;
+});
+html+=`</div>`;
+quizDiv.innerHTML+=html;
+});
+function submitQuiz(){
+score=0;
+questions.forEach((item,i)=>{
+let sel=document.querySelector(`input[name="q${i}"]:checked`);
+if(sel && parseInt(sel.value)===item.a) score++;
+});
+document.getElementById('result').innerText=`Score: ${score}/20`;
+document.getElementById('waBtn').style.display='block';
+document.getElementById('submitBtn').disabled=true;
+document.getElementById('submitBtn').innerText='Test Submitted - Score Locked';
+document.querySelectorAll('input[type=radio]').forEach(r=>r.disabled=true);
 }
-function shareWA(){
- let score=localStorage.getItem("math_score")||0;
- let msg="PeplinkJA Report - Grade 6 Math%0AMy child scored "+score+"/2%0AProgress: "+document.getElementById("txt").innerText+"%0A%0ASite: https://rory24699-debug.github.io/grade6-mathematics.html";
- window.open("https://wa.me/?text="+msg,"_blank");
+function sendWhatsApp(){
+let msg=`Grade 6 PEP Mathematics - Test 1 (Number & Fractions) - Score: ${score}/20 - MOE Aligned`;
+let num=document.getElementById('parentNum').value.replace(/[^0-9]/g,'');
+let url='';
+if(num){ url=`https://wa.me/${num}?text=${encodeURIComponent(msg)}`; }
+else { url=`https://wa.me/?text=${encodeURIComponent(msg)}`; }
+window.open(url,'_blank');
 }
-function update(){
- let tot=(localStorage.getItem("math_video")?50:0)+(localStorage.getItem("math_quiz")?50:0);
- if(!localStorage.getItem("math_video")){localStorage.setItem("math_video","yes");tot=50;}
- if(localStorage.getItem("math_quiz")) tot=100;
- document.getElementById("bar").style.width=tot+"%";
- document.getElementById("txt").innerText="Progress: "+tot+"%";
-}
-update();
 </script>
 </body>
 </html>
