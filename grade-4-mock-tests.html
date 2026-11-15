@@ -1,172 +1,66 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Grade 4 Mock Tests</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial;background:#eef2f7}
-.header{background:#1a365d;color:white;text-align:center;padding:28px 15px}
-.header h1{margin:0;font-size:28px}.header p{margin:8px 0 0;font-size:18px}
-.wrap{padding:15px}
-.btn{display:block;background:#28a745;color:white;text-align:center;padding:18px;border-radius:18px;font-weight:bold;font-size:20px;margin:10px 0;text-decoration:none;cursor:pointer;border:none;width:100%}
-.btn.blue{background:#007bff}.back{background:#1a365d}
-.card{background:white;border-radius:18px;padding:18px;margin:10px 0}
-.opt{display:block;width:100%;text-align:left;background:#f1f1f1;border:2px solid #ddd;border-radius:12px;padding:12px;margin:8px 0;font-size:17px;cursor:pointer}
-.opt.correct{background:#d4edda;border-color:#28a745}.opt.wrong{background:#f8d7da;border-color:#dc3545}
-.exp{background:#fff3cd;padding:12px;border-radius:12px;margin-top:10px;display:none}
-.passage{background:#eef6ff;padding:14px;border-radius:12px;margin-bottom:12px;font-size:16px;line-height:1.5}
+.header{background:#1a365d;color:white;text-align:center;padding:28px 15px}.header h1{margin:0;font-size:28px}.header p{margin:8px 0 0;font-size:18px}
+.wrap{padding:15px}.btn{display:block;background:#28a745;color:white;text-align:center;padding:18px;border-radius:18px;font-weight:bold;font-size:20px;margin:10px 0;text-decoration:none;cursor:pointer;border:none;width:100%}.btn.blue{background:#007bff}.back{background:#1a365d}
+.card{background:white;border-radius:18px;padding:18px;margin:10px 0}.opt{display:block;width:100%;text-align:left;background:#f1f1f1;border:2px solid #ddd;border-radius:12px;padding:12px;margin:8px 0;font-size:17px;cursor:pointer}.opt.correct{background:#d4edda;border-color:#28a745}.opt.wrong{background:#f8d7da;border-color:#dc3545}.exp{background:#fff3cd;padding:12px;border-radius:12px;margin-top:10px;display:none}
 </style></head><body>
 <div class="header"><h1>🇯🇲 Grade 4 Mock Tests</h1><p>Mathematics & Language Arts • MOE Style</p></div>
-<div class="wrap" id="main"></div>
+<div class="wrap" id="main">
+<button class="btn" onclick="showBatches('maths')">Mathematics - 10 Batches</button>
+<button class="btn blue" onclick="showBatches('language')">Language Arts - 10 Batches</button>
+<a class="btn back" href="grade4.html">Back to Grade 4</a>
+</div>
 <script>
-const subjects={
-maths:{title:"📐 Mathematics",batches:[
-{name:"🥬 Batch 1 - Numbers & Place Value",qs:[
-{q:"Mrs. James has 3,456 mangoes. What is the value of the 4?",o:["40","400","4,000","4"],a:1,e:"4 is in the hundreds place: 400."},
-{q:"Which number comes after 9,999?",o:["10,000","9,100","10,100","9,999"],a:0,e:"9,999 + 1 = 10,000."},
-{q:"Round 4,782 to the nearest hundred.",o:["4,800","4,700","4,000","5,000"],a:0,e:"82 rounds up, so 4,800."},
-{q:"Tom has 2,345 marbles and gets 1,200 more. How many now?",o:["3,545","3,455","3,445","4,545"],a:0,e:"2,345 + 1,200 = 3,545."},
-{q:"Which is greatest?",o:["5,432","5,342","5,234","4,999"],a:0,e:"Compare thousands, then hundreds. 5,432 is greatest."},
-{q:"What is 6,000 + 300 + 20 + 5?",o:["6,325","6,235","6,352","6,025"],a:0,e:"Add place values: 6,325."}]},
-{name:"🥭 Batch 2 - Addition & Subtraction",qs:[
-{q:"A school collected 1,250 bottles on Monday and 1,340 on Tuesday. How many in all?",o:["2,590","2,690","2,490","2,580"],a:0,e:"1,250 + 1,340 = 2,590."},
-{q:"Jada had 5,000 stickers and gave away 1,875. How many left?",o:["3,125","3,225","3,025","4,125"],a:0,e:"5,000 - 1,875 = 3,125."},
-{q:"What is 4,678 + 2,345?",o:["7,023","7,123","6,023","7,013"],a:0,e:"4,678 + 2,345 = 7,023."},
-{q:"Which is the best estimate for 798 + 302?",o:["1,100","900","1,000","1,200"],a:0,e:"800 + 300 = 1,100."},
-{q:"A farmer picks 3,215 oranges and 2,180 bananas. How many more oranges?",o:["1,035","1,135","1,045","1,025"],a:0,e:"3,215 - 2,180 = 1,035."},
-{q:"What number + 450 = 1,200?",o:["750","650","850","700"],a:0,e:"1,200 - 450 = 750."}]},
-{name:"🍌 Batch 3 - Multiplication & Division",qs:[
-{q:"There are 8 boxes with 24 pencils each. How many pencils?",o:["192","182","202","168"],a:0,e:"8 x 24 = 192."},
-{q:"What is 7 x 9?",o:["63","56","72","64"],a:0,e:"7 x 9 = 63."},
-{q:"Share 144 mangoes equally among 12 children. How many each?",o:["12","14","11","13"],a:0,e:"144 ÷ 12 = 12."},
-{q:"A class has 6 rows with 28 desks. How many desks?",o:["168","148","158","178"],a:0,e:"6 x 28 = 168."},
-{q:"What is 96 ÷ 8?",o:["12","11","13","10"],a:0,e:"8 x 12 = 96."},
-{q:"Which is a multiple of 6?",o:["42","35","40","25"],a:0,e:"6 x 7 = 42."}]},
-{name:"💰 Batch 4 - Money",qs:[
-{q:"Read the price list: Pencil $50, Book $350, Ruler $120. Kaysia buys 1 book and 2 pencils. How much?",o:["$450","$400","$500","$470"],a:0,e:"350 + 50 + 50 = 450."},
-{q:"Tyrone has $1,000 and spends $675. How much left?",o:["$325","$335","$425","$375"],a:0,e:"1,000 - 675 = 325."},
-{q:"3 ice creams cost $900. What is 1 ice cream?",o:["$300","$250","$350","$200"],a:0,e:"900 ÷ 3 = 300."},
-{q:"Sara saves $150 each week for 4 weeks. How much?",o:["$600","$500","$650","$550"],a:0,e:"150 x 4 = 600."},
-{q:"Which is cheaper? A $1,200 bag or 2 toys at $650 each?",o:["Bag is cheaper","Toys are cheaper","Same price","Cannot tell"],a:0,e:"2 x 650 = 1,300, bag 1,200 is cheaper."},
-{q:"What is $25.50 + $10.25?",o:["$35.75","$35.25","$36.75","$34.75"],a:0,e:"25.50 + 10.25 = 35.75."}]},
-{name:"⏰ Batch 5 - Time",qs:[
-{q:"School starts at 8:30 a.m. and ends at 2:30 p.m. How long is school?",o:["6 hours","5 hours","7 hours","6 hours 30 min"],a:0,e:"8:30 to 2:30 = 6 hours."},
-{q:"How many minutes in 2 hours 20 minutes?",o:["140","120","100","160"],a:0,e:"2x60=120 +20=140."},
-{q:"A movie starts at 3:15 p.m. and lasts 1 hour 45 minutes. When does it end?",o:["5:00 p.m.","4:45 p.m.","5:15 p.m.","4:00 p.m."],a:0,e:"3:15 + 1:45 = 5:00."},
-{q:"Which is 1 week?",o:["7 days","5 days","10 days","30 days"],a:0,e:"1 week = 7 days."},
-{q:"If today is Tuesday, what day will it be in 5 days?",o:["Sunday","Saturday","Monday","Friday"],a:0,e:"Tue +5 = Sun."},
-{q:"How many months in 2 years?",o:["24","12","18","36"],a:0,e:"12 x 2 = 24."}]},
-{name:"📏 Batch 6 - Measurement",qs:[
-{q:"How many cm in 3 metres?",o:["300 cm","30 cm","3,000 cm","33 cm"],a:0,e:"1m = 100cm, 3x100=300."},
-{q:"A bottle holds 1 litre. How many ml is that?",o:["1,000 ml","100 ml","10 ml","500 ml"],a:0,e:"1 litre = 1,000 ml."},
-{q:"What is the perimeter of a square with side 8 cm?",o:["32 cm","16 cm","64 cm","24 cm"],a:0,e:"4 x 8 = 32."},
-{q:"A rope is 5 m long. Mark cuts off 2 m 50 cm. How much left?",o:["2 m 50 cm","3 m 50 cm","2 m","3 m"],a:0,e:"5m - 2m 50cm = 2m 50cm."},
-{q:"How many grams in 2 kg?",o:["2,000 g","200 g","20 g","2,500 g"],a:0,e:"1 kg = 1,000g."},
-{q:"Which is longest?",o:["1 m","90 cm","50 cm","1 cm"],a:0,e:"1 m = 100 cm, longest."}]},
-{name:"🔷 Batch 7 - Geometry",qs:[
-{q:"How many sides does a pentagon have?",o:["5","4","6","8"],a:0,e:"Penta = 5."},
-{q:"Which shape has 4 equal sides and 4 right angles?",o:["Square","Triangle","Rectangle","Circle"],a:0,e:"Square has equal sides + right angles."},
-{q:"How many corners does a triangle have?",o:["3","4","5","6"],a:0,e:"Triangle has 3 vertices."},
-{q:"Which is a right angle?",o:["90°","45°","180°","120°"],a:0,e:"Right angle = 90°."},
-{q:"How many faces does a cube have?",o:["6","8","4","12"],a:0,e:"Cube has 6 faces."},
-{q:"Which shape has no corners?",o:["Circle","Square","Triangle","Rectangle"],a:0,e:"Circle is round."}]},
-{name:"🍕 Batch 8 - Fractions",qs:[
-{q:"Study the pizza: It is cut into 8 equal slices. Jada eats 3 slices. What fraction did she eat?",o:["3/8","3/5","5/8","1/8"],a:0,e:"3 out of 8 = 3/8."},
-{q:"Which fraction is equal to 1/2?",o:["2/4","1/4","3/4","2/3"],a:0,e:"2/4 = 1/2."},
-{q:"What is 1/4 + 2/4?",o:["3/4","3/8","1/2","2/4"],a:0,e:"1/4 + 2/4 = 3/4."},
-{q:"Which is smallest?",o:["1/4","1/2","1/3","2/3"],a:0,e:"Bigger denominator = smaller piece."},
-{q:"What is 1/2 of 20?",o:["10","5","15","20"],a:0,e:"Half of 20 = 10."},
-{q:"A cake is cut into 10 slices. 4 are eaten. What fraction is left?",o:["6/10","4/10","1/10","5/10"],a:0,e:"10 - 4 = 6 left."}]},
-{name:"📊 Batch 9 - Data & Graphs",qs:[
-{q:"Study the table: Monday 10, Tuesday 15, Wednesday 12, Thursday 20. On which day were most mangoes sold?",o:["Thursday","Monday","Tuesday","Wednesday"],a:0,e:"Thursday 20 is highest."},
-{q:"Using the same table, how many mangoes were sold in all?",o:["57","55","47","67"],a:0,e:"10+15+12+20=57."},
-{q:"Scores: 5, 7, 7, 9, 12. What is the mode?",o:["7","5","9","12"],a:0,e:"7 appears most."},
-{q:"What is the range of 4, 9, 12, 7?",o:["8","12","4","9"],a:0,e:"12 - 4 = 8."},
-{q:"In a pictograph, 1 star = 4 students. 3 stars = ?",o:["12","3","4","7"],a:0,e:"3 x 4 = 12."},
-{q:"Which graph is best to show favourite fruit?",o:["Bar graph","Line graph","Tally only","Pie only"],a:0,e:"Bar graph compares categories."}]},
-{name:"🏆 Batch 10 - Mixed Review",qs:[
-{q:"A shop has 25 boxes with 36 oranges each. How many oranges?",o:["900","850","950","800"],a:0,e:"25 x 36 = 900."},
-{q:"What is 1/3 of 27?",o:["9","6","12","8"],a:0,e:"27 ÷ 3 = 9."},
-{q:"A rectangle is 10 cm long and 6 cm wide. Area?",o:["60 cm²","32 cm²","16 cm²","60 cm"],a:0,e:"10 x 6 = 60."},
-{q:"If 1 pen costs $80, how many pens can you buy with $480?",o:["6","5","7","8"],a:0,e:"480 ÷ 80 = 6."},
-{q:"What is the next number: 5, 10, 15, 20, ___?",o:["25","30","22","24"],a:0,e:"Add 5 each time."},
-{q:"Mia is 9 years old. Her mother is 4 times her age. How old is her mother?",o:["36","32","40","27"],a:0,e:"9 x 4 = 36."}]}
+var DATA={
+maths:{title:"Mathematics",batches:[
+{name:"Batch 1 - Numbers",qs:[{q:"Mrs James has 3456 mangoes. What is the value of the 4?",o:["40","400","4000","4"],a:1,e:"4 is in the hundreds place: 400."},{q:"Which number comes after 9999?",o:["10000","9100","10100","9999"],a:0,e:"9999 + 1 = 10000."},{q:"Round 4782 to the nearest hundred.",o:["4800","4700","4000","5000"],a:0,e:"82 rounds up, so 4800."},{q:"Tom has 2345 marbles and gets 1200 more. How many now?",o:["3545","3455","3445","4545"],a:0,e:"2345 + 1200 = 3545."},{q:"Which is greatest?",o:["5432","5342","5234","4999"],a:0,e:"5432 is greatest."},{q:"What is 6000 + 300 + 20 + 5?",o:["6325","6235","6352","6025"],a:0,e:"6325."}]},
+{name:"Batch 2 - Addition and Subtraction",qs:[{q:"A school collected 1250 bottles on Monday and 1340 on Tuesday. How many in all?",o:["2590","2690","2490","2580"],a:0,e:"1250 + 1340 = 2590."},{q:"Jada had 5000 stickers and gave away 1875. How many left?",o:["3125","3225","3025","4125"],a:0,e:"5000 - 1875 = 3125."},{q:"What is 4678 + 2345?",o:["7023","7123","6023","7013"],a:0,e:"4678 + 2345 = 7023."},{q:"Best estimate for 798 + 302?",o:["1100","900","1000","1200"],a:0,e:"800 + 300 = 1100."},{q:"Farmer picks 3215 oranges and 2180 bananas. How many more oranges?",o:["1035","1135","1045","1025"],a:0,e:"3215 - 2180 = 1035."},{q:"What number + 450 = 1200?",o:["750","650","850","700"],a:0,e:"1200 - 450 = 750."}]},
+{name:"Batch 3 - Multiplication and Division",qs:[{q:"8 boxes with 24 pencils each. How many pencils?",o:["192","182","202","168"],a:0,e:"8 x 24 = 192."},{q:"What is 7 x 9?",o:["63","56","72","64"],a:0,e:"7 x 9 = 63."},{q:"Share 144 mangoes equally among 12 children. How many each?",o:["12","14","11","13"],a:0,e:"144 / 12 = 12."},{q:"6 rows with 28 desks. How many desks?",o:["168","148","158","178"],a:0,e:"6 x 28 = 168."},{q:"What is 96 / 8?",o:["12","11","13","10"],a:0,e:"96 / 8 = 12."},{q:"Which is a multiple of 6?",o:["42","35","40","25"],a:0,e:"6 x 7 = 42."}]},
+{name:"Batch 4 - Money",qs:[{q:"Pencil 50, Book 350. Kaysia buys 1 book and 2 pencils. How much?",o:["450","400","500","470"],a:0,e:"350 + 50 + 50 = 450."},{q:"Tyrone has 1000 and spends 675. How much left?",o:["325","335","425","375"],a:0,e:"1000 - 675 = 325."},{q:"3 ice creams cost 900. What is 1 ice cream?",o:["300","250","350","200"],a:0,e:"900 / 3 = 300."},{q:"Sara saves 150 each week for 4 weeks. How much?",o:["600","500","650","550"],a:0,e:"150 x 4 = 600."},{q:"Cheaper: 1200 bag or 2 toys at 650 each?",o:["Bag is cheaper","Toys are cheaper","Same price","Cannot tell"],a:0,e:"2 x 650 = 1300, bag cheaper."},{q:"What is 25.50 + 10.25?",o:["35.75","35.25","36.75","34.75"],a:0,e:"35.75."}]},
+{name:"Batch 5 - Time",qs:[{q:"School 8:30 a.m. to 2:30 p.m. How long?",o:["6 hours","5 hours","7 hours","6 hours 30 min"],a:0,e:"6 hours."},{q:"How many minutes in 2 hours 20 minutes?",o:["140","120","100","160"],a:0,e:"120 + 20 = 140."},{q:"Movie starts 3:15 p.m. lasts 1 hour 45 min. When does it end?",o:["5:00 p.m.","4:45 p.m.","5:15 p.m.","4:00 p.m."],a:0,e:"3:15 + 1:45 = 5:00."},{q:"Which is 1 week?",o:["7 days","5 days","10 days","30 days"],a:0,e:"1 week = 7 days."},{q:"If today is Tuesday, what day in 5 days?",o:["Sunday","Saturday","Monday","Friday"],a:0,e:"Tue + 5 = Sun."},{q:"How many months in 2 years?",o:["24","12","18","36"],a:0,e:"12 x 2 = 24."}]},
+{name:"Batch 6 - Measurement",qs:[{q:"How many cm in 3 metres?",o:["300 cm","30 cm","3000 cm","33 cm"],a:0,e:"3 x 100 = 300."},{q:"A bottle holds 1 litre. How many ml?",o:["1000 ml","100 ml","10 ml","500 ml"],a:0,e:"1 litre = 1000 ml."},{q:"Perimeter of square side 8 cm?",o:["32 cm","16 cm","64 cm","24 cm"],a:0,e:"4 x 8 = 32."},{q:"Rope 5 m. Cut off 2 m 50 cm. How much left?",o:["2 m 50 cm","3 m 50 cm","2 m","3 m"],a:0,e:"5m - 2m 50cm = 2m 50cm."},{q:"How many grams in 2 kg?",o:["2000 g","200 g","20 g","2500 g"],a:0,e:"1 kg = 1000g."},{q:"Which is longest?",o:["1 m","90 cm","50 cm","1 cm"],a:0,e:"1 m = 100 cm."}]},
+{name:"Batch 7 - Geometry",qs:[{q:"How many sides does a pentagon have?",o:["5","4","6","8"],a:0,e:"Penta = 5."},{q:"Which has 4 equal sides and 4 right angles?",o:["Square","Triangle","Rectangle","Circle"],a:0,e:"Square."},{q:"How many corners does a triangle have?",o:["3","4","5","6"],a:0,e:"Triangle has 3."},{q:"Which is a right angle?",o:["90 degrees","45 degrees","180 degrees","120 degrees"],a:0,e:"Right angle = 90."},{q:"How many faces does a cube have?",o:["6","8","4","12"],a:0,e:"Cube has 6 faces."},{q:"Which shape has no corners?",o:["Circle","Square","Triangle","Rectangle"],a:0,e:"Circle is round."}]},
+{name:"Batch 8 - Fractions",qs:[{q:"Pizza cut into 8 slices. Jada eats 3. What fraction?",o:["3/8","3/5","5/8","1/8"],a:0,e:"3 out of 8 = 3/8."},{q:"Which fraction equals 1/2?",o:["2/4","1/4","3/4","2/3"],a:0,e:"2/4 = 1/2."},{q:"What is 1/4 + 2/4?",o:["3/4","3/8","1/2","2/4"],a:0,e:"3/4."},{q:"Which is smallest?",o:["1/4","1/2","1/3","2/3"],a:0,e:"Bigger denominator = smaller piece."},{q:"What is 1/2 of 20?",o:["10","5","15","20"],a:0,e:"Half of 20 = 10."},{q:"Cake cut into 10 slices. 4 eaten. What fraction left?",o:["6/10","4/10","1/10","5/10"],a:0,e:"10 - 4 = 6 left."}]},
+{name:"Batch 9 - Data and Graphs",qs:[{q:"Table: Mon 10, Tue 15, Wed 12, Thu 20. Which day most mangoes sold?",o:["Thursday","Monday","Tuesday","Wednesday"],a:0,e:"Thursday 20 is highest."},{q:"Using same table, how many in all?",o:["57","55","47","67"],a:0,e:"10+15+12+20=57."},{q:"Scores: 5, 7, 7, 9, 12. What is the mode?",o:["7","5","9","12"],a:0,e:"7 appears most."},{q:"Range of 4, 9, 12, 7?",o:["8","12","4","9"],a:0,e:"12 - 4 = 8."},{q:"Pictograph: 1 star = 4 students. 3 stars = ?",o:["12","3","4","7"],a:0,e:"3 x 4 = 12."},{q:"Best graph to show favourite fruit?",o:["Bar graph","Line graph","Tally only","Pie only"],a:0,e:"Bar graph compares."}]},
+{name:"Batch 10 - Mixed Review Maths",qs:[{q:"25 boxes with 36 oranges each. How many?",o:["900","850","950","800"],a:0,e:"25 x 36 = 900."},{q:"What is 1/3 of 27?",o:["9","6","12","8"],a:0,e:"27 / 3 = 9."},{q:"Rectangle 10 cm long, 6 cm wide. Area?",o:["60","32","16","60 cm"],a:0,e:"10 x 6 = 60."},{q:"1 pen costs 80. How many pens with 480?",o:["6","5","7","8"],a:0,e:"480 / 80 = 6."},{q:"Next number: 5, 10, 15, 20, ?",o:["25","30","22","24"],a:0,e:"Add 5."},{q:"Mia is 9. Mother is 4 times her age. How old?",o:["36","32","40","27"],a:0,e:"9 x 4 = 36."}]}
 ]},
-language:{title:"📖 Language Arts",batches:[
-{name:"📚 Batch 1 - Comprehension 1",qs:[
-{q:"Read the passage: 'Maya loves to read. Every evening, she sits under the mango tree and reads her favourite storybook. Her brother, Jay, likes to play football.' Where does Maya read?",o:["Under the mango tree","On the football field","In the kitchen","At school"],a:0,e:"Passage says: under the mango tree."},
-{q:"What does Maya love to do?",o:["Read","Play football","Cook","Swim"],a:0,e:"Maya loves to read."},
-{q:"What does Jay like to do?",o:["Play football","Read","Sing","Draw"],a:0,e:"Jay likes to play football."},
-{q:"When does Maya read?",o:["Every evening","Every morning","At noon","On Sundays only"],a:0,e:"Every evening."},
-{q:"What is Maya's favourite thing to read?",o:["Storybook","Newspaper","Letter","Magazine"],a:0,e:"Her favourite storybook."},
-{q:"Which word best describes Maya?",o:["Book lover","Footballer","Singer","Cook"],a:0,e:"She loves reading."}]},
-{name:"✏️ Batch 2 - Grammar - Nouns & Verbs",qs:[
-{q:"Which word is a noun?",o:["School","Run","Quickly","Happy"],a:0,e:"School is a naming word."},
-{q:"Which word is a verb?",o:["Jump","Dog","Red","Table"],a:0,e:"Jump is an action word."},
-{q:"Choose the correct sentence: The dogs ___ in the yard.",o:["are playing","is playing","am playing","was play"],a:0,e:"Dogs = plural, use are."},
-{q:"Which is a proper noun?",o:["Kingston","city","girl","dog"],a:0,e:"Kingston is a name of a place."},
-{q:"The plural of 'baby' is?",o:["Babies","Babys","Baby's","Babyes"],a:0,e:"Baby -> Babies (y to ies)."},
-{q:"Choose the verb: The bird ___ over the house.",o:["flies","house","blue","quickly"],a:0,e:"Flies is the action."}]},
-{name:"📖 Batch 3 - Vocabulary",qs:[
-{q:"What is the meaning of 'brave'?",o:["Not afraid","Very sad","Very tired","Very hungry"],a:0,e:"Brave = not afraid."},
-{q:"Which word means the same as 'happy'?",o:["Joyful","Angry","Sad","Tired"],a:0,e:"Happy = Joyful."},
-{q:"Which word means the opposite of 'hot'?",o:["Cold","Warm","Big","Fast"],a:0,e:"Opposite of hot is cold."},
-{q:"What is the meaning of 'enormous'?",o:["Very big","Very small","Very fast","Very quiet"],a:0,e:"Enormous = very big."},
-{q:"Choose the correct word: The sun is very ___ today.",o:["bright","brightly","brightness","brighten"],a:0,e:"Bright describes the sun."},
-{q:"Which word is a synonym for 'quick'?",o:["Fast","Slow","Late","Lazy"],a:0,e:"Quick = Fast."}]},
-{name:"✍️ Batch 4 - Punctuation & Capitals",qs:[
-{q:"Which sentence is punctuated correctly?",o:["Where are you going?","where are you going?","Where are you going.","Where are you going!"],a:0,e:"Question needs ? and capital W."},
-{q:"Choose the correct sentence:",o:["My friend lives in Jamaica.","my friend lives in jamaica.","My friend lives in jamaica","My friend lives in Jamaica"],a:0,e:"Needs capital M, Jamaica, and full stop."},
-{q:"Which needs a capital letter?",o:["Monday","apple","dog","table"],a:0,e:"Days start with capital."},
-{q:"Add the correct punctuation: 'Wow ___ that is amazing'",o:["!","?",".",","],a:0,e:"Wow shows excitement, use !"},
-{q:"Which is correct?",o:["Jada and I went to school.","jada and i went to school.","Jada and i went to school","Jada and I went to school"],a:0,e:"Names and I need capitals."},
-{q:"Where does the comma go? 'I bought mangoes oranges and bananas.'",o:["After mangoes","After I","After bought","No comma"],a:0,e:"List needs comma: mangoes, oranges."}]},
-{name:"🔤 Batch 5 - Spelling",qs:[
-{q:"Which word is spelled correctly?",o:["Beautiful","Beautifel","Beutiful","Beautifull"],a:0,e:"Beautiful is correct."},
-{q:"Which word is spelled correctly?",o:["School","Skool","Scholl","Scool"],a:0,e:"School is correct."},
-{q:"Choose the correct spelling:",o:["Because","Becaus","Becouse","Bcause"],a:0,e:"Because is correct."},
-{q:"Which word is spelled correctly?",o:["Friend","Frend","Freind","Firend"],a:0,e:"Friend is correct."},
-{q:"Choose the correct spelling:",o:["Children","Childrun","Childern","Childen"],a:0,e:"Children is correct."},
-{q:"Which word is spelled correctly?",o:["Teacher","Techer","Teachor","Teachur"],a:0,e:"Teacher is correct."}]},
-{name:"🔁 Batch 6 - Synonyms & Antonyms",qs:[
-{q:"Synonym for 'big' is?",o:["Large","Small","Tiny","Little"],a:0,e:"Big = Large."},
-{q:"Antonym for 'begin' is?",o:["End","Start","Open","Go"],a:0,e:"Begin opposite is End."},
-{q:"Synonym for 'angry' is?",o:["Mad","Happy","Calm","Kind"],a:0,e:"Angry = Mad."},
-{q:"Antonym for 'rich' is?",o:["Poor","Wealthy","Happy","Strong"],a:0,e:"Rich opposite is Poor."},
-{q:"Synonym for 'smart' is?",o:["Clever","Slow","Lazy","Sad"],a:0,e:"Smart = Clever."},
-{q:"Antonym for 'early' is?",o:["Late","Soon","Quick","First"],a:0,e:"Early opposite is Late."}]},
-{name:"⏳ Batch 7 - Tenses",qs:[
-{q:"Choose the past tense: Yesterday, we ___ to the beach.",o:["went","go","going","goes"],a:0,e:"Yesterday = past, went."},
-{q:"Choose the correct form: She ___ reading now.",o:["is","was","were","are"],a:0,e:"Now = is reading."},
-{q:"Tomorrow, I ___ visit my grandmother.",o:["will","went","was","did"],a:0,e:"Tomorrow = will."},
-{q:"They ___ playing football yesterday.",o:["were","is","are","was"],a:0,e:"They + past = were."},
-{q:"She ___ to school every day.",o:["goes","went","going","gone"],a:0,e:"Every day = present, goes."},
-{q:"Choose the past tense of 'eat':",o:["Ate","Eating","Eats","Eat"],a:0,e:"Eat -> Ate."}]},
-{name:"📝 Batch 8 - Sentences",qs:[
-{q:"Which is a complete sentence?",o:["The dog is barking.","Dog barking","The dog","Is barking"],a:0,e:"Has subject + verb + full stop."},
-{q:"Which sentence is a question?",o:["Where is my bag?","My bag is here.","I have a bag.","The bag is red."],a:0,e:"Question ends with ?"},
-{q:"Which sentence tells you to do something?",o:["Close the door.","The door is closed.","Is the door closed?","The door is red."],a:0,e:"Command: Close the door."},
-{q:"Choose the correct order:",o:["The boy kicked the ball.","Ball the kicked boy the.","Kicked ball boy the.","The ball boy kicked."],a:0,e:"Subject-Verb-Object order."},
-{q:"Which sentence has a describing word?",o:["The red apple is sweet.","The apple is.","Apple sweet.","Is apple."],a:0,e:"Red describes apple."},
-{q:"How many sentences? 'I like mangoes. They are sweet. I eat them daily.'",o:["3","1","2","4"],a:0,e:"3 full stops = 3 sentences."}]},
-{name:"📚 Batch 9 - Comprehension 2",qs:[
-{q:"Read: 'The farmers in St. Elizabeth grow many vegetables. They water their crops every morning. The vegetables are sold at the market on Saturdays.' Where do farmers grow vegetables?",o:["St. Elizabeth","Kingston","Montego Bay","Portland"],a:0,e:"Passage says St. Elizabeth."},
-{q:"When do farmers water crops?",o:["Every morning","Every night","On Saturdays","Once a week"],a:0,e:"Every morning."},
-{q:"Where are vegetables sold?",o:["At the market","At school","At home","At church"],a:0,e:"At the market."},
-{q:"When are vegetables sold?",o:["On Saturdays","On Mondays","On Sundays","Every day"],a:0,e:"On Saturdays."},
-{q:"What do farmers grow?",o:["Vegetables","Mangoes only","Flowers only","Animals"],a:0,e:"Vegetables."},
-{q:"Why do farmers water crops?",o:["To help them grow","To make them dry","To sell them","To cook them"],a:0,e:"Water helps crops grow."}]},
-{name:"🏆 Batch 10 - Mixed Review - Language Arts",qs:[
-{q:"Which word is a noun, verb and adjective in order? 'The happy dog runs.'",o:["Dog - Runs - Happy","Happy - Dog - Runs","Runs - Dog - Happy","Dog - Happy - Runs"],a:0,e:"Dog = noun, Runs = verb, Happy = adjective."},
-{q:"Choose the correct sentence:",o:["They are going to school.","They is going to school.","They are go to school.","They are going school."],a:0,e:"They are going is correct."},
-{q:"What is the opposite of 'brave'?",o:["Cowardly / Afraid","Strong","Kind","Happy"],a:0,e:"Brave opposite is afraid."},
-{q:"Which word is spelled correctly?",o:["Because","Becaus","Becouse","Becuse"],a:0,e:"Because is correct."},
-{q:"Read: 'Ann is kind. She helps her friends.' What can we say about Ann?",o:["She is helpful","She is rude","She is lazy","She is angry"],a:0,e:"She helps friends = helpful."},
-{q:"Which is the best title for a story about a boy who learns to swim?",o:["Learning to Swim","The Red Car","My Dog","Going to Market"],a:0,e:"Title must match story."}]}
+language:{title:"Language Arts",batches:[
+{name:"Batch 1 - Comprehension 1",qs:[{q:"Maya loves to read. Every evening she sits under the mango tree and reads. Where does Maya read?",o:["Under the mango tree","On the football field","In the kitchen","At school"],a:0,e:"Passage says under the mango tree."},{q:"What does Maya love to do?",o:["Read","Play football","Cook","Swim"],a:0,e:"Maya loves to read."},{q:"What does Jay like to do?",o:["Play football","Read","Sing","Draw"],a:0,e:"Jay likes football."},{q:"When does Maya read?",o:["Every evening","Every morning","At noon","On Sundays only"],a:0,e:"Every evening."},{q:"What does Maya read?",o:["Storybook","Newspaper","Letter","Magazine"],a:0,e:"Her storybook."},{q:"Which word best describes Maya?",o:["Book lover","Footballer","Singer","Cook"],a:0,e:"She loves reading."}]},
+{name:"Batch 2 - Grammar",qs:[{q:"Which word is a noun?",o:["School","Run","Quickly","Happy"],a:0,e:"School is a naming word."},{q:"Which word is a verb?",o:["Jump","Dog","Red","Table"],a:0,e:"Jump is action."},{q:"The dogs ___ in the yard.",o:["are playing","is playing","am playing","was play"],a:0,e:"Dogs = plural, use are."},{q:"Which is a proper noun?",o:["Kingston","city","girl","dog"],a:0,e:"Kingston is a name."},{q:"Plural of baby is?",o:["Babies","Babys","Baby's","Babyes"],a:0,e:"Baby to Babies."},{q:"The bird ___ over the house.",o:["flies","house","blue","quickly"],a:0,e:"Flies is action."}]},
+{name:"Batch 3 - Vocabulary",qs:[{q:"What is the meaning of brave?",o:["Not afraid","Very sad","Very tired","Very hungry"],a:0,e:"Brave = not afraid."},{q:"Which means same as happy?",o:["Joyful","Angry","Sad","Tired"],a:0,e:"Happy = Joyful."},{q:"Opposite of hot?",o:["Cold","Warm","Big","Fast"],a:0,e:"Opposite of hot is cold."},{q:"Meaning of enormous?",o:["Very big","Very small","Very fast","Very quiet"],a:0,e:"Enormous = very big."},{q:"The sun is very ___ today.",o:["bright","brightly","brightness","brighten"],a:0,e:"Bright describes sun."},{q:"Synonym for quick?",o:["Fast","Slow","Late","Lazy"],a:0,e:"Quick = Fast."}]},
+{name:"Batch 4 - Punctuation",qs:[{q:"Which is punctuated correctly?",o:["Where are you going?","where are you going?","Where are you going.","Where are you going!"],a:0,e:"Question needs ?"},{q:"Choose correct sentence:",o:["My friend lives in Jamaica.","my friend lives in jamaica.","My friend lives in jamaica","My friend lives in Jamaica"],a:0,e:"Needs capitals and full stop."},{q:"Which needs a capital letter?",o:["Monday","apple","dog","table"],a:0,e:"Days start with capital."},{q:"Wow ___ that is amazing",o:["!","?",".",","],a:0,e:"Excitement uses !"},{q:"Which is correct?",o:["Jada and I went to school.","jada and i went to school.","Jada and i went to school","Jada and I went to school"],a:0,e:"Names and I need capitals."},{q:"Where does comma go? I bought mangoes oranges and bananas.",o:["After mangoes","After I","After bought","No comma"],a:0,e:"List needs comma."}]},
+{name:"Batch 5 - Spelling",qs:[{q:"Which is spelled correctly?",o:["Beautiful","Beautifel","Beutiful","Beautifull"],a:0,e:"Beautiful is correct."},{q:"Which is spelled correctly?",o:["School","Skool","Scholl","Scool"],a:0,e:"School is correct."},{q:"Choose correct spelling:",o:["Because","Becaus","Becouse","Bcause"],a:0,e:"Because is correct."},{q:"Which is spelled correctly?",o:["Friend","Frend","Freind","Firend"],a:0,e:"Friend is correct."},{q:"Choose correct spelling:",o:["Children","Childrun","Childern","Childen"],a:0,e:"Children is correct."},{q:"Which is spelled correctly?",o:["Teacher","Techer","Teachor","Teachur"],a:0,e:"Teacher is correct."}]},
+{name:"Batch 6 - Synonyms and Antonyms",qs:[{q:"Synonym for big?",o:["Large","Small","Tiny","Little"],a:0,e:"Big = Large."},{q:"Antonym for begin?",o:["End","Start","Open","Go"],a:0,e:"Begin opposite End."},{q:"Synonym for angry?",o:["Mad","Happy","Calm","Kind"],a:0,e:"Angry = Mad."},{q:"Antonym for rich?",o:["Poor","Wealthy","Happy","Strong"],a:0,e:"Rich opposite Poor."},{q:"Synonym for smart?",o:["Clever","Slow","Lazy","Sad"],a:0,e:"Smart = Clever."},{q:"Antonym for early?",o:["Late","Soon","Quick","First"],a:0,e:"Early opposite Late."}]},
+{name:"Batch 7 - Tenses",qs:[{q:"Yesterday, we ___ to the beach.",o:["went","go","going","goes"],a:0,e:"Yesterday = past, went."},{q:"She ___ reading now.",o:["is","was","were","are"],a:0,e:"Now = is reading."},{q:"Tomorrow, I ___ visit my grandmother.",o:["will","went","was","did"],a:0,e:"Tomorrow = will."},{q:"They ___ playing football yesterday.",o:["were","is","are","was"],a:0,e:"They + past = were."},{q:"She ___ to school every day.",o:["goes","went","going","gone"],a:0,e:"Every day = goes."},{q:"Past tense of eat?",o:["Ate","Eating","Eats","Eat"],a:0,e:"Eat to Ate."}]},
+{name:"Batch 8 - Sentences",qs:[{q:"Which is a complete sentence?",o:["The dog is barking.","Dog barking","The dog","Is barking"],a:0,e:"Has subject + verb."},{q:"Which sentence is a question?",o:["Where is my bag?","My bag is here.","I have a bag.","The bag is red."],a:0,e:"Question ends with ?"},{q:"Which tells you to do something?",o:["Close the door.","The door is closed.","Is the door closed?","The door is red."],a:0,e:"Command: Close the door."},{q:"Choose correct order:",o:["The boy kicked the ball.","Ball the kicked boy the.","Kicked ball boy the.","The ball boy kicked."],a:0,e:"Subject-Verb-Object."},{q:"Which has a describing word?",o:["The red apple is sweet.","The apple is.","Apple sweet.","Is apple."],a:0,e:"Red describes apple."},{q:"How many sentences? I like mangoes. They are sweet. I eat them daily.",o:["3","1","2","4"],a:0,e:"3 full stops = 3 sentences."}]},
+{name:"Batch 9 - Comprehension 2",qs:[{q:"Farmers in St Elizabeth grow vegetables. They water crops every morning. Where do they grow vegetables?",o:["St Elizabeth","Kingston","Montego Bay","Portland"],a:0,e:"Passage says St Elizabeth."},{q:"When do farmers water crops?",o:["Every morning","Every night","On Saturdays","Once a week"],a:0,e:"Every morning."},{q:"Where are vegetables sold?",o:["At the market","At school","At home","At church"],a:0,e:"At the market."},{q:"When are vegetables sold?",o:["On Saturdays","On Mondays","On Sundays","Every day"],a:0,e:"On Saturdays."},{q:"What do farmers grow?",o:["Vegetables","Mangoes only","Flowers only","Animals"],a:0,e:"Vegetables."},{q:"Why do farmers water crops?",o:["To help them grow","To make them dry","To sell them","To cook them"],a:0,e:"Water helps grow."}]},
+{name:"Batch 10 - Mixed Review Language Arts",qs:[{q:"In The happy dog runs, which is noun, verb, adjective?",o:["Dog - Runs - Happy","Happy - Dog - Runs","Runs - Dog - Happy","Dog - Happy - Runs"],a:0,e:"Dog noun, Runs verb, Happy adjective."},{q:"Choose correct sentence:",o:["They are going to school.","They is going to school.","They are go to school.","They are going school."],a:0,e:"They are going is correct."},{q:"Opposite of brave?",o:["Afraid","Strong","Kind","Happy"],a:0,e:"Brave opposite afraid."},{q:"Which is spelled correctly?",o:["Because","Becaus","Becouse","Becuse"],a:0,e:"Because is correct."},{q:"Ann is kind. She helps her friends. What can we say about Ann?",o:["She is helpful","She is rude","She is lazy","She is angry"],a:0,e:"She helps = helpful."},{q:"Best title for story about boy who learns to swim?",o:["Learning to Swim","The Red Car","My Dog","Going to Market"],a:0,e:"Title must match story."}]}
 ]}
 };
-let main=document.getElementById('main');
-function showHome(){main.innerHTML=`<button class="btn" onclick="showBatches('maths')">📐 Mathematics • 10 Batches</button><button class="btn blue" onclick="showBatches('language')">📖 Language Arts • 10 Batches</button><a class="btn back" href="grade4.html">← Back to Grade 4</a>
-function showBatches(sub){let s=subjects[sub];main.innerHTML=`<h2 style="text-align:center">${s.title}</h2>`+s.batches.map((b,i)=>`<button class="btn" onclick="openBatch('${sub}',${i})">${b.name}</button>`).join('')+`<button class="btn back" onclick="showHome()">← Back to Subjects</button>`;}
-function openBatch(sub,i){let b=subjects[sub].batches[i];let html=`<h2 style="text-align:center">${b.name}</h2>`;b.qs.forEach((q,qi)=>{html+=`<div class="card"><b>Q${qi+1}. ${q.q}</b>`+q.o.map((o,oi)=>`<button class="opt" onclick="check(this,${oi===q.a},'exp${qi}')">${o}</button>`).join('')+`<div class="exp" id="exp${qi}">${q.e}</div></div>`});html+=`<button class="btn back" onclick="showBatches('${sub}')">← Back to Batches</button>`;main.innerHTML=html;window.scrollTo(0,0);}
-function check(el,correct,id){let card=el.parentElement;card.querySelectorAll('.opt').forEach(o=>o.disabled=true);el.classList.add(correct?'correct':'wrong');document.getElementById(id).style.display='block';}
-showHome();
+function showHome(){location.reload();}
+function showBatches(sub){
+var main=document.getElementById("main");main.innerHTML="";
+var h=document.createElement("h2");h.style.textAlign="center";h.textContent=DATA[sub].title;main.appendChild(h);
+DATA[sub].batches.forEach(function(b,i){
+var btn=document.createElement("button");btn.className="btn";btn.textContent=b.name;
+btn.onclick=function(){openBatch(sub,i)};main.appendChild(btn);});
+var back=document.createElement("button");back.className="btn back";back.textContent="Back to Subjects";back.onclick=showHome;main.appendChild(back);window.scrollTo(0,0);
+}
+function openBatch(sub,i){
+var main=document.getElementById("main");main.innerHTML="";
+var b=DATA[sub].batches[i];
+var h=document.createElement("h2");h.style.textAlign="center";h.textContent=b.name;main.appendChild(h);
+b.qs.forEach(function(q,qi){
+var card=document.createElement("div");card.className="card";
+var t=document.createElement("b");t.textContent="Q"+(qi+1)+". "+q.q;card.appendChild(t);
+q.o.forEach(function(opt,oi){
+var ob=document.createElement("button");ob.className="opt";ob.textContent=opt;
+ob.onclick=function(){var btns=card.querySelectorAll(".opt");btns.forEach(function(x){x.disabled=true});ob.className="opt "+(oi===q.a?"correct":"wrong");exp.style.display="block"};card.appendChild(ob);});
+var exp=document.createElement("div");exp.className="exp";exp.textContent=q.e;card.appendChild(exp);
+main.appendChild(card);});
+var back=document.createElement("button");back.className="btn back";back.textContent="Back to Batches";back.onclick=function(){showBatches(sub)};main.appendChild(back);window.scrollTo(0,0);
+}
 </script></body></html>
