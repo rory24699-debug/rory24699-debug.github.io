@@ -15,18 +15,17 @@ body{margin:0;font-family:Arial,sans-serif;background:#f3f5f8;color:#243247}
 .card{background:white;padding:18px;border-radius:16px;margin-bottom:15px;box-shadow:0 2px 7px #00000010}
 .progress{height:12px;background:#e3e8ef;border-radius:10px;overflow:hidden;margin:12px 0}
 .progress span{display:block;height:100%;background:#23934c;width:0}
-button,.navbtn{border:0;border-radius:12px;padding:14px;width:100%;font-size:16px;font-weight:bold;color:white;cursor:pointer;margin:6px 0}
+button{border:0;border-radius:12px;padding:14px;width:100%;font-size:16px;font-weight:bold;color:white;cursor:pointer;margin:6px 0}
 .blue{background:#315b9b}
 .green{background:#238b43}
-.dark{background:#363636}
 .option{display:block;width:100%;background:#edf2f8;color:#243247;text-align:left;margin:9px 0;border:2px solid transparent}
 .option.selected{border-color:#315b9b;background:#dce9fb}
 .option:disabled{opacity:1;cursor:default}
 .correct{background:#d9f3df!important;border-color:#238b43!important}
 .wrong{background:#ffe0e0!important;border-color:#d33!important}
 .small{color:#687589;font-size:14px}
-#questionArea{line-height:1.55}
-#feedback{padding:12px;border-radius:10px;margin-top:12px;display:none}
+#questionArea{line-height:1.55;font-weight:bold}
+#feedback{padding:12px;border-radius:10px;margin-top:12px;display:none;line-height:1.5}
 #result{display:none}
 #batchButtons{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .batchbtn{background:#315b9b;margin:0}
@@ -53,7 +52,7 @@ button,.navbtn{border:0;border-radius:12px;padding:14px;width:100%;font-size:16p
 <div class="progress"><span id="overallBar"></span></div>
 </div>
 
-<div class="card">
+<div class="card" id="batchCard">
 <h3>Select a Practice Batch</h3>
 <div id="batchButtons"></div>
 </div>
@@ -81,7 +80,6 @@ button,.navbtn{border:0;border-radius:12px;padding:14px;width:100%;font-size:16p
 </div>
 
 <a class="back" href="grade6-pep-practice.html">⬅ Back to PEP Practice</a>
-
 </div>
 
 <script>
@@ -91,7 +89,7 @@ title:"Batch 1 – School Fundraising Project",
 scenario:"A Jamaican primary school is organizing a fundraising event.",
 questions:[
 ["The school sells 125 tickets at $200 each. How much money is collected?",["$20,000","$25,000","$30,000","$22,500"],1,"125 × 200 = $25,000."],
-["The school spends $8,500 on supplies. What remains from the ticket money?",["$15,500","$16,500","$17,500","$18,500"],2,"25,000 − 8,500 = $16,500. Correction: the answer is B."],
+["The school spends $8,500 on supplies. What remains from the ticket money?",["$15,500","$16,500","$17,500","$18,500"],1,"25,000 − 8,500 = $16,500."],
 ["A cake is divided into 12 equal pieces. Students sell 3/4 of it. How many pieces are sold?",["6","8","9","10"],2,"3/4 × 12 = 9 pieces."],
 ["The school buys 15 boxes with 24 juice boxes each. How many juice boxes?",["340","350","360","370"],2,"15 × 24 = 360."],
 ["A table costs $4,800 after a 20% discount. What was the original price?",["$5,000","$5,500","$6,000","$6,500"],2,"4,800 is 80% of the original. 4,800 ÷ 0.8 = $6,000."],
@@ -137,7 +135,7 @@ scenario:"A contractor is calculating materials for a small building project.",
 questions:[
 ["A floor is 9 m long and 7 m wide. Find its area.",["16 m²","32 m²","63 m²","72 m²"],2,"9 × 7 = 63 m²."],
 ["A square room has sides of 6 m. Find its perimeter.",["12 m","18 m","24 m","36 m"],2,"4 × 6 = 24 m."],
-["Tiles cover 1 m² each. How many are needed for a 63 m² floor?",["53","60","63","70"],2,"63 ÷ 1 = 63 tiles, excluding wastage."],
+["Tiles cover 1 m² each. How many are needed for a 63 m² floor?",["53","60","63","70"],2,"63 tiles, excluding wastage."],
 ["A rectangular tank measures 4 m by 3 m by 2 m. Find its volume.",["9 m³","12 m³","24 m³","36 m³"],2,"4 × 3 × 2 = 24 m³."],
 ["A worker completes 3/5 of a wall. What fraction remains?",["1/5","2/5","3/5","4/5"],1,"1 − 3/5 = 2/5."],
 ["A plank is 4.5 m long. It is cut into 3 equal pieces. Find each length.",["1 m","1.5 m","2 m","2.5 m"],1,"4.5 ÷ 3 = 1.5 m."],
@@ -156,7 +154,7 @@ questions:[
 ["A taxi fare is $250 per passenger. What is the fare for 6 passengers?",["$1,250","$1,400","$1,500","$1,600"],2,"250 × 6 = $1,500."],
 ["A vehicle uses 8 litres of fuel for 100 km. How much fuel for 200 km at the same rate?",["12 L","14 L","16 L","18 L"],2,"Double the distance requires 16 litres."],
 ["A route is 35 km each way. Find the return distance.",["35 km","60 km","70 km","75 km"],2,"35 × 2 = 70 km."],
-["A bus leaves every 20 minutes. How many departures occur in 2 hours, starting at 8:00 and ending at 10:00?",["5","6","7","8"],2,"Departures: 8:00, 8:20, 8:40, 9:00, 9:20, 9:40, 10:00 = 7."],
+["A bus leaves every 20 minutes from 8:00 a.m. through 10:00 a.m. How many departures are there?",["5","6","7","8"],2,"Departures at 8:00, 8:20, 8:40, 9:00, 9:20, 9:40 and 10:00 = 7."],
 ["A car travels 90 km in 1.5 hours. Find its average speed.",["45 km/h","50 km/h","60 km/h","75 km/h"],2,"90 ÷ 1.5 = 60 km/h."],
 ["A journey covers 240 km at 80 km/h. How long does it take?",["2 hours","2.5 hours","3 hours","4 hours"],2,"240 ÷ 80 = 3 hours."],
 ["A driver travels 120 km in the morning and 85 km in the afternoon. Find the total distance.",["195 km","200 km","205 km","215 km"],2,"120 + 85 = 205 km."]
@@ -242,7 +240,6 @@ let currentBatch=0;
 let currentQuestion=0;
 let selected=null;
 let correct=0;
-let answers=[];
 let completed={};
 let scores={};
 
@@ -256,16 +253,17 @@ let done=Object.keys(completed).length;
 document.getElementById("overall").textContent=`Batches completed: ${done} of 10`;
 document.getElementById("overallBar").style.width=(done*10)+"%";
 }
+
 function startBatch(i){
 currentBatch=i;
 currentQuestion=0;
 correct=0;
-answers=[];
 document.getElementById("result").style.display="none";
 document.getElementById("quiz").style.display="block";
 showQuestion();
 window.scrollTo(0,0);
 }
+
 function showQuestion(){
 let b=batches[currentBatch];
 let q=b.questions[currentQuestion];
@@ -280,11 +278,13 @@ document.getElementById("checkBtn").style.display="block";
 document.getElementById("nextBtn").style.display="none";
 document.getElementById("options").innerHTML=q[1].map((v,i)=>`<button class="option" onclick="choose(${i})">${String.fromCharCode(65+i)}. ${v}</button>`).join("");
 }
+
 function choose(i){
 if(document.getElementById("checkBtn").style.display==="none")return;
 selected=i;
 document.querySelectorAll(".option").forEach((el,n)=>el.classList.toggle("selected",n===i));
 }
+
 function checkAnswer(){
 if(selected===null){alert("Please select an answer first.");return;}
 let q=batches[currentBatch].questions[currentQuestion];
@@ -296,7 +296,6 @@ if(i===selected && i!==q[2])el.classList.add("wrong");
 });
 let right=selected===q[2];
 if(right)correct++;
-answers.push(right);
 let fb=document.getElementById("feedback");
 fb.style.display="block";
 fb.style.background=right?"#e0f5e5":"#fff0f0";
@@ -305,10 +304,16 @@ document.getElementById("checkBtn").style.display="none";
 document.getElementById("nextBtn").style.display="block";
 document.getElementById("nextBtn").textContent=currentQuestion===9?"View Batch Results":"Next Question";
 }
+
 function nextQuestion(){
-if(currentQuestion<9){currentQuestion++;showQuestion();}
-else showResult();
+if(currentQuestion<9){
+currentQuestion++;
+showQuestion();
+}else{
+showResult();
 }
+}
+
 function showResult(){
 document.getElementById("quiz").style.display="none";
 document.getElementById("result").style.display="block";
@@ -320,17 +325,27 @@ document.getElementById("correctCount").textContent=`Correct answers: ${correct}
 document.getElementById("resultMessage").textContent=pct>=80?"Excellent work! Keep challenging yourself.":pct>=60?"Good effort! Review the explanations and practise again.":"Keep practising. Review each explanation and try again.";
 let total=Object.values(scores).reduce((a,b)=>a+b,0);
 let done=Object.keys(completed).length;
-let report=`PEPLink JA – Grade 6 Mathematics Performance Task\nBatch: ${currentBatch+1} of 10\nScore: ${correct}/10\nPercentage: ${pct}%\nBatches completed: ${done}/10\nTotal marks earned across completed batches: ${total}/${done*10}`;
+let report=`PEPLink JA – Grade 6 Mathematics Performance Task
+Batch: ${currentBatch+1} of 10
+Score: ${correct}/10
+Percentage: ${pct}%
+Batches completed: ${done}/10
+Total marks earned across completed batches: ${total}/${done*10}`;
 document.getElementById("whatsapp").href="https://wa.me/?text="+encodeURIComponent(report);
 renderBatches();
 window.scrollTo(0,0);
 }
+
 function showBatches(){
 document.getElementById("result").style.display="none";
 document.getElementById("quiz").style.display="none";
 window.scrollTo(0,0);
 }
-function retryBatch(){startBatch(currentBatch);}
+
+function retryBatch(){
+startBatch(currentBatch);
+}
+
 renderBatches();
 </script>
 </body>
