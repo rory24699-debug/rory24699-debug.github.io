@@ -10,7 +10,7 @@ body{font-family:Arial,sans-serif;background:#eef2ff;margin:0;padding:0;text-ali
 .card{background:#fff;border-radius:22px;padding:18px 14px;text-align:left;box-shadow:0 4px 14px rgba(0,0,0,.08)}
 h1{font-size:24px;margin:6px 0 4px;text-align:center;line-height:1.2}
 .sub{color:#555;font-size:15px;text-align:center;margin:0 0 12px}
-.tests{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:10px 0 16px}
+.tests{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 16px}
 .testBtn{border:0;padding:10px 18px;border-radius:999px;background:#e5e7eb;font-weight:bold;font-size:16px;cursor:pointer}
 .testBtn.active{background:#2563eb;color:#fff}
 .qhead{font-size:15px;color:#333;margin-bottom:8px}
@@ -19,25 +19,24 @@ h1{font-size:24px;margin:6px 0 4px;text-align:center;line-height:1.2}
 .opt.selected{border:2px solid #2563eb;background:#eff6ff}
 .btn{width:100%;border:0;border-radius:14px;padding:16px;font-size:19px;font-weight:bold;cursor:pointer;color:#fff;background:#1a365d;margin-top:12px}
 .btn:disabled{opacity:.5}
-.waInput{width:100%;box-sizing:border-box;padding:14px;border:1px solid #ddd;border-radius:14px;font-size:15px;margin-top:14px}
-.waNote{font-size:13px;color:#666;text-align:center;margin:6px 0 0}
+.waInput{width:100%;box-sizing:border-box;padding:14px;border:3px solid #1a7a3a;border-radius:14px;font-size:16px;font-weight:bold;margin-top:14px;background:#f0fdf4;color:#14532d}
+.waInput::placeholder{color:#1a7a3a;font-weight:bold}
 .score{font-size:19px;font-weight:bold;text-align:center;margin:14px 0}
 </style>
 </head>
 <body>
 <div class="wrap">
 <div class="card">
-<h1>🇯🇲 Grade 4 PEP - Mathematics<br>100 Questions - 5 Tests</h1>
+<h1>Grade 4 PEP - Mathematics<br>100 Questions - 5 Tests</h1>
 <p class="sub">Test 1-5 • 20 questions each • Score is locked - no cheating</p>
 <div class="tests" id="tests"></div>
 <div id="quiz">
-<div class="qhead" id="qhead">📘 Test 1 - Question 1 of 20</div>
+<div class="qhead" id="qhead">Test 1 - Question 1 of 20</div>
 <div class="q" id="question"></div>
 <div id="options"></div>
-<button class="btn" id="nextBtn" onclick="nextQ()">Next ➡️</button>
-<input class="waInput" id="waNum" placeholder="Optional: Type parent WhatsApp number e.g. 18765432100">
-<p class="waNote">Leave number blank to pick any parent/contact in WhatsApp</p>
-<button class="btn" onclick="location.href='index.html'">⬅️ Go back to PEP Centre</button>
+<button class="btn" id="nextBtn" onclick="nextQ()">Next →</button>
+<input class="waInput" id="waNum" placeholder="Add parent number">
+<button class="btn" onclick="location.href='index.html'">← Go back to PEP Centre</button>
 <div class="score" id="scoreBox"></div>
 </div>
 </div>
@@ -162,12 +161,12 @@ function renderTests(){
 function switchTest(i){curTest=i;curQ=0;score=0;userAnswers=[];renderTests();showQ();}
 function showQ(){
   const t=allTests[curTest][curQ];
-  document.getElementById('qhead').innerText=`📘 Test ${curTest+1} - Question ${curQ+1} of 20`;
+  document.getElementById('qhead').innerText=`Test ${curTest+1} - Question ${curQ+1} of 20`;
   document.getElementById('question').innerText=t.q;
   document.getElementById('scoreBox').innerText = curQ>0 ? `Score so far: ${score} / ${curQ}` : '';
   document.getElementById('options').innerHTML=t.o.map((opt,idx)=>`<div class="opt" onclick="pick(this,${idx})">${opt}</div>`).join('');
   answered=false; document.getElementById('nextBtn').disabled=true;
-  document.getElementById('nextBtn').innerText = curQ===19 ? 'Finish →' : Next →';
+  document.getElementById('nextBtn').innerText = curQ===19 ? 'Finish →' : 'Next →';
 }
 let picked=-1;
 function pick(el,idx){document.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected');picked=idx;answered=true;document.getElementById('nextBtn').disabled=false;}
@@ -182,8 +181,8 @@ function nextQ(){
 function finish(){
   const total=score;
   const wa=document.getElementById('waNum').value.replace(/[^0-9]/g,'');
-  let msg=`🇯🇲 PEPLink JA - Grade 4 Maths - Test ${curTest+1} RESULT%0A%0AScore: ${total} / 20%0A`;
-  document.getElementById('quiz').innerHTML=`<div class="score" style="font-size:26px">🎉 Test ${curTest+1} Complete!<br>Score: ${total} / 20</div><p style="text-align:center">${total>=15?'Excellent! 🌟':total>=10?'Good job! Keep going 👍':'Keep practising! You can do it 💪'}</p><button class="btn" onclick="sendWA()">Send Result on WhatsApp</button><button class="btn" style="background:#2563eb" onclick="location.reload()">Try Again ↻</button><button class="btn" onclick="location.href='index.html'">⬅️ Go back to PEP Centre</button>`;
+  let msg=`PEPLink JA - Grade 4 Maths - Test ${curTest+1} RESULT%0A%0AScore: ${total} / 20%0A`;
+  document.getElementById('quiz').innerHTML=`<div class="score" style="font-size:26px">Test ${curTest+1} Complete!<br>Score: ${total} / 20</div><p style="text-align:center">${total>=15?'Excellent!':total>=10?'Good job! Keep going':'Keep practising! You can do it'}</p><button class="btn" onclick="sendWA()">Send Result on WhatsApp</button><button class="btn" style="background:#2563eb" onclick="location.reload()">Try Again</button><button class="btn" onclick="location.href='index.html'">← Go back to PEP Centre</button>`;
   window._waMsg=msg; window._waNum=wa;
 }
 function sendWA(){
