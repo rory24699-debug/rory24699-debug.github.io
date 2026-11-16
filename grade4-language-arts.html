@@ -13,7 +13,8 @@ h1{text-align:center;font-size:24px;margin:8px 0 4px}
 #quiz button.opt.correct{background:#dcfce7;border-color:green}
 #quiz button.opt.wrong{background:#fee2e2;border-color:red}
 #next{width:100%;padding:14px;border:none;border-radius:10px;background:#1a365d;color:#fff;font-weight:bold;font-size:17px;cursor:pointer;margin-top:10px}
-#wa{width:100%;padding:13px;border:1px solid #ddd;border-radius:10px;margin-top:12px;box-sizing:border-box;font-size:15px}
+#wa{width:100%;padding:13px;border:2px solid #25D366;background:#f0fdf4;border-radius:10px;margin-top:12px;box-sizing:border-box;font-size:15px}
+#wa:focus{outline:none;border-color:#128C7E;box-shadow:0 0 0 3px #dcfce7}
 .back{display:block;background:#1a365d;color:white;text-align:center;padding:14px;border-radius:12px;text-decoration:none;font-weight:bold;margin-top:14px}
 #score{font-weight:bold;text-align:center;margin:10px 0}
 </style></head>
@@ -24,9 +25,9 @@ h1{text-align:center;font-size:24px;margin:8px 0 4px}
 <div id="menu"></div>
 <div id="quiz"></div>
 <div id="score"></div>
-<button id="next" onclick="nextQ()">Next ➡️</button>
+<button id="next" onclick="nextQ()">Next →</button>
 <input id="wa" placeholder="Optional: Type parent WhatsApp number e.g. 1876...">
-<a class="back" href="pep-practice-centre.html">⬅️ Go back to PEP Centre</a>
+<a class="back" href="pep-practice-centre.html">← Go back to PEP Centre</a>
 </div>
 <script>
 const batches=[
