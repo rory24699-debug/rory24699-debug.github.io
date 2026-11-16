@@ -1,75 +1,189 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Grade 6 Language Arts</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 6 PEP - Language Arts</title>
 <style>
-body{font-family:Arial;padding:12px;background:#f0f4f8}
-.card{background:#fff;border-radius:16px;padding:16px;margin:12px 0;box-shadow:0 2px 6px rgba(0,0,0,.1)}
-.btn{padding:12px;background:#174a7e;color:#fff;border-radius:12px;text-decoration:none;display:block;text-align:center;margin:8px 0;border:0;width:100%}
-.opt{padding:10px;border:2px solid #e2e8f0;border-radius:10px;margin:6px 0}
-.opt.sel{background:#dbeafe;border-color:#174a7e}
-.progress{height:12px;background:#e2e8f0;border-radius:10px;overflow:hidden}
-.bar{height:100%;background:#16a34a;width:0%}
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+body{margin:0;background:#f3f6fb}
+.top{background:#2563eb;color:#fff;padding:18px 14px;text-align:center}
+.top h1{margin:0;font-size:22px}
+.top p{margin:6px 0 0;opacity:.9}
+.wrap{max-width:800px;margin:0 auto;padding:14px}
+.card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.06);margin-bottom:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.pill{border:1px solid #dbe2ef;background:#eef2f7;padding:8px 14px;border-radius:999px;cursor:pointer;font-weight:700}
+.pill.active{background:#2563eb;color:#fff;border-color:#2563eb}
+.q{font-size:18px;font-weight:700;margin:10px 0 14px}
+.opt{border:1px solid #dbe2ef;border-radius:10px;padding:12px;margin-bottom:10px;cursor:pointer}
+.opt:hover{border-color:#2563eb}
+.opt.sel{background:#dbeafe;border-color:#2563eb}
+.opt.correct{background:#dcfce7;border-color:#16a34a}
+.opt.wrong{background:#fee2e2;border-color:#dc2626}
+.btn{width:100%;padding:14px;border:0;border-radius:10px;background:#2563eb;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+.btn:disabled{opacity:.5}
+.back{display:block;text-align:center;margin-top:12px;padding:12px;border:1px solid #cbd5e1;border-radius:10px;text-decoration:none;color:#334155;background:#fff;font-weight:700}
+.meta{display:flex;justify-content:space-between;font-weight:700;color:#334155;margin-bottom:10px}
+.feedback{margin-top:10px;font-weight:700}
 </style>
 </head>
 <body>
-<div style="max-width:700px;margin:0 auto">
-<div class="card" style="background:#7c3aed;color:#fff;text-align:center">
-<h2 style="margin:0">Grade 6 - Language Arts</h2>
-<div class="progress" style="margin-top:10px"><div id="bar" class="bar"></div></div>
-<p id="txt" style="font-size:13px">Progress: 0%</p>
+<div class="top"><h1>Grade 6 PEP - Language Arts</h1><p>100 Questions - 10 Batches</p></div>
+<div class="wrap">
+<div class="card"><div class="meta"><span id="batchLabel">Batch 1</span><span id="scoreLabel">Score: 0 / 0</span></div><div class="pills" id="pills"></div></div>
+<div class="card"><div id="quiz"></div><button class="btn" id="nextBtn" onclick="nextQ()">Next Question →</button><div class="feedback" id="fb"></div></div>
+<a class="back" href="grade6.html">← Back to PEP Centre</a>
 </div>
-
-<div class="card">
-<h3>📚 Topic: Parts of Speech</h3>
-<p>Understanding Nouns, Verbs, Adjectives.</p>
-<div style="background:#f3e8ff;padding:40px;border-radius:12px;text-align:center">📹 Video Space</div>
-<button class="btn" onclick="document.getElementById('quiz').style.display='block';localStorage.setItem('g6la_video','yes');update()">✅ I Watched - Unlock Quiz</button>
-</div>
-
-<div id="quiz" class="card" style="display:none">
-<h3>🧠 Quiz</h3>
-<p><b>Q1. What is a verb?</b></p>
-<div class="opt" onclick="a1=1;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">A) An action word</div>
-<div class="opt" onclick="a1=2;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">B) Name of a place</div>
-
-<p><b>Q2. Which is an adjective? "The tall boy"</b></p>
-<div class="opt" onclick="a2=2;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">B) tall</div>
-<div class="opt" onclick="a2=1;this.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel')">A) boy</div>
-
-<button class="btn" style="background:#16a34a" onclick="check()">Submit Quiz</button>
-<div id="res" style="margin-top:10px;font-weight:bold"></div>
-</div>
-
-<button class="btn" style="background:#25D366" onclick="shareWA()">📱 Send Report to WhatsApp</button>
-<a class="btn" style="background:#64748b" href="grade6.html">← Back</a>
-</div>
-
 <script>
-let a1=0,a2=0;
-function check(){
- let s=0;
- if(a1==1)s++;
- if(a2==2)s++;
- document.getElementById("res").innerHTML="Score: "+s+"/2 - "+(s==2?"✅ Strong!":"⚠️ Weak: Parts of Speech");
- localStorage.setItem("g6la_quiz","yes");
- localStorage.setItem("g6la_score",s);
- update();
+const batches=[
+{title:"Batch 1: Nouns & Pronouns",qs:[
+["Which word is an abstract noun?","Happiness","Table","Dog","Jamaica","Happiness"],
+["Choose the correct pronoun: ___ went to the library.","They","Them","Their","Theirs","They"],
+["Which is a collective noun?","Flock","Run","Happy","Quickly","Flock"],
+["The plural of 'child' is:","Children","Childs","Childes","Childrens","Children"],
+["Choose the possessive pronoun: That book is ___.","Mine","Me","I","My","Mine"],
+["Which noun is a proper noun?","Kingston","City","River","School","Kingston"],
+["___ is responsible for this project.","She","Her","Him","Them","She"],
+["Which is a common noun?","Teacher","Miss Brown","Jamaica","Monday","Teacher"],
+["The teacher gave ___ extra time.","Us","We","I","He","Us"],
+["Which word is a pronoun?","They","Beautiful","Run","Quickly","They"]
+]},
+{title:"Batch 2: Verbs & Tenses",qs:[
+["She ___ to school every day.","Goes","Go","Going","Gone","Goes"],
+["They ___ finished their homework by 5 p.m.","Had","Has","Have","Is","Had"],
+["Choose past tense: Yesterday, we ___ a test.","Wrote","Write","Writes","Writing","Wrote"],
+["She ___ reading when I called.","Was","Is","Are","Be","Was"],
+["By next year, I ___ completed Grade 6.","Will have","Has","Have","Had","Will have"],
+["Which is a verb?","Explain","Happy","Blue","Table","Explain"],
+["He ___ not like spicy food.","Does","Do","Did","Done","Does"],
+["Choose future tense: Tomorrow, we ___ visit the museum.","Will","Went","Goes","Gone","Will"],
+["The dog ___ loudly all night.","Barked","Bark","Barks","Barking","Barked"],
+["She has ___ her lunch already.","Eaten","Eat","Ate","Eating","Eaten"]
+]},
+{title:"Batch 3: Adjectives & Adverbs",qs:[
+["Which word is an adjective?","Brave","Bravely","Run","Quick","Brave"],
+["She sang ___.","Beautifully","Beautiful","Beauty","Beautify","Beautifully"],
+["Which is a comparative adjective?","Taller","Tall","Tallest","Tallness","Taller"],
+["He is the ___ student in the class.","Smartest","Smarter","Smart","Smartly","Smartest"],
+["Which adverb describes HOW?","Quickly","Yesterday","There","Now","Quickly"],
+["The test was ___ easy.","Very","Run","Book","Happy","Very"],
+["Choose the correct form: This is ___ than that one.","Better","Good","Best","Well","Better"],
+["Which word is an adverb of time?","Soon","Carefully","Loudly","Softly","Soon"],
+["The ___ dress caught everyone's eye.","Beautiful","Beautifully","Beauty","Beautify","Beautiful"],
+["He spoke ___ to avoid waking the baby.","Softly","Soft","Softer","Softness","Softly"]
+]},
+{title:"Batch 4: Prepositions & Conjunctions",qs:[
+["The book is ___ the table.","On","And","But","Quickly","On"],
+["We stayed inside ___ it was raining.","Because","Or","But","And","Because"],
+["She will come ___ she finishes her work.","After","And","But","Or","After"],
+["Choose the conjunction: You can have tea ___ coffee.","Or","In","On","At","Or"],
+["The cat hid ___ the bed.","Under","And","But","So","Under"],
+["We went to the park ___ played football.","And","In","On","At","And"],
+["He was late ___ he missed the bus.","Because","Or","And","But","Because"],
+["The bird flew ___ the tree.","Over","And","But","So","Over"],
+["Choose preposition: We meet ___ Monday.","On","And","But","So","On"],
+["I want to go, ___ I have homework.","But","In","On","At","But"]
+]},
+{title:"Batch 5: Subject-Verb Agreement",qs:[
+["Each of the boys ___ a uniform.","Wears","Wear","Wearing","Worn","Wears"],
+["Neither the teacher nor the students ___ late.","Were","Was","Is","Has","Were"],
+["The group of students ___ working hard.","Is","Are","Were","Be","Is"],
+["My friends ___ playing outside.","Are","Is","Was","Has","Are"],
+["Everyone ___ to do their best.","Wants","Want","Wanting","Wanted","Wants"],
+["The books on the shelf ___ dusty.","Are","Is","Was","Has","Are"],
+["She and I ___ best friends.","Are","Is","Was","Has","Are"],
+["One of the girls ___ won a prize.","Has","Have","Are","Were","Has"],
+["The dog ___ after its owner.","Runs","Run","Running","Runned","Runs"],
+["Mathematics ___ my favourite subject.","Is","Are","Were","Be","Is"]
+]},
+{title:"Batch 6: Punctuation & Capitalization",qs:[
+["Which sentence is punctuated correctly?","Wow, that was amazing!","Wow that was amazing","Wow that was amazing!","wow, that was amazing!","Wow, that was amazing!"],
+["Choose correct: We visited Kingston, Jamaica ___","In May.","in may.","In may","In May","In May."],
+["Which needs a capital letter?","Monday","Book","Happy","Run","Monday"],
+["She asked, \"___ are you going?\"","Where","where","Where.","Where?","Where"],
+["Choose correct apostrophe: That is ___ book.","Maria's","Marias","Marias'","Maria s","Maria's"],
+["Which is correct?","It's raining.","Its raining.","Its' raining.","It s raining.","It's raining."],
+["Add a comma: After school, we went home.","After school, we went home.","After school we went home","After, school we went home","After school we, went home","After school, we went home."],
+["Which title is correct?","The Lion King","the lion king","The lion King","the Lion King","The Lion King"],
+["Choose correct: My favourite subjects are English, maths ___ science.","And","and","And.","AND","And"],
+["Which sentence ends correctly?","Are you coming?","Are you coming.","Are you coming!","Are you coming,","Are you coming?"]
+]},
+{title:"Batch 7: Sentence Types & Structure",qs:[
+["Which is an interrogative sentence?","Where are you going?","Go home now.","What a day!","I like mangoes.","Where are you going?"],
+["Which is an imperative sentence?","Close the door, please.","I like cake.","Where is it?","What a view!","Close the door, please."],
+["Which is an exclamatory sentence?","What a beautiful day!","I am happy.","Do you like it?","Close the door.","What a beautiful day!"],
+["Which is a simple sentence?","The dog barked.","The dog barked and ran.","When it rained, we stayed in.","I ran because I was late.","The dog barked."],
+["Which is a compound sentence?","I was tired, so I rested.","I slept.","The cat slept.","She ran fast.","I was tired, so I rested."],
+["Which is the subject? In 'Maria baked a cake', subject is:","Maria","Baked","A cake","Cake","Maria"],
+["Which is the predicate? In 'The boys played football', predicate is:","Played football","The boys","Boys","Football","Played football"],
+["Choose a complete sentence:","She went to school.","Went to school.","Because she was late.","Running fast.","She went to school."],
+["Which is a fragment?","Because it was raining.","It was raining.","We stayed in.","She was happy.","Because it was raining."],
+["Which joins two ideas correctly?","I was hungry, so I ate.","I was hungry so I ate","I was hungry. So I ate,","I hungry so ate","I was hungry, so I ate."]
+]},
+{title:"Batch 8: Synonyms, Antonyms, Homophones",qs:[
+["Synonym for 'brave' is:","Courageous","Afraid","Weak","Shy","Courageous"],
+["Antonym for 'generous' is:","Selfish","Kind","Giving","Helpful","Selfish"],
+["Choose homophone pair:","Their / There","Happy / Sad","Big / Large","Run / Walk","Their / There"],
+["Synonym for 'rapid' is:","Fast","Slow","Lazy","Late","Fast"],
+["Antonym for 'ancient' is:","Modern","Old","Aged","Historic","Modern"],
+["Which pair are homophones?","See / Sea","Cat / Dog","Hot / Cold","Up / Down","See / Sea"],
+["Synonym for 'honest' is:","Truthful","Lying","Sneaky","Rude","Truthful"],
+["Antonym for 'victory' is:","Defeat","Win","Success","Prize","Defeat"],
+["'To / Too / Two' - Which means 'also'?","Too","To","Two","Tow","Too"],
+["Synonym for 'enormous' is:","Huge","Tiny","Small","Little","Huge"]
+]},
+{title:"Batch 9: Vocabulary in Context",qs:[
+["'The teacher praised her effort.' Praised means:","Commended","Scolded","Ignored","Punished","Commended"],
+["'He was exhausted after the race.' Exhausted means:","Very tired","Very happy","Very hungry","Very angry","Very tired"],
+["'She glanced at the clock.' Glanced means:","Looked quickly","Stared","Ignored","Slept","Looked quickly"],
+["'The solution was obvious.' Obvious means:","Clear","Hidden","Difficult","Secret","Clear"],
+["'They finally reached a compromise.' Compromise means:","Agreement","Argument","Fight","Loss","Agreement"],
+["'Her story was fascinating.' Fascinating means:","Very interesting","Very boring","Very long","Very sad","Very interesting"],
+["'He hesitated before answering.' Hesitated means:","Paused","Shouted","Ran","Laughed","Paused"],
+["'The room was spacious.' Spacious means:","Roomy","Tiny","Dark","Noisy","Roomy"],
+["'She was curious about the result.' Curious means:","Eager to know","Bored","Angry","Sleepy","Eager to know"],
+["'The crowd cheered loudly.' Cheered means:","Shouted with joy","Cried","Slept","Left","Shouted with joy"]
+]},
+{title:"Batch 10: Editing & Mixed Review",qs:[
+["Choose correct sentence:","Their house is big.","There house is big.","Their house is big","Their house is Big.","Their house is big."],
+["Choose correct: She ___ to the store yesterday.","Went","Go","Goes","Going","Went"],
+["Which word is spelled correctly?","Necessary","Necesary","Necessarry","Necesery","Necessary"],
+["Choose correct: The students ___ their books.","Brought","Brang","Bringed","Bought","Brought"],
+["Which is correct?","I don't know.","I doesnt know.","I don’t knows.","I no know.","I don't know."],
+["Choose the best word: He spoke ___ in the meeting.","Confidently","Confident","Confidence","Confide","Confidently"],
+["Which sentence uses 'your' correctly?","Is this your pencil?","Is this you’re pencil?","Is this your’e pencil?","Is this youre pencil?","Is this your pencil?"],
+["Choose correct plural: Two ___ were playing.","Babies","Baby","Babys","Babyes","Babies"],
+["Which is correct past tense?","She taught us maths.","She teached us maths.","She teach us maths.","She teaching us maths.","She taught us maths."],
+["Best ending: If you study hard, ___","You will succeed.","You will fail.","You will sleep.","You will cry.","You will succeed."]
+]}
+];
+let batch=0,qi=0,score=0,answered=0,selected=null;
+function renderPills(){document.getElementById('pills').innerHTML=batches.map((b,i)=>`<div class="pill ${i===batch?'active':''}" onclick="goBatch(${i})">Batch ${i+1}</div>`).join('')}
+function renderQ(){
+  document.getElementById('batchLabel').innerText=batches[batch].title;
+  document.getElementById('scoreLabel').innerText=`Score: ${score} / ${answered}`;
+  const q=batches[batch].qs[qi]; selected=null; document.getElementById('fb').innerText='';
+  document.getElementById('nextBtn').disabled=true;
+  document.getElementById('quiz').innerHTML=`<div>Question ${qi+1} / 10</div><div class="q">${q[0]}</div>`+q.slice(1,5).map((o,idx)=>`<div class="opt" onclick="pick(this,${idx})">${o}</div>`).join('');
 }
-function shareWA(){
- let score=localStorage.getItem("g6la_score")||0;
- let msg="PeplinkJA Report - Grade 6 Language Arts%0ATopic: Parts of Speech%0AScore "+score+"/2%0A"+document.getElementById("txt").innerText;
- window.open("https://wa.me/?text="+msg,"_blank");
+function pick(el,idx){
+  if(selected!==null) return; selected=idx;
+  const q=batches[batch].qs[qi]; const opts=document.querySelectorAll('.opt');
+  opts.forEach(o=>o.classList.remove('sel')); el.classList.add('sel');
+  answered++;
+  if(q.slice(1,5)[idx]===q[5]){el.classList.add('correct'); score++; document.getElementById('fb').innerText='✅ Correct!';}
+  else{el.classList.add('wrong'); opts.forEach(o=>{if(o.innerText===q[5]) o.classList.add('correct')}); document.getElementById('fb').innerText='❌ Correct answer: '+q[5];}
+  document.getElementById('scoreLabel').innerText=`Score: ${score} / ${answered}`;
+  document.getElementById('nextBtn').disabled=false;
 }
-function update(){
- let tot=0;
- if(localStorage.getItem("g6la_video")) tot+=50;
- if(localStorage.getItem("g6la_quiz")) tot+=50;
- document.getElementById("bar").style.width=tot+"%";
- document.getElementById("txt").innerText="Progress: "+tot+"%";
+function nextQ(){
+  if(qi<9){qi++; renderQ();}
+  else if(batch<9){batch++; qi=0; renderPills(); renderQ();}
+  else{document.getElementById('quiz').innerHTML=`<h2>🎉 Finished!</h2><p>Your final score: ${score} / 100</p><p>Tap a Batch above to try again.</p>`; document.getElementById('nextBtn').disabled=true;}
 }
-update();
+function goBatch(i){batch=i; qi=0; renderPills(); renderQ();}
+renderPills(); renderQ();
 </script>
 </body>
 </html>
