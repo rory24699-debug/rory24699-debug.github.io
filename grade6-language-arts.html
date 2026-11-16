@@ -21,9 +21,10 @@ body{margin:0;background:#f3f6fb}
 .opt.sel{background:#dbeafe;border-color:#2563eb}
 .opt.correct{background:#dcfce7;border-color:#16a34a}
 .opt.wrong{background:#fee2e2;border-color:#dc2626}
-.btn{width:100%;padding:14px;border:0;border-radius:10px;background:#2563eb;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+.btn{width:100%;padding:14px;border:0;border-radius:10px;background:#1e2a4a;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
 .btn:disabled{opacity:.5}
-.back{display:block;text-align:center;margin-top:12px;padding:12px;border:1px solid #cbd5e1;border-radius:10px;text-decoration:none;color:#334155;background:#fff;font-weight:700}
+.wa{width:100%;padding:14px;margin-top:12px;border:2px solid #0f766e;border-radius:10px;background:#d1fae5;font-weight:700;font-size:15px;text-align:center}
+.back{display:block;text-align:center;margin-top:12px;padding:12px;border-radius:10px;text-decoration:none;color:#fff;background:#1e2a4a;font-weight:700}
 .meta{display:flex;justify-content:space-between;font-weight:700;color:#334155;margin-bottom:10px}
 .feedback{margin-top:10px;font-weight:700}
 </style>
@@ -31,9 +32,9 @@ body{margin:0;background:#f3f6fb}
 <body>
 <div class="top"><h1>Grade 6 PEP - Language Arts</h1><p>100 Questions - 10 Batches</p></div>
 <div class="wrap">
-<div class="card"><div class="meta"><span id="batchLabel">Batch 1</span><span id="scoreLabel">Score: 0 / 0</span></div><div class="pills" id="pills"></div></div>
-<div class="card"><div id="quiz"></div><button class="btn" id="nextBtn" onclick="nextQ()">Next Question →</button><div class="feedback" id="fb"></div></div>
-<a class="back" href="grade6.html">← Back to PEP Centre</a>
+<div class="card"><div class="meta"><span id="batchLabel">Batch 1</span><span id="scoreLabel">Score: 0 / 0 in this batch</span></div><div class="pills" id="pills"></div></div>
+<div class="card"><div id="quiz"></div><button class="btn" id="nextBtn" onclick="nextQ()">Next →</button><input class="wa" placeholder="Optional: Type parent WhatsApp number"><div class="feedback" id="fb"></div></div>
+<a class="back" href="grade6.html">← Go back to PEP Centre</a>
 </div>
 <script>
 const batches=[
@@ -162,7 +163,7 @@ let batch=0,qi=0,score=0,answered=0,selected=null;
 function renderPills(){document.getElementById('pills').innerHTML=batches.map((b,i)=>`<div class="pill ${i===batch?'active':''}" onclick="goBatch(${i})">Batch ${i+1}</div>`).join('')}
 function renderQ(){
   document.getElementById('batchLabel').innerText=batches[batch].title;
-  document.getElementById('scoreLabel').innerText=`Score: ${score} / ${answered}`;
+  document.getElementById('scoreLabel').innerText=`Score: ${score} / ${answered} in this batch`;
   const q=batches[batch].qs[qi]; selected=null; document.getElementById('fb').innerText='';
   document.getElementById('nextBtn').disabled=true;
   document.getElementById('quiz').innerHTML=`<div>Question ${qi+1} / 10</div><div class="q">${q[0]}</div>`+q.slice(1,5).map((o,idx)=>`<div class="opt" onclick="pick(this,${idx})">${o}</div>`).join('');
@@ -174,7 +175,7 @@ function pick(el,idx){
   answered++;
   if(q.slice(1,5)[idx]===q[5]){el.classList.add('correct'); score++; document.getElementById('fb').innerText='✅ Correct!';}
   else{el.classList.add('wrong'); opts.forEach(o=>{if(o.innerText===q[5]) o.classList.add('correct')}); document.getElementById('fb').innerText='❌ Correct answer: '+q[5];}
-  document.getElementById('scoreLabel').innerText=`Score: ${score} / ${answered}`;
+  document.getElementById('scoreLabel').innerText=`Score: ${score} / ${answered} in this batch`;
   document.getElementById('nextBtn').disabled=false;
 }
 function nextQ(){
