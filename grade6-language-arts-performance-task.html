@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grade 6 Language Arts | PEPLink JA</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f5f9;color:#243247}
+.header{background:#1a324f;color:white;text-align:center;padding:27px 15px;border-radius:0 0 22px 22px}
+.header h1{font-size:25px;margin:0}
+.header p{margin:9px 0 0}
+.container{max-width:650px;margin:auto;padding:18px 14px}
+.panel,.question,.result{background:white;padding:17px;border-radius:15px;margin-bottom:15px}
+.panel{text-align:center}
+.progress{height:10px;background:#ddd;border-radius:10px;overflow:hidden;margin:12px 0}
+.bar{height:100%;width:0;background:#2d873f}
+.batches{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:15px 0}
+.batch{border:0;border-radius:9px;padding:12px 3px;background:#dce5f0;color:#1a324f;font-weight:bold}
+.batch.active{background:#315b9b;color:white}
+.batch.done{background:#2d873f;color:white}
+.question h3{font-size:17px;line-height:1.5}
+.number{font-size:14px;color:#315b9b;font-weight:bold}
+.option{display:block;width:100%;text-align:left;padding:13px;margin:9px 0;border:2px solid #dce3ec;border-radius:10px;background:white;font-size:15px;cursor:pointer}
+.option.selected{border-color:#315b9b;background:#edf3fc}
+.option.correct{border-color:#21843b;background:#e5f5e9}
+.option.wrong{border-color:#c62828;background:#ffeded}
+.option:disabled{opacity:1}
+.feedback{display:none;padding:12px;border-radius:9px;margin-top:12px;line-height:1.5}
+.feedback.show{display:block}
+.good{background:#e5f5e9;color:#155b27}
+.bad{background:#ffeded;color:#9c2020}
+button.action{width:100%;padding:15px;border:0;border-radius:11px;font-size:16px;font-weight:bold;margin-top:10px;cursor:pointer}
+.primary{background:#315b9b;color:white}
+.green{background:#20a94b;color:white}
+.dark{background:#363636;color:white}
+button:disabled{opacity:.45}
+.result{text-align:center;display:none}
+.score{font-size:35px;font-weight:bold;color:#21843b}
+.back{display:block;text-align:center;text-decoration:none;background:#363636;color:white;padding:17px;border-radius:12px;font-weight:bold;margin-top:20px}
+.small{font-size:13px;color:#667085}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>Grade 6 - Language Arts</h1>
+<p>Performance Task Preparation</p>
+</div>
+
+<div class="container">
+
+<div class="panel">
+<strong>PEPLink JA Language Arts Practice</strong>
+<p>Reading, Grammar, Vocabulary, Research, Writing & Communication</p>
+<strong>10 Batches | 10 Questions Each</strong>
+<div id="progressText">Questions completed: 0 of 100</div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+</div>
+
+<div class="batches" id="batchButtons"></div>
+
+<div class="question" id="quiz">
+<div class="number" id="number"></div>
+<h3 id="questionText"></h3>
+<div id="options"></div>
+<div class="feedback" id="feedback"></div>
+<button class="action primary" id="next" disabled onclick="nextQuestion()">Next Question ➜</button>
+</div>
+
+<div class="result" id="result">
+<h2 id="resultTitle">Batch Complete!</h2>
+<div class="score" id="score"></div>
+<p id="message"></p>
+<p id="total"></p>
+<button class="action primary" onclick="nextBatch()">Next Batch ➜</button>
+<button class="action green" onclick="shareScore()">🟢 Send Score to Parent on WhatsApp</button>
+</div>
+
+<a class="back" href="grade6-pep-practice.html">⬅ Back to PEP Practice</a>
+<p class="small" style="text-align:center">PEPLink JA | Grade 6</p>
+</div>
+
+<script>
+const batches = [
+[
+["What caused the river to overflow? Heavy rainfall caused the river to overflow, forcing residents to leave their homes.",["A shortage of food","Heavy rainfall","A school meeting","Road repairs"],1,"The heavy rainfall caused the river to overflow."],
+["What does 'eagerly' mean in 'The children eagerly awaited the results'?",["Sadly","Angrily","With excitement","Without interest"],2,"Eagerly means with excitement or interest."],
+["A girl practises daily until she wins a spelling competition. What is the lesson?",["Practice can lead to improvement","Winning is always easy","Competitions are unfair","Spelling is unimportant"],0,"Regular practice helped the girl improve."],
+["Which action shows that a character is generous?",["Walking to school","Buying a new bag","Finishing homework","Sharing lunch with a classmate"],3,"Sharing lunch shows kindness and generosity."],
+["A passage explains how mangroves protect Jamaica's coastline. What is its purpose?",["To tell a joke","To give information","To advertise a hotel","To describe a character"],1,"The passage provides information."],
+["A farmer covers his crops when heavy rain is forecast. What can you infer?",["He dislikes farming","He wants to sell his land","He is protecting his crops","He is preparing for a festival"],2,"His action suggests he wants to protect his crops."],
+["Which word means the same as 'enormous'?",["Tiny","Narrow","Weak","Huge"],3,"Enormous means very large."],
+["A character says, 'I could hardly believe my eyes!' What does this suggest?",["Surprise","Sleepiness","Hunger","Boredom"],0,"The expression shows surprise."],
+["What is the main idea of a passage about keeping rivers clean?",["Rivers contain fish","Clean rivers help people and wildlife","Rain falls in parishes","Boats travel on rivers"],1,"This gives the main message of the passage."],
+["Why should a reader look at the title before reading?",["To find the author's age","To count paragraphs","To predict the topic","To identify every difficult word"],2,"The title provides clues about the topic."]
+],
+[
+["Where did the events take place? Students returned books and selected new ones at the library.",["Library","Hospital","Market","Farm"],0,"The passage identifies the library."],
+["Which word is an adjective in 'The bright sunlight filled the room'?",["Sunlight","Filled","Bright","Room"],2,"Bright describes the sunlight."],
+["Choose the correct plural of 'child'.",["Childs","Childes","Children","Childrens"],2,"The plural is children."],
+["Which word is the opposite of 'generous'?",["Kind","Selfish","Helpful","Giving"],1,"Selfish is the opposite of generous."],
+["Choose the correct sentence.",["Me and Tia went home.","Tia and I went home.","Tia and me goes home.","I and Tia goes home."],1,"Tia and I is the correct subject form."],
+["What does 'overflowed' mean?",["Became dry","Rose beyond its banks","Changed colour","Moved underground"],1,"Overflowed means the water rose beyond its usual limits."],
+["Which punctuation mark separates items in a list?",["Comma","Question mark","Apostrophe","Full stop"],0,"Commas separate items in a list."],
+["Choose the correct word: The children left _____ bags in class.",["There","They're","Their","Thair"],2,"Their shows possession."],
+["Which sentence contains a simile?",["The wind whispered.","She is as brave as a lion.","The sun smiled.","The classroom was noisy."],1,"A simile compares using 'like' or 'as'."],
+["What should a good summary include?",["Every small detail","Personal opinions only","The main ideas","Unrelated information"],2,"A summary presents the main ideas briefly."]
+],
+[
+["Janelle saved part of her allowance each week until she could buy a dictionary. What does this show?",["Carelessness","Planning and patience","Dislike of reading","Wastefulness"],1,"Saving regularly shows planning and patience."],
+["Which word is a conjunction?",["Quickly","Because","Beautiful","Garden"],1,"Because connects ideas and gives a reason."],
+["The boys _____ football every Saturday.",["Plays","Playing","Play","Has played"],2,"The plural subject boys takes play."],
+["What does the prefix 'un-' mean in unhappy?",["Again","Not","Before","Under"],1,"The prefix un- means not."],
+["Choose the correct sentence.",["The girls bag is red.","The girl's bag is red.","The girls's bag is red.","The girl bag's is red."],1,"The apostrophe shows possession by one girl."],
+["Why did the driver slow down? The road was slippery.",["The road was slippery","The car was new","The journey was short","The driver was late"],0,"The slippery road made driving dangerous."],
+["Choose the best topic sentence for a paragraph about exercise.",["Yesterday was Monday.","Exercise helps people stay healthy.","My shoes are blue.","The shop closes at six."],1,"It introduces the main topic."],
+["Choose the correct spelling.",["Necessary","Neccessary","Necesary","Neccesary"],0,"Necessary is the correct spelling."],
+["Which word is an adverb in 'The girl spoke softly'?",["Girl","Spoke","Softly","The"],2,"Softly describes how the girl spoke."],
+["What is the purpose of a heading in an information text?",["To confuse readers","To identify a section","To replace paragraphs","To show the author's age"],1,"A heading identifies the section's topic."]
+],
+[
+["Which sentence is written in the past tense?",["She walks home.","She will walk home.","She is walking home.","She walked home."],3,"Walked shows an action completed in the past."],
+["Choose the correct word: The teacher gave the books to ____.",["we","us","our","ours"],1,"Us is the correct object pronoun."],
+["Which word is a synonym for 'rapid'?",["Slow","Quick","Weak","Quiet"],1,"Rapid means quick or fast."],
+["Choose the correct punctuation: 'What a wonderful day___'",[".","?","!",","],2,"An exclamation mark shows strong feeling."],
+["Which sentence is a command?",["Where is my bag?","Please close the door.","The door is blue.","I closed the door."],1,"A command gives an instruction."],
+["What does 'reluctant' mean?",["Unwilling","Excited","Careless","Certain"],0,"Reluctant means unwilling or hesitant."],
+["Which is a compound sentence?",["The boy ran.","The boy ran, and his sister walked.","Running quickly.","Because it rained."],1,"It joins two complete ideas with and."],
+["Choose the correct form: Neither student _____ absent.",["were","are","was","have"],2,"Neither is treated as singular here."],
+["Which word is a preposition in 'The cat slept under the table'?",["Cat","Slept","Under","Table"],2,"Under shows the relationship between the cat and table."],
+["What is the main purpose of a conclusion?",["Introduce a new topic","End and bring ideas together","List unrelated facts","Ask the reader's age"],1,"A conclusion brings the writing to a close."]
+],
+[
+["Which source is most suitable for researching Jamaica's national symbols?",["An official government website","An anonymous comment","An unrelated advertisement","A fictional story"],0,"An official government source is more reliable."],
+["What information is usually found in a book's table of contents?",["The author's home address","Chapters and page numbers","The reader's name","The book's price only"],1,"The table of contents helps locate sections."],
+["Why should a researcher compare information from different reliable sources?",["To make research longer","To avoid reading","To check accuracy","To copy more words"],2,"Comparing sources helps check facts."],
+["Which is a suitable keyword for researching coral reefs?",["My favourite food","Coral reef conservation","School shoes","Football practice"],1,"The keyword directly relates to the topic."],
+["What should you do when using another author's exact words?",["Claim them as your own","Remove the source","Give credit to the author","Change the font"],2,"Giving credit acknowledges the original author."],
+["Which source is most likely to contain a dictionary definition?",["Dictionary","Weather report","Sports article","Recipe book"],0,"A dictionary provides word meanings."],
+["What is a fact?",["A statement that can be checked","A personal preference","A guess","An imaginary event"],0,"A fact can be verified."],
+["Which question is open-ended?",["Is the sky blue?","Did you attend?","What changes would improve the school garden?","Are you twelve?"],2,"It invites a detailed response."],
+["Why do writers use headings in reports?",["To hide information","To organize information","To make facts incorrect","To remove paragraphs"],1,"Headings organize information into sections."],
+["Which is the best way to take research notes?",["Copy an entire book","Record key points in your own words","Write without checking sources","Ignore important facts"],1,"Notes should capture important ideas in your own words."]
+],
+[
+["Which sentence is the clearest way to make a request?",["Give me that now!","Could you please lend me your ruler?","You must do it.","Ruler, now."],1,"Polite language makes a request clear and respectful."],
+["What is the purpose of a persuasive paragraph?",["To entertain only","To convince the reader","To list random words","To tell a fairy tale"],1,"Persuasive writing aims to convince."],
+["Which detail best supports the claim that exercise is beneficial?",["Exercise improves fitness and strengthens the heart.","Some people own shoes.","The park has trees.","Monday comes after Sunday."],0,"This detail gives a relevant reason."],
+["What should a speaker do when presenting to an audience?",["Speak too quietly","Face away from listeners","Speak clearly and make eye contact","Read without pausing"],2,"Clear speech and eye contact help communication."],
+["Which is the best opening for a formal letter?",["Hey buddy!","Dear Principal,","What's up?","Hi everybody!!!"],1,"Dear Principal is suitable for a formal letter."],
+["Which word makes this sentence more precise: 'The food was good'?",["Nice","Tasty","Okay","Fine"],1,"Tasty gives a more specific description."],
+["What is the purpose of an introduction in a report?",["To introduce the topic","To list every reference","To repeat the conclusion","To change the subject"],0,"The introduction tells readers what the report is about."],
+["Which sentence is most suitable for a school notice?",["Come if you feel like it.","Students are invited to attend the meeting at 2:00 p.m.","Hey, show up!","Maybe there is a meeting."],1,"It gives clear and formal information."],
+["What should you do if a listener does not understand your explanation?",["Become angry","Ignore the listener","Explain the idea another way","End the conversation"],2,"Rephrasing can make the message clearer."],
+["Which is an example of persuasive language?",["The meeting starts at noon.","Everyone should help keep our school clean.","The bag is on the desk.","Yesterday was rainy."],1,"It encourages readers to take action."]
+],
+[
+["Choose the correct sentence.",["The information are useful.","The information is useful.","The informations are useful.","The information were useful."],1,"Information is an uncountable noun and takes is."],
+["Which word means 'to examine carefully'?",["Ignore","Inspect","Forget","Avoid"],1,"Inspect means to examine carefully."],
+["Choose the correct word: Please _____ your name at the top.",["Write","Right","Rite","Wright"],0,"Write means to form words on paper."],
+["Which sentence uses direct speech correctly?",["Mia said I am ready.","Mia said, 'I am ready.'","Mia said I, am ready.","Mia said 'I am ready"],1,"Quotation marks show the exact words spoken."],
+["Which word is a pronoun?",["School","They","Beautiful","Quickly"],1,"They replaces the name of people."],
+["What is the plural of 'library'?",["Librarys","Libraryes","Libraries","Library"],2,"Change the y to ies."],
+["Which sentence has the correct comparison?",["This book is more better.","This book is best than that one.","This book is better than that one.","This book is gooder."],2,"Better is the correct comparative form."],
+["Which word is closest in meaning to 'observe'?",["Notice","Destroy","Forget","Hide"],0,"Observe means to watch or notice."],
+["Choose the correct word: The dog wagged _____ tail.",["it's","its","it","its'"],1,"Its shows possession; it's means it is."],
+["Which sentence is written in the future tense?",["We visited the museum.","We visit the museum.","We are visiting the museum.","We will visit the museum."],3,"Will visit describes a future action."]
+],
+[
+["A paragraph describes a community cleaning a beach together. What is the likely theme?",["Cooperation","Jealousy","Dishonesty","Competition"],0,"The community works together toward a shared goal."],
+["Which detail is most relevant to a report about road safety?",["Road signs help drivers and pedestrians.","The school has a new library.","Many children enjoy music.","The market sells fruit."],0,"Road signs directly relate to road safety."],
+["What is the best way to arrange instructions?",["Randomly","In the order they should be completed","Alphabetically by every word","By paragraph length"],1,"Instructions should follow a logical sequence."],
+["Which word signals a result?",["However","Although","Therefore","Meanwhile"],2,"Therefore introduces a result or conclusion."],
+["What does the phrase 'once in a blue moon' mean?",["Every day","Very rarely","At night only","Very quickly"],1,"The expression means something happens rarely."],
+["Which sentence is an opinion?",["Jamaica is an island.","Kingston is the capital of Jamaica.","The school has 500 students.","Reading is the most enjoyable subject."],3,"Enjoyment is a personal judgement."],
+["What should a writer do before submitting a report?",["Ignore spelling","Check grammar, spelling and punctuation","Remove the title","Delete the conclusion"],1,"Proofreading helps correct errors."],
+["Which is the best title for a passage about reducing plastic waste?",["A Day at School","Keeping Our Environment Free of Plastic","My Favourite Sport","The History of Football"],1,"The title reflects the passage's main subject."],
+["What does 'sequence' mean?",["The order in which events happen","A list of opinions","A type of punctuation","The meaning of a word"],0,"Sequence refers to the order of events."],
+["Which sentence best summarizes a story about students planting trees to improve their community?",["The students wore uniforms.","The students worked together to make their community greener.","The school has several classrooms.","One student brought a shovel."],1,"It captures the main event and purpose."]
+],
+[
+["Which is the best way to begin a formal email to a teacher?",["Yo!","Dear Mrs Brown,","Hey you,","What's happening?"],1,"A respectful greeting is appropriate."],
+["What is the purpose of a bibliography?",["To list sources used","To introduce characters","To give directions","To summarize a story"],0,"A bibliography lists the sources consulted."],
+["Which sentence is grammatically correct?",["Each of the pupils have a book.","Each of the pupils has a book.","Each pupils has books.","Each of pupils have book."],1,"Each is singular and takes has."],
+["What should you do if two sources give different information?",["Choose the first one automatically","Ignore both","Check reliable evidence before deciding","Make up an answer"],2,"Check the reliability and evidence behind each source."],
+["Which word best completes the sentence: The instructions were clear; _____, everyone understood the task.",["however","therefore","although","instead"],1,"Therefore introduces the result."],
+["Which sentence uses a semicolon correctly?",["I enjoy reading; it helps me learn.","I; enjoy reading it helps me.","I enjoy; reading it helps me.","I enjoy reading it; helps me."],0,"The semicolon joins two closely related independent clauses."],
+["What is the main purpose of an interview?",["To gather information from a person","To copy a dictionary","To write a poem","To list spelling words"],0,"An interview gathers information through questions."],
+["Which question would best help evaluate a website?",["Is it colourful?","Who created it and what evidence supports its information?","Does it have many pictures?","Is the title short?"],1,"The creator and supporting evidence help assess reliability."],
+["Which is the most appropriate closing for a formal letter?",["Later!","Bye-bye!","Yours sincerely,","See ya!"],2,"Yours sincerely is a suitable formal closing."],
+["Why is editing important?",["It makes writing longer","It improves clarity and corrects mistakes","It removes the main idea","It changes every word"],1,"Editing improves the quality of writing."]
+],
+[
+["Read: 'The school introduced a reading programme. Within six months, more pupils were borrowing books and discussing stories.' What changed?",["The library closed","Pupils became more involved in reading","The school stopped teaching","Books were removed"],1,"More pupils borrowed books and discussed stories."],
+["Which sentence best expresses a conclusion about recycling?",["Recycling is one way to reduce waste and protect the environment.","Some bins are blue.","My friend likes football.","The shop sells paper."],0,"It summarizes the benefit of recycling."],
+["Choose the correct sentence.",["There is many reasons to read.","There are many reasons to read.","There be many reasons to read.","There was many reasons to read."],1,"The plural noun reasons takes are."],
+["Which word is closest in meaning to 'essential'?",["Unnecessary","Optional","Necessary","Unimportant"],2,"Essential means necessary or very important."],
+["What is the purpose of evidence in an argument?",["To support a claim","To confuse the reader","To replace the topic","To make the writing longer"],0,"Evidence gives support to an argument."],
+["Which sentence shows cause and effect?",["The sun is bright.","Because it rained, the match was postponed.","The match is exciting.","The players wore blue."],1,"Rain caused the match to be postponed."],
+["What should a good paragraph have?",["Several unrelated ideas","One clear main idea with supporting details","Only a title","No punctuation"],1,"A paragraph develops one main idea with supporting details."],
+["Which is the best way to avoid plagiarism?",["Copy without naming the source","Present another person's work as your own","Use your own words and acknowledge sources","Remove the author's name"],2,"Use your own words and credit the source."],
+["Which sentence is most suitable for a school report?",["The event was awesome!","The event was held on Friday and attended by 120 students.","It was kinda fun.","Everybody had a blast."],1,"It gives clear, factual and formal information."],
+["What is the main purpose of proofreading?",["To check for errors","To add unrelated stories","To remove all headings","To change the topic"],0,"Proofreading checks spelling, grammar and punctuation."]
+]
+];
+
+let currentBatch=0;
+let currentQuestion=0;
+let batchScores=Array(10).fill(null);
+let batchAnswers=Array.from({length:10},()=>Array(10).fill(null));
+let lastScore=0;
+
+const $=id=>document.getElementById(id);
+
+function renderBatchButtons(){
+$("batchButtons").innerHTML="";
+batches.forEach((b,i)=>{
+let btn=document.createElement("button");
+btn.className="batch"+(i===currentBatch?" active":"")+(batchScores[i]!==null?" done":"");
+btn.textContent="Batch "+(i+1);
+btn.onclick=()=>openBatch(i);
+$("batchButtons").appendChild(btn);
+});
+updateProgress();
+}
+
+function updateProgress(){
+let completed=batchAnswers.reduce((n,a)=>n+a.filter(x=>x!==null).length,0);
+$("progressText").textContent="Questions completed: "+completed+" of 100";
+$("bar").style.width=(completed)+"%";
+}
+
+function openBatch(i){
+currentBatch=i;
+currentQuestion=0;
+$("result").style.display="none";
+$("quiz").style.display="block";
+renderBatchButtons();
+showQuestion();
+}
+
+function showQuestion(){
+let q=batches[currentBatch][currentQuestion];
+$("number").textContent="Batch "+(currentBatch+1)+" - Question "+(currentQuestion+1)+" of 10";
+$("questionText").textContent=q[0];
+$("options").innerHTML="";
+$("feedback").className="feedback";
+$("feedback").textContent="";
+$("next").disabled=true;
+$("next").textContent=currentQuestion===9?"Finish Batch":"Next Question ➜";
+
+q[1].forEach((option,i)=>{
+let btn=document.createElement("button");
+btn.className="option";
+btn.textContent=String.fromCharCode(65+i)+". "+option;
+btn.onclick=()=>selectAnswer(i);
+$("options").appendChild(btn);
+});
+
+let saved=batchAnswers[currentBatch][currentQuestion];
+if(saved!==null) showSavedAnswer(saved);
+}
+
+function showSavedAnswer(selected){
+let q=batches[currentBatch][currentQuestion];
+let buttons=$("options").querySelectorAll("button");
+buttons.forEach((btn,i)=>{
+btn.disabled=true;
+if(i===q[2])btn.classList.add("correct");
+else if(i===selected)btn.classList.add("wrong");
+});
+let right=selected===q[2];
+$("feedback").className="feedback show "+(right?"good":"bad");
+$("feedback").textContent=(right?"Correct! ":"Not quite. Correct answer: "+String.fromCharCode(65+q[2])+". ")+q[3];
+$("next").disabled=false;
+}
+
+function selectAnswer(i){
+if(batchAnswers[currentBatch][currentQuestion]!==null)return;
+batchAnswers[currentBatch][currentQuestion]=i;
+let q=batches[currentBatch][currentQuestion];
+let buttons=$("options").querySelectorAll("button");
+buttons.forEach((btn,j)=>{
+btn.disabled=true;
+if(j===q[2])btn.classList.add("correct");
+else if(j===i)btn.classList.add("wrong");
+});
+let right=i===q[2];
+$("feedback").className="feedback show "+(right?"good":"bad");
+$("feedback").textContent=(right?"Correct! ":"Incorrect. Correct answer: "+String.fromCharCode(65+q[2])+". ")+q[3];
+$("next").disabled=false;
+updateProgress();
+}
+
+function nextQuestion(){
+if(batchAnswers[currentBatch][currentQuestion]===null)return;
+if(currentQuestion<9){
+currentQuestion++;
+showQuestion();
+}else{
+finishBatch();
+}
+}
+
+function finishBatch(){
+let answers=batchAnswers[currentBatch];
+lastScore=answers.reduce((score,answer,i)=>score+(answer===batches[currentBatch][i][2]?1:0),0);
+batchScores[currentBatch]=lastScore;
+$("quiz").style.display="none";
+$("result").style.display="block";
+$("resultTitle").textContent="Batch "+(currentBatch+1)+" Completed!";
+$("score").textContent=lastScore+" / 10";
+$("message").textContent=lastScore>=8?"Excellent work! Keep it up.":lastScore>=5?"Good effort. Review the explanations and keep practising.":"Keep practising. Review the explanations and try again.";
+let total=batchScores.reduce((n,s)=>n+(s===null?0:s),0);
+let done=batchScores.filter(s=>s!==null).length;
+$("total").textContent="Overall score: "+total+" / "+(done*10)+" across "+done+" completed batches.";
+$("next").disabled=true;
+renderBatchButtons();
+}
+
+function nextBatch(){
+let next=batches.findIndex((b,i)=>batchScores[i]===null);
+if(next===-1){
+$("resultTitle").textContent="All 10 Batches Completed!";
+$("message").textContent="Congratulations! You have completed all 100 questions.";
+$("total").textContent="Final score: "+batchScores.reduce((a,b)=>a+b,0)+" / 100";
+$("result").style.display="block";
+return;
+}
+openBatch(next);
+}
+
+function shareScore(){
+let total=batchScores.reduce((n,s)=>n+(s===null?0:s),0);
+let done=batchScores.filter(s=>s!==null).length;
+let message="PEPLink JA - Grade 6 Language Arts Performance Task Practice%0A"+
+"Batch "+(currentBatch+1)+" score: "+lastScore+"/10%0A"+
+"Batches completed: "+done+"/10%0A"+
+"Overall score: "+total+"/"+(done*10)+"%0A"+
+"Keep practising!";
+window.open("https://wa.me/?text="+message,"_blank");
+}
+
+renderBatchButtons();
+showQuestion();
+</script>
+</body>
+</html>
