@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 4 Language Arts - PEPLink JA</title>
+<style>
+body{font-family:Arial;background:#eef2ff;margin:0;padding:16px}
+.card{background:#fff;border-radius:16px;padding:20px;max-width:600px;margin:0 auto;box-shadow:0 2px 10px rgba(0,0,0,0.08)}
+h1{text-align:center;font-size:24px;margin:8px 0 4px}
+.sub{text-align:center;color:#666;margin:0 0 16px}
+#menu{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}
+#menu button{padding:10px 16px;border-radius:20px;background:#e2e8f0;border:none;font-weight:bold;cursor:pointer;font-size:14px}
+#menu button.active{background:#2563eb;color:#fff}
+#quiz button.opt{width:100%;padding:14px;margin:6px 0;border-radius:10px;border:1px solid #ddd;background:white;text-align:left;cursor:pointer;font-size:16px}
+#quiz button.opt.correct{background:#dcfce7;border-color:green}
+#quiz button.opt.wrong{background:#fee2e2;border-color:red}
+#next{width:100%;padding:14px;border:none;border-radius:10px;background:#1a365d;color:#fff;font-weight:bold;font-size:17px;cursor:pointer;margin-top:10px}
+#wa{width:100%;padding:13px;border:3px solid #075E54 !important;background:#D9FDD3 !important;border-radius:10px;margin-top:12px;box-sizing:border-box;font-size:15px;font-weight:bold;color:#075E54}
+#wa::placeholder{color:#075E54;opacity:1}
+#wa:focus{outline:none;border-color:#075E54;box-shadow:0 0 0 4px #25D366}
+.back{display:block;background:#1a365d;color:white;text-align:center;padding:14px;border-radius:12px;text-decoration:none;font-weight:bold;margin-top:14px}
+#score{font-weight:bold;text-align:center;margin:10px 0}
+</style></head>
+<body>
+<div class="card">
+<h1>Grade 4 PEP - Language Arts<br>100 Questions - 10 Batches</h1>
+<p class="sub">Batch 1-10 • 10 questions each • Score is locked - no cheating</p>
+<div id="menu"></div>
+<div id="quiz"></div>
+<div id="score"></div>
+<button id="next" onclick="nextQ()">Next →</button>
+<input id="wa" placeholder="Add parent number">
+<a class="back" href="grade4-pep-practice.html">← Go back to PEP Centre</a>
+</div>
+<script>
+const batches=[
+{name:"Batch 1 - Nouns",qs:[
+["Which word is a noun?","run","happy","dog","quickly",2],
+["Which is a proper noun?","city","Kingston","boy","school",1],
+["Which is a common noun?","Jamaica","Maria","river","Monday",2],
+["Which word names a place?","teacher","beach","sing","blue",1],
+["Which is a collective noun?","flock","bird","fly","nest",0],
+["Which noun names a thing?","table","jump","soft","they",0],
+["Which is a plural noun?","box","boxes","boxs","boxe",1],
+["Which word is a noun?","kindness","kindly","kind","kinder",0],
+["The ___ is barking.","dog","run","fast","they",0],
+["Which is a person noun?","doctor","swim","red","there",0]]},
+{name:"Batch 2 - Verbs",qs:[
+["Which word is a verb?","jump","happy","book","blue",0],
+["She ___ to school every day.","go","goes","going","gone",1],
+["They ___ playing now.","is","are","am","was",1],
+["Past tense of 'eat'?","eated","ate","eating","eats",1],
+["Which is an action verb?","think","table","soft","green",0],
+["He ___ a letter yesterday.","write","writes","wrote","writing",2],
+["We ___ finished our work.","has","have","is","was",1],
+["Choose the verb: The bird flies high.","bird","flies","high","the",1],
+["I ___ my homework now.","do","does","doing","am doing",3],
+["Past tense of 'go'?","goed","went","gone to","going",1]]},
+{name:"Batch 3 - Adjectives",qs:[
+["Which word is an adjective?","happy","run","dog","quickly",0],
+["The ___ dress is pretty.","red","run","sing","they",0],
+["Which describes size?","big","quickly","sing","book",0],
+["A ___ day.","sunny","sun","sunning","suns",0],
+["Which is an adjective?","soft","jump","they","and",0],
+["The tall man is ___ .","tall","run","quick","they",0],
+["Choose adjective: She has a kind heart.","kind","has","she","heart",0],
+["Which means very happy?","joyful","sad","angry","tired",0],
+["The soup is ___ .","hot","eat","spoon","table",0],
+["Which describes colour?","blue","fast","loud","soft",0]]},
+{name:"Batch 4 - Punctuation",qs:[
+["Which sentence is correct?","Where are you?","Where are you","where are you?","Where are you!",0],
+["We need a ___ at the end of a question.","?",".","!"," ,",0],
+["Which has a capital letter correctly?","jamaica is beautiful.","Jamaica is beautiful.","jamaica Is beautiful.","Jamaica is Beautiful.",1],
+["Choose the correct: ___ is my birthday.","Monday","monday","MONDAY","monday.",0],
+["Use ___ for excitement.","!","?",".",",",0],
+["Which is correct?","I like apples, oranges and mangoes.","I like apples oranges and mangoes","i like apples...","I like apples oranges, and mangoes.",0],
+["'Don't' has an ___.","apostrophe","comma","full stop","question mark",0],
+["Which sentence needs a full stop?","I went home","I went home.","I went home?","I went home!",1],
+["My name is ___ .","John","john","JOHN?","john.",0],
+["Which is a statement?","I am happy.","Are you happy?","Wow!","Help!",0]]},
+{name:"Batch 5 - Pronouns",qs:[
+["Which is a pronoun?","he","John","table","run",0],
+["___ is my friend.","She","Book","Run","Happy",0],
+["Mary and ___ went to school.","I","me","my","mine",0],
+["This book is ___ .","mine","I","me","my",0],
+["They are playing. ___ are happy.","They","Them","Their","They're",0],
+["Give the book to ___ .","me","I","my","mine",0],
+["___ is raining.","It","He","She","They",0],
+["We did it by ___ .","ourselves","we","us","our",0],
+["Who is a pronoun?","you","Kingston","dog","run",0],
+["___ are my shoes.","These","This is","That are","Those is",0]]},
+{name:"Batch 6 - Tenses",qs:[
+["She ___ now.","is singing","sang","sings yesterday","sing yesterday",0],
+["Yesterday, we ___ to the park.","went","go","going","goes",0],
+["Tomorrow, I ___ visit grandma.","will","went","going","goed",0],
+["He ___ every morning.","runs","run","running","ran yesterday",0],
+["They ___ playing yesterday.","were","are","will","is",0],
+["I ___ my book now.","am reading","read yesterday","will read yesterday","reads yesterday",0],
+["She ___ already finished.","has","have","is","was",0],
+["Past of 'see'?","saw","seed","seened","sees",0],
+["We ___ tomorrow.","will go","went yesterday","go yesterday","going yesterday",0],
+["He ___ to school yesterday.","walked","walks","walking","will walk",0]]},
+{name:"Batch 7 - Comprehension 1",qs:[
+["Read: Tom has a red ball. What colour is the ball?","Red","Blue","Green","Yellow",0],
+["Tom has a ball. What does Tom have?","A ball","A cat","A book","A car",0],
+["If Tom lost his ball, he would feel...","Sad","Happy","Angry at ball","Hungry",0],
+["The word 'red' describes...","Colour","Size","Sound","Taste",0],
+["Tom plays with his ball...","Outside","In water","In class","At night only",0],
+["Which is true?","Tom owns a ball","Tom owns a cat","Tom hates ball","Tom sold ball",0],
+["The main character is...","Tom","Ball","Red","Play",0],
+["A ball is a...","Toy","Animal","Food","Place",0],
+["Tom's ball is...","Red","Big house","Small cat","Blue dog",0],
+["Best title?","Tom and His Ball","Tom and His Cat","A Blue Car","School Day",0]]},
+{name:"Batch 8 - Synonyms / Antonyms",qs:[
+["Synonym for happy?","Joyful","Sad","Angry","Tired",0],
+["Antonym for hot?","Cold","Warm","Burning","Spicy",0],
+["Synonym for big?","Large","Small","Tiny","Little",0],
+["Antonym for fast?","Slow","Quick","Rapid","Swift",0],
+["Synonym for smart?","Clever","Dull","Slow","Sad",0],
+["Antonym for rich?","Poor","Wealthy","Happy","Kind",0],
+["Synonym for begin?","Start","End","Stop","Finish",0],
+["Antonym for brave?","Cowardly","Bold","Strong","Kind",0],
+["Synonym for quick?","Fast","Slow","Late","Tired",0],
+["Antonym for easy?","Hard","Simple","Soft","Light",0]]},
+{name:"Batch 9 - Plurals / Spelling",qs:[
+["Plural of 'box'?","Boxes","Boxs","Boxies","Boxen",0],
+["Plural of 'baby'?","Babies","Babys","Baby","Babyes",0],
+["Plural of 'child'?","Children","Childs","Childes","Childrens",0],
+["Correct spelling?","Beautiful","Beautifel","Beautifull","Beutiful",0],
+["Correct spelling?","School","Scool","Schol","Skool",0],
+["Plural of 'man'?","Men","Mans","Manses","Mens",0],
+["Plural of 'tooth'?","Teeth","Tooths","Toothes","Teeths",0],
+["Correct spelling?","Friend","Frend","Freind","Frind",0],
+["Plural of 'book'?","Books","Bookes","Bookies","Book",0],
+["Correct spelling?","Because","Becaus","Becuase","Becausee",0]]},
+{name:"Batch 10 - Mixed PEP",qs:[
+["Which is a verb?","Dance","Happy","Table","Blue",0],
+["Choose correct: ___ apple a day...","An","A","The","Some",0],
+["Which sentence is correct?","She is happy.","She are happy.","She is happy?","she is happy.",0],
+["Which is a noun?","Kindness","Quickly","Run","Very",0],
+["Past of 'buy'?","Bought","Buyed","Buying","Buys",0],
+["Synonym for 'said'?","Told","Ran","Ate","Slept",0],
+["Which is plural?","Girls","Girl","Girles","Girly",0],
+["Choose adjective: The ___ flower smells sweet.","beautiful","run","eat","they",0],
+["Which needs '?'","Where are you","I am here","She is here","It is hot",0],
+["Best ending: The boy helped his mother because he is...","Kind","Rude","Lazy","Mean",0]]}
+];
+let bi=0, qi=0, score=0, answered=false;
+const menu=document.getElementById('menu'), quiz=document.getElementById('quiz'), scoreEl=document.getElementById('score');
+function renderMenu(){
+ menu.innerHTML='';
+ batches.forEach((b,i)=>{
+  let btn=document.createElement('button'); btn.textContent=b.name; if(i===bi) btn.className='active';
+  btn.onclick=()=>{bi=i;qi=0;score=0;renderMenu();renderQ();}; menu.appendChild(btn);
+ });
+}
+function renderQ(){
+ answered=false; let b=batches[bi], q=b.qs[qi];
+ quiz.innerHTML=`<p><b>${b.name} - Question ${qi+1} of 10</b></p><h2 style="font-size:20px">${q[0]}</h2>`;
+ q.slice(1,5).forEach((opt,idx)=>{
+  let btn=document.createElement('button'); btn.className='opt'; btn.textContent=opt;
+  btn.onclick=()=>{ if(answered) return; answered=true; if(idx===q[5]){btn.classList.add('correct'); score++;} else {btn.classList.add('wrong'); [...quiz.querySelectorAll('.opt')][q[5]].classList.add('correct');} scoreEl.textContent=`Score: ${score} / ${qi+1} in this batch`; };
+  quiz.appendChild(btn);
+ });
+ scoreEl.textContent=`Score: ${score} / ${qi} in this batch`;
+}
+function nextQ(){
+ if(qi<9){qi++; renderQ();} else {alert(`Batch done! Score: ${score}/10`); if(bi<9){bi++; qi=0; score=0; renderMenu(); renderQ();}}
+}
+renderMenu(); renderQ();
+</script>
+</body></html>
