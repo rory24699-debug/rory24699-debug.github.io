@@ -15,16 +15,24 @@ body{
  background:#f2f4f7;
  color:#243247;
 }
+.container{max-width:700px;margin:auto}
 .header{
  background:#1e3a5f;
  color:white;
  text-align:center;
- padding:24px 16px;
+ padding:25px 16px;
  border-radius:18px;
 }
 .header h1{font-size:21px;margin:0}
-.header p{font-size:14px;margin:9px 0 0}
-.container{max-width:650px;margin:auto}
+.header p{font-size:14px;margin:9px 0 0;line-height:1.5}
+.intro{
+ background:#e8f1fb;
+ padding:15px;
+ border-radius:14px;
+ margin:16px 0;
+ font-size:14px;
+ line-height:1.6;
+}
 .card{
  background:white;
  padding:16px;
@@ -40,17 +48,24 @@ body{
 .card p{
  font-size:14px;
  line-height:1.5;
+ margin:10px 0;
 }
 .video{
  width:100%;
  aspect-ratio:16/9;
  border:0;
  border-radius:12px;
+ background:#111;
 }
 .source{
  font-size:12px;
  color:#64748b;
  margin-top:9px;
+}
+.section-title{
+ color:#1e3a5f;
+ font-size:19px;
+ margin:24px 4px 10px;
 }
 .btn{
  display:block;
@@ -68,7 +83,6 @@ body{
 </head>
 
 <body>
-
 <div class="container">
 
 <div class="header">
@@ -76,11 +90,20 @@ body{
 <p>Video Tutorials & Curriculum Learning</p>
 </div>
 
+<div class="intro">
+<strong>Welcome to Mathematics Video Learning.</strong><br>
+Watch the lessons below to strengthen your mathematical skills.
+Follow each lesson carefully and practise what you learn.
+</div>
+
+<h2 class="section-title">NUMBER & OPERATIONS</h2>
+
 <div class="card">
-<h2>1. Place Value</h2>
+<h2>1. Place Value System</h2>
 <iframe class="video"
 src="https://www.youtube.com/embed/H328t_PacQM"
 title="Grade 4 PEP Mathematics - Place Value"
+loading="lazy"
 allowfullscreen>
 </iframe>
 <p>Understand the value of digits and how numbers are arranged in the place value system.</p>
@@ -88,54 +111,64 @@ allowfullscreen>
 </div>
 
 <div class="card">
-<h2>2. Multiplication</h2>
+<h2>2. Addition of Whole Numbers</h2>
 <iframe class="video"
-src="https://www.youtube.com/embed/Gr7qJKVFLjo"
-title="Grade 4 PEP Mathematics - Multiplication"
+src="https://www.youtube.com/embed/oA8tQ-SkxxI"
+title="Grade 4 PEP Mathematics - Addition"
+loading="lazy"
 allowfullscreen>
 </iframe>
-<p>Learn how to multiply whole numbers using clear step-by-step methods.</p>
+<p>Learn how to add whole numbers using correct mathematical steps and methods.</p>
 <div class="source">Kemet Maasai Academy – Jamaican PEP Mathematics</div>
 </div>
 
 <div class="card">
-<h2>3. Division</h2>
+<h2>3. Subtraction of Whole Numbers</h2>
 <iframe class="video"
-src="https://www.youtube.com/embed/JWNqVis1h8M"
-title="Grade 4 PEP Mathematics - Division"
+src="https://www.youtube.com/embed/zVkWlOoI9o4"
+title="Grade 4 PEP Mathematics - Subtraction"
+loading="lazy"
 allowfullscreen>
 </iframe>
-<p>Understand division, work through the steps and learn how to solve division problems.</p>
+<p>Practise subtracting numbers and understanding how to solve subtraction problems.</p>
 <div class="source">Kemet Maasai Academy – Jamaican PEP Mathematics</div>
 </div>
 
 <div class="card">
-<h2>4. Fractions</h2>
+<h2>4. Adding and Subtracting Fractions</h2>
 <iframe class="video"
-src="https://www.youtube.com/embed/HdRRsuYL3EU"
-title="Grade 4 PEP Mathematics - Comparing Fractions"
+src="https://www.youtube.com/embed/al-7OrDAC04"
+title="Grade 4 PEP Mathematics - Fractions"
+loading="lazy"
 allowfullscreen>
 </iframe>
-<p>Learn how to compare fractions and understand which fraction is greater or smaller.</p>
+<p>Learn how to add and subtract common fractions using step-by-step examples.</p>
 <div class="source">Kemet Maasai Academy – Jamaican PEP Mathematics</div>
 </div>
 
 <div class="card">
-<h2>5. Decimals</h2>
+<h2>5. Writing Fractions as Decimals</h2>
 <iframe class="video"
-src="https://www.youtube.com/embed/57UsAk8vDLI"
-title="Grade 4 PEP Mathematics - Comparing Decimals"
+src="https://www.youtube.com/embed/I_18h1y_o9s"
+title="Grade 4 PEP Mathematics - Fractions as Decimals"
+loading="lazy"
 allowfullscreen>
 </iframe>
-<p>Understand decimal place value and how to compare decimal numbers.</p>
+<p>Understand the relationship between fractions and decimals and how to write fractions as decimals.</p>
 <div class="source">Kemet Maasai Academy – Jamaican PEP Mathematics</div>
 </div>
 
+<h2 class="section-title">MORE CURRICULUM LEARNING</h2>
+
+<div class="card">
+<h2>Continue Your Mathematics Learning</h2>
+<p>Explore additional Grade 4 Mathematics learning resources, including other curriculum topics.</p>
 <a class="btn"
 href="https://jamaica.learningpassport.org/"
 target="_blank" rel="noopener">
-📘 MORE GRADE 4 LEARNING RESOURCES
+OPEN LEARNING PASSPORT RESOURCES
 </a>
+</div>
 
 <a class="btn back" href="grade-4-maths.html">
 ⬅ BACK TO MATHEMATICS HOME
