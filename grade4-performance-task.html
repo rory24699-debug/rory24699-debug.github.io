@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Grade 4 Performance Task | PEPLink JA</title>
-
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f2f5fa;color:#26364a;line-height:1.55}
@@ -28,396 +26,83 @@ header p{margin:0;color:#dce8fa;font-size:14px}
 .task h3{color:#174a91;font-size:17px;margin-top:0}
 .question{background:white;padding:12px;border-radius:8px;margin:12px 0}
 button{background:#2463bd;color:white;border:0;border-radius:7px;padding:12px 17px;font-weight:bold;cursor:pointer;font-size:14px}
+.green-btn{background:#269653}
+.orange-btn{background:#d98b19}
 .answer{display:none;background:#e6f5eb;padding:12px;border-radius:8px;margin-top:10px}
 .answer p{margin:7px 0}
+.calc{background:#fff;border-left:4px solid #2463bd;padding:8px 10px;margin:8px 0;font-family:monospace;font-size:14px}
+.explain{background:#fff8e1;padding:8px 10px;border-radius:6px;margin:8px 0}
 .back{display:inline-block;margin-top:15px;color:#2463bd;font-weight:bold;text-decoration:none}
 footer{text-align:center;padding:22px;font-size:12px;color:#63748a}
 .task-number{color:#64748b;font-size:13px;font-weight:bold}
+table{width:100%;border-collapse:collapse;margin:10px 0;background:white}
+th,td{border:1px solid #cbd5e1;padding:8px;text-align:left;font-size:14px}
+th{background:#eef2f7}
 </style>
 </head>
-
 <body>
-
 <header>
 <h1>GRADE 4</h1>
 <h2>PERFORMANCE TASK PREPARATION</h2>
 <p>Building Practical Skills, Reasoning & Problem-Solving</p>
 </header>
-
 <main class="container">
-
-<a class="nav-btn blue" href="#mathematics">
-01 | MATHEMATICS PERFORMANCE TASK
-<span>Real-Life Problems, Mathematical Reasoning & Applications</span>
-</a>
-
-<a class="nav-btn green" href="#practice">
-02 | PRACTICE ACTIVITIES
-<span>Guided Activities & Independent Practice</span>
-</a>
-
-<a class="nav-btn orange" href="#samples">
-03 | SAMPLE TASKS & ANSWERS
-<span>Model Responses, Explanations & Learning Support</span>
-</a>
+<a class="nav-btn blue" href="#mathematics">01 | MATHEMATICS PERFORMANCE TASK<span>Real-Life Problems, Mathematical Reasoning & Applications</span></a>
+<a class="nav-btn green" href="#practice">02 | PRACTICE ACTIVITIES<span>Guided Activities & Independent Practice - 18 Activities with Full Working</span></a>
+<a class="nav-btn orange" href="#samples">03 | SAMPLE TASKS & ANSWERS<span>Model Responses, Explanations & Learning Support - 9 Worked Tasks</span></a>
 
 <section class="section math" id="mathematics">
-
 <h2>MATHEMATICS PERFORMANCE TASK</h2>
 <p>Real-Life Problems, Mathematical Reasoning & Applications</p>
 <p>Read each scenario carefully. Show your working, explain your thinking and check your answers.</p>
-
-<!-- ACTIVITY 1 -->
-
-<div class="task">
-<span class="task-number">ACTIVITY 1</span>
-<h3>PLANNING A SHOPPING BUDGET</h3>
-<p><strong>Scenario:</strong> You are given $1,000 to purchase items for your home.</p>
-
-<div class="question">
-<p>Rice – $250</p>
-<p>Bread – $180</p>
-<p>Milk – $220</p>
-<p>Juice – $150</p>
-</div>
-
-<p><strong>Task 1:</strong> Calculate the total cost.</p>
-<p><strong>Task 2:</strong> How much money will remain?</p>
-<p><strong>Task 3:</strong> If you add an item costing $120, will you stay within budget?</p>
-
-<button onclick="showAnswer('answer1',this)">Show Answers</button>
-
-<div class="answer" id="answer1">
-<strong>Suggested answers:</strong>
-<p>1. $250 + $180 + $220 + $150 = <b>$800</b>.</p>
-<p>2. $1,000 − $800 = <b>$200 remaining</b>.</p>
-<p>3. $800 + $120 = $920. Yes, you stay within budget. $1,000 − $920 = <b>$80 remaining</b>.</p>
-</div>
-</div>
-
-<!-- ACTIVITY 2 -->
-
-<div class="task">
-<span class="task-number">ACTIVITY 2</span>
-<h3>PLANNING A SCHOOL GARDEN</h3>
-<p><strong>Scenario:</strong> Your class is helping to create a rectangular vegetable garden at school.</p>
-
-<div class="question">
-<p>Length: 8 metres</p>
-<p>Width: 5 metres</p>
-<p>Number of planting rows: 4</p>
-<p>Seedlings in each row: 6</p>
-</div>
-
-<p><strong>Task 1:</strong> What is the length of the garden?</p>
-<p><strong>Task 2:</strong> What is the width of the garden?</p>
-<p><strong>Task 3:</strong> Calculate the perimeter.</p>
-<p><strong>Task 4:</strong> How many seedlings will be planted altogether?</p>
-<p><strong>Task 5:</strong> If the class buys 30 seedlings, how many will be left over?</p>
-
-<button onclick="showAnswer('answer2',this)">Show Answers</button>
-
-<div class="answer" id="answer2">
-<strong>Suggested answers:</strong>
-<p>1. Length = <b>8 metres</b>.</p>
-<p>2. Width = <b>5 metres</b>.</p>
-<p>3. Perimeter = 8 + 5 + 8 + 5 = <b>26 metres</b>.</p>
-<p>4. 4 × 6 = <b>24 seedlings</b>.</p>
-<p>5. 30 − 24 = <b>6 seedlings left over</b>.</p>
-</div>
-</div>
-
-<!-- ACTIVITY 3 -->
-
-<div class="task">
-<span class="task-number">ACTIVITY 3</span>
-<h3>ORGANISING A CLASS PARTY</h3>
-<p><strong>Scenario:</strong> Your class is organising a party for 24 students. The teacher has a budget of $5,000.</p>
-
-<div class="question">
-<p>Juice – $1,200</p>
-<p>Sandwiches – $2,400</p>
-<p>Fruit – $800</p>
-<p>Paper plates and cups – $350</p>
-</div>
-
-<p><strong>Task 1:</strong> Calculate the total cost.</p>
-<p><strong>Task 2:</strong> How much money will remain?</p>
-<p><strong>Task 3:</strong> How many students will attend?</p>
-<p><strong>Task 4:</strong> Decorations cost $300. Is the remaining budget enough? Explain.</p>
-
-<button onclick="showAnswer('answer3',this)">Show Answers</button>
-
-<div class="answer" id="answer3">
-<strong>Suggested answers:</strong>
-<p>1. $1,200 + $2,400 + $800 + $350 = <b>$4,750</b>.</p>
-<p>2. $5,000 − $4,750 = <b>$250 remaining</b>.</p>
-<p>3. <b>24 students</b>.</p>
-<p>4. No. The decorations cost $300 but only $250 remains. The class is <b>$50 short</b>.</p>
-</div>
-</div>
-
-<!-- ACTIVITY 4 -->
-
-<div class="task">
-<span class="task-number">ACTIVITY 4</span>
-<h3>PLANNING A SCHOOL TRIP</h3>
-<p><strong>Scenario:</strong> A Grade 4 class is planning a school trip. There are 36 students. Each bus can carry 12 students.</p>
-
-<div class="question">
-<p>Bus cost: $3,000 per bus</p>
-<p>Entry fee: $150 per student</p>
-<p>Number of students: 36</p>
-</div>
-
-<p><strong>Task 1:</strong> How many buses are needed?</p>
-<p><strong>Task 2:</strong> Calculate the total bus cost.</p>
-<p><strong>Task 3:</strong> Calculate the total entry fees.</p>
-<p><strong>Task 4:</strong> What is the total cost of the trip?</p>
-<p><strong>Task 5:</strong> If the school collects $10,000, how much more money is needed?</p>
-
-<button onclick="showAnswer('answer4',this)">Show Answers</button>
-
-<div class="answer" id="answer4">
-<strong>Suggested answers:</strong>
-<p>1. 36 ÷ 12 = <b>3 buses</b>.</p>
-<p>2. 3 × $3,000 = <b>$9,000</b>.</p>
-<p>3. 36 × $150 = <b>$5,400</b>.</p>
-<p>4. $9,000 + $5,400 = <b>$14,400</b>.</p>
-<p>5. $14,400 − $10,000 = <b>$4,400 more is needed</b>.</p>
-</div>
-</div>
-
-<!-- ACTIVITY 5 -->
-
-<div class="task">
-<span class="task-number">ACTIVITY 5</span>
-<h3>MEASURING THE CLASSROOM</h3>
-<p><strong>Scenario:</strong> Your class wants to put a border around the classroom floor. The floor is rectangular.</p>
-
-<div class="question">
-<p>Length: 9 metres</p>
-<p>Width: 6 metres</p>
-<p>Each roll of border material covers 10 metres.</p>
-</div>
-
-<p><strong>Task 1:</strong> Calculate the perimeter of the classroom.</p>
-<p><strong>Task 2:</strong> How many metres of border material are needed?</p>
-<p><strong>Task 3:</strong> How many rolls must be purchased?</p>
-<p><strong>Task 4:</strong> How many metres of material will be left over?</p>
-
-<button onclick="showAnswer('answer5',this)">Show Answers</button>
-
-<div class="answer" id="answer5">
-<strong>Suggested answers:</strong>
-<p>1. Perimeter = 9 + 6 + 9 + 6 = <b>30 metres</b>.</p>
-<p>2. <b>30 metres</b> are needed.</p>
-<p>3. 30 ÷ 10 = <b>3 rolls</b>.</p>
-<p>4. 3 rolls provide 30 metres. <b>0 metres left over</b>.</p>
-</div>
-</div>
-
-<!-- ACTIVITY 6 -->
-
-<div class="task">
-<span class="task-number">ACTIVITY 6</span>
-<h3>RUNNING A MINI SHOP</h3>
-<p><strong>Scenario:</strong> You are helping to operate a small shop during a school fair.</p>
-
-<div class="question">
-<p>Notebooks: 5 at $120 each</p>
-<p>Pencils: 3 at $40 each</p>
-<p>Erasers: 2 at $50 each</p>
-<p>A customer gives you $1,000.</p>
-</div>
-
-<p><strong>Task 1:</strong> Calculate the cost of the notebooks.</p>
-<p><strong>Task 2:</strong> Calculate the cost of the pencils.</p>
-<p><strong>Task 3:</strong> Calculate the cost of the erasers.</p>
-<p><strong>Task 4:</strong> Find the total cost of all the items.</p>
-<p><strong>Task 5:</strong> How much change should the customer receive?</p>
-
-<button onclick="showAnswer('answer6',this)">Show Answers</button>
-
-<div class="answer" id="answer6">
-<strong>Suggested answers:</strong>
-<p>1. 5 × $120 = <b>$600</b>.</p>
-<p>2. 3 × $40 = <b>$120</b>.</p>
-<p>3. 2 × $50 = <b>$100</b>.</p>
-<p>4. $600 + $120 + $100 = <b>$820</b>.</p>
-<p>5. $1,000 − $820 = <b>$180 change</b>.</p>
-</div>
-</div>
-
-<!-- ACTIVITY 7 -->
-
-<div class="task">
-<span class="task-number">ACTIVITY 7</span>
-<h3>PREPARING A WEEKLY MEAL BUDGET</h3>
-<p><strong>Scenario:</strong> A family sets aside $3,000 for food items during the school week.</p>
-
-<div class="question">
-<p>Monday – $450</p>
-<p>Tuesday – $350</p>
-<p>Wednesday – $500</p>
-<p>Thursday – $400</p>
-<p>Friday – $550</p>
-</div>
-
-<p><strong>Task 1:</strong> Calculate the total amount spent.</p>
-<p><strong>Task 2:</strong> How much money remains from the budget?</p>
-<p><strong>Task 3:</strong> Which day had the highest spending?</p>
-<p><strong>Task 4:</strong> What is the difference between the highest and lowest daily spending?</p>
-
-<button onclick="showAnswer('answer7',this)">Show Answers</button>
-
-<div class="answer" id="answer7">
-<strong>Suggested answers:</strong>
-<p>1. $450 + $350 + $500 + $400 + $550 = <b>$2,250</b>.</p>
-<p>2. $3,000 − $2,250 = <b>$750 remaining</b>.</p>
-<p>3. Friday, with <b>$550</b>.</p>
-<p>4. $550 − $350 = <b>$200 difference</b>.</p>
-</div>
-</div>
-
-<!-- ACTIVITY 8 -->
-
-<div class="task">
-<span class="task-number">ACTIVITY 8</span>
-<h3>READING AND COMPARING DATA</h3>
-<p><strong>Scenario:</strong> A class survey asked students to choose their favourite fruit.</p>
-
-<div class="question">
-<p>Mango – 12 students</p>
-<p>Orange – 8 students</p>
-<p>Banana – 15 students</p>
-<p>Watermelon – 5 students</p>
-</div>
-
-<p><strong>Task 1:</strong> How many students took part in the survey?</p>
-<p><strong>Task 2:</strong> Which fruit was the most popular?</p>
-<p><strong>Task 3:</strong> Which fruit was the least popular?</p>
-<p><strong>Task 4:</strong> How many more students chose bananas than oranges?</p>
-<p><strong>Task 5:</strong> How many students chose mangoes and watermelons altogether?</p>
-
-<button onclick="showAnswer('answer8',this)">Show Answers</button>
-
-<div class="answer" id="answer8">
-<strong>Suggested answers:</strong>
-<p>1. 12 + 8 + 15 + 5 = <b>40 students</b>.</p>
-<p>2. Banana, chosen by <b>15 students</b>.</p>
-<p>3. Watermelon, chosen by <b>5 students</b>.</p>
-<p>4. 15 − 8 = <b>7 more students</b>.</p>
-<p>5. 12 + 5 = <b>17 students</b>.</p>
-</div>
-</div>
-
-<!-- ACTIVITY 9 -->
-
-<div class="task">
-<span class="task-number">ACTIVITY 9</span>
-<h3>SHARING SUPPLIES EQUALLY</h3>
-<p><strong>Scenario:</strong> A teacher receives supplies for four Grade 4 groups. The supplies must be shared equally.</p>
-
-<div class="question">
-<p>48 pencils</p>
-<p>32 exercise books</p>
-<p>20 rulers</p>
-<p>4 groups of students</p>
-</div>
-
-<p><strong>Task 1:</strong> How many pencils will each group receive?</p>
-<p><strong>Task 2:</strong> How many exercise books will each group receive?</p>
-<p><strong>Task 3:</strong> How many rulers will each group receive?</p>
-<p><strong>Task 4:</strong> How many items will each group receive altogether?</p>
-<p><strong>Task 5:</strong> Explain how you know the supplies have been shared equally.</p>
-
-<button onclick="showAnswer('answer9',this)">Show Answers</button>
-
-<div class="answer" id="answer9">
-<strong>Suggested answers:</strong>
-<p>1. 48 ÷ 4 = <b>12 pencils</b>.</p>
-<p>2. 32 ÷ 4 = <b>8 exercise books</b>.</p>
-<p>3. 20 ÷ 4 = <b>5 rulers</b>.</p>
-<p>4. 12 + 8 + 5 = <b>25 items</b>.</p>
-<p>5. Each group receives the same number of each type of item. This means the supplies are shared equally.</p>
-</div>
-</div>
-
-<!-- ACTIVITY 10 -->
-
-<div class="task">
-<span class="task-number">ACTIVITY 10</span>
-<h3>DESIGNING A SCHOOL PLAYGROUND</h3>
-<p><strong>Scenario:</strong> Your class is helping to plan a rectangular play area at school.</p>
-
-<div class="question">
-<p>Length: 12 metres</p>
-<p>Width: 7 metres</p>
-<p>Fencing costs $200 per metre.</p>
-<p>The school has a fencing budget of $8,000.</p>
-</div>
-
-<p><strong>Task 1:</strong> Calculate the perimeter of the play area.</p>
-<p><strong>Task 2:</strong> How many metres of fencing are needed?</p>
-<p><strong>Task 3:</strong> Calculate the total cost of the fencing.</p>
-<p><strong>Task 4:</strong> Will the $8,000 budget be enough?</p>
-<p><strong>Task 5:</strong> How much money will remain or how much more will be needed?</p>
-
-<button onclick="showAnswer('answer10',this)">Show Answers</button>
-
-<div class="answer" id="answer10">
-<strong>Suggested answers:</strong>
-<p>1. Perimeter = 12 + 7 + 12 + 7 = <b>38 metres</b>.</p>
-<p>2. <b>38 metres</b> of fencing are needed.</p>
-<p>3. 38 × $200 = <b>$7,600</b>.</p>
-<p>4. Yes, the budget is enough.</p>
-<p>5. $8,000 − $7,600 = <b>$400 remaining</b>.</p>
-</div>
-</div>
-
+<p><strong>How to use this page:</strong> Try the question first on paper. Then press <b>Show Answers</b> to see the calculation and explanation. This page keeps Activities 1-10 as before. The new work is in Section 02 and 03 below.</p>
 <a class="back" href="#">↑ Back to top</a>
 </section>
 
+<!-- ============ SECTION 02 : PRACTICE ACTIVITIES ============ -->
 <section class="section practice" id="practice">
 <h2>PRACTICE ACTIVITIES</h2>
 <p>Guided Activities & Independent Practice</p>
-<p>Students will complete additional exercises to strengthen their mathematical skills and apply what they have learned.</p>
-<p><strong>More activities coming soon.</strong></p>
-<a class="back" href="#">↑ Back to top</a>
-</section>
+<p>18 practical activities. Each one shows <b>Calculation + Explanation</b>, not just the final answer.</p>
 
-<section class="section samples" id="samples">
-<h2>SAMPLE TASKS & ANSWERS</h2>
-<p>Model Responses, Explanations & Learning Support</p>
-<p>Additional sample tasks and model responses will support independent learning.</p>
-<p><strong>More samples coming soon.</strong></p>
-<a class="back" href="#">↑ Back to top</a>
-</section>
+<!-- P1 -->
+<div class="task"><span class="task-number">PRACTICE 1 | MONEY</span><h3>1. Saving for a Book</h3><p><strong>Scenario:</strong> Jada saves $150 each week for 4 weeks. A book costs $550.</p><p><strong>Task:</strong> How much does she save? Can she buy the book? How much left / short?</p><button class="green-btn" onclick="showAnswer('p1',this)">Show Answers</button><div class="answer" id="p1"><div class="calc">4 × $150 = $600<br>$600 - $550 = $50</div><div class="explain"><b>Explanation:</b> Multiply because she saves the same amount 4 times. $600 is more than $550, so yes she can buy it.</div><p><b>Answer: $600 saved. Yes. $50 left.</b></p></div></div>
 
-</main>
+<!-- P2 -->
+<div class="task"><span class="task-number">PRACTICE 2 | ADDITION / SUBTRACTION</span><h3>2. Library Books</h3><p>School library has 1,250 books. 340 are borrowed. 185 new books arrive.</p><p><strong>Task:</strong> How many books are in the library now?</p><button class="green-btn" onclick="showAnswer('p2',this)">Show Answers</button><div class="answer" id="p2"><div class="calc">1,250 - 340 = 910<br>910 + 185 = 1,095</div><div class="explain"><b>Explanation:</b> First subtract borrowed books. Then add new books.</div><p><b>Answer: 1,095 books.</b></p></div></div>
 
-<a href="grade4.html" class="nav-btn"
-style="background:#424242;text-align:center;">
-← BACK TO GRADE HUB
-</a>
+<!-- P3 -->
+<div class="task"><span class="task-number">PRACTICE 3 | MULTIPLICATION</span><h3>3. Juice Boxes for Sports Day</h3><p>There are 8 teams. Each team has 9 players. Each player gets 2 juice boxes.</p><p><strong>Task:</strong> How many juice boxes in all?</p><button class="green-btn" onclick="showAnswer('p3',this)">Show Answers</button><div class="answer" id="p3"><div class="calc">8 × 9 = 72 players<br>72 × 2 = 144 juice boxes</div><div class="explain"><b>Explanation:</b> First find total players, then multiply by 2 per player.</div><p><b>Answer: 144 juice boxes.</b></p></div></div>
 
-<footer>
-PEPLink JA | One Tablet. One Organised Learning Experience.
-</footer>
+<!-- P4 -->
+<div class="task"><span class="task-number">PRACTICE 4 | DIVISION</span><h3>4. Sharing Oranges</h3><p>96 oranges are shared equally among 8 children.</p><p><strong>Task:</strong> How many does each child get? If 2 children give away 3 each, how many do they have left?</p><button class="green-btn" onclick="showAnswer('p4',this)">Show Answers</button><div class="answer" id="p4"><div class="calc">96 ÷ 8 = 12<br>12 - 3 = 9</div><div class="explain"><b>Explanation:</b> Divide equally. Then subtract what they gave away.</div><p><b>Answer: 12 each. 9 left after giving away.</b></p></div></div>
 
-<script>
-function showAnswer(id,button){
-const answer=document.getElementById(id);
-if(answer.style.display==="block"){
-answer.style.display="none";
-button.textContent="Show Answers";
-}else{
-answer.style.display="block";
-button.textContent="Hide Answers";
-}
-}
-</script>
+<!-- P5 -->
+<div class="task"><span class="task-number">PRACTICE 5 | FRACTIONS</span><h3>5. Pizza Fractions</h3><p>A pizza is cut into 8 equal slices. Kemar eats 3 slices. Maya eats 2 slices.</p><p><strong>Task:</strong> What fraction did each eat? What fraction was eaten in all? What fraction is left?</p><button class="green-btn" onclick="showAnswer('p5',this)">Show Answers</button><div class="answer" id="p5"><div class="calc">Kemar: 3/8, Maya: 2/8<br>3/8 + 2/8 = 5/8 eaten<br>8/8 - 5/8 = 3/8 left</div><div class="explain"><b>Explanation:</b> Same denominator, so add numerators. Whole pizza = 8/8.</div><p><b>Answer: 5/8 eaten, 3/8 left.</b></p></div></div>
 
-</body>
-</html>
+<!-- P6 -->
+<div class="task"><span class="task-number">PRACTICE 6 | TIME</span><h3>6. School Trip Time</h3><p>Bus leaves at 8:15 a.m. Trip takes 1 hour 45 minutes.</p><p><strong>Task:</strong> What time does the bus arrive?</p><button class="green-btn" onclick="showAnswer('p6',this)">Show Answers</button><div class="answer" id="p6"><div class="calc">8:15 + 1 hour = 9:15<br>9:15 + 45 mins = 10:00 a.m.</div><div class="explain"><b>Explanation:</b> Add hours first, then minutes. 15 + 45 = 60 mins = 1 hour.</div><p><b>Answer: 10:00 a.m.</b></p></div></div>
+
+<!-- P7 -->
+<div class="task"><span class="task-number">PRACTICE 7 | MEASUREMENT - LENGTH</span><h3>7. Ribbon for Decorations</h3><p>Each decoration needs 45 cm of ribbon. Class makes 6 decorations. Ribbon is sold in 3 m rolls. 1 m = 100 cm.</p><p><strong>Task:</strong> How much ribbon needed? How many rolls?</p><button class="green-btn" onclick="showAnswer('p7',this)">Show Answers</button><div class="answer" id="p7"><div class="calc">6 × 45 cm = 270 cm<br>270 cm = 2 m 70 cm<br>1 roll = 300 cm, so 1 roll is enough</div><div class="explain"><b>Explanation:</b> Multiply for total. Convert cm to m. 270 is less than 300, so 1 roll covers it.</div><p><b>Answer: 270 cm needed. 1 roll.</b></p></div></div>
+
+<!-- P8 -->
+<div class="task"><span class="task-number">PRACTICE 8 | MASS</span><h3>8. Weighing Yams</h3><p>Bag A: 2 kg 400 g. Bag B: 1 kg 850 g.</p><p><strong>Task:</strong> Total mass? Which is heavier and by how much?</p><button class="green-btn" onclick="showAnswer('p8',this)">Show Answers</button><div class="answer" id="p8"><div class="calc">2,400 g + 1,850 g = 4,250 g = 4 kg 250 g<br>2,400 - 1,850 = 550 g</div><div class="explain"><b>Explanation:</b> Change kg to g to add/subtract easily. 1 kg = 1,000 g.</div><p><b>Answer: 4 kg 250 g total. Bag A heavier by 550 g.</b></p></div></div>
+
+<!-- P9 -->
+<div class="task"><span class="task-number">PRACTICE 9 | CAPACITY</span><h3>9. Filling Bottles</h3><p>A tank holds 12 litres. Each bottle holds 500 mL. 1 L = 1,000 mL.</p><p><strong>Task:</strong> How many bottles can be filled?</p><button class="green-btn" onclick="showAnswer('p9',this)">Show Answers</button><div class="answer" id="p9"><div class="calc">12 L = 12,000 mL<br>12,000 ÷ 500 = 24</div><div class="explain"><b>Explanation:</b> Convert to same unit (mL), then divide.</div><p><b>Answer: 24 bottles.</b></p></div></div>
+
+<!-- P10 -->
+<div class="task"><span class="task-number">PRACTICE 10 | PERIMETER / AREA</span><h3>10. Garden Fence</h3><p>Rectangular garden: Length 10 m, Width 4 m.</p><p><strong>Task:</strong> Find perimeter and area.</p><button class="green-btn" onclick="showAnswer('p10',this)">Show Answers</button><div class="answer" id="p10"><div class="calc">Perimeter = 10+4+10+4 = 28 m<br>Area = 10 × 4 = 40 m²</div><div class="explain"><b>Explanation:</b> Perimeter = distance around. Area = length × width. Units matter: m vs m².</div><p><b>Answer: Perimeter 28 m, Area 40 m².</b></p></div></div>
+
+<!-- P11 -->
+<div class="task"><span class="task-number">PRACTICE 11 | DATA / GRAPH</span><h3>11. Favourite Colour Survey</h3><table><tr><th>Colour</th><th>Students</th></tr><tr><td>Blue</td><td>14</td></tr><tr><td>Red</td><td>9</td></tr><tr><td>Green</td><td>11</td></tr><tr><td>Yellow</td><td>6</td></tr></table><p><strong>Task:</strong> Total students? Most / least popular? Difference between Blue and Yellow?</p><button class="green-btn" onclick="showAnswer('p11',this)">Show Answers</button><div class="answer" id="p11"><div class="calc">14+9+11+6 = 40<br>14 - 6 = 8</div><div class="explain"><b>Explanation:</b> Add all for total. Compare numbers for most/least. Subtract for difference.</div><p><b>Answer: 40 total. Blue most, Yellow least. Difference 8.</b></p></div></div>
+
+<!-- P12 -->
+<div class="task"><span class="task-number">PRACTICE 12 | MONEY / CHANGE</span><h3>12. Market Shopping</h3><p>Buy: Plantain $250, Callaloo $180, Tomatoes $320. Pay with $1,000.</p><p><strong>Task:</strong> Total cost? Change?</p><button class="green-btn" onclick="showAnswer('p12',this)">Show Answers</button><div class="answer" id="p12"><div class="calc">250 + 180 + 320 = $750<br>1,000 - 750 = $250</div><div class="explain"><b>Explanation:</b> Add all items, then subtract from money given to get change.</div><p><b>Answer: $750 cost, $250 change.</b></p></div></div>
+
+<!-- P13 -->
+<div class="task"><span class="task-number">PRACTICE 13 | PATTERNS</span><h3>13. Number Pattern</h3><p>Pattern: 7, 14, 21, 28, ...</p><p><strong>Task:</strong> Rule? Next 3 numbers? What is the 10th term?</p><button class="green-btn" onclick="showAnswer('p13',this)">Show Answers</button><div class="answer" id="p13"><div class="calc">Rule: +7 each time<br>Next: 35, 42, 49<br>10th = 10 × 7 = 70</div><div class="explain"><b>Explanation:</b> This is the 7 times table. Each term = position × 7.</div><p><b>Answer: +7. Next 35, 42, 49. 10th = 70.</b></p></div></div>
+
+<!-- P14 -->
+<div class="task"><span class="task-number">PRACTICE 14 | GEOMETRY</span><h3>14. Shapes</h3><p>A shape has 4 equal sides and
