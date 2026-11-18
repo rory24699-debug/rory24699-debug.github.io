@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Grade 4 PEP - Number - All 100 Questions</title>
+<title>Grade 4 PEP - Mathematics - All 100 Questions</title>
 <style>
 body{font-family:Arial,sans-serif;max-width:750px;margin:0 auto;padding:16px;background:#f0f4ff}
- .back{display:block;background:#1e3a5f;color:white;text-align:center;padding:14px;border-radius:12px;text-decoration:none;font-weight:bold;margin:12px}
+ .back{display:block;background:#1e3a5f;color:white;text-align:center;padding:14px;border-radius:12px;text-decoration:none;font-weight:bold;margin:12px 0 0}
 .card{background:#fff;padding:18px;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
 h1{font-size:22px;text-align:center}h2{font-size:19px}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:12px 0}
@@ -20,10 +20,17 @@ input{width:100%;padding:12px;font-size:16px;border:2px solid #ddd;border-radius
 .small{color:#555;text-align:center;font-size:14px}
 </style></head><body>
 <div class="card">
-<h1>🇯🇲 Grade 4 PEP - Number<br>100 Questions - 5 Tests</h1>
+<h1>🇯🇲 Grade 4 PEP - Mathematics<br>100 Questions - 5 Tests</h1>
 <p class="small">Test 1-5 • 20 questions each • Score is locked - no cheating</p>
 <div class="tabs" id="tabs"></div>
 <div id="box"></div>
+<!-- 3 BOTTOM BUTTONS -->
+<div style="margin-top:16px;border-top:2px solid #eee;padding-top:12px">
+<button class="next" style="background:#1e3a5f;margin-top:0" onclick="nextQ()">Next →</button>
+<input id="phoneFooter" placeholder="Type parent WhatsApp number e.g. 18761234567">
+<button class="wa" onclick="sendWAfooter()">Send Score on WhatsApp 📲</button>
+<a class="back" href="index.html">← Back to PEP Practice Centre</a>
+</div>
 </div>
 <script>
 const tests=[
@@ -171,11 +178,17 @@ function sendWA(){
  if(num.length===10 && (num.startsWith('876')||num.startsWith('658'))) num='1'+num;
  if(num.length<10){alert('Please type a full WhatsApp number, e.g. 18761234567'); return;}
  localStorage.setItem('momNum', num);
- let msg=`Hi Mom, I finished ${tests[curTest].name} - Grade 4 PEP Number. My score is ${lastScore} / 20. 🎉`;
+ let msg=`Hi Mom, I finished ${tests[curTest].name} - Grade 4 PEP Mathematics. My score is ${lastScore} / 20. 🎉`;
+ window.open('https://wa.me/'+num+'?text='+encodeURIComponent(msg),'_blank');
+}
+function sendWAfooter(){
+ let num=document.getElementById('phoneFooter').value.replace(/[^0-9]/g,'');
+ if(num.length===10 && (num.startsWith('876')||num.startsWith('658'))) num='1'+num;
+ if(num.length<10){alert('Please type a full WhatsApp number, e.g. 18761234567'); return;}
+ localStorage.setItem('momNum', num);
+ let msg=`Hi Mom, I finished ${tests[curTest].name} - Grade 4 PEP Mathematics. My score is ${score} / 20 so far. 🎉`;
  window.open('https://wa.me/'+num+'?text='+encodeURIComponent(msg),'_blank');
 }
 startTest(0);
-
 </script>
- <a class="back" href="index.html">← Back to PEP Practice Centre</a>
 </body></html>
