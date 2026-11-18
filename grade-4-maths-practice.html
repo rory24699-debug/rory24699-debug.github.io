@@ -191,5 +191,13 @@ function sendWA(){
 }
 renderTests(); showQ();
 </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function(){
+  var backs = Array.from(document.querySelectorAll('a, button')).filter(function(el){
+    return el.textContent.includes('Back to PEP');
+  });
+  if(backs.length > 1){ backs[0].style.display = 'none'; }
+});
+  </script>
 </body>
 </html>
