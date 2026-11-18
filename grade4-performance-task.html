@@ -12,32 +12,34 @@ header h1{margin:0 0 8px}
 header h2{margin:0 0 8px;font-size:20px}
 header p{margin:0;color:#dce8fa;font-size:14px}
 .container{max-width:850px;margin:22px auto;padding:0 15px}
-.nav-btn{display:block;text-decoration:none;color:white;padding:17px;border-radius:10px;margin-bottom:12px;font-weight:bold}
+.nav-btn{display:block;width:100%;text-align:left;border:0;color:white;padding:17px;border-radius:10px;margin-bottom:12px;font-weight:bold;cursor:pointer;font-size:16px}
 .nav-btn span{display:block;font-size:13px;font-weight:normal;margin-top:5px}
-.blue{background:#2463bd}
-.green{background:#269653}
-.orange{background:#d98b19}
-.section{background:white;border-radius:12px;padding:20px;margin:28px 0;border-left:7px solid}
-.math{border-color:#2463bd}
-.practice{border-color:#269653}
-.samples{border-color:#e49a25}
+.blue{background:#2463bd}.green{background:#269653}.orange{background:#d98b19}
+.section{background:white;border-radius:12px;padding:20px;margin:10px 0;border-left:7px solid;display:none}
+.section.show{display:block}
+.math{border-color:#2463bd}.practice{border-color:#269653}.samples{border-color:#e49a25}
 .section h2{font-size:19px;color:#173e70}
 .task{background:#f5f8fd;padding:15px;border-radius:10px;margin-top:18px}
 .task h3{color:#174a91;font-size:17px;margin-top:0}
-.question{background:white;padding:12px;border-radius:8px;margin:12px 0}
-button{background:#2463bd;color:white;border:0;border-radius:7px;padding:12px 17px;font-weight:bold;cursor:pointer;font-size:14px}
-.green-btn{background:#269653}
-.orange-btn{background:#d98b19}
+button{cursor:pointer}
+.green-btn{background:#269653;color:white;border:0;border-radius:7px;padding:12px 17px;font-weight:bold;font-size:14px}
+.orange-btn{background:#d98b19;color:white;border:0;border-radius:7px;padding:12px 17px;font-weight:bold;font-size:14px}
+.blue-btn{background:#2463bd;color:white;border:0;border-radius:7px;padding:12px 17px;font-weight:bold;font-size:14px}
 .answer{display:none;background:#e6f5eb;padding:12px;border-radius:8px;margin-top:10px}
 .answer p{margin:7px 0}
 .calc{background:#fff;border-left:4px solid #2463bd;padding:8px 10px;margin:8px 0;font-family:monospace;font-size:14px}
 .explain{background:#fff8e1;padding:8px 10px;border-radius:6px;margin:8px 0}
-.back{display:inline-block;margin-top:15px;color:#2463bd;font-weight:bold;text-decoration:none}
+.back{display:inline-block;margin-top:15px;color:#2463bd;font-weight:bold;text-decoration:none;cursor:pointer;background:none;border:0;font-size:15px;padding:0}
 footer{text-align:center;padding:22px;font-size:12px;color:#63748a}
 .task-number{color:#64748b;font-size:13px;font-weight:bold}
 table{width:100%;border-collapse:collapse;margin:10px 0;background:white}
 th,td{border:1px solid #cbd5e1;padding:8px;text-align:left;font-size:14px}
 th{background:#eef2f7}
+.batch-btns{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.batch-btns button{padding:10px 14px;border-radius:20px;border:0;background:#e2e8f0;font-weight:bold}
+.batch-btns button.active{background:#269653;color:#fff}
+.batch{display:none}.batch.show{display:block}
+.batch-btns.orange button.active{background:#d98b19}
 </style>
 </head>
 <body>
@@ -47,62 +49,105 @@ th{background:#eef2f7}
 <p>Building Practical Skills, Reasoning & Problem-Solving</p>
 </header>
 <main class="container">
-<a class="nav-btn blue" href="#mathematics">01 | MATHEMATICS PERFORMANCE TASK<span>Real-Life Problems, Mathematical Reasoning & Applications</span></a>
-<a class="nav-btn green" href="#practice">02 | PRACTICE ACTIVITIES<span>Guided Activities & Independent Practice - 18 Activities with Full Working</span></a>
-<a class="nav-btn orange" href="#samples">03 | SAMPLE TASKS & ANSWERS<span>Model Responses, Explanations & Learning Support - 9 Worked Tasks</span></a>
 
+<!-- MENU - ONLY 3 BUTTONS SHOW AT START -->
+<div id="menu">
+<button class="nav-btn blue" onclick="showSection('mathematics')">01 | MATHEMATICS PERFORMANCE TASK<span>Real-Life Problems, Mathematical Reasoning & Applications</span></button>
+<button class="nav-btn green" onclick="showSection('practice')">02 | PRACTICE ACTIVITIES<span>Guided Activities & Independent Practice - 18 Activities with Full Working</span></button>
+<button class="nav-btn orange" onclick="showSection('samples')">03 | SAMPLE TASKS & ANSWERS<span>Model Responses, Explanations & Learning Support - 9 Worked Tasks</span></button>
+</div>
+
+<!-- SECTION 01 -->
 <section class="section math" id="mathematics">
 <h2>MATHEMATICS PERFORMANCE TASK</h2>
 <p>Real-Life Problems, Mathematical Reasoning & Applications</p>
 <p>Read each scenario carefully. Show your working, explain your thinking and check your answers.</p>
-<p><strong>How to use this page:</strong> Try the question first on paper. Then press <b>Show Answers</b> to see the calculation and explanation. This page keeps Activities 1-10 as before. The new work is in Section 02 and 03 below.</p>
-<a class="back" href="#">↑ Back to top</a>
+<p><strong>How to use this page:</strong> Try the question first on paper. Then press <b>Show Answers</b> to see the calculation and explanation.</p>
+<button class="back" onclick="backToMenu()">← Back to Menu</button>
 </section>
 
-<!-- ============ SECTION 02 : PRACTICE ACTIVITIES ============ -->
+<!-- SECTION 02 - BATCHED -->
 <section class="section practice" id="practice">
 <h2>PRACTICE ACTIVITIES</h2>
-<p>Guided Activities & Independent Practice</p>
-<p>18 practical activities. Each one shows <b>Calculation + Explanation</b>, not just the final answer.</p>
+<p>Guided Activities & Independent Practice - 18 activities. Tap a Batch to see only that batch.</p>
+<div class="batch-btns">
+<button class="active" onclick="showBatch('b1',this)">Batch 1: 1-6</button>
+<button onclick="showBatch('b2',this)">Batch 2: 7-12</button>
+<button onclick="showBatch('b3',this)">Batch 3: 13-18</button>
+</div>
 
-<!-- P1 -->
+<div class="batch show" id="b1">
 <div class="task"><span class="task-number">PRACTICE 1 | MONEY</span><h3>1. Saving for a Book</h3><p><strong>Scenario:</strong> Jada saves $150 each week for 4 weeks. A book costs $550.</p><p><strong>Task:</strong> How much does she save? Can she buy the book? How much left / short?</p><button class="green-btn" onclick="showAnswer('p1',this)">Show Answers</button><div class="answer" id="p1"><div class="calc">4 × $150 = $600<br>$600 - $550 = $50</div><div class="explain"><b>Explanation:</b> Multiply because she saves the same amount 4 times. $600 is more than $550, so yes she can buy it.</div><p><b>Answer: $600 saved. Yes. $50 left.</b></p></div></div>
-
-<!-- P2 -->
 <div class="task"><span class="task-number">PRACTICE 2 | ADDITION / SUBTRACTION</span><h3>2. Library Books</h3><p>School library has 1,250 books. 340 are borrowed. 185 new books arrive.</p><p><strong>Task:</strong> How many books are in the library now?</p><button class="green-btn" onclick="showAnswer('p2',this)">Show Answers</button><div class="answer" id="p2"><div class="calc">1,250 - 340 = 910<br>910 + 185 = 1,095</div><div class="explain"><b>Explanation:</b> First subtract borrowed books. Then add new books.</div><p><b>Answer: 1,095 books.</b></p></div></div>
-
-<!-- P3 -->
 <div class="task"><span class="task-number">PRACTICE 3 | MULTIPLICATION</span><h3>3. Juice Boxes for Sports Day</h3><p>There are 8 teams. Each team has 9 players. Each player gets 2 juice boxes.</p><p><strong>Task:</strong> How many juice boxes in all?</p><button class="green-btn" onclick="showAnswer('p3',this)">Show Answers</button><div class="answer" id="p3"><div class="calc">8 × 9 = 72 players<br>72 × 2 = 144 juice boxes</div><div class="explain"><b>Explanation:</b> First find total players, then multiply by 2 per player.</div><p><b>Answer: 144 juice boxes.</b></p></div></div>
-
-<!-- P4 -->
 <div class="task"><span class="task-number">PRACTICE 4 | DIVISION</span><h3>4. Sharing Oranges</h3><p>96 oranges are shared equally among 8 children.</p><p><strong>Task:</strong> How many does each child get? If 2 children give away 3 each, how many do they have left?</p><button class="green-btn" onclick="showAnswer('p4',this)">Show Answers</button><div class="answer" id="p4"><div class="calc">96 ÷ 8 = 12<br>12 - 3 = 9</div><div class="explain"><b>Explanation:</b> Divide equally. Then subtract what they gave away.</div><p><b>Answer: 12 each. 9 left after giving away.</b></p></div></div>
-
-<!-- P5 -->
 <div class="task"><span class="task-number">PRACTICE 5 | FRACTIONS</span><h3>5. Pizza Fractions</h3><p>A pizza is cut into 8 equal slices. Kemar eats 3 slices. Maya eats 2 slices.</p><p><strong>Task:</strong> What fraction did each eat? What fraction was eaten in all? What fraction is left?</p><button class="green-btn" onclick="showAnswer('p5',this)">Show Answers</button><div class="answer" id="p5"><div class="calc">Kemar: 3/8, Maya: 2/8<br>3/8 + 2/8 = 5/8 eaten<br>8/8 - 5/8 = 3/8 left</div><div class="explain"><b>Explanation:</b> Same denominator, so add numerators. Whole pizza = 8/8.</div><p><b>Answer: 5/8 eaten, 3/8 left.</b></p></div></div>
-
-<!-- P6 -->
 <div class="task"><span class="task-number">PRACTICE 6 | TIME</span><h3>6. School Trip Time</h3><p>Bus leaves at 8:15 a.m. Trip takes 1 hour 45 minutes.</p><p><strong>Task:</strong> What time does the bus arrive?</p><button class="green-btn" onclick="showAnswer('p6',this)">Show Answers</button><div class="answer" id="p6"><div class="calc">8:15 + 1 hour = 9:15<br>9:15 + 45 mins = 10:00 a.m.</div><div class="explain"><b>Explanation:</b> Add hours first, then minutes. 15 + 45 = 60 mins = 1 hour.</div><p><b>Answer: 10:00 a.m.</b></p></div></div>
+</div>
 
-<!-- P7 -->
+<div class="batch" id="b2">
 <div class="task"><span class="task-number">PRACTICE 7 | MEASUREMENT - LENGTH</span><h3>7. Ribbon for Decorations</h3><p>Each decoration needs 45 cm of ribbon. Class makes 6 decorations. Ribbon is sold in 3 m rolls. 1 m = 100 cm.</p><p><strong>Task:</strong> How much ribbon needed? How many rolls?</p><button class="green-btn" onclick="showAnswer('p7',this)">Show Answers</button><div class="answer" id="p7"><div class="calc">6 × 45 cm = 270 cm<br>270 cm = 2 m 70 cm<br>1 roll = 300 cm, so 1 roll is enough</div><div class="explain"><b>Explanation:</b> Multiply for total. Convert cm to m. 270 is less than 300, so 1 roll covers it.</div><p><b>Answer: 270 cm needed. 1 roll.</b></p></div></div>
-
-<!-- P8 -->
 <div class="task"><span class="task-number">PRACTICE 8 | MASS</span><h3>8. Weighing Yams</h3><p>Bag A: 2 kg 400 g. Bag B: 1 kg 850 g.</p><p><strong>Task:</strong> Total mass? Which is heavier and by how much?</p><button class="green-btn" onclick="showAnswer('p8',this)">Show Answers</button><div class="answer" id="p8"><div class="calc">2,400 g + 1,850 g = 4,250 g = 4 kg 250 g<br>2,400 - 1,850 = 550 g</div><div class="explain"><b>Explanation:</b> Change kg to g to add/subtract easily. 1 kg = 1,000 g.</div><p><b>Answer: 4 kg 250 g total. Bag A heavier by 550 g.</b></p></div></div>
-
-<!-- P9 -->
 <div class="task"><span class="task-number">PRACTICE 9 | CAPACITY</span><h3>9. Filling Bottles</h3><p>A tank holds 12 litres. Each bottle holds 500 mL. 1 L = 1,000 mL.</p><p><strong>Task:</strong> How many bottles can be filled?</p><button class="green-btn" onclick="showAnswer('p9',this)">Show Answers</button><div class="answer" id="p9"><div class="calc">12 L = 12,000 mL<br>12,000 ÷ 500 = 24</div><div class="explain"><b>Explanation:</b> Convert to same unit (mL), then divide.</div><p><b>Answer: 24 bottles.</b></p></div></div>
-
-<!-- P10 -->
 <div class="task"><span class="task-number">PRACTICE 10 | PERIMETER / AREA</span><h3>10. Garden Fence</h3><p>Rectangular garden: Length 10 m, Width 4 m.</p><p><strong>Task:</strong> Find perimeter and area.</p><button class="green-btn" onclick="showAnswer('p10',this)">Show Answers</button><div class="answer" id="p10"><div class="calc">Perimeter = 10+4+10+4 = 28 m<br>Area = 10 × 4 = 40 m²</div><div class="explain"><b>Explanation:</b> Perimeter = distance around. Area = length × width. Units matter: m vs m².</div><p><b>Answer: Perimeter 28 m, Area 40 m².</b></p></div></div>
-
-<!-- P11 -->
 <div class="task"><span class="task-number">PRACTICE 11 | DATA / GRAPH</span><h3>11. Favourite Colour Survey</h3><table><tr><th>Colour</th><th>Students</th></tr><tr><td>Blue</td><td>14</td></tr><tr><td>Red</td><td>9</td></tr><tr><td>Green</td><td>11</td></tr><tr><td>Yellow</td><td>6</td></tr></table><p><strong>Task:</strong> Total students? Most / least popular? Difference between Blue and Yellow?</p><button class="green-btn" onclick="showAnswer('p11',this)">Show Answers</button><div class="answer" id="p11"><div class="calc">14+9+11+6 = 40<br>14 - 6 = 8</div><div class="explain"><b>Explanation:</b> Add all for total. Compare numbers for most/least. Subtract for difference.</div><p><b>Answer: 40 total. Blue most, Yellow least. Difference 8.</b></p></div></div>
-
-<!-- P12 -->
 <div class="task"><span class="task-number">PRACTICE 12 | MONEY / CHANGE</span><h3>12. Market Shopping</h3><p>Buy: Plantain $250, Callaloo $180, Tomatoes $320. Pay with $1,000.</p><p><strong>Task:</strong> Total cost? Change?</p><button class="green-btn" onclick="showAnswer('p12',this)">Show Answers</button><div class="answer" id="p12"><div class="calc">250 + 180 + 320 = $750<br>1,000 - 750 = $250</div><div class="explain"><b>Explanation:</b> Add all items, then subtract from money given to get change.</div><p><b>Answer: $750 cost, $250 change.</b></p></div></div>
+</div>
 
-<!-- P13 -->
+<div class="batch" id="b3">
 <div class="task"><span class="task-number">PRACTICE 13 | PATTERNS</span><h3>13. Number Pattern</h3><p>Pattern: 7, 14, 21, 28, ...</p><p><strong>Task:</strong> Rule? Next 3 numbers? What is the 10th term?</p><button class="green-btn" onclick="showAnswer('p13',this)">Show Answers</button><div class="answer" id="p13"><div class="calc">Rule: +7 each time<br>Next: 35, 42, 49<br>10th = 10 × 7 = 70</div><div class="explain"><b>Explanation:</b> This is the 7 times table. Each term = position × 7.</div><p><b>Answer: +7. Next 35, 42, 49. 10th = 70.</b></p></div></div>
+<div class="task"><span class="task-number">PRACTICE 14 | GEOMETRY</span><h3>14. Shapes</h3><p>A shape has 4 equal sides and 4 right angles.</p><p><strong>Task:</strong> What shape is it? How many sides and angles?</p><button class="green-btn" onclick="showAnswer('p14',this)">Show Answers</button><div class="answer" id="p14"><div class="calc">4 equal sides + 4 right angles = Square</div><div class="explain"><b>Explanation:</b> A square has 4 equal sides and 4 right angles.</div><p><b>Answer: Square - 4 sides, 4 right angles.</b></p></div></div>
+<div class="task"><p><i>Practice 15-18 - paste your remaining code here and I will add them to Batch 3 for you.</i></p></div>
+</div>
+<button class="back" onclick="backToMenu()">← Back to Menu</button>
+</section>
 
-<!-- P14 -->
-<div class="task"><span class="task-number">PRACTICE 14 | GEOMETRY</span><h3>14. Shapes</h3><p>A shape has 4 equal sides and
+<!-- SECTION 03 - BATCHED -->
+<section class="section samples" id="samples">
+<h2>SAMPLE TASKS & ANSWERS</h2>
+<p>Model Responses, Explanations & Learning Support - 9 Worked Tasks. Tap a Batch.</p>
+<div class="batch-btns orange">
+<button class="active" onclick="showBatch2('s1',this)">Batch 1: 1-3</button>
+<button onclick="showBatch2('s2',this)">Batch 2: 4-6</button>
+<button onclick="showBatch2('s3',this)">Batch 3: 7-9</button>
+</div>
+<div class="batch show" id="s1"><div class="task"><p><i>Sample Tasks 1-3 - send me your Sample Tasks code and I will add them here.</i></p></div></div>
+<div class="batch" id="s2"><div class="task"><p><i>Sample Tasks 4-6 - send me your Sample Tasks code and I will add them here.</i></p></div></div>
+<div class="batch" id="s3"><div class="task"><p><i>Sample Tasks 7-9 - send me your Sample Tasks code and I will add them here.</i></p></div></div>
+<button class="back" onclick="backToMenu()">← Back to Menu</button>
+</section>
+
+</main>
+<footer>PEPLink JA • Grade 4 Performance Task</footer>
+<script>
+function showSection(id){
+ document.getElementById('menu').style.display='none';
+ document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
+ document.getElementById(id).classList.add('show');
+ window.scrollTo(0,0);
+}
+function backToMenu(){
+ document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
+ document.getElementById('menu').style.display='block';
+ window.scrollTo(0,0);
+}
+function showBatch(id,btn){
+ document.querySelectorAll('#practice .batch').forEach(b=>b.classList.remove('show'));
+ document.getElementById(id).classList.add('show');
+ document.querySelectorAll('#practice .batch-btns button').forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active');
+}
+function showBatch2(id,btn){
+ document.querySelectorAll('#samples .batch').forEach(b=>b.classList.remove('show'));
+ document.getElementById(id).classList.add('show');
+ document.querySelectorAll('#samples .batch-btns button').forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active');
+}
+function showAnswer(id,btn){
+ var el=document.getElementById(id);
+ if(el.style.display==='block'){el.style.display='none';btn.textContent='Show Answers';}
+ else{el.style.display='block';btn.textContent='Hide Answers';}
+}
+</script>
+</body>
+</html>
