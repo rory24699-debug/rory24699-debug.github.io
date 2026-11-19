@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEP INFORMATION DESK – PEPLink JA</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f3f4f6}
+.header{background:#1e3a5f;color:#fff;text-align:center;padding:28px 16px 20px;border-radius:0 0 20px 20px}
+.header h1{margin:0;font-size:20px;font-weight:800}
+.header p{margin:8px 0 0;font-size:14px;opacity:.9}
+.container{max-width:520px;margin:0 auto;padding:16px}
+#searchBox{width:100%;padding:14px;border-radius:12px;border:1px solid #ccc;font-size:16px;margin-bottom:12px}
+.filter{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:10px 0}
+.filter button{border:0;padding:10px 12px;border-radius:20px;font-weight:bold;font-size:13px;cursor:pointer;background:#e5e7eb}
+.filter button.active{background:#1e3a5f;color:#fff}
+.notice{background:#fff;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.08);border-left:6px solid #1e3a5f}
+.notice.what{border-left-color:#2563eb}
+.notice.exams{border-left-color:#7c3aed}
+.notice.placement{border-left-color:#dc2626}
+.notice.home{border-left-color:#16a34a}
+.notice.examday{border-left-color:#ea580c}
+.notice.special{border-left-color:#db2777}
+.notice.dates{border-left-color:#0891b2}
+.top{display:flex;justify-content:space-between;font-size:13px;font-weight:bold;color:#374151}
+.top span{color:#6b7280;font-weight:normal}
+.notice p{font-size:15px;margin:8px 0 0;line-height:1.5;color:#111827}
+.card-btn{display:flex;justify-content:center;align-items:center;width:100%;min-height:60px;border-radius:20px;padding:12px;text-align:center;text-decoration:none;color:#fff;margin-top:18px;background:#1e3a5f;font-weight:bold;font-size:18px}
+</style>
+</head>
+<body>
+<div class="header"><h1>❓ PEP INFORMATION DESK</h1><p>PEPLink JA – Type a word, find your answer</p></div>
+<div class="container">
+
+<!-- KEYWORD SEARCH - THIS IS THE SEARCH -->
+<input type="text" id="searchBox" onkeyup="doSearch()" placeholder="🔍 Search... type placement, Grade 6, regional offices...">
+
+<div class="filter">
+<button class="active" onclick="show('all',this)">ALL</button>
+<button onclick="show('what',this)">📚 WHAT IS PEP?</button>
+<button onclick="show('exams',this)">📝 EXAMS & SCORES</button>
+<button onclick="show('placement',this)">🏫 HIGH SCHOOL</button>
+<button onclick="show('home',this)">💡 HELP AT HOME</button>
+<button onclick="show('examday',this)">🕐 EXAM DAY</button>
+<button onclick="show('special',this)">❤️ SPECIAL HELP</button>
+<button onclick="show('dates',this)">🗓️ IMPORTANT DATES</button>
+</div>
+
+<!-- WHAT IS PEP -->
+<div class="notice what" data-type="what" data-keywords="what is pep gsat primary exit profile"><div class="top">📚 WHAT IS PEP? <span>Nov 18th, 2026</span></div><p><b>Q:</b> What is PEP?</p><p><b>Mess:</b> PEP is Primary Exit Profile. It replaces GSAT. It checks what your child learned from Grade 4 to Grade 6.</p></div>
+<div class="notice what" data-type="what" data-keywords="grades grade 4 5 6"><div class="top">📚 WHAT IS PEP? <span>Nov 18th, 2026</span></div><p><b>Q:</b> What grades do PEP?</p><p><b>Mess:</b> Grade 4, Grade 5, and Grade 6.</p></div>
+<div class="notice what" data-type="what" data-keywords="subjects language arts mathematics science social studies"><div class="top">📚 WHAT IS PEP? <span>Nov 18th, 2026</span></div><p><b>Q:</b> What subjects are in PEP?</p><p><b>Mess:</b> Language Arts, Mathematics, Science, Social Studies.</p></div>
+<div class="notice what" data-type="what" data-keywords="ability test thinking"><div class="top">📚 WHAT IS PEP? <span>Nov 18th, 2026</span></div><p><b>Q:</b> What is the Ability Test?</p><p><b>Mess:</b> A test that checks how your child thinks and solves problems, not what they memorized.</p></div>
+<div class="notice what" data-type="what" data-keywords="curriculum based test taught"><div class="top">📚 WHAT IS PEP? <span>Nov 18th, 2026</span></div><p><b>Q:</b> What is the Curriculum-Based Test?</p><p><b>Mess:</b> A test on what they were taught in class.</p></div>
+<div class="notice what" data-type="what" data-keywords="performance task project"><div class="top">📚 WHAT IS PEP? <span>Nov 18th, 2026</span></div><p><b>Q:</b> What is the Performance Task?</p><p><b>Mess:</b> A project / task your child does in class. Teacher watches how they work.</p></div>
+<div class="notice what" data-type="what" data-keywords="science social studies grade 4 5"><div class="top">📚 WHAT IS PEP? <span>Nov 18th, 2026</span></div><p><b>Q:</b> Are Science and Social Studies in Grade 4 and 5?</p><p><b>Mess:</b> Yes, they are taught, but the big test is in Grade 6.</p></div>
+<div class="notice what" data-type="what" data-keywords="past papers practice peplink"><div class="top">📚 WHAT IS PEP? <span>Nov 18th, 2026</span></div><p><b>Q:</b> Can I see past PEP papers?</p><p><b>Mess:</b> Yes, ask the school or check PEPLink JA practice tests.</p></div>
+
+<!-- EXAMS & SCORES -->
+<div class="notice exams" data-type="exams" data-keywords="when pep done june march april"><div class="top">📝 EXAMS & SCORES <span>Nov 18th, 2026</span></div><p><b>Q:</b> When is PEP done?</p><p><b>Mess:</b> Grade 4 in June, Grade 5 in June, Grade 6 in March/April.</p></div>
+<div class="notice exams" data-type="exams" data-keywords="grade 4 count high school"><div class="top">📝 EXAMS & SCORES <span>Nov 18th, 2026</span></div><p><b>Q:</b> Does Grade 4 PEP count for high school?</p><p><b>Mess:</b> Yes, it is part of the final score.</p></div>
+<div class="notice exams" data-type="exams" data-keywords="grade 5 count"><div class="top">📝 EXAMS & SCORES <span>Nov 18th, 2026</span></div><p><b>Q:</b> Does Grade 5 PEP count?</p><p><b>Mess:</b> Yes, it is part of the final score.</p></div>
+<div class="notice exams" data-type="exams" data-keywords="grade 6 count most"><div class="top">📝 EXAMS & SCORES <span>Nov 18th, 2026</span></div><p><b>Q:</b> Does Grade 6 count the most?</p><p><b>Mess:</b> Yes, Grade 6 has the biggest part.</p></div>
+<div class="notice exams" data-type="exams" data-keywords="good score pass fail"><div class="top">📝 EXAMS & SCORES <span>Nov 18th, 2026</span></div><p><b>Q:</b> What is a good PEP score?</p><p><b>Mess:</b> There is no pass/fail. Higher score = more choices.</p></div>
+<div class="notice exams" data-type="exams" data-keywords="fail pep"><div class="top">📝 EXAMS & SCORES <span>Nov 18th, 2026</span></div><p><b>Q:</b> Will my child fail PEP?</p><p><b>Mess:</b> No. Every child gets a score and a high school place.</p></div>
+<div class="notice exams" data-type="exams" data-keywords="how long exam hours"><div class="top">📝 EXAMS & SCORES <span>Nov 18th, 2026</span></div><p><b>Q:</b> How long is the exam?</p><p><b>Mess:</b> About 1 to 2 hours per paper, with breaks.</p></div>
+<div class="notice exams" data-type="exams" data-keywords="scores see report"><div class="top">📝 EXAMS & SCORES <span>Nov 18th, 2026</span></div><p><b>Q:</b> Will parents see the scores?</p><p><b>Mess:</b> Yes, the school will give you a report.</p></div>
+<div class="notice exams" data-type="exams" data-keywords="results when june july"><div class="top">📝 EXAMS & SCORES <span>Nov 18th, 2026</span></div><p><b>Q:</b> When do we get results?</p><p><b>Mess:</b> Usually in June/July for Grade 6 placement.</p></div>
+<div class="notice exams" data-type="exams" data-keywords="appeal score"><div class="top">📝 EXAMS &
