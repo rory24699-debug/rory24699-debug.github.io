@@ -1,4 +1,4 @@
-9<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -11,13 +11,16 @@ body{margin:0;font-family:Arial;background:#f3f4f6}
 .header h1{margin:0;font-size:20px;font-weight:800}
 .header p{margin:8px 0 0;font-size:14px;opacity:.9}
 .container{max-width:520px;margin:0 auto;padding:16px}
+.filter{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:16px 0}
+.filter button{border:0;padding:10px 14px;border-radius:20px;font-weight:bold;font-size:14px;cursor:pointer;background:#e5e7eb}
+.filter button.active{background:#1e3a5f;color:#fff}
 .notice{background:#fff;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.08);border-left:6px solid #1e3a5f}
 .notice.red{border-left-color:#dc2626}
 .notice.green{border-left-color:#166534}
 .notice.orange{border-left-color:#ea580c}
-.notice small{color:#6b7280;font-size:12px}
-.notice b{font-size:16px;display:block;margin:4px 0}
-.notice p{font-size:14px;margin:0;line-height:1.5;color:#374151}
+.top{display:flex;justify-content:space-between;font-size:13px;font-weight:bold;color:#374151}
+.top span{color:#6b7280;font-weight:normal}
+.notice p{font-size:15px;margin:10px 0 0;line-height:1.5;color:#111827}
 .card-btn{display:flex;justify-content:center;align-items:center;width:100%;min-height:60px;border-radius:20px;padding:12px;text-align:center;text-decoration:none;color:#fff;margin-top:18px;background:#1e3a5f;font-weight:bold;font-size:18px}
 </style>
 </head>
@@ -25,36 +28,49 @@ body{margin:0;font-family:Arial;background:#f3f4f6}
 <div class="header">
 <h1>📋 NOTICE BOARD</h1>
 <p>PEPLink JA – Announcements & Updates</p>
-<div style="background:white; border-radius:12px; padding:16px 10px; text-align:center; font-size:19px; font-weight:bold; margin-bottom:12px;">
-  <span style="color:#D32F2F;">●</span> Ministry &nbsp;&nbsp;
-  <span style="color:#2E7D32;">●</span> PEPLink JA &nbsp;&nbsp;
-  <span style="color:#EF6C00;">●</span> Schools
 </div>
+
 <div class="container">
 
-<div class="notice red">
-<small>📌 PINNED • Date Posted: October 20, 2026</small>
-<b>📢 IMPORTANT ANNOUNCEMENT</b>
-<p><b>Dr. Dana Morris – Visit to Knox College</b></p>
-<p><b>Announcement:</b> Dr. Dana Morris will visit Knox College on November 10, 2026, at 10:00 AM.</p>
-<p><b>Source:</b> Ministry of Education</p>
+<div class="filter">
+<button class="active" onclick="show('all',this)">ALL</button>
+<button onclick="show('red',this)">🔴 MINISTRY</button>
+<button onclick="show('green',this)">🟢 PEPLINK JA</button>
+<button onclick="show('orange',this)">🟠 SCHOOLS</button>
 </div>
 
-<div class="notice green">
-<small>Date Posted: November 4, 2026</small>
-<b>PEP Practice Tests Now Available</b>
-<p><b>Announcement:</b> Grade 4 & Grade 5 Practice Tests are now live. Go to your Grade Hub to start.</p>
-<p><b>Source:</b> PEPLink JA</p>
+<div class="notice red" data-type="red">
+<div class="top">🔴 MINISTRY <span>Nov 18th, 2026</span></div>
+<p><b>Mess:</b> Dr Dana Morris will be visiting Mannings High School</p>
 </div>
 
-<div class="notice orange">
-<small>Date Posted: November 4, 2026</small>
-<b>Science & Social Studies – 2027</b>
-<p><b>Announcement:</b> These subjects will be available in 2027. Stay tuned.</p>
-<p><b>Source:</b> PEPLink JA</p>
+<div class="notice red" data-type="red">
+<div class="top">🔴 MINISTRY <span>Nov 10th, 2026</span></div>
+<p><b>Mess:</b> Dr. Dana Morris will visit Knox College on November 10, 2026, at 10:00 AM.</p>
+</div>
+
+<div class="notice green" data-type="green">
+<div class="top">🟢 PEPLINK JA <span>Nov 4th, 2026</span></div>
+<p><b>Mess:</b> Grade 4 & Grade 5 Practice Tests are now live. Go to your Grade Hub to start.</p>
+</div>
+
+<div class="notice orange" data-type="orange">
+<div class="top">🟠 SCHOOLS <span>Nov 4th, 2026</span></div>
+<p><b>Mess:</b> Science & Social Studies will be available in 2027. Stay tuned.</p>
 </div>
 
 <a href="index.html" class="card-btn">Back to Home</a>
 </div>
+
+<script>
+function show(type, btn){
+  document.querySelectorAll('.filter button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.notice').forEach(n=>{
+    if(type==='all' || n.dataset.type===type){ n.style.display='block'; }
+    else{ n.style.display='none'; }
+  });
+}
+</script>
 </body>
 </html>
