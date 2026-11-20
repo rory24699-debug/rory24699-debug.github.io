@@ -1,55 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PEP INFORMATION DESK – PEPLink JA</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#f3f4f6}
-.header{background:#1e3a5f;color:#fff;text-align:center;padding:28px 16px 20px;border-radius:0 0 20px 20px}
-.header h1{margin:0;font-size:20px;font-weight:800}
-.header p{margin:8px 0 0;font-size:14px;opacity:.9}
-.container{max-width:520px;margin:0 auto;padding:16px}
-#searchBox{width:100%;padding:14px;border-radius:12px;border:1px solid #ccc;font-size:16px;margin-bottom:12px}
-.filter{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:10px 0}
-.filter button{border:0;padding:10px 12px;border-radius:20px;font-weight:bold;font-size:13px;cursor:pointer;background:#e5e7eb}
-.filter button.active{background:#1e3a5f;color:#fff}
-.notice{background:#fff;border-radius:16px;padding:16px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);border-left:6px solid #1e3a5f;cursor:pointer;display:none}
-.notice.what{border-left-color:#2563eb}
-.notice.exams{border-left-color:#7c3aed}
-.notice.placement{border-left-color:#dc2626}
-.notice.home{border-left-color:#16a34a}
-.notice.examday{border-left-color:#ea580c}
-.notice.special{border-left-color:#db2777}
-.notice.dates{border-left-color:#0891b2}
-.top{display:flex;justify-content:space-between;font-size:13px;font-weight:bold;color:#374151}
-.top span{color:#6b7280;font-weight:normal}
-.notice p{font-size:15px;margin:8px 0 0;line-height:1.5;color:#111827}
-.notice p.ans{display:none}
-.notice.open p.ans{display:block}
-.notice::after{content:"▼ Tap to see answer";display:block;font-size:12px;color:#6b7280;margin-top:8px;font-weight:bold}
-.notice.open::after{content:"▲ Tap to close"}
-.card-btn{display:flex;justify-content:center;align-items:center;width:100%;min-height:60px;border-radius:20px;padding:12px;text-align:center;text-decoration:none;color:#fff;margin-top:18px;background:#1e3a5f;font-weight:bold;font-size:18px}
-.sect{display:block;background:#fff;border-radius:14px;padding:14px;margin-bottom:10px;text-decoration:none;color:#111;border-left:6px solid #2563eb}
-.sect b{font-size:16px}
-.sect span{font-size:14px;color:#555}
-</style>
-</head>
-<body>
-<div class="header"><h1>❓ PEP INFORMATION DESK</h1><p>PEPLink JA – Type a word, find your answer</p></div>
-<div class="container">
-<form onsubmit="closeKeyboard();return false;" style="margin:0">
-<input type="text" id="searchBox" onkeyup="doSearch()" enterkeyhint="search" placeholder="🔍 Search... type placement, Grade 6, regional offices...">
-</form>
-<div class="filter">
-<button class="active" onclick="show('all',this)">ALL</button>
-<button onclick="show('what',this)">📚 01 WHAT IS PEP?</button>
-<button onclick="show('subjects',this)">📖 02 SUBJECTS</button>
-<button onclick="show('exams',this)">📝 03 EXAMS</button>
-<button onclick="show('placement',this)">🏫 04 HIGH SCHOOL</button>
-<button onclick="show('home',this)">💡 05 HELP AT HOME</button>
-<button onclick="show('dates',this)">🗓️ 06 DATES & FAQ</button>
+<!-- SEARCH AT END -->
+<div style="background:#fff;border-radius:14px;padding:18px;margin-top:12px">
+<h3 style="text-align:center;margin:0">🔍 Search All 58 Questions</h3>
+<p style="text-align:center;color:#555;font-size:14px">Type a word - placement, Grade 6, exam day...</p>
+<input id="searchEnd" onkeyup="searchEnd()" placeholder="Type here to search..." style="width:100%;padding:14px;border-radius:10px;border:1px solid #ddd;font-size:16px;box-sizing:border-box">
+<div id="searchResults"></div>
 </div>
-<div id="sectionCards">
-<a href="#" onclick="show('what',this);return false;" class="sect" style="border-left-color:#2563eb"><b>01 What is PEP?</b><br><span>What
+
+<script>
+function searchEnd(){
+  let word = document.getElementById("searchEnd").value.toLowerCase();
+  let out = document.getElementById("searchResults");
+  if(word.length < 2){ out.innerHTML=""; return; }
+  let found = "";
+  let count = 0;
+  DATA.forEach(s=>{
+    s.qs.forEach(q=>{
+      if((q[0]+" "+q[1]).toLowerCase().includes(word)){
+        count++;
+        found += `<div style="background:#f8fafc;border-radius:10px;padding:12px;margin-top:10px"><b>${q[0]}</b><p style="font-size:14px;color:#333">${q[1]}</p><small style="color:#1e6fd9">${s.title}</small></div>`;
+      }
+    });
+  });
+  out.innerHTML = count==0 ? "<p style='text-align:center'>No match found. Try another word.</p>" : `<p style="font-weight:bold;margin-top:10px">${count} found:</p>` + found;
+}
+</script>
