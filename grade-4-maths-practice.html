@@ -1,203 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Grade 4 PEP - Mathematics - 100 Questions</title>
 <style>
-body{font-family:Arial,sans-serif;background:#eef2ff;margin:0;padding:0;text-align:center}
-.wrap{max-width:520px;margin:0 auto;padding:12px}
-.card{background:#fff;border-radius:22px;padding:18px 14px;text-align:left;box-shadow:0 4px 14px rgba(0,0,0,.08)}
-h1{font-size:24px;margin:6px 0 4px;text-align:center;line-height:1.2}
-.sub{color:#555;font-size:15px;text-align:center;margin:0 0 12px}
-.tests{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 16px}
-.testBtn{border:0;padding:10px 18px;border-radius:999px;background:#e5e7eb;font-weight:bold;font-size:16px;cursor:pointer}
-.testBtn.active{background:#2563eb;color:#fff}
-.qhead{font-size:15px;color:#333;margin-bottom:8px}
-.q{font-size:22px;font-weight:bold;margin:0 0 14px;line-height:1.3}
-.opt{border:1px solid #ddd;border-radius:14px;padding:14px 12px;margin:8px 0;font-size:18px;cursor:pointer;background:#fff}
-.opt.selected{border:2px solid #2563eb;background:#eff6ff}
-.btn{width:100%;border:0;border-radius:14px;padding:16px;font-size:19px;font-weight:bold;cursor:pointer;color:#fff;background:#1a365d;margin-top:12px}
-.btn:disabled{opacity:.5}
-.waInput{width:100%;box-sizing:border-box;padding:14px;border:3px solid #1a7a3a;border-radius:14px;font-size:16px;font-weight:bold;margin-top:14px;background:#f0fdf4;color:#14532d}
-.waInput::placeholder{color:#1a7a3a;font-weight:bold}
-.score{font-size:19px;font-weight:bold;text-align:center;margin:14px 0}
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #eef2ff; margin: 0; padding: 0; text-align: center; }
+  .wrap { max-width: 540px; margin: 0 auto; padding: 14px; }
+  .card { background: #fff; border-radius: 20px; padding: 18px 16px; text-align: left; box-shadow: 0 4px 14px rgba(0,0,0,.08); }
+  h1 { font-size: 22px; margin: 4px 0 4px; text-align: center; line-height: 1.25; color: #0A2A5E; }
+  .topic { text-align: center; color: #1E6FDB; font-size: 13.5px; font-weight: 700; margin-bottom: 4px; }
+  .sub { color: #555; font-size: 13px; text-align: center; margin: 0 0 14px; }
+  .tests { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 10px 0 16px; }
+  .testBtn { border: 0; padding: 10px 12px; border-radius: 999px; background: #e5e7eb; color: #1f2937; font-weight: 700; font-size: 15px; cursor: pointer; }
+  .testBtn.active { background: #2563eb; color: #fff; }
+  .qhead { font-size: 14px; font-weight: 700; color: #475569; margin-bottom: 8px; }
+  .q { font-size: 20px; font-weight: 800; color: #0A2A5E; margin: 0 0 14px; line-height: 1.35; }
+  .opt { border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 14px; margin: 8px 0; font-size: 17px; cursor: pointer; background: #fff; color: #0f172a; font-weight: 500; }
+  .opt.selected { border: 2px solid #2563eb; background: #eff6ff; font-weight: 700; }
+  .btn { width: 100%; border: 0; border-radius: 14px; padding: 15px; font-size: 17px; font-weight: 800; cursor: pointer; color: #fff; background: #1a365d; margin-top: 12px; text-align: center; text-decoration: none; display: block; }
+  .waBtn { background: #25D366; }
+  .backBtn { background: #334155; }
+  .waInput { width: 100%; padding: 14px; border: 2px solid #16a34a; border-radius: 14px; font-size: 16px; font-weight: 700; margin-top: 12px; background: #f0fdf4; color: #14532d; }
+  .waInput::placeholder { color: #15803d; font-weight: 600; }
+  .scoreBox { display: none; text-align: center; padding: 16px 10px; background: #f8fafc; border-radius: 16px; border: 2px solid #cbd5e1; margin-top: 10px; }
+  .scoreNum { font-size: 28px; font-weight: 900; color: #0A2A5E; margin: 6px 0; }
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="card">
-<h1>Grade 4 PEP - Mathematics<br>100 Questions - 5 Tests</h1>
-<p class="sub">Test 1-5 • 20 questions each • Score is locked - no cheating</p>
-<div class="tests" id="tests"></div>
-<div id="quiz">
-<div class="qhead" id="qhead">Test 1 - Question 1 of 20</div>
-<div class="q" id="question"></div>
-<div id="options"></div>
-<button class="btn" id="nextBtn" onclick="nextQ()">Next →</button>
-<input class="waInput" id="waNum" placeholder="Add parent number">
-<div class="score" id="scoreBox"></div>
+  <div class="card">
+    <h1>🇯🇲 Grade 4 PEP - Mathematics<br>100 Questions - 5 Tests</h1>
+    <div class="topic">Numbers, Place Value &amp; Core Numeracy</div>
+    <p class="sub">Test 1–5 • 20 questions each • Final score recorded automatically</p>
+
+    <div class="tests" id="tests"></div>
+
+    <div id="quizArea">
+      <div class="qhead" id="qhead">Test 1 - Question 1 of 20</div>
+      <div class="q" id="question"></div>
+      <div id="options"></div>
+      <button type="button" class="btn" id="nextBtn" onclick="nextQ()">Next →</button>
+    </div>
+
+    <div class="scoreBox" id="scoreBox">
+      <div style="font-size:16px;font-weight:700;color:#16a34a;">🎉 Test Complete!</div>
+      <div class="scoreNum" id="finalScoreText"></div>
+      <p style="font-size:14px;color:#475569;margin:4px 0 12px;">Send your score directly to your parent on WhatsApp:</p>
+      <input type="tel" class="waInput" id="waNum" placeholder="Type parent WhatsApp number e.g. 18765551234">
+      <button type="button" class="btn waBtn" onclick="sendWhatsApp()">Send Score on WhatsApp 📲</button>
+    </div>
+
+    <a href="grade4-pep-practice.html" class="btn backBtn">← Back to PEP Practice Centre</a>
+  </div>
 </div>
-</div>
-</div>
+
 <script>
 const allTests = [
-[
-{q:"What is the value of 5 in 3,542?",o:["5,000","500","50","5"],a:2},
-{q:"What is the value of 7 in 7,812?",o:["7,000","700","70","7"],a:0},
-{q:"Which number is 4,000 + 300 + 20 + 5?",o:["4,325","4,235","3,425","4,352"],a:0},
-{q:"What number comes after 9,999?",o:["9,998","10,000","10,100","9,100"],a:1},
-{q:"Which is the largest number?",o:["5,432","5,234","5,342","4,999"],a:0},
-{q:"Round 4,678 to the nearest 100.",o:["4,600","4,700","4,680","5,000"],a:1},
-{q:"What is 6,000 + 400 + 7?",o:["6,407","6,470","6,047","6,740"],a:0},
-{q:"Which number is odd?",o:["4,246","3,578","7,193","8,120"],a:2},
-{q:"How many thousands are in 8,543?",o:["8","5","4","3"],a:0},
-{q:"What is 2,345 + 1,000?",o:["3,345","2,445","3,445","2,345"],a:0},
-{q:"What is 7,890 - 2,000?",o:["5,890","5,980","6,890","5,800"],a:0},
-{q:"Which is 10 more than 5,678?",o:["5,688","5,778","5,668","5,878"],a:0},
-{q:"Write in words: 3,214",o:["Three thousand, two hundred and fourteen","Three thousand, two hundred and forty","Three thousand, two hundred and ten","Three thousand, two hundred and one"],a:0},
-{q:"Which number is between 4,500 and 4,600?",o:["4,550","4,650","4,400","4,700"],a:0},
-{q:"What is the place value of 9 in 9,123?",o:["Thousands","Hundreds","Tens","Ones"],a:0},
-{q:"Count in 100s: 2,300, 2,400, ___?",o:["2,500","2,410","2,300","2,600"],a:0},
-{q:"Which is equal to 5,000 + 600?",o:["5,600","5,060","5,006","6,500"],a:0},
-{q:"What is 9,999 - 9?",o:["9,990","9,980","9,900","9,909"],a:0},
-{q:"Which number has 6 in the hundreds place?",o:["4,625","6,124","2,456","1,268"],a:0},
-{q:"What is 1,000 less than 6,432?",o:["5,432","6,532","5,332","7,432"],a:0}
-],
-[
-{q:"What is 2,456 + 1,234?",o:["3,690","3,680","3,790","3,600"],a:0},
-{q:"What is 5,678 - 2,345?",o:["3,333","3,233","3,343","3,433"],a:0},
-{q:"Mary has 1,250 stickers and John has 1,340. How many altogether?",o:["2,590","2,490","2,690","2,500"],a:0},
-{q:"What is 4,000 - 1,275?",o:["2,725","2,825","2,625","3,725"],a:0},
-{q:"What is 876 + 345?",o:["1,221","1,121","1,231","1,321"],a:0},
-{q:"A shop had 3,450 mangoes and sold 1,230. How many left?",o:["2,220","2,120","2,320","2,200"],a:0},
-{q:"What is 6,789 + 1,111?",o:["7,900","7,800","7,990","8,900"],a:0},
-{q:"What is 9,000 - 4,567?",o:["4,433","4,533","4,343","4,443"],a:0},
-{q:"What is 2,345 + 2,345?",o:["4,690","4,680","4,590","4,790"],a:0},
-{q:"Sara had $5,000. She spent $2,450. How much left?",o:["$2,550","$2,450","$2,650","$2,500"],a:0},
-{q:"What is 1,234 + 4,321?",o:["5,555","5,545","5,655","5,455"],a:0},
-{q:"What is 8,000 - 1?",o:["7,999","7,900","8,099","7,099"],a:0},
-{q:"What is 567 + 433?",o:["1,000","900","1,100","990"],a:0},
-{q:"There are 2,100 boys and 2,300 girls. How many children?",o:["4,400","4,300","4,500","4,200"],a:0},
-{q:"What is 7,654 - 3,210?",o:["4,444","4,454","4,344","4,544"],a:0},
-{q:"What is 999 + 1?",o:["1,000","999","1,010","990"],a:0},
-{q:"A farmer picks 1,876 oranges in the morning and 1,234 in the evening. Total?",o:["3,110","3,010","3,210","3,100"],a:0},
-{q:"What is 5,432 - 1,111?",o:["4,321","4,221","4,421","4,331"],a:0},
-{q:"What is 3,678 + 2,222?",o:["5,900","5,800","5,990","6,900"],a:0},
-{q:"What is 10,000 - 2,500?",o:["7,500","7,400","7,600","8,500"],a:0}
-],
-[
-{q:"What is 7 x 8?",o:["54","56","48","64"],a:1},
-{q:"What is 9 x 6?",o:["54","56","48","63"],a:0},
-{q:"What is 12 x 4?",o:["48","44","46","52"],a:0},
-{q:"What is 36 divided by 4?",o:["8","9","6","12"],a:1},
-{q:"What is 45 divided by 5?",o:["9","8","7","10"],a:0},
-{q:"There are 6 bags with 8 marbles each. How many marbles?",o:["48","42","54","36"],a:0},
-{q:"What is 25 x 3?",o:["75","65","85","70"],a:0},
-{q:"Share 72 sweets equally among 8 children. How many each?",o:["9","8","7","10"],a:0},
-{q:"What is 11 x 5?",o:["55","50","60","45"],a:0},
-{q:"What is 100 divided by 10?",o:["10","100","20","5"],a:0},
-{q:"What is 8 x 9?",o:["72","81","64","63"],a:0},
-{q:"What is 63 divided by 7?",o:["9","8","7","6"],a:0},
-{q:"A class has 5 rows of 7 desks. How many desks?",o:["35","30","40","28"],a:0},
-{q:"What is 15 x 4?",o:["60","50","70","56"],a:0},
-{q:"What is 81 divided by 9?",o:["9","8","7","10"],a:0},
-{q:"What is 6 x 6 x 2?",o:["72","36","60","66"],a:0},
-{q:"What is 120 divided by 3?",o:["40","30","50","60"],a:0},
-{q:"What is 23 x 2?",o:["46","42","44","48"],a:0},
-{q:"Each pack has 12 pencils. How many in 5 packs?",o:["60","50","55","70"],a:0},
-{q:"What is 90 divided by 9?",o:["10","9","11","8"],a:0}
-],
-[
-{q:"What fraction is shaded if 3 out of 4 parts are shaded?",o:["3/4","1/4","4/3","2/4"],a:0},
-{q:"What is 1/2 of 20?",o:["10","20","5","15"],a:0},
-{q:"Which fraction is the largest?",o:["3/4","1/4","1/2","2/4"],a:0},
-{q:"How many sides does a hexagon have?",o:["6","5","8","4"],a:0},
-{q:"How many corners does a rectangle have?",o:["4","3","5","6"],a:0},
-{q:"What is 1/4 of 16?",o:["4","8","2","12"],a:0},
-{q:"Which shape has 3 sides?",o:["Triangle","Square","Circle","Rectangle"],a:0},
-{q:"What is 1 metre in centimetres?",o:["100 cm","10 cm","1,000 cm","50 cm"],a:0},
-{q:"How many minutes in 2 hours?",o:["120","60","90","180"],a:0},
-{q:"What is half of 1/2?",o:["1/4","1/2","1/3","2/4"],a:0},
-{q:"How many centimetres in 3 metres?",o:["300 cm","30 cm","3,000 cm","33 cm"],a:0},
-{q:"What is the perimeter of a square with side 5 cm?",o:["20 cm","10 cm","15 cm","25 cm"],a:0},
-{q:"Which is a right angle?",o:["Corner of a book","Corner of a ball","Top of a circle","Point of a star"],a:0},
-{q:"What is 1/2 + 1/2?",o:["1 whole","1/4","2/2 = 1","Both A and C"],a:3},
-{q:"How many grams in 1 kilogram?",o:["1,000 g","100 g","10 g","500 g"],a:0},
-{q:"What is 3/4 of 12?",o:["9","8","6","3"],a:0},
-{q:"How many edges does a cube have?",o:["12","6","8","4"],a:0},
-{q:"Which unit is best to measure the length of a classroom?",o:["Metres","Centimetres","Millimetres","Kilometres"],a:0},
-{q:"What time is 30 minutes after 2:15?",o:["2:45","2:30","3:15","2:15"],a:0},
-{q:"What is 1 litre in millilitres?",o:["1,000 ml","100 ml","10 ml","500 ml"],a:0}
-],
-[
-{q:"What is $25.50 + $10.00?",o:["$35.50","$35.00","$36.50","$34.50"],a:0},
-{q:"How much change from $100 if you spend $65?",o:["$35","$25","$45","$30"],a:0},
-{q:"What is 4 x $5.00?",o:["$20.00","$15.00","$25.00","$9.00"],a:0},
-{q:"A book costs $450. A pen costs $120. Total?",o:["$570","$560","$580","$470"],a:0},
-{q:"Which coin is worth the most?",o:["$20 coin","$10 coin","$5 coin","$1 coin"],a:0},
-{q:"On a bar graph, Monday = 5, Tuesday = 8. How many more on Tuesday?",o:["3","13","5","8"],a:0},
-{q:"What is the next number: 5, 10, 15, ___?",o:["20","18","25","16"],a:0},
-{q:"What is 500 + 500 + 500?",o:["1,500","1,000","1,200","2,000"],a:0},
-{q:"If 1 mango costs $30, how much for 6 mangoes?",o:["$180","$150","$120","$210"],a:0},
-{q:"What is 1,000 - 999?",o:["1","11","101","10"],a:0},
-{q:"A pictograph shows 1 star = 5 children. 4 stars = ?",o:["20 children","4 children","5 children","9 children"],a:0},
-{q:"What is 9 x 9?",o:["81","72","90","99"],a:0},
-{q:"What is 144 divided by 12?",o:["12","11","13","14"],a:0},
-{q:"Which is the smallest fraction?",o:["1/8","1/2","1/4","1/3"],a:0},
-{q:"A rectangle is 8 cm long and 3 cm wide. What is its area?",o:["24 cm2","22 cm2","11 cm2","16 cm2"],a:0},
-{q:"What is 2,000 + 3,000 + 4,000?",o:["9,000","8,000","10,000","7,000"],a:0},
-{q:"How many days in 3 weeks?",o:["21","14","28","7"],a:0},
-{q:"What is $1,000 - $250?",o:["$750","$650","$850","$700"],a:0},
-{q:"What is 7 x 7 - 7?",o:["42","49","35","56"],a:0},
-{q:"A bus leaves at 7:30 a.m. and arrives at 8:15 a.m. How long?",o:["45 minutes","30 minutes","1 hour","15 minutes"],a:0}
-]
-];
-let curTest=0, curQ=0, score=0, answered=false, userAnswers=[];
-function renderTests(){
-  document.getElementById('tests').innerHTML = allTests.map((_,i)=>`<button class="testBtn ${i===curTest?'active':''}" onclick="switchTest(${i})">Test ${i+1}</button>`).join('');
-}
-function switchTest(i){curTest=i;curQ=0;score=0;userAnswers=[];renderTests();showQ();}
-function showQ(){
-  const t=allTests[curTest][curQ];
-  document.getElementById('qhead').innerText=`Test ${curTest+1} - Question ${curQ+1} of 20`;
-  document.getElementById('question').innerText=t.q;
-  document.getElementById('scoreBox').innerText = curQ>0 ? `Score so far: ${score} / ${curQ}` : '';
-  document.getElementById('options').innerHTML=t.o.map((opt,idx)=>`<div class="opt" onclick="pick(this,${idx})">${opt}</div>`).join('');
-  answered=false; document.getElementById('nextBtn').disabled=true;
-  document.getElementById('nextBtn').innerText = curQ===19 ? 'Finish →' : 'Next →';
-}
-let picked=-1;
-function pick(el,idx){document.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected');picked=idx;answered=true;document.getElementById('nextBtn').disabled=false;}
-function nextQ(){
-  if(!answered) return;
-  const t=allTests[curTest][curQ];
-  if(picked===t.a) score++;
-  userAnswers.push(picked);
-  if(curQ<19){curQ++;showQ();}
-  else{finish();}
-}
-function finish(){
-  const total=score;
-  const wa=document.getElementById('waNum').value.replace(/[^0-9]/g,'');
-  let msg=`PEPLink JA - Grade 4 Maths - Test ${curTest+1} RESULT%0A%0AScore: ${total} / 20%0A`;
-  document.getElementById('quiz').innerHTML=`<div class="score" style="font-size:26px">Test ${curTest+1} Complete!<br>Score: ${total} / 20</div><p style="text-align:center">${total>=15?'Excellent!':total>=10?'Good job! Keep going':'Keep practising! You can do it'}</p><button class="btn" onclick="sendWA()">Send Result on WhatsApp</button><button class="btn" style="background:#2563eb" onclick="location.reload()">Try Again</button><button class="btn" onclick="location.href='index.html'">← Go back to PEP Centre</button>`;
-  window._waMsg=msg; window._waNum=wa;
-}
-function sendWA(){
-  let num=window._waNum;
-  let url = num ? `https://wa.me/${num}?text=${window._waMsg}` : `https://wa.me/?text=${window._waMsg}`;
-  window.open(url,'_blank');
-}
-renderTests(); showQ();
-</script>
-  <script>
-document.addEventListener('DOMContentLoaded', function(){
-  var backs = Array.from(document.querySelectorAll('a, button')).filter(function(el){
-    return el.textContent.includes('Back to PEP');
-  });
-  if(backs.length > 1){ backs[0].style.display = 'none'; }
-});
-  </script>
-</body>
-</html>
+  [
+    {q:"What is the value of 5 in 3,542?",o:["5,000","500","50","5"],a:1},
+    {q:"What is the value of 7 in 7,812?",o:["7,000","700","70","7"],a:0},
+    {q:"Which number is 4,000 + 300 + 20 + 5?",o:["4,325","4,235","3,425","4,352"],a:0},
+    {q:"What number comes after 9,999?",o:["9,998","10,000","10,100","9,100"],a:1},
+    {q:"Which is the largest number?",o:["5,432","5,234","5,342","4,999"],a:0},
+    {q:"Round 4,678 to the nearest 100.",o:["4,600","4,700","4,680","5,000"],a:1},
+    {q:"What is 6,000 + 400 + 7?",o:["6,407","6,470","6,047","6,740"],a:0},
+    {q:"Which number is odd?",o:["4,246","3,578","7,193","8,120"],a:2},
+    {q:"How many thousands are in 8,543?",o:["8","5","4","3"],a:0},
+    {q:"What is 2,345 + 1,000?",o:["3,345","2,445","3,445","2,345"],a:0},
+    {q:"What is 7,890 - 2,000?",o:["5,890","5,980","6,890","5,800"],a:0},
+    {q:"Which is 10 more than 5,678?",o:["5,688","5,778","5,668","5,878"],a:0},
+    {q:"Write in words: 3,214",o:["Three thousand, two hundred and fourteen","Three thousand, two hundred and forty","Three thousand, two hundred and ten","Three thousand, two hundred and one"],a:0},
+    {q:"Which number is between 4,500 and 4,600?",o:["4,550","4,650","4,400","4,700"],a:0},
+    {q:"What is the place value of 9 in 9,123?",o:["Thousands","Hundreds","Tens","Ones"],a:0},
+    {q:"Count in 100s: 2,300, 2,400, ___?",o:["2,500","2,410","2,300","2,600"],a:0},
+    {q:"Which is equal to 5,000 + 600?",o:["5,600","5,060","5,006","6,500"],a:0},
+    {q:"What is 9,999 - 9?",o:["9,990","9,980","9,900","9,909"],a:0},
+    {q:"Which number has 6 in the hundreds place?",o:["4,625","6,124","2,456","1,268"],a:0},
+    {q:"What is 1,000 less than 6,432?",o:["5,432","6,532","5,332","7,432"],a:0}
+  ],
+  [
+    {q:"What is 2,456 + 1,234?",o:["3,690","3,680","3,790","3,600"],a:0},
+    {q:"What is 5,678 - 2,345?",o:["3,333","3,233","3,343","3,433"],a:0},
+    {q:"Mary has 1,250 stickers and John has 1,340. How many altogether?",o:["2,590","2,490","2,690","2,500"],a:0},
+    {q:"What is 4,000 - 1,275?",o:["2,725","2,825","2,625","3,725"],a:0},
+    {q:"What is 876 + 345?",o:["1,221","1,121","1,231","1,321"],a:0},
+    {q:"A shop had 3,450 mangoes and sold 1,230. How many left?",o:["2,220","2,120","2,320","2,200"],a:0},
+    {q:"What is 6,789 + 1,111?",o:["7,900","7,800","7,990","8,900"],a:0},
+    {q:"What is 9,000 - 4,567?",o:["4,433","4,533","4,343","4,443"],a:0},
+    {q:"What is 2,345 + 2,345?",o:["4,690","4,680","4,590","4,790"],a:0},
+    {q:"Sara had $5,000. She spent $2,450. How much left?",o:["$2,550","$2,450","$2,650","$2,500"],a:0},
+    {q:"What is 1,234 + 4,321?",o:["5,555","5,545","5,655","5,455"],a:0},
+    {q:"What is 8,000 - 1?",o:["7,999","7,900","8,099","7,099"],a:0},
+    {q:"What is 567 + 433?",o:["1,000","900","1,100","990"],a:0},
+    {q:"There are 2,100 boys and 2,300 girls. How many children?",o:["4,400","4,300","4,500","4,200"],a:0},
+    {q:"What is 7,654 - 3,210?",o:["4,444","4,454","4,344","4,544"],a:0},
+    {q:"What is 999 + 1?",o:["1,000","999","1,010","990"],a:0},
+    {q:"A farmer picks 1,876 oranges in the morning and 1,234 in the evening. Total?",o:["3,110","3,010","3,210","3,100"],a:0},
+    {q:"What is 5,432 - 1,111?",o:["4,321","4,221","4,421","4,331"],a:0},
+    {q:"What is 3,678 + 2,222?",o:["5,900","5,800","5,990","6,900"],a:0},
+    {q:"What is 10,000 - 2,500?",o:["7,500","7,400","7,600","8,500"],a:0}
+  ],
+  [
+    {q:"What is 7 × 8?",o:["54","56","48","64"],a:1},
+    {q:"What is 9 × 6?",o:["54","56","48","63"],a:0},
+    {q:"What is 12 × 4?",o:["48","44","46","52"],a:0},
+    {q:"What is 36 divided by 4?",o:["8","9","6","12"],a:1},
+    {q:"What is 45 divided by 5?",o:["9","8","7","10"],a:0},
+    {q:"There are 6 bags with 8 marbles each. How many marbles?",o:["48","42","54","36"],a:0},
+    {q:"What is 25 × 3?",o:["75","65","85","70"],a:0},
+    {q:"Share 72 sweets equally among 8 children. How many each?",o:["9","8","7","10"],a:0},
+    {q:"What is 11 × 5?",o:["55","50","60","45"],a:0},
+    {q:"What is 100 divided by 10?",o:["10","100","20","5"],a:0},
+    {q:"What is 8 × 9?",o:["72","81","64","63"],a:0},
+    {q:"What is 63 divided by 7?",o:["9","8","7","6"],a:0},
+    {q:"A class has 5 rows of 7 desks. How many desks?",o:["35","30","40","28"],a:0},
+    {q:"What is 15 × 4?",o:["60","50","70","56"],a:0},
+    {q:"What is 81 divided by 9?",o:["9","8","7","10"],a:0},
+    {q:"What is 6 × 6 × 2?",o:["72","36","60","66"],a:0},
+    {q:"What is 120 divided by 3?",o:["40","30","50","60"],a:0},
+    {q:"What is 23 × 2?",o:["46","42","44","48"],a:0},
+    {q:"Each pack has 12 pencils. How many in 5 packs?",o:["60","50","55","70"],a:0},
+    {q:"What is 90 divided by 9?",o:["10","9","11","8"],a:0}
+  ],
+  [
+    {q:"What fraction is shaded if 3 out of 4 parts are shaded?",o:["3/4","1/4","4/3","2/4"],a:0},
+    {q:"What is 1/2 of 20?",o:["10","20","5","15"],a:0},
+    {q:"Which fraction is the largest?",o:["3/4","1/4","1/2","2/4"],a:0},
+    {q:"How many sides does a hexagon have?",o:["6","5","8","4"],a:0},
+    {q:"How many corners does a rectangle have?",o:["4","3","5","6"],a:0},
+    {q:"What is 1/4 of 16?",o:["4","8","2","12"],a:0},
+    {q:"Which shape has 3 sides?",o:["Triangle","Square","Circle","Rectangle"],a:0},
+    {q:"What is 1 metre in centimetres?",o:["100 cm","10 cm","1,000 cm","50 cm"],a:0},
+    {q:"How many minutes in 2 hours?",o:["120","60","90","180"],a:0},
+    {q:"What is half of 1/2?",o:["1/4","1/2","1/3","2/4"],a:0},
+    {q:"How many centimetres in 3 metres?",o:["300 cm","30 cm","3,000 cm","33 cm"],a:0},
+    {q:"What is the perimeter of a square with side 5 cm?",o:["20 cm","10 cm","15 cm","25 cm"],a:0},
+    {q:"Which is a right angle?",o:["Corner of a book","Corner of a ball","Top of a circle","Point of a star"],a:0},
+    {q:"What is 1/2 + 1/2?",o:["1 whole","1/4","2/2 = 1","Both A and C"],a:3},
+    {q:"How many grams in 1 kilogram?",o:["1,000 g","100 g","10 g","500 g"],a:0},
+    {q:"What is 3/4 of 12?",o:["9","8","6","3"],a:0},
+    {q:"How many edges does a cube have?",o:["12","6","8","4"],a:0},
+    {q:"Which unit is best to measure the length of a classroom?",o:["Metres","Centimetres","Millimetres","Kilometres"],a:0},
+    {q:"What time is 30 minutes after 2:15?",o:["2:45","2:30","3:15","2:15"],a:0},
