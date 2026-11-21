@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Grade 4 PEP - Mathematics - All 100 Questions</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 4 PEP - Mathematics - 100 Questions</title>
 <style>
 *{box-sizing:border-box}
 body{font-family:Arial,sans-serif;max-width:750px;margin:0 auto;padding:14px;background:#f0f4ff}
-.back{display:block;background:#1e3a5f;color:white;text-align:center;padding:14px;border-radius:12px;text-decoration:none;font-weight:bold;margin:12px 0 0}
 .card{background:#fff;padding:16px;border-radius:16px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
 .top-header{background:#1e3a5f;color:#fff;text-align:center;padding:22px 14px;border-radius:14px;margin-bottom:14px}
 .top-header h1{font-size:21px;margin:0;color:#fff;line-height:1.3}
@@ -21,92 +23,122 @@ body{font-family:Arial,sans-serif;max-width:750px;margin:0 auto;padding:14px;bac
 .big{font-size:22px;font-weight:bold;text-align:center;margin:10px 0}
 input{width:100%;padding:12px;font-size:16px;border:2px solid #25D366;border-radius:10px;margin:10px 0;background:#f0fdf4}
 .wa{background:#25D366;color:#fff;border:none;padding:13px;width:100%;border-radius:10px;font-size:17px;font-weight:bold;cursor:pointer}
-.next{background:#1e3a5f;color:#fff;border:none;padding:13px;width:100%;border-radius:10px;font-size:17px;font-weight:bold;cursor:pointer;margin-top:0}
+.next{background:#1e3a5f;color:#fff;border:none;padding:13px;width:100%;border-radius:10px;font-size:17px;font-weight:bold;cursor:pointer}
+.back{display:block;background:#1e3a5f;color:white;text-align:center;padding:14px;border-radius:12px;text-decoration:none;font-weight:bold;margin:12px 0 0}
 #waWrap{display:none}
-</style></head><body>
+</style>
+</head>
+<body>
 <div class="card">
-<div class="top-header">
-  <h1>🇯🇲 Grade 4 PEP - Mathematics<br>100 Questions - 5 Tests</h1>
-  <p>Test 1–5 • 20 questions each • Final score recorded automatically</p>
-</div>
-<div class="tabs" id="tabs"></div>
-<div id="box"></div>
-<div style="margin-top:16px;border-top:2px solid #eee;padding-top:12px">
-  <button class="next" id="nextBtn" onclick="nextQ()">Next →</button>
-  <div id="waWrap">
-    <input id="phoneFooter" placeholder="Type parent WhatsApp number e.g. 18761234567">
-    <button class="wa" onclick="sendWAfooter()">Send Score on WhatsApp 📲</button>
+  <div class="top-header">
+    <h1>🇯🇲 Grade 4 PEP - Mathematics<br>100 Questions - 5 Tests</h1>
+    <p>Test 1–5 • 20 questions each • Final score recorded automatically</p>
   </div>
-  <a class="back" href="grade4-pep-practice.html">← Back to PEP Practice Centre</a>
+  <div class="tabs" id="tabs"></div>
+  <div id="box"></div>
+  <div style="margin-top:16px;border-top:2px solid #eee;padding-top:12px">
+    <button class="next" id="nextBtn" onclick="nextQ()">Next →</button>
+    <div id="waWrap">
+      <input id="phoneFooter" placeholder="Type parent WhatsApp number e.g. 18761234567">
+      <button class="wa" onclick="sendWAfooter()">Send Score on WhatsApp 📲</button>
+    </div>
+    <a class="back" href="grade4-pep-practice.html">← Back to PEP Practice Centre</a>
+  </div>
 </div>
-</div>
+
 <script>
-const tests=[
-{ name:"Test 1", qs:[
-{q:"What is the value of the digit 5 in 3,542?",o:["5","50","500","5,000"],a:"500",e:"The 5 is in the hundreds place, so its value is 500."},
-{q:"Calculate: 567 + 238",o:["795","805","815","825"],a:"805",e:"567 + 238 = 805. Add the ones, tens, then hundreds."},
-{q:"Calculate: 843 - 276",o:["557","567","577","667"],a:"567",e:"843 - 276 = 567."},
-{q:"Calculate: 36 × 5",o:["160","170","180","190"],a:"180",e:"36 × 5 = 180."},
-{q:"Calculate: 132 ÷ 6",o:["21","22","23","24"],a:"22",e:"132 ÷ 6 = 22."},
-{q:"Which fraction is equivalent to 3/6?",o:["1/3","1/2","2/3","3/4"],a:"1/2",e:"3/6 simplifies to 1/2."},
-{q:"Maria has 3 packs of pencils. Each pack has 24 pencils. How many pencils does Maria have altogether?",o:["27","48","72","96"],a:"72",e:"3 × 24 = 72."},
-{q:"How many centimetres are in 5 metres?",o:["50","500","5,000","55"],a:"500",e:"1 metre = 100 cm, so 5 metres = 500 cm."},
-{q:"School starts at 8:30 a.m. and ends at 2:15 p.m. How long is the school day?",o:["5 hours","5 hours 45 minutes","6 hours","6 hours 15 minutes"],a:"5 hours 45 minutes",e:"From 8:30 to 2:15 is 5 hours 45 minutes."},
-{q:"A square has sides measuring 6 cm each. What is its perimeter?",o:["12 cm","18 cm","24 cm","36 cm"],a:"24 cm",e:"Perimeter = 4 × 6 = 24 cm."},
-{q:"Round 3,486 to the nearest hundred.",o:["3,400","3,500","3,480","3,490"],a:"3,500",e:"86 is more than 50, so round up to 3,500."},
-{q:"Calculate: 764 + 189",o:["943","953","963","973"],a:"953",e:"764 + 189 = 953."},
-{q:"Calculate: 912 - 458",o:["444","454","464","474"],a:"454",e:"912 - 458 = 454."},
-{q:"Calculate: 48 × 4",o:["182","192","202","212"],a:"192",e:"48 × 4 = 192."},
-{q:"Calculate: 156 ÷ 4",o:["36","38","39","42"],a:"39",e:"156 ÷ 4 = 39."},
-{q:"Which decimal is equal to 1/4?",o:["0.14","0.25","0.4","0.5"],a:"0.25",e:"1/4 = 0.25."},
-{q:"A class has 34 students. Each student has 6 pencils. How many pencils are there altogether?",o:["184","194","204","214"],a:"204",e:"34 × 6 = 204."},
-{q:"How many hours are there in 3 days?",o:["48","60","72","96"],a:"72",e:"1 day = 24 hours, 3 × 24 = 72."},
-{q:"What is the value of the digit 8 in 6,874?",o:["8","80","800","8,000"],a:"800",e:"The 8 is in the hundreds place = 800."},
-{q:"A rectangle has a length of 10 cm and a width of 7 cm. What is its area?",o:["17 cm²","34 cm²","70 cm²","77 cm²"],a:"70 cm²",e:"Area = 10 × 7 = 70 cm²."}
-]},
-{ name:"Test 2", qs:[
-{q:"What is the value of the digit 7 in 4,735?",o:["7","70","700","7,000"],a:"700",e:"Correct answer is 700."},
-{q:"Calculate: 348 + 276",o:["614","624","634","644"],a:"624",e:"348 + 276 = 624."},
-{q:"What is 805 - 367?",o:["428","438","448","458"],a:"438",e:"805 - 367 = 438."},
-{q:"Calculate: 24 × 6",o:["124","134","144","154"],a:"144",e:"24 × 6 = 144."},
-{q:"What is 168 ÷ 7?",o:["22","23","24","26"],a:"24",e:"168 ÷ 7 = 24."},
-{q:"Which fraction is equivalent to 1/2?",o:["2/3","2/4","3/4","1/3"],a:"2/4",e:"2/4 = 1/2."},
-{q:"A shopkeeper has 5 boxes containing 12 pencils each. How many pencils are there altogether?",o:["50","55","60","65"],a:"60",e:"5 × 12 = 60."},
-{q:"How many centimetres are in 3 metres?",o:["30","100","200","300"],a:"300",e:"3 × 100 = 300 cm."},
-{q:"What time is 45 minutes after 2:30 p.m.?",o:["3:05 p.m.","3:15 p.m.","3:25 p.m.","3:30 p.m."],a:"3:15 p.m.",e:"2:30 + 45 mins = 3:15."},
-{q:"A rectangle has a length of 8 cm and a width of 5 cm. What is its perimeter?",o:["13 cm","26 cm","40 cm","45 cm"],a:"26 cm",e:"Perimeter = 2×(8+5) = 26 cm."},
-{q:"What is the value of 6 in the number 8,642?",o:["6","60","600","6,000"],a:"600",e:"6 is in hundreds place = 600."},
-{q:"Calculate: 456 + 389",o:["835","845","855","865"],a:"845",e:"456 + 389 = 845."},
-{q:"Calculate: 900 - 458",o:["432","442","452","462"],a:"442",e:"900 - 458 = 442."},
-{q:"What is 35 × 4?",o:["120","130","140","150"],a:"140",e:"35 × 4 = 140."},
-{q:"What is 225 ÷ 5?",o:["35","40","45","50"],a:"45",e:"225 ÷ 5 = 45."},
-{q:"Which fraction is the largest?",o:["1/4","1/2","1/8","1/6"],a:"1/2",e:"1/2 is the largest."},
-{q:"A farmer collects 125 mangoes each day for 4 days. How many mangoes does he collect?",o:["400","450","500","550"],a:"500",e:"125 × 4 = 500."},
-{q:"How many grams are in 2 kilograms?",o:["200","1,000","1,500","2,000"],a:"2,000",e:"1 kg = 1000 g."},
-{q:"A movie starts at 4:15 p.m. and lasts 1 hour 30 minutes. When does it finish?",o:["5:15 p.m.","5:30 p.m.","5:45 p.m.","6:00 p.m."],a:"5:45 p.m.",e:"4:15 + 1h30 = 5:45."},
-{q:"A square has sides measuring 7 cm each. What is its perimeter?",o:["14 cm","21 cm","28 cm","49 cm"],a:"28 cm",e:"4 × 7 = 28 cm."}
-]},
-{ name:"Test 3", qs:[
-{q:"What number comes next? 125, 150, 175, 200, ___",o:["205","215","225","250"],a:"225",e:"Adding 25 each time."},
-{q:"Write 3,508 in words.",o:["Three thousand and fifty-eight","Three thousand five hundred and eight","Three hundred and fifty-eight","Thirty-five hundred and eighty"],a:"Three thousand five hundred and eight",e:"Correct answer is Three thousand five hundred and eight."},
-{q:"Calculate: 675 + 248",o:["913","923","933","943"],a:"923",e:"675 + 248 = 923."},
-{q:"Calculate: 1,000 - 625",o:["365","375","385","395"],a:"375",e:"1000 - 625 = 375."},
-{q:"What is 18 × 7?",o:["116","126","136","146"],a:"126",e:"18 × 7 = 126."},
-{q:"What is 144 ÷ 12?",o:["10","11","12","14"],a:"12",e:"144 ÷ 12 = 12."},
-{q:"A cake is divided into 8 equal pieces. If 3 pieces are eaten, what fraction remains?",o:["3/8","4/8","5/8","6/8"],a:"5/8",e:"8-3 = 5 left, so 5/8."},
-{q:"How many millilitres are in 2 litres?",o:["200","500","1,000","2,000"],a:"2,000",e:"1 litre = 1000 ml."},
-{q:"A bus leaves at 8:35 a.m. and arrives at 9:20 a.m. How long is the journey?",o:["35 minutes","40 minutes","45 minutes","55 minutes"],a:"45 minutes",e:"8:35 to 9:20 is 45 minutes."},
-{q:"Round 6,742 to the nearest thousand.",o:["6,000","6,700","7,000","6,740"],a:"7,000",e:"742 is more than 500, so round up to 7,000."},
-{q:"What is 3/4 of 24?",o:["6","12","18","20"],a:"18",e:"24 ÷ 4 = 6, then 6 × 3 = 18."},
-{q:"Which number is a multiple of both 4 and 6?",o:["10","12","16","18"],a:"12",e:"12 ÷ 4 = 3 and 12 ÷ 6 = 2."},
-{q:"A patty costs $220. How much do 4 patties cost?",o:["$660","$840","$880","$920"],a:"$880",e:"$220 × 4 = $880."},
-{q:"How many sides does a pentagon have?",o:["4","5","6","8"],a:"5",e:"A pentagon has 5 sides."},
-{q:"Calculate: 405 × 3",o:["1,205","1,215","1,235","1,515"],a:"1,215",e:"405 × 3 = 1,215."},
-{q:"What is 0.5 + 0.25?",o:["0.30","0.55","0.75","1.00"],a:"0.75",e:"0.50 + 0.25 = 0.75."},
-{q:"How many days are in 4 weeks?",o:["21","24","28","32"],a:"28",e:"4 × 7 = 28 days."},
-{q:"A triangle has sides of 5 cm, 7 cm, and 9 cm. What is its perimeter?",o:["19 cm","20 cm","21 cm","22 cm"],a:"21 cm",e:"5 + 7 + 9 = 21 cm."},
-{q:"What is 315 ÷ 5?",o:["61","62","63","65"],a:"63",e:"315 ÷ 5 = 63."},
-{q:"Which digit is in the thousands place of 9,431?",o:["1","3","4","9"],a:"9",e:"9 is in the thousands place."}
-]},
-{ name:"Test 4", qs:[
-{q:"What is 4,000 + 500 + 60 + 9?",o:["4,569","4,659","4,596","5,469"],a:"4,569",e:"4,000 + 500 + 60 + 9 = 4,569."},
+const raw = [
+  // TEST 1 (20 Questions)
+  "What is the value of the digit 5 in 3,542?|5|50|500|5,000|2|The 5 is in the hundreds place, so its value is 500.",
+  "Calculate: 567 + 238|795|805|815|825|1|567 + 238 = 805.",
+  "Calculate: 843 - 276|557|567|577|667|1|843 - 276 = 567.",
+  "Calculate: 36 × 5|160|170|180|190|2|36 × 5 = 180.",
+  "Calculate: 132 ÷ 6|21|22|23|24|1|132 ÷ 6 = 22.",
+  "Which fraction is equivalent to 3/6?|1/3|1/2|2/3|3/4|1|3/6 simplifies to 1/2.",
+  "Maria has 3 packs of 24 pencils. How many altogether?|27|48|72|96|2|3 × 24 = 72.",
+  "How many centimetres are in 5 metres?|50|500|5,000|55|1|1 metre = 100 cm, so 5 m = 500 cm.",
+  "School starts at 8:30 a.m. and ends at 2:15 p.m. How long is the day?|5 hrs|5 hrs 45 mins|6 hrs|6 hrs 15 mins|1|8:30 to 2:15 is 5 hours 45 minutes.",
+  "A square has sides of 6 cm. What is its perimeter?|12 cm|18 cm|24 cm|36 cm|2|Perimeter = 4 × 6 = 24 cm.",
+  "Round 3,486 to the nearest hundred.|3,400|3,500|3,480|3,490|1|86 rounds up to 3,500.",
+  "Calculate: 764 + 189|943|953|963|973|1|764 + 189 = 953.",
+  "Calculate: 912 - 458|444|454|464|474|1|912 - 458 = 454.",
+  "Calculate: 48 × 4|182|192|202|212|1|48 × 4 = 192.",
+  "Calculate: 156 ÷ 4|36|38|39|42|2|156 ÷ 4 = 39.",
+  "Which decimal equals 1/4?|0.14|0.25|0.4|0.5|1|1/4 = 0.25.",
+  "34 students each have 6 pencils. Total pencils?|184|194|204|214|2|34 × 6 = 204.",
+  "How many hours are in 3 days?|48|60|72|96|2|3 × 24 = 72 hours.",
+  "What is the value of 8 in 6,874?|8|80|800|8,000|2|8 is in the hundreds place = 800.",
+  "A rectangle is 10 cm long and 7 cm wide. Area?|17 cm²|34 cm²|70 cm²|77 cm²|2|10 × 7 = 70 cm².",
+  // TEST 2 (20 Questions)
+  "What is the value of 7 in 4,735?|7|70|700|7,000|2|7 is in the hundreds place = 700.",
+  "Calculate: 348 + 276|614|624|634|644|1|348 + 276 = 624.",
+  "What is 805 - 367?|428|438|448|458|1|805 - 367 = 438.",
+  "Calculate: 24 × 6|124|134|144|154|2|24 × 6 = 144.",
+  "What is 168 ÷ 7?|22|23|24|26|2|168 ÷ 7 = 24.",
+  "Which fraction equals 1/2?|2/3|2/4|3/4|1/3|1|2/4 = 1/2.",
+  "5 boxes have 12 pencils each. Total pencils?|50|55|60|65|2|5 × 12 = 60.",
+  "How many centimetres are in 3 metres?|30|100|200|300|3|3 × 100 = 300 cm.",
+  "What time is 45 minutes after 2:30 p.m.?|3:05 p.m.|3:15 p.m.|3:25 p.m.|3:30 p.m.|1|2:30 + 45 mins = 3:15 p.m.",
+  "Rectangle: 8 cm long, 5 cm wide. Perimeter?|13 cm|26 cm|40 cm|45 cm|1|2 × (8 + 5) = 26 cm.",
+  "Value of 6 in 8,642?|6|60|600|6,000|2|6 is in the hundreds place = 600.",
+  "Calculate: 456 + 389|835|845|855|865|1|456 + 389 = 845.",
+  "Calculate: 900 - 458|432|442|452|462|1|900 - 458 = 442.",
+  "What is 35 × 4?|120|130|140|150|2|35 × 4 = 140.",
+  "What is 225 ÷ 5?|35|40|45|50|2|225 ÷ 5 = 45.",
+  "Which fraction is largest?|1/4|1/2|1/8|1/6|1|1/2 is the largest.",
+  "A farmer picks 125 mangoes daily for 4 days. Total?|400|450|500|550|2|125 × 4 = 500.",
+  "How many grams are in 2 kilograms?|200|1,000|1,500|2,000|3|2 × 1,000 = 2,000 g.",
+  "Movie starts at 4:15 p.m. and lasts 1 hr 30 mins. End time?|5:15 p.m.|5:30 p.m.|5:45 p.m.|6:00 p.m.|2|4:15 + 1h30 = 5:45 p.m.",
+  "Square with 7 cm sides. Perimeter?|14 cm|21 cm|28 cm|49 cm|2|4 × 7 = 28 cm.",
+  // TEST 3 (20 Questions)
+  "Next number: 125, 150, 175, 200, ___|205|215|225|250|2|Adding 25 each time = 225.",
+  "Write 3,508 in words.|Three thousand and fifty-eight|Three thousand five hundred and eight|Three hundred fifty-eight|Thirty-five hundred and eighty|1|3,508 = Three thousand five hundred and eight.",
+  "Calculate: 675 + 248|913|923|933|943|1|675 + 248 = 923.",
+  "Calculate: 1,000 - 625|365|375|385|395|1|1,000 - 625 = 375.",
+  "What is 18 × 7?|116|126|136|146|1|18 × 7 = 126.",
+  "What is 144 ÷ 12?|10|11|12|14|2|144 ÷ 12 = 12.",
+  "A cake has 8 slices. 3 are eaten. What fraction remains?|3/8|4/8|5/8|6/8|2|8 - 3 = 5 slices left = 5/8.",
+  "How many millilitres are in 2 litres?|200|500|1,000|2,000|3|2 × 1,000 = 2,000 ml.",
+  "Bus leaves at 8:35 a.m. and arrives at 9:20 a.m. Journey time?|35 mins|40 mins|45 mins|55 mins|2|8:35 to 9:20 is 45 minutes.",
+  "Round 6,742 to the nearest thousand.|6,000|6,700|7,000|6,740|2|742 rounds up to 7,000.",
+  "What is 3/4 of 24?|6|12|18|20|2|24 ÷ 4 × 3 = 18.",
+  "Multiple of both 4 and 6?|10|12|16|18|1|12 divides evenly by 4 and 6.",
+  "A patty costs $220. Cost of 4 patties?|$660|$840|$880|$920|2|220 × 4 = $880.",
+  "How many sides does a pentagon have?|4|5|6|8|1|A pentagon has 5 sides.",
+  "Calculate: 405 × 3|1,205|1,215|1,235|1,515|1|405 × 3 = 1,215.",
+  "What is 0.5 + 0.25?|0.30|0.55|0.75|1.00|2|0.50 + 0.25 = 0.75.",
+  "How many days in 4 weeks?|21|24|28|32|2|4 × 7 = 28 days.",
+  "Triangle sides: 5 cm, 7 cm, 9 cm. Perimeter?|19 cm|20 cm|21 cm|22 cm|2|5 + 7 + 9 = 21 cm.",
+  "What is 315 ÷ 5?|61|62|63|65|2|315 ÷ 5 = 63.",
+  "Which digit is in the thousands place of 9,431?|1|3|4|9|3|9 is in the thousands place.",
+  // TEST 4 (20 Questions)
+  "4,000 + 500 + 60 + 9 = ?|4,569|4,659|4,596|5,469|0|Equals 4,569.",
+  "Calculate: 728 - 349|369|379|389|479|1|728 - 349 = 379.",
+  "Calculate: 27 × 8|196|206|216|226|2|27 × 8 = 216.",
+  "Calculate: 192 ÷ 8|22|23|24|26|2|192 ÷ 8 = 24.",
+  "Which fraction equals 2/3?|4/6|3/4|4/5|2/6|0|2/3 = 4/6.",
+  "How many minutes in 2 hours 15 minutes?|115|125|135|145|2|120 + 15 = 135 minutes.",
+  "Garden: 9 m long, 4 m wide. Area?|13 m²|26 m²|36 m²|40 m²|2|9 × 4 = 36 m².",
+  "Which number is odd?|2,468|5,130|7,395|8,012|2|7,395 ends in 5 (odd).",
+  "Devon has $1,000 and spends $645. Change?|$345|$355|$365|$455|1|1,000 - 645 = $355.",
+  "How many metres in 4 kilometres?|40|400|4,000|40,000|2|4 × 1,000 = 4,000 m.",
+  "What is 2/5 + 1/5?|3/10|3/5|2/5|1/5|1|2/5 + 1/5 = 3/5.",
+  "Round 4,550 to the nearest hundred.|4,500|4,600|4,000|5,000|1|50 rounds up to 4,600.",
+  "How many right angles are in a square?|2|3|4|6|2|A square has 4 right angles.",
+  "Calculate: 539 + 287|816|826|836|726|1|539 + 287 = 826.",
+  "Share 96 mangoes into 6 baskets. How many each?|14|15|16|18|2|96 ÷ 6 = 16.",
+  "Which decimal is larger: 0.7 or 0.45?|0.45|0.7|Equal|Cannot tell|1|0.70 is larger than 0.45.",
+  "How many edges does a cube have?|6|8|10|12|3|A cube has 12 edges.",
+  "What is 50 × 6?|250|300|350|3,000|1|50 × 6 = 300.",
+  "Class starts at 9:10 a.m. and lasts 50 mins. End time?|9:50 a.m.|10:00 a.m.|10:10 a.m.|10:15 a.m.|1|9:10 + 50 mins = 10:00 a.m.",
+  "Perimeter of a regular hexagon with 4 cm sides?|16 cm|20 cm|24 cm|28 cm|2|6 × 4 cm = 24 cm.",
+  // TEST 5 (20 Questions)
+  "Value of digit 3 in 3,891?|3|30|300|3,000|3|3 is in the thousands place = 3,000.",
+  "Calculate: 649 + 351|900|990|1,000|1,100|2|649 + 351 = 1,000.",
+  "Calculate: 950 - 475|465|475|485|575|1|950 - 475 = 475.",
+  "Calculate: 42 × 6|242|252|262|272|1|42 × 6 = 252.",
+  "Calculate: 216 ÷ 9|22|23|24|26|2|216 ÷ 9 = 24.",
+  "What is 1/3 of 27?|6|7|8|9|3|27 ÷ 3 = 9.",
+  "How many grams in 1/2 kilogram?|50 g|250 g|500 g|750 g|2|Half of 1,000 g = 500 g.",
+  "Square area is 25 cm². Length of one side?|4 cm|5 cm|6 cm|10 cm|1|5 × 5 = 25 cm².",
+  "Which number is between 7,400 and 7,500?|7,390|7,455|7,510|7,600|1|7,455 is between 7,400 and 7,500.",
