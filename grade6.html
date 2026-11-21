@@ -1,44 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grade 6 - Final Mastery Centre</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 6 - PEPLink JA</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:#f4f6f9}
-.header{background:#1a324f;color:#fff;text-align:center;padding:32px 20px 26px;border-radius:0 0 24px 24px}
-.header h1{margin:0;font-size:32px;font-weight:900}
-.header p{margin:8px 0 0;font-size:18px;opacity:.95}
-.container{max-width:480px;margin:0 auto;padding:24px 18px;text-align:center}
-.welcome{color:#1a324f;font-size:28px;font-weight:800;margin:6px 0 4px}
-.subtitle{color:#555;font-size:16px;margin-bottom:22px}
-.btn{display:block;width:100%;height:78px;line-height:78px;border-radius:20px;text-decoration:none;color:#fff;font-weight:800;font-size:19px;text-align:center;margin-bottom:16px}
-.blue{background:#23486b}
-.green{background:#2d7a3f}
-.grey{background:#4a4a4a}
-.session{background:#e8f5e9;color:#1a324f;font-weight:700;padding:16px;border-radius:14px;margin-top:10px;font-size:16px}
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f7fb; text-align: center; padding-bottom: 30px; }
+  .container { max-width: 540px; margin: 0 auto; }
+  .top { background: #132f4c; color: white; padding: 38px 20px 30px 20px; border-radius: 0 0 20px 20px; }
+  .top h1 { margin: 0; font-size: 32px; font-weight: 800; }
+  .top p { margin: 10px 0 0 0; font-size: 15px; color: #D6E4FF; font-weight: 600; }
+  .wrap { padding: 26px 16px 0 16px; }
+  .wrap h2 { color: #1e3a5f; font-size: 26px; margin: 0 0 6px 0; }
+  .wrap p { color: #334e6f; margin: 0 0 20px 0; font-size: 15px; }
+  .btn { display: block; background: #1e4a7a; color: white; padding: 18px 16px; border-radius: 12px; margin: 14px 16px; text-decoration: none; font-weight: 700; font-size: 18px; }
+  .btn small { display: block; font-weight: 400; font-size: 13px; color: #D6E4FF; margin-top: 4px; }
+  .btn-grey { background: #4a4a4a; font-size: 16px; padding: 15px; }
+  .timer { background: #e8f5e9; color: #1e3a5f; border: 1px solid #c8e6c9; padding: 14px; border-radius: 12px; margin: 22px 16px 0 16px; font-weight: 700; font-size: 16px; }
 </style>
 </head>
 <body>
-<div class="header">
-<h1>PEPlink JA</h1>
-<p>Grade 6 — Final PEP Preparation</p>
-</div>
-
 <div class="container">
-<div class="welcome">Welcome to Grade 6</div>
-<div class="subtitle">Choose a service to continue.</div>
 
-<a href="grade6-pep-practice.html" class="btn blue">PEP Practice Centre</a>
-<a href="grade6-curriculum-learning-centre.html" class="btn blue">Curriculum & Learning Centre</a>
-<a href="index.html" class="btn grey">Back to Home</a>
+  <div class="top">
+    <h1>PEPLink JA</h1>
+    <p>Grade 6 • Term 1 • Final PEP Preparation</p>
+  </div>
 
-<div class="session">Session Duration: <span id="t">00:00:00</span></div>
+  <div class="wrap">
+    <h2>Welcome to Grade 6</h2>
+    <p>Choose a service to continue.</p>
+  </div>
+
+  <a class="btn" href="grade6-pep-practice.html">
+    PEP Practice Centre
+    <small>Ability Test, Performance Tasks, CBT &amp; Mock Exams</small>
+  </a>
+
+  <a class="btn" href="grade6-curriculum-learning-centre.html">
+    Curriculum &amp; Learning Centre
+    <small>Term Notes, NSC Topics &amp; Teacher Videos</small>
+  </a>
+
+  <a class="btn btn-grey" href="menu.html">← Back to Main Menu</a>
+
+  <div class="timer">Session Duration: 00:00:00</div>
+
 </div>
 
 <script>
-let s=0;setInterval(()=>{s++;let h=String(Math.floor(s/3600)).padStart(2,'0');let m=String(Math.floor(s%3600/60)).padStart(2,'0');let sec=String(s%60).padStart(2,'0');document.getElementById('t').textContent=h+':'+m+':'+sec},1000);
+  let s = 0;
+  setInterval(() => {
+    s++;
+    let h = String(Math.floor(s / 3600)).padStart(2, '0');
+    let m = String(Math.floor(s / 60) % 60).padStart(2, '0');
+    let sec = String(s % 60).padStart(2, '0');
+    document.querySelector('.timer').textContent = `Session Duration: ${h}:${m}:${sec}`;
+  }, 1000);
 </script>
 </body>
 </html>
