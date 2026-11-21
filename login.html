@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log In - PEPLink JA</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #0A2A5E;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+  }
+  .card {
+    width: 100%;
+    max-width: 480px;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+  .header {
+    background: #143a70;
+    color: #fff;
+    text-align: center;
+    padding: 26px 18px;
+  }
+  .header h1 { margin: 0; font-size: 24px; font-weight: 800; }
+  .header p { margin: 6px 0 0; font-size: 13.5px; color: #D6E4FF; }
+  .body { padding: 22px 18px; }
+  label {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #0A2A5E;
+    margin-bottom: 6px;
+    margin-top: 14px;
+  }
+  label:first-child { margin-top: 0; }
+  input, select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #0A2A5E;
+    background: #f8fafc;
+  }
+  input:focus, select:focus {
+    outline: none;
+    border-color: #1E6FDB;
+    background: #fff;
+  }
+  .lock-note {
+    background: #FFFBEA;
+    border: 1.5px solid #F2B705;
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: #4a3b00;
+    line-height: 1.45;
+  }
+  .login-btn {
+    width: 100%;
+    background: #F2B705;
+    color: #0A2A5E;
+    border: none;
+    padding: 16px;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: 18px;
+    cursor: pointer;
+  }
+  .wa-help {
+    display: block;
+    text-align: center;
+    margin-top: 14px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #166534;
+    text-decoration: none;
+  }
+  .back-btn {
+    display: block;
+    text-align: center;
+    background: #e2e8f0;
+    color: #1e293b;
+    text-decoration: none;
+    padding: 13px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    margin-top: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <h1>Welcome Back to PEPLink JA</h1>
+    <p>Log in to continue your Term 1 PEP preparation</p>
+  </div>
+
+  <div class="body">
+    <form onsubmit="handleLogin(event)">
+      <label for="studentName">Student's Full Name</label>
+      <input type="text" id="studentName" placeholder="e.g. Jayden Campbell" required>
+
+      <label for="parentPhone">Parent's WhatsApp Number</label>
+      <input type="tel" id="parentPhone" placeholder="e.g. 876-555-1234" required>
+
+      <label for="gradeSelect">Enrolled Grade</label>
+      <select id="gradeSelect" required>
+        <option value="">-- Select Grade --</option>
+        <option value="grade4.html">Grade 4</option>
+        <option value="grade5.html">Grade 5</option>
+        <option value="grade6.html">Grade 6</option>
+      </select>
+
+      <label for="accessCode">Term 1 Access Code</label>
+      <input type="text" id="accessCode" placeholder="Enter your PEPLink JA Term Code" required>
+
+      <div class="lock-note">
+        🔒 <b>1-Child Device Protection:</b> Each $5,000 JMD term pass is locked to one student and this device.
+      </div>
+
+      <button type="submit" class="login-btn">Log In to My Grade Hub →</button>
+    </form>
+
+    <a href="https://wa.me." target="_blank" class="wa-help">
+      Need a Term 1 Access Code? Message us on WhatsApp →
+    </a>
+
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </div>
+</div>
+
+<script>
+  // Auto-fill if student already logged in on this device before
+  window.onload = function() {
+    if (localStorage.getItem('pep_student_name')) {
+      document.getElementById('studentName').value = localStorage.getItem('pep_student_name');
+    }
+    if (localStorage.getItem('pep_parent_phone')) {
+      document.getElementById('parentPhone').value = localStorage.getItem('pep_parent_phone');
+    }
+    if (localStorage.getItem('pep_grade_page')) {
+      document.getElementById('gradeSelect').value = localStorage.getItem('pep_grade_page');
+    }
+  };
+
+  function handleLogin(e) {
+    e.preventDefault();
+    const name = document.getElementById('studentName').value.trim();
+    const phone = document.getElementById('parentPhone').value.trim();
+    const gradePage = document.getElementById('gradeSelect').value;
+    const code = document.getElementById('accessCode').value.trim().toUpperCase();
+
+    // Demo validation (Accepts any code with 4+ characters for testing; replace with your real code list/backend later)
+    if (code.length 
+</body>
+</html>
