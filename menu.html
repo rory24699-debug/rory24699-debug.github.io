@@ -5,23 +5,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PEPLink JA - Main Menu</title>
 <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
   html, body { background: #0A2A5E; }
   body { padding: 16px; padding-bottom: 30px; }
-  .container { max-width: 500px; margin: 0 auto; }
-  .back-bottom { color: white; text-decoration: none; font-size: 15px; font-weight: bold; display: block; text-align: center; margin-top: 16px; background: rgba(255,255,255,0.15); padding: 14px; border-radius: 14px; }
-  .header { text-align: center; color: white; margin-bottom: 16px; }
-  .header h1 { font-size: 32px; }
-  .header p { font-size: 15px; margin-top: 6px; opacity: 0.9; }
-  .card { display: block; text-decoration: none; border-radius: 14px; padding: 14px; margin-bottom: 10px; overflow: visible; white-space: normal; word-wrap: break-word; }
-  .card h2 { font-size: 20px; line-height: 1.2; }
-  .card p { font-size: 14px; margin-top: 6px; line-height: 1.4; }
-  .blue { background: #1E6FDB; color: white; text-align: center; }
-  .blue h2 { font-size: 22px; }
-  .info { background: #F2B705; color: #0A2A5E; padding: 18px; }
-  .info h2 { font-size: 22px; }
-  .notice { background: #F2B705; color: #0A2A5E; border: 2px solid #D32F2F; padding: 18px; }
-  .notice h2 { font-size: 22px; }
+  .container { max-width: 540px; margin: 0 auto; }
+  .header { text-align: center; color: white; margin-bottom: 18px; }
+  .header h1 { font-size: 30px; font-weight: 800; }
+  .header p { font-size: 14px; margin-top: 4px; opacity: 0.9; }
+  .status-pill {
+    display: inline-block;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #D6E4FF;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+  .card {
+    display: block;
+    text-decoration: none;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .card h2 { font-size: 21px; line-height: 1.2; font-weight: 800; }
+  .card p { font-size: 13.5px; margin-top: 6px; line-height: 1.4; }
+  .blue { background: #1E6FDB; color: white; }
+  .info { background: #F2B705; color: #0A2A5E; }
+  .notice { background: #F2B705; color: #0A2A5E; border: 2px solid #D32F2F; }
+  .back-bottom {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 14px;
+    border-radius: 14px;
+  }
   .footer { text-align: center; color: white; font-size: 12px; margin: 18px 0 10px; opacity: 0.7; }
 </style>
 </head>
@@ -31,11 +56,12 @@
 <div class="header">
   <h1>PEPLink JA</h1>
   <p>Jamaica's Digital PEP Learning Platform</p>
+  <span class="status-pill">Term 1 • Offline Ready ✓</span>
 </div>
 
 <a href="grade4.html" class="card blue">
   <h2>GRADE 4</h2>
-  <p>Building Strong Foundations<br>Start learning the basics — reading, maths, science</p>
+  <p>Building Strong Foundations<br>Numeracy, Literacy &amp; Integrated Studies</p>
 </a>
 
 <a href="grade5.html" class="card blue">
@@ -48,9 +74,9 @@
   <p>Final PEP Preparation<br>Full PEP practice, mock exams and test skills</p>
 </a>
 
-<a href="parents-information-desk.html" class="card info" style="padding:12px 14px;">
-  <h2 style="font-size:19px;">🎧 Parents Information Desk - 24/7</h2>
-  <p style="font-size:13px;">Parent Questions • PEP Guidance • Exam Info</p>
+<a href="parents-information-desk.html" class="card info">
+  <h2>🎧 Parents Information Desk</h2>
+  <p>Parent Questions • PEP Guidance • Exam Info</p>
 </a>
 
 <a href="notice-board.html" class="card notice">
