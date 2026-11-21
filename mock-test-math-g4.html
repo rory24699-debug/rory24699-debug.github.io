@@ -1,57 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Math Mock Test G4</title>
+<title>Math Mock Test G4 | PEPLink JA</title>
 <style>
-body{font-family:Arial;background:#f4f7fb;margin:0;padding:15px}
+body{font-family:Arial,sans-serif;background:#f4f7fb;margin:0;padding:15px}
 .header{background:#102a52;color:white;padding:20px;border-radius:12px;text-align:center}
-.card{background:white;padding:20px;border-radius:12px;margin-top:15px}
-.btn{width:100%;padding:14px;margin:8px 0;background:#1a4177;color:white;border:none;border-radius:10px;font-size:16px}
-.opt{background:#e9eef6;color:#102a52}
-.correct{background:#c6f6d5!important} .wrong{background:#fed7d7!important}
+.header h1{margin:0 0 6px;font-size:22px}
+.header p{margin:0;font-size:14px;color:#dce8fa}
+.card{background:white;padding:20px;border-radius:12px;margin-top:15px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.progress{font-size:13px;font-weight:bold;color:#64748b;margin-bottom:8px}
+.btn{width:100%;padding:14px;margin:8px 0;background:#1a4177;color:white;border:none;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer}
+.opt{background:#e9eef6;color:#102a52;text-align:left}
+.correct{background:#c6f6d5!important;color:#14532d!important}
+.wrong{background:#fed7d7!important;color:#7f1d1d!important}
+.explain{margin-top:12px;padding:12px;background:#f8fafc;border-left:4px solid #2463bd;font-size:14px;display:none}
 </style>
 </head>
 <body>
+
 <div class="header">
-<h1>Math Mock Test</h1>
-<p>Active: <span id="timer">00:00:00</span></p>
+  <h1>Grade 4 Math Mock Test</h1>
+  <p>Active Time: <span id="timer">00:00:00</span></p>
 </div>
+
 <div class="card" id="box">
-<h3 id="q"></h3><div id="opts"></div>
+  <div class="progress" id="prog"></div>
+  <h3 id="q"></h3>
+  <div id="opts"></div>
+  <div class="explain" id="exp"></div>
+  <button class="btn" id="nextBtn" style="display:none" onclick="nextQ()">Next Question →</button>
 </div>
+
 <script>
-let active=parseInt(localStorage.getItem('peplink_session')||'0');
-let qs=[
- {q:"What is 3/4 of 20?",a:["10","15","5","20"],c:1},
- {q:"Perimeter of 5m by 4m?",a:["9m","18m","20m","12m"],c:1},
- {q:"0.5 + 0.25 = ?",a:["0.75","0.65","0.25","1"],c:0}
+let active = parseInt(localStorage.getItem('peplink_session') || '0');
+let qs = [
+  {q:"What is 3/4 of 20?", a:["10","15","5","20"], c:1, exp:"20 ÷ 4 = 5, and 5 × 3 = 15."},
+  {q:"What is the perimeter of a rectangle 5 m long and 4 m wide?", a:["9 m","18 m","20 m","12 m"], c:1, exp:"Perimeter = 5 + 4 + 5 + 4 = 18 m."},
+  {q:"0.5 + 0.25 = ?", a:["0.75","0.65","0.25","1.00"], c:0, exp:"0.50 + 0.25 = 0.75."}
 ];
-let i=0,score=0;
-setInterval(()=>{
- if(document.visibilityState==='visible'){
-  active++;
-  localStorage.setItem('peplink_session',active);
-  let h=String(Math.floor(active/3600)).padStart(2,'0');
-  let m=String(Math.floor(active%3600/60)).padStart(2,'0');
-  let s=String(active%60).padStart(2,'0');
-  document.getElementById('timer').textContent=`${h}:${m}:${s}`;
- }
-},1000);
-function load(){
- let cur=qs[i];
- document.getElementById('q').textContent=`Q${i+1}. ${cur.q}`;
- document.getElementById('opts').innerHTML=cur.a.map((o,idx)=>`<button class='btn opt' onclick='check(${idx})'>${o}</button>`).join('');
+let i = 0, score = 0, answered = false;
+
+setInterval(() => {
+  if (document.visibilityState === 'visible') {
+    active++;
+    localStorage.setItem('peplink_session', active);
+    let h = String(Math.floor(active / 3600)).padStart(2, '0');
+    let m = String(Math.floor(active % 3600 / 60)).padStart(2, '0');
+    let s = String(active % 60).padStart(2, '0');
+    document.getElementById('timer').textContent = `${h}:${m}:${s}`;
+  }
+}, 1000);
+
+function load() {
+  answered = false;
+  let cur = qs[i];
+  document.getElementById('prog').textContent = `Question ${i + 1} of ${qs.length}`;
+  document.getElementById('q').textContent = cur.q;
+  document.getElementById('opts').innerHTML = cur.a.map((o, idx) =>
+    `<button class="btn opt" onclick="check(${idx})">${o}</button>`
+  ).join('');
+  document.getElementById('exp').style.display = 'none';
+  document.getElementById('nextBtn').style.display = 'none';
 }
-function check(idx){
- let cur=qs[i];
- let btns=document.querySelectorAll('.opt');
- if(idx===cur.c){score++; btns[idx].classList.add('correct');}
- else{btns[idx].classList.add('wrong'); btns[cur.c].classList.add('correct');}
- setTimeout(()=>{i++; if(i<qs.length) load(); else {
-  document.getElementById('box').innerHTML=`<h2>Done! ${score}/${qs.length}</h2><button class='btn' onclick="location.href='grade4.html'">Back</button>`;
- }},800);
+
+function check(idx) {
+  if (answered) return;
+  answered = true;
+  let cur = qs[i];
+  let btns = document.querySelectorAll('.opt');
+  if (idx === cur.c) {
+    score++;
+    btns[idx].classList.add('correct');
+  } else {
+    btns[idx].classList.add('wrong');
+    btns[cur.c].classList.add('correct');
+  }
+  document.getElementById('exp').textContent = "Explanation: " + cur.exp;
+  document.getElementById('exp').style.display = 'block';
+  document.getElementById('nextBtn').style.display = 'block';
 }
+
+function nextQ() {
+  i++;
+  if (i < qs.length) {
+    load();
+  } else {
+    let pct = Math.round((score / qs.length) * 100);
+    document.getElementById('box').innerHTML = `
+      <h2>Test Complete!</h2>
+      <p style="font-size:18px">Score: <strong>${score} / ${qs.length} (${pct}%)</strong></p>
+      <button class="btn" onclick="location.reload()">Try Again</button>
+      <button class="btn" style="background:#334155" onclick="location.href='grade4.html'">← Back to Grade 4</button>
+    `;
+  }
+}
+
 load();
 </script>
 </body>
