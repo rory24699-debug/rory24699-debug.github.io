@@ -5,72 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NOTICE BOARD – PEPLink JA</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#f3f4f6}
-.header{background:#1e3a5f;color:#fff;text-align:center;padding:28px 16px 20px;border-radius:0 0 20px 20px}
-.header h1{margin:0;font-size:20px;font-weight:800}
-.header p{margin:8px 0 0;font-size:14px;opacity:.9}
-.container{max-width:520px;margin:0 auto;padding:16px}
-.filter{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:16px 0}
-.filter button{border:0;padding:10px 14px;border-radius:20px;font-weight:bold;font-size:14px;cursor:pointer;background:#e5e7eb}
-.filter button.active{background:#1e3a5f;color:#fff}
-.notice{background:#fff;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.08);border-left:6px solid #1e3a5f}
-.notice.red{border-left-color:#dc2626}
-.notice.green{border-left-color:#166534}
-.notice.orange{border-left-color:#ea580c}
-.top{display:flex;justify-content:space-between;font-size:13px;font-weight:bold;color:#374151}
-.top span{color:#6b7280;font-weight:normal}
-.notice p{font-size:15px;margin:10px 0 0;line-height:1.5;color:#111827}
-.card-btn{display:flex;justify-content:center;align-items:center;width:100%;min-height:60px;border-radius:20px;padding:12px;text-align:center;text-decoration:none;color:#fff;margin-top:18px;background:#1e3a5f;font-weight:bold;font-size:18px}
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f3f4f6; padding-bottom: 30px; }
+  .header { background: #1e3a5f; color: #fff; text-align: center; padding: 28px 16px 20px; border-radius: 0 0 20px 20px; }
+  .header h1 { margin: 0; font-size: 22px; font-weight: 800; }
+  .header p { margin: 6px 0 0; font-size: 14px; opacity: .9; }
+  .sync-tag { display: inline-block; margin-top: 8px; background: rgba(255,255,255,0.15); font-size: 11.5px; padding: 4px 10px; border-radius: 12px; color: #D6E4FF; }
+  .container { max-width: 540px; margin: 0 auto; padding: 16px; }
+  .filter { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 14px 0 18px; }
+  .filter button { border: 0; padding: 9px 14px; border-radius: 20px; font-weight: bold; font-size: 13px; cursor: pointer; background: #e5e7eb; color: #111827; }
+  .filter button.active { background: #1e3a5f; color: #fff; }
+  .notice { background: #fff; border-radius: 16px; padding: 16px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.08); border-left: 6px solid #1e3a5f; }
+  .notice.red { border-left-color: #dc2626; }
+  .notice.green { border-left-color: #166534; }
+  .notice.orange { border-left-color: #ea580c; }
+  .top { display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; color: #374151; }
+  .top span { color: #6b7280; font-weight: normal; }
+  .notice p { font-size: 15px; margin: 10px 0 0; line-height: 1.5; color: #111827; }
+  .card-btn { display: flex; justify-content: center; align-items: center; width: 100%; min-height: 56px; border-radius: 16px; padding: 14px; text-align: center; text-decoration: none; color: #fff; margin-top: 18px; background: #1e3a5f; font-weight: bold; font-size: 17px; }
 </style>
 </head>
 <body>
 <div class="header">
-<h1>📋 NOTICE BOARD</h1>
-<p>PEPLink JA – Announcements & Updates</p>
+  <h1>📋 NOTICE BOARD</h1>
+  <p>PEPLink JA – Announcements &amp; Updates</p>
+  <span class="sync-tag">Synced automatically when online</span>
 </div>
 
 <div class="container">
 
-<div class="filter">
-<button class="active" onclick="show('all',this)">ALL</button>
-<button onclick="show('red',this)">🔴 MINISTRY</button>
-<button onclick="show('green',this)">🟢 PEPLINK JA</button>
-<button onclick="show('orange',this)">🟠 SCHOOLS</button>
-</div>
+  <div class="filter">
+    <button class="active" onclick="show('all', this)">ALL</button>
+    <button onclick="show('red', this)">🔴 MINISTRY</button>
+    <button onclick="show('green', this)">🟢 PEPLINK JA</button>
+    <button onclick="show('orange', this)">🟠 SCHOOLS</button>
+  </div>
 
-<div class="notice red" data-type="red">
-<div class="top">🔴 MINISTRY <span>Nov 18th, 2026</span></div>
-<p><b>Mess:</b> Dr Dana Morris will be visiting Mannings High School</p>
-</div>
+  <div class="notice red" data-type="red">
+    <div class="top">🔴 MINISTRY <span>Nov 18th, 2026</span></div>
+    <p>Senator Dr. Dana Morris Dixon will be visiting Manning's School.</p>
+  </div>
 
-<div class="notice red" data-type="red">
-<div class="top">🔴 MINISTRY <span>Nov 10th, 2026</span></div>
-<p><b>Mess:</b> Dr. Dana Morris will visit Knox College on November 10, 2026, at 10:00 AM.</p>
-</div>
+  <div class="notice red" data-type="red">
+    <div class="top">🔴 MINISTRY <span>Nov 10th, 2026</span></div>
+    <p>Senator Dr. Dana Morris Dixon will visit Knox College on November 10, 2026, at 10:00 AM.</p>
+  </div>
 
-<div class="notice green" data-type="green">
-<div class="top">🟢 PEPLINK JA <span>Nov 4th, 2026</span></div>
-<p><b>Mess:</b> Grade 4 & Grade 5 Practice Tests are now live. Go to your Grade Hub to start.</p>
-</div>
+  <div class="notice green" data-type="green">
+    <div class="top">🟢 PEPLink JA <span>Nov 4th, 2026</span></div>
+    <p>Grade 4 &amp; Grade 5 Practice Tests are now live. Go to your Grade Hub to start.</p>
+  </div>
 
-<div class="notice orange" data-type="orange">
-<div class="top">🟠 SCHOOLS <span>Nov 4th, 2026</span></div>
-<p><b>Mess:</b> Science & Social Studies will be available in 2027. Stay tuned.</p>
-</div>
+  <div class="notice green" data-type="green">
+    <div class="top">🟢 PEPLink JA <span>Nov 4th, 2026</span></div>
+    <p>Science &amp; Social Studies modules will launch in 2027. Stay tuned!</p>
+  </div>
 
-<a href="index.html" class="card-btn">Back to Home</a>
+  <div class="notice orange" data-type="orange">
+    <div class="top">🟠 SCHOOLS <span>Nov 1st, 2026</span></div>
+    <p>Parents are reminded to confirm their child's Grade 6 PEP registration details with their class teacher.</p>
+  </div>
+
+  <a href="menu.html" class="card-btn">← Back to Main Menu</a>
 </div>
 
 <script>
-function show(type, btn){
-  document.querySelectorAll('.filter button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.notice').forEach(n=>{
-    if(type==='all' || n.dataset.type===type){ n.style.display='block'; }
-    else{ n.style.display='none'; }
-  });
-}
+  function show(type, btn) {
+    document.querySelectorAll('.filter button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.notice').forEach(n => {
+      if (type === 'all' || n.dataset.type === type) { n.style.display = 'block'; }
+      else { n.style.display = 'none'; }
+    });
+  }
 </script>
 </body>
 </html>
