@@ -1,45 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Parent Information Desk</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parent Information Desk - PEPLink JA</title>
 <style>
-body{font-family:Arial;background:#EDEDED;margin:0;padding:12px}
-.top{background:#0A2A4D;color:#fff;border-radius:16px;padding:28px 18px;text-align:center}
-.top h1{margin:0;font-size:25px}
-.top p{font-size:17px;line-height:1.55}
-.card{background:#fff;border-radius:16px;padding:18px;margin-bottom:12px;display:flex;gap:12px;align-items:center;border-left:6px solid #D4A017}
-.num{background:#0A2A4D;color:#fff;font-weight:bold;font-size:20px;padding:10px 12px;border-radius:10px;min-width:42px;text-align:center}
-.card h3{margin:0;font-size:20px;color:#0A2A4D}
-.card p{margin:5px 0 0;color:#5A5A5A;font-size:15px}
-.arrow{margin-left:auto;font-size:22px;color:#999}
-.ask{background:#fff;border-radius:16px;padding:20px;margin-top:6px;border-left:6px solid #D4A017}
-.ask textarea{width:100%;height:110px;border:1px solid #ddd;border-radius:12px;padding:12px;font-size:16px;box-sizing:border-box}
-.btn{background:#D9DEE8;color:#5A5A5A;border:none;width:100%;padding:14px;border-radius:22px;font-size:18px;font-weight:bold;margin-top:12px}
-.back{background:#5A5A5A;color:#fff;border:none;width:100%;padding:14px;border-radius:12px;font-size:17px;font-weight:bold;margin-top:12px}
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #EDEDED; margin: 0; padding: 14px; padding-bottom: 30px; }
+  .container { max-width: 540px; margin: 0 auto; }
+  .top { background: #0A2A4D; color: #fff; border-radius: 16px; padding: 26px 18px; text-align: center; }
+  .top h1 { margin: 0; font-size: 25px; font-weight: 800; }
+  .top p { font-size: 15px; line-height: 1.5; margin: 12px 0 0; opacity: 0.95; }
+  h2 { font-size: 21px; color: #0A2A4D; margin: 20px 0 12px; }
+  .card { background: #fff; border-radius: 16px; padding: 16px; margin-bottom: 12px; display: flex; gap: 12px; align-items: center; border-left: 6px solid #D4A017; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+  .num { background: #0A2A4D; color: #fff; font-weight: bold; font-size: 18px; padding: 10px; border-radius: 10px; min-width: 44px; text-align: center; }
+  .card h3 { margin: 0; font-size: 18px; color: #0A2A4D; }
+  .card p { margin: 4px 0 0; color: #5A5A5A; font-size: 14px; line-height: 1.35; }
+  .arrow { margin-left: auto; font-size: 20px; color: #999; font-weight: bold; }
+  .ask { background: #FFFBEA; border: 3px solid #D4A017; border-radius: 16px; padding: 18px; margin-top: 16px; }
+  .ask h3 { font-size: 20px; line-height: 1.25; margin: 0; color: #0A2A4D; background: #FFF3C4; padding: 10px 12px; border-radius: 10px; }
+  .ask p { font-size: 14.5px; color: #444; margin: 10px 0 12px; }
+  .ask input, .ask textarea { width: 100%; border: 2px solid #0A2A4D; background: #fff; border-radius: 12px; padding: 12px 14px; font-size: 16px; color: #0A2A4D; font-family: inherit; margin-bottom: 10px; }
+  .ask textarea { height: 110px; resize: vertical; }
+  .wa-btn { background: #25D366; color: #fff; border: none; width: 100%; padding: 15px; border-radius: 22px; font-size: 17px; font-weight: 800; cursor: pointer; text-shadow: 0 1px 1px rgba(0,0,0,0.2); }
+  .back { display: block; text-align: center; text-decoration: none; background: #333; color: #fff; width: 100%; padding: 15px; border-radius: 14px; font-size: 16px; font-weight: bold; margin-top: 14px; }
 </style>
 </head>
 <body>
-<div class="top">
-<h1>Parent Information Desk</h1>
-<p><b>Your PEP Questions. Clear Answers.</b><br><br>Welcome, Parents and Guardians! Find helpful information about Jamaica's Primary Exit Profile (PEP), examination requirements, procedures and preparation.</p>
-</div>
-<h2 style="font-size:23px;color:#0A2A4D">What would you like to know?</h2>
-<div class="card"><div class="num">01</div><div><h3>Understanding PEP</h3><p>What is PEP? How does the assessment work?</p></div><div class="arrow">&gt;</div></div>
-<div class="card"><div class="num">02</div><div><h3>Grades 4, 5 and 6</h3><p>What happens at each grade level?</p></div><div class="arrow">&gt;</div></div>
-<div class="card"><div class="num">03</div><div><h3>PEP Subjects & Assessments</h3><p>Mathematics, Language Arts, Ability Test and Performance Tasks.</p></div><div class="arrow">&gt;</div></div>
-<div class="card"><div class="num">04</div><div><h3>Examination Information</h3><p>Examination dates, format and assessment procedures.</p></div><div class="arrow">&gt;</div></div>
-<div class="card"><div class="num">05</div><div><h3>High School Placement</h3><p>How placement works and what parents should know.</p></div><div class="arrow">&gt;</div></div>
-<div class="card"><div class="num">06</div><div><h3>Frequently Asked Questions</h3><p>Common questions asked by Jamaican parents.</p></div><div class="arrow">&gt;</div></div>
-<div class="ask" style="background:#FFFBEA;border:3px solid #D4A017">
-<h3 style="font-size:22px;line-height:1.2;margin:0;color:#0A2A4D;background:#FFF3C4;padding:10px;border-radius:8px">Ask the Parent<br>Information Desk</h3>
-<p style="font-size:16px;color:#5A5A5A">Can't find the information you're looking for? Submit your question below.</p>
-<textarea placeholder="Type your PEP question here..." style="width:100%;height:120px;border:3px solid #0A2A4D;background:#fff;border-radius:12px;padding:14px;font-size:17px;font-weight:bold;color:#0A2A4D;box-sizing:border-box"></textarea>
-<button style="background:#2E8B3A;color:#fff;border:none;width:100%;padding:14px;border-radius:22px;font-size:18px;font-weight:bold;margin-top:12px">Submit Question</button>
-</div>
-<button style="background:#000;color:#fff;border:none;width:100%;padding:14px;border-radius:12px;font-size:17px;font-weight:bold;margin-top:12px">Back to Home</button>
-</body>
-</html>
+<div class="container">
 
+  <div class="top">
+    <h1>Parent Information Desk</h1>
+    <p><b>Your PEP Questions. Clear Answers.</b><br><br>Welcome, Parents and Guardians! Find helpful guidance on Jamaica's Primary Exit Profile (PEP), exam requirements, dates, and preparation.</p>
+  </div>
+
+  <h2>What would you like to know?</h2>
+
+  <a href="understanding-pep.html" class="card">
+    <div class="num">01</div>
+    <div><h3>Understanding PEP</h3><p>What is PEP? How does the assessment work?</p></div>
+    <div class="arrow">&gt;</div>
+  </a>
+
+  <a href="grades-4-5-6.html" class="card">
+    <div class="num">02</div>
+    <div><h3>Grades 4, 5 and 6</h3><p>What happens at each grade level?</p></div>
+    <div class="arrow">&gt;</div>
+  </a>
+
+  <a href="pep-subjects.html" class="card">
+    <div class="num">03</div>
+    <div><h3>PEP Subjects &amp; Assessments</h3><p>Mathematics, Language Arts, Science, Social Studies, Ability Test &amp; Performance Tasks.</p></div>
+    <div class="arrow">&gt;</div>
+  </a>
+
+  <a href="exam-info.html" class="card">
+    <div class="num">04</div>
+    <div><h3>Examination Information</h3><p>Examination dates, format and assessment procedures.</p></div>
+    <div class="arrow">&gt;</div>
+  </a>
+
+  <a href="high-school-placement.html" class="card">
+    <div class="num">05</div>
+    <div><h3>High School Placement</h3><p>How placement works and what parents should know.</p></div>
+    <div class="arrow">&gt;</div>
+  </a>
+
+  <a href="faq.html" class="card">
+    <div class="num">06</div>
+    <div><h3>Frequently Asked Questions</h3><p>Common questions asked by Jamaican parents.</p></div>
+    <div class="arrow">&gt;</div>
+  </a>
+
+  <a href="child-progress.html" class="card" style="border-left-color: #2E8B3A;">
+    <div class="num" style="background: #2E8B3A;">07</div>
+    <div><h3>My Child's Progress Report</h3><p>View live quiz scores, weak topics &amp; study time.</p></div>
+    <div class="arrow">&gt;</div>
+  </a>
+
+  <div class="ask">
+    <h3>💬 Ask the Parent Information Desk</h3>
+    <p>Can't find what you're looking for? Send your question below and we'll reply directly on <b>WhatsApp</b>.</p>
+    <input type="text" id="parentName" placeholder="Your Name (e.g. Mrs. Brown)">
+    <textarea id="parentQuestion" placeholder="Type your PEP question here..."></textarea>
+    <button type="button" class="wa-btn" onclick="sendToWhatsApp()">Send Question via WhatsApp →</button>
+  </div>
+
+  <a href="menu.html" class="back">← Back to Main Menu</a>
+
+</div>
+
+<script>
+  function sendToWhatsApp() {
+    const name = document.getElementById('parentName').value.trim() || 'Parent';
+    const question = document.getElementById('parentQuestion').value.trim();
+    if (!question) {
+      alert('Please type your PEP question first.');
+      return;
+    }
+    // Replace 18760000000 with your official PEPLink JA WhatsApp number
+    const waNumber = '18760000000';
+    const message = encodeURIComponent(`Hello PEPLink JA Parent Desk! My name is ${name}.\n\nPEP Question: ${question}`);
+    window.open(`https://wa.me{waNumber}?text=${message}`, '_blank');
+  }
+</script>
 </body>
 </html>
